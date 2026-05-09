@@ -1,0 +1,332 @@
+2026-05-09 15:15:09,844 [INFO] arxiv — Fetching arXiv: start=0  query='journalism artificial intelligence'
+2026-05-09 15:16:19,918 [INFO] arxiv — Fetching arXiv: start=0  query='journalism artificial intelligence'
+2026-05-09 15:16:20,443 [WARNING] arxiv — Rate limited (429) — waiting 30s before retry 1/5
+2026-05-09 15:17:16,400 [WARNING] arxiv — Rate limited (429) — waiting 60s before retry 2/5
+2026-05-09 15:18:16,729 [WARNING] arxiv — Rate limited (429) — waiting 90s before retry 3/5
+2026-05-09 15:20:19,476 [INFO] arxiv — Fetching arXiv: start=0  query='AI newsroom'
+2026-05-09 15:21:47,717 [INFO] journalismai — Fetching page 1: https://www.journalismai.info/resources/case-studies
+2026-05-09 15:21:47,958 [INFO] journalismai — Found 1 cards with selector: 'article'
+2026-05-09 15:21:47,960 [INFO] journalismai — Found 1 case study cards on page 1
+2026-05-09 15:21:47,961 [INFO] journalismai —   + Exploring the intersection of AI and journalism
+2026-05-09 15:21:49,976 [INFO] base — [JournalismAI] Done — 1 attempted, 1 inserted, 0 duplicates skipped
+2026-05-09 15:22:04,551 [INFO] journalismai — Fetching page 1: https://www.journalismai.info/resources/case-studies
+2026-05-09 15:22:06,363 [ERROR] journalismai — Playwright error: BrowserType.launch: Executable doesn't exist at /Users/sofiagiannuzzi/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-arm64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-05-09 15:22:06,364 [ERROR] journalismai — Failed to fetch listing page — stopping
+2026-05-09 15:22:06,364 [INFO] base — [JournalismAI] Done — 0 attempted, 0 inserted, 0 duplicates skipped
+2026-05-09 15:22:45,846 [INFO] journalismai — Fetching page 1: https://www.journalismai.info/resources/case-studies
+2026-05-09 15:23:17,328 [ERROR] journalismai — Playwright error: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.journalismai.info/resources/case-studies", waiting until "networkidle"
+
+2026-05-09 15:23:17,328 [ERROR] journalismai — Failed to fetch listing page — stopping
+2026-05-09 15:23:17,328 [INFO] base — [JournalismAI] Done — 0 attempted, 0 inserted, 0 duplicates skipped
+2026-05-09 15:26:57,814 [INFO] journalismai_csv —   + [Mexico] A new AI compass to refine the editorial agenda
+2026-05-09 15:26:57,815 [INFO] journalismai_csv —   + [United Kingdom] How dmg media is building an AI ‘foundational layer’ for the newsroom
+2026-05-09 15:26:57,815 [INFO] journalismai_csv —   + [Taiwan] Bridging the China coverage gap: AI-powered news monitoring
+2026-05-09 15:26:57,815 [INFO] journalismai_csv —   + [India] How The Hindu is embedding AI into its data journalism
+2026-05-09 15:26:57,815 [INFO] journalismai_csv —   + [Turkiye] From fine-tuning to smart prompting: Automating routine news at ANKA
+2026-05-09 15:26:57,815 [INFO] journalismai_csv —   + [The Netherlands] Cutting through healthcare data complexity: An AI-powered research too
+2026-05-09 15:26:57,815 [INFO] journalismai_csv —   + [Brazil] These Brazilian newsrooms are using AI to expose online hate and track
+2026-05-09 15:26:57,815 [INFO] journalismai_csv —   + [Argentina, Mexico, Ecuador] AI in Latin American newsrooms: Moving from exploration to editorial p
+2026-05-09 15:26:57,815 [INFO] journalismai_csv —   + [Argentina, Uruguay] No programmers? No problem: These newsrooms are building their own AI
+2026-05-09 15:26:57,815 [INFO] journalismai_csv —   + [United States] How The New York Times uses a custom AI tool to track the “manosphere”
+2026-05-09 15:26:57,816 [INFO] journalismai_csv —   + [Peru] Inside the automation behind El Comercio’s election guides for Peru
+2026-05-09 15:26:57,816 [INFO] journalismai_csv —   + [Slovakia] How Dennik N tool continues to power publisher revenue
+2026-05-09 15:26:57,816 [INFO] journalismai_csv —   + [Portugal] Inside Público’s GenAI-Powered Voting Game
+2026-05-09 15:26:57,816 [INFO] journalismai_csv —   + [Italy] Il Messaggero accelerated subscription growth by introducing new AI-po
+2026-05-09 15:26:57,816 [INFO] journalismai_csv —   + [France] Beyond blue links: Meet NEO, EBU’s project to reinvent news access
+2026-05-09 15:26:57,816 [INFO] journalismai_csv —   + [India] Factivo AI, a force-multiplier for multi-format journalism
+2026-05-09 15:26:57,816 [INFO] journalismai_csv —   + [Nigeria] Building AI for African Voices
+2026-05-09 15:26:57,816 [INFO] journalismai_csv —   + [Tunisia] AI platform aids journalists and readers overcome historical amnesia
+2026-05-09 15:26:57,816 [INFO] journalismai_csv —   + [United States] Using custom-AI to enhance its political accountability tool, Digital 
+2026-05-09 15:26:57,817 [INFO] journalismai_csv —   + [Colombia] how to build an AI chatbot that democratises economics
+2026-05-09 15:26:57,817 [INFO] journalismai_csv —   + [Ukraine] Sustaining media operations during crisis
+2026-05-09 15:26:57,817 [INFO] journalismai_csv —   + [United Kingdom] Serving readers by using AI to answer SRHR questions
+2026-05-09 15:26:57,817 [INFO] journalismai_csv —   + [Serbia] Powering data-driven investigations with AI
+2026-05-09 15:26:57,817 [INFO] journalismai_csv —   + [Brazil] Using AI to deliver service journalism where people are
+2026-05-09 15:26:57,817 [INFO] journalismai_csv —   + [Nigeria] Building Nigeria’s culturally aware transcription tool
+2026-05-09 15:26:57,817 [INFO] journalismai_csv —   + [Paraguay] Building understandable common knowledge
+2026-05-09 15:26:57,817 [INFO] journalismai_csv —   + [Switzerland] An AI companion editor for its journalists
+2026-05-09 15:26:57,817 [INFO] journalismai_csv —   + [Spain] Building intelligence into fact-checking workflows
+2026-05-09 15:26:57,817 [INFO] journalismai_csv —   + [United Kingdom] Building bridges between newsrooms through an AI-powered newsletter ex
+2026-05-09 15:26:57,818 [INFO] journalismai_csv —   + [Philippines] Using AI to create SEEK, a GenAI fact-checking search engine
+2026-05-09 15:26:57,818 [INFO] journalismai_csv —   + [Jordan] Transforming data into actionable insights
+2026-05-09 15:26:57,818 [INFO] journalismai_csv —   + [Colombia] Building a custom AI tools hub
+2026-05-09 15:26:57,818 [INFO] journalismai_csv —   + [Brazil] Giving a voice to gun violence numbers
+2026-05-09 15:26:57,818 [INFO] journalismai_csv —   + [United Kingdom] Using GenAI to track government promises
+2026-05-09 15:26:57,818 [INFO] journalismai_csv —   + [United States] Building trust in Indigenous communities with AI
+2026-05-09 15:26:57,818 [INFO] journalismai_csv —   + [France] Building an AI system to combat climate misinformation
+2026-05-09 15:26:57,818 [INFO] journalismai_csv —   + [India] Using AI to improve story production workflows
+2026-05-09 15:26:57,818 [INFO] journalismai_csv —   + [United States] Empowering local news through AI efficiency
+2026-05-09 15:26:57,818 [INFO] journalismai_csv —   + [Greece] Reviving regional journalism through personalised community engagement
+2026-05-09 15:26:57,819 [INFO] journalismai_csv —   + [United States] Unmasking disinformation during elections
+2026-05-09 15:26:57,819 [INFO] journalismai_csv —   + [Mongolia] Building Mongolia's First AI-Powered Fact-Checking System
+2026-05-09 15:26:57,819 [INFO] journalismai_csv —   + [Israel] Teaching AI to spot hidden bias
+2026-05-09 15:26:57,819 [INFO] journalismai_csv —   + [South Africa] Using AI to boost its membership strategy
+2026-05-09 15:26:57,819 [INFO] journalismai_csv —   + [Spain] Using AI to tackle disinformation on social media
+2026-05-09 15:26:57,819 [INFO] journalismai_csv —   + [France] Bringing AI-powered fact-checking to Africa's languages
+2026-05-09 15:26:57,819 [INFO] journalismai_csv —   + [United States] Building on market needs’ shoulders
+2026-05-09 15:26:57,819 [INFO] journalismai_csv —   + [Argentina] Building AI accessibility for fact-checkers
+2026-05-09 15:26:57,819 [INFO] journalismai_csv —   + [Brazil] Understanding anti-gender discourse on YouTube: a feminist approach to
+2026-05-09 15:26:57,820 [INFO] journalismai_csv —   + [Turkey] Using AI to combat misinformation in Syria
+2026-05-09 15:26:57,820 [INFO] journalismai_csv —   + [Germany] Using AI to predict subscriber churn
+2026-05-09 15:26:57,820 [INFO] journalismai_csv —   + [United States] The Onion's AI Strategy: Why Satire Can't Be Automated
+2026-05-09 15:26:57,820 [INFO] journalismai_csv —   + [Norway] How iTromsø Built Norway's Most AI-Ready Newsroom
+2026-05-09 15:26:57,820 [INFO] journalismai_csv —   + [United States] ChatMigrante: an AI powered tool that supports migrants with accurate,
+2026-05-09 15:26:57,820 [INFO] journalismai_csv —   + [Poland] Onet Czat with AI creates simplified experience for Ringier Axel Sprin
+2026-05-09 15:26:57,821 [INFO] journalismai_csv —   + [Unites Stated] Hearst Newspapers leverages AI for a human-centred strategy
+2026-05-09 15:26:57,821 [INFO] journalismai_csv —   + [Nigeria, Uganda] Can AI Triage a Pitch? A Case Study in Editorial Evaluation from Minor
+2026-05-09 15:26:57,821 [INFO] journalismai_csv —   + [Germany] Gruner + Jahr drives a cultural shift toward AI
+2026-05-09 15:26:57,821 [INFO] journalismai_csv —   + [Japan] What Nikkei learnt from building its own Japanese AI chatbot
+2026-05-09 15:26:57,821 [INFO] journalismai_csv —   + [Germany] How AI summarizes the content of user comments on BR24
+2026-05-09 15:26:57,821 [INFO] journalismai_csv —   + [Argentina] From Idea to Implementation: Lessons Learned from the First AI Integra
+2026-05-09 15:26:57,821 [INFO] journalismai_csv —   + [United Kingdom] How Full Fact Uses Generative AI to Find Harmful Health Advice
+2026-05-09 15:26:57,821 [INFO] journalismai_csv —   + [United States] Wall Street Journal taxbot answers questions (while readers try to bre
+2026-05-09 15:26:57,822 [INFO] journalismai_csv —   + [United Kingdom] From summaries to assisting in investigative reporting, how the FT use
+2026-05-09 15:26:57,822 [INFO] journalismai_csv —   + [] EarthCheckr: Leveraging Generative AI for Environmental Journalism Fac
+2026-05-09 15:26:57,822 [INFO] journalismai_csv —   + [India] Scroll.in offers a lesson in the personalisation of news
+2026-05-09 15:26:57,822 [INFO] journalismai_csv —   + [Sweden] Ask us your news question – new type of search in Sveriges Radio Play
+2026-05-09 15:26:57,822 [INFO] journalismai_csv —   + [United States] This AI tool could give newsrooms “eyes and ears where they don’t have
+2026-05-09 15:26:57,822 [INFO] journalismai_csv —   + [Germany] BZ.Echo | A custom AI platform for Badische Zeitung’s newsrooms
+2026-05-09 15:26:57,822 [INFO] journalismai_csv —   + [Taiwan] AIAssist: AI-Embedded Newsroom, Centralising Journalism Values
+2026-05-09 15:26:57,822 [INFO] journalismai_csv —   + [Taiwan] Smart Strategies for Tough Times: How Data and AI Empower Publishers t
+2026-05-09 15:26:57,823 [INFO] journalismai_csv —   + [United Kingdom] Transforming the FT’s subscriber retention through AI and personalisat
+2026-05-09 15:26:57,823 [INFO] journalismai_csv —   + [Austria] Russmedia Meets AI 2.0
+2026-05-09 15:26:57,823 [INFO] journalismai_csv —   + [Slovakia] Ringier Slovakia builds out AI to diversify
+2026-05-09 15:26:57,823 [INFO] journalismai_csv —   + [Nigeria] How a small Nigerian newsroom used AI for a flooding investigation
+2026-05-09 15:26:57,823 [INFO] journalismai_csv —   + [United Kingdom] How AI can help fact checkers
+2026-05-09 15:26:57,823 [INFO] journalismai_csv —   + [Philippines] Transforming Longform Text into Multimedia using Generative AI
+2026-05-09 15:26:57,823 [INFO] journalismai_csv —   + [Brazil] Using genAI to understand impact of journalism: The Agência Pública st
+2026-05-09 15:26:57,823 [INFO] journalismai_csv —   + [Puerto Rico] Unlocking the future of translation for local journalism: Lessons from
+2026-05-09 15:26:57,823 [INFO] journalismai_csv —   + [Sweden] Bonnier News launches GenAI tool in record time
+2026-05-09 15:26:57,824 [INFO] journalismai_csv —   + [United States] How A.I. Tools Helped the Travel Team Study Its ‘Places to Go’ Lists
+2026-05-09 15:26:57,824 [INFO] journalismai_csv —   + [United States] Assembly: Using AI to Transform Coverage of Public Meetings
+2026-05-09 15:26:57,824 [INFO] journalismai_csv —   + [Global] Bloomberg Launches Gen AI Summarization for News Content
+2026-05-09 15:26:57,824 [INFO] journalismai_csv —   + [Italy] Creating a user-centric news experience
+2026-05-09 15:26:57,824 [INFO] journalismai_csv —   + [Sweden] NTM launches AI-powered automated audio news
+2026-05-09 15:26:57,824 [INFO] journalismai_csv —   + [Nigeria] From debunking disinformation to turning datasets into stories, AI is 
+2026-05-09 15:26:57,824 [INFO] journalismai_csv —   + [United States] About TIME’s AI Chatbot
+2026-05-09 15:26:57,824 [INFO] journalismai_csv —   + [United States] Why We’re Introducing Generative AI to TIME’s Journalism
+2026-05-09 15:26:57,825 [INFO] journalismai_csv —   + [Norway] E24 embraces cooperation to maximise AI’s potential
+2026-05-09 15:26:57,825 [INFO] journalismai_csv —   + [United Kingdom] Inside the FT’s AI-Powered Story Finding
+2026-05-09 15:26:57,825 [INFO] journalismai_csv —   + [Philippines] Teaching a CustomGPT to Help Inspect the Philippine National Budget
+2026-05-09 15:26:57,826 [INFO] journalismai_csv —   + [Peru] Using AI to reveal illegal narco-trafficking airstrips deep in the Ama
+2026-05-09 15:26:57,826 [INFO] journalismai_csv —   + [United States] AI in Sports: How ESPN Is Leveraging Tech to Highlight Niche Sports
+2026-05-09 15:26:57,826 [INFO] journalismai_csv —   + [Unites States] Project: VERDAD—tracking misinformation in radio broadcasts using Gemi
+2026-05-09 15:26:57,826 [INFO] journalismai_csv —   + [Brazil] Aos Fatos using GenAI to surface verified information audiences need
+2026-05-09 15:26:57,826 [INFO] journalismai_csv —   + [USA] Inside the Movement Behind Trump’s Election Lies
+2026-05-09 15:26:57,826 [INFO] journalismai_csv —   + [India] How The Times of India Brings Real-Time Personalization to 1,500+ Dail
+2026-05-09 15:26:57,827 [INFO] journalismai_csv —   + [Argentina] LN Audio: now in addition to reading your favourite authors, you can l
+2026-05-09 15:26:57,827 [INFO] journalismai_csv —   + [United Kingdom] Case Study: Using AI to Analyze Open-Source Intelligence in Ukraine Wa
+2026-05-09 15:26:57,827 [INFO] journalismai_csv —   + [Germany] A Mixed-Methods Approach to Offline Evaluation of News Recommender Sys
+2026-05-09 15:26:57,827 [INFO] journalismai_csv —   + [Sweden] Sweden’s Aftonbladet Built AI-Driven Editorial Tools and an Election C
+2026-05-09 15:26:57,827 [INFO] journalismai_csv —   + [Germany] How Bayerischer Rundfunk Used Modular Journalism to Personalize Radio 
+2026-05-09 15:26:57,827 [INFO] journalismai_csv —   + [Nigeria, Kenya] How Journalism Groups in Africa Are Building AI Tools to Aid Investiga
+2026-05-09 15:26:57,827 [INFO] journalismai_csv —   + [Paraguay] Chatbot tells story of woman imprisoned for drug trafficking in Paragu
+2026-05-09 15:26:57,827 [INFO] journalismai_csv —   + [USA] SFChronicle unveils AI tool to answer your Kamala Harris questions
+2026-05-09 15:26:57,827 [INFO] journalismai_csv —   + [Canada] Building AI Literacy at Canada’s National Public Broadcaster Radio-Can
+2026-05-09 15:26:57,827 [INFO] journalismai_csv —   + [Netherlands] Transforming Workflows with AI at Zamaneh Media
+2026-05-09 15:26:57,828 [INFO] journalismai_csv —   + [Germany] Case Study: Enhancing Fact-Checking with AI at Der Spiegel
+2026-05-09 15:26:57,828 [INFO] journalismai_csv —   + [USA, New Zealand, Denmark] News companies are using GenAI in these 4 interesting ways
+2026-05-09 15:26:57,828 [INFO] journalismai_csv —   + [India] At Times of India Group, AI offers real-time employee feedback, but hu
+2026-05-09 15:26:57,828 [INFO] journalismai_csv —   + [United States] How Hearst Newspapers built an AI-powered, Slack-based Tool to Help Wi
+2026-05-09 15:26:57,828 [INFO] journalismai_csv —   + [Norway] Djinn, an AI-powered Data Journalism Interface
+2026-05-09 15:26:57,828 [INFO] journalismai_csv —   + [United States] New Washington Post AI tool sifts massive data sets
+2026-05-09 15:26:57,828 [INFO] journalismai_csv —   + [Venezuela] Operacion Retuit: Information against persecution of journalists in Ve
+2026-05-09 15:26:57,828 [INFO] journalismai_csv —   + [Mexico] Meet NAT, the AI-generated presenter offering soft news to Mexican aud
+2026-05-09 15:26:57,828 [INFO] journalismai_csv —   + [United States] How the Jersey Bee uses AI and automation to produce curated local new
+2026-05-09 15:26:57,828 [INFO] journalismai_csv —   + [Sweden] Aftonbladet shares 3 lessons learned from its new AI hub
+2026-05-09 15:26:57,829 [INFO] journalismai_csv —   + [UK] Two months in, what has the FT learned about launching its own generat
+2026-05-09 15:26:57,829 [INFO] journalismai_csv —   + [Spain] Spain’s Relevo boosts homepage engagement by a third with AI-driven co
+2026-05-09 15:26:57,829 [INFO] journalismai_csv —   + [Norway] How Norway’s public broadcaster uses AI-generated summaries to reach y
+2026-05-09 15:26:57,829 [INFO] journalismai_csv —   + [Turkiye] Why does ChatGPT 3.5 misidentify President Erdogan's birthplace, and h
+2026-05-09 15:26:57,829 [INFO] journalismai_csv —   + [Czech Republic] AI is boosting Forbes’ publishing capabilities
+2026-05-09 15:26:57,829 [INFO] journalismai_csv —   + [Brazil] Rede Gazeta experiments with GenAI to create its own news assistant
+2026-05-09 15:26:57,829 [INFO] journalismai_csv —   + [UK] I trained an AI model with my own scripts and created a chatbot to hel
+2026-05-09 15:26:57,830 [INFO] journalismai_csv —   + [Spain] How a Spanish media group created an AI tool to detect audio deepfakes
+2026-05-09 15:26:57,830 [INFO] journalismai_csv —   + [Brazil] AI in local journalism: How two Brazilian media outlets are using gene
+2026-05-09 15:26:57,830 [INFO] journalismai_csv —   + [Colombia] Cuestión Pública of Colombia creates AI tool to improve daily coverage
+2026-05-09 15:26:57,830 [INFO] journalismai_csv —   + [United States] Hearst Newspapers leverages AI to build local content, reader loyalty
+2026-05-09 15:26:57,830 [INFO] journalismai_csv —   + [Switzerland] Expanding hyperlocal coverage: Growing a local newsletter portfolio wi
+2026-05-09 15:26:57,830 [INFO] journalismai_csv —   + [Norway] How Amedia Got Half Its Journalists Using AI By Keeping It Simple
+2026-05-09 15:26:57,830 [INFO] journalismai_csv —   + [USA] We Asked an AI to Map Our Stories Across NYC
+2026-05-09 15:26:57,830 [INFO] journalismai_csv —   + [USA] Reach using AI to speed up ‘ripping’ and use same article on multiple 
+2026-05-09 15:26:57,830 [INFO] journalismai_csv —   + [United States] Semafor executive editor Gina Chua explains its Microsoft-sponsored ‘S
+2026-05-09 15:26:57,831 [INFO] journalismai_csv —   + [Philippines] Teaching a Custom GPT to Read Audit Reports and Support Watchdog Journ
+2026-05-09 15:26:57,831 [INFO] journalismai_csv —   + [Brazil] This Brazilian fact-checking org uses a ChatGPT-esque bot to answer re
+2026-05-09 15:26:57,831 [INFO] journalismai_csv —   + [Norway] Reaching young readers: How Stavanger Aftenblad covers junior football
+2026-05-09 15:26:57,831 [INFO] journalismai_csv —   + [UK] How one of the world’s oldest newspapers is using AI to reinvent journ
+2026-05-09 15:26:57,831 [INFO] journalismai_csv —   + [Peru] Quispe Chequea: an artificial intelligence verification platform in in
+2026-05-09 15:26:57,831 [INFO] journalismai_csv —   + [USA] A Times Investigation Tracked Israel’s Use of One of Its Most Destruct
+2026-05-09 15:26:57,831 [INFO] journalismai_csv —   + [Argentina] Argentina’s Clarín introduces AI assistant UalterAI to help boost enga
+2026-05-09 15:26:57,831 [INFO] journalismai_csv —   + [USA] How Newsquest and its seven AI-assisted reporters are using ChatGPT
+2026-05-09 15:26:57,831 [INFO] journalismai_csv —   + [Brazil] Agência Pública launches reports read by Artificial Intelligence (depr
+2026-05-09 15:26:57,831 [INFO] journalismai_csv —   + [USA] Automated writing of public safety incidents into the content manageme
+2026-05-09 15:26:57,832 [INFO] journalismai_csv —   + [USA] Publication of Spanish-language news alerts using National Weather Ser
+2026-05-09 15:26:57,832 [INFO] journalismai_csv —   + [USA] Automated transcription of recorded videos and summarization of the tr
+2026-05-09 15:26:57,832 [INFO] journalismai_csv —   + [USA] Expanding the Minutes application, which creates transcripts of city c
+2026-05-09 15:26:57,832 [INFO] journalismai_csv —   + [South Africa] How genAI summaries are boosting Daily Maverick’s readership
+2026-05-09 15:26:57,832 [INFO] journalismai_csv —   + [Global] AI tools for combating deepfakes
+2026-05-09 15:26:57,832 [INFO] journalismai_csv —   + [Global] Tracking disinformation? These AI tools can help.
+2026-05-09 15:26:57,833 [INFO] journalismai_csv —   + [Global] Reuters launches AI-powered discoverability features for video library
+2026-05-09 15:26:57,833 [INFO] journalismai_csv —   + [USA] How the Journal Investigated Hidden Lead Cables Circling the U.S.
+2026-05-09 15:26:57,833 [INFO] journalismai_csv —   + [USA] Decoding Bureaucracy
+2026-05-09 15:26:57,833 [INFO] journalismai_csv —   + [Argentina, Paraguay and Philippines] Journalists from Argentina, Paraguay and the Philippines develop image
+2026-05-09 15:26:57,833 [INFO] journalismai_csv —   + [Global] World Cup predictions: How many games did our AI get right?
+2026-05-09 15:26:57,833 [INFO] journalismai_csv —   + [Canada] What types of local news stories should be automated? The Toronto Star
+2026-05-09 15:26:57,833 [INFO] journalismai_csv —   + [Brazil] Amazon Mining Watch
+2026-05-09 15:26:57,833 [INFO] journalismai_csv —   + [Venezuela] La minería ilegal montó sus bases aéreas en la selva
+2026-05-09 15:26:57,833 [INFO] journalismai_csv —   + [Argentina] Computer vision to monitor Elections transparency
+2026-05-09 15:26:57,834 [INFO] journalismai_csv —   + [Argentina] Yeah, neighborhood, drugs and luxury. This is how trap music sounds on
+2026-05-09 15:26:57,834 [INFO] journalismai_csv —   + [UK] Oriel, Making it easier for journalists to find the best images for st
+2026-05-09 15:26:57,834 [INFO] journalismai_csv —   + [UK] Talking sense: using machine learning to understand quotes
+2026-05-09 15:26:57,834 [INFO] journalismai_csv —   + [Singapore] How AI is Helping Out in the Newsroom
+2026-05-09 15:26:57,834 [INFO] journalismai_csv —   + [Australia] A Framework for Conversational Apps
+2026-05-09 15:26:57,834 [INFO] journalismai_csv —   + [Australia] Hyperdraft: The natural language generation tool powering the ABC Emer
+2026-05-09 15:26:57,834 [INFO] journalismai_csv —   + [Sweden] For a local newsroom, automation is necessary
+2026-05-09 15:26:57,834 [INFO] journalismai_csv —   + [Norway] I am a local journalist: what can AI do for me?
+2026-05-09 15:26:57,834 [INFO] journalismai_csv —   + [Australia] Aggregating Emergency Alerts
+2026-05-09 15:26:57,835 [INFO] journalismai_csv —   + [USA] How we calculated the size of the Southwest’s abandoned oil well probl
+2026-05-09 15:26:57,835 [INFO] journalismai_csv —   + [Norway] Automated real estate texts drive subscription sales in Norway
+2026-05-09 15:26:57,835 [INFO] journalismai_csv —   + [UK] Predicting FT Trending Topics
+2026-05-09 15:26:57,835 [INFO] journalismai_csv —   + [USA] Staying on Topic — Building an Automated Topic Model of WSJ News Cover
+2026-05-09 15:26:57,835 [INFO] journalismai_csv —   + [Finland] Sanoma: Serving subscriptions with the help of technology
+2026-05-09 15:26:57,835 [INFO] journalismai_csv —   + [USA] The Wall Street Journal uses Narrativa's AI for its news automation
+2026-05-09 15:26:57,835 [INFO] journalismai_csv —   + [USA] We recommend articles with a little help from our friends (Machine Lea
+2026-05-09 15:26:57,836 [INFO] journalismai_csv —   + [USA] COVID-19: USA’s Trib Total Media boosts AI-backed hyperlocal journalis
+2026-05-09 15:26:57,836 [INFO] journalismai_csv —   + [Australia] Nine improves its image at scale with AI project
+2026-05-09 15:26:57,836 [INFO] journalismai_csv —   + [Finland] Yle News Lab builds a method that makes the power of social media visi
+2026-05-09 15:26:57,836 [INFO] journalismai_csv —   + [New Zealand] NZME boosts engagement with a bespoke content recommendation engine
+2026-05-09 15:26:57,836 [INFO] journalismai_csv —   + [USA] Announcing the launch of the Stanford Cable TV News Analyzer
+2026-05-09 15:26:57,836 [INFO] journalismai_csv —   + [Peru] Calculating corruption: Peru's Ojo Público creates tool to gauge contr
+2026-05-09 15:26:57,836 [INFO] journalismai_csv —   + [USA] To find photos in our archive, we taught the CMS how to read
+2026-05-09 15:26:57,836 [INFO] journalismai_csv —   + [Germany] How we built a cutting-edge NLP model to generte SEO titles
+2026-05-09 15:26:57,836 [INFO] journalismai_csv —   + [Global] Reuters applies AI technology to 100 years of archive video to enable 
+2026-05-09 15:26:57,836 [INFO] journalismai_csv —   + [Norway] Bergens Tidende uses AI to reveal newsroom biases, diversify coverage
+2026-05-09 15:26:57,837 [INFO] journalismai_csv —   + [UK] Me, you and the machine
+2026-05-09 15:26:57,837 [INFO] journalismai_csv —   + [UK] Graphical storytelling: Extracting and painting a fresh perspective
+2026-05-09 15:26:57,837 [INFO] journalismai_csv —   + [USA] Estimating 3D poses of athletes at live sporting events
+2026-05-09 15:26:57,837 [INFO] journalismai_csv —   + [USA] How KPCC embraced its role as LA's helpdesk – and what we've learned a
+2026-05-09 15:26:57,837 [INFO] journalismai_csv —   + [China] Digitizing a century of history with data
+2026-05-09 15:26:57,837 [INFO] journalismai_csv —   + [UK] BBC launches pop-up Corona Bot service to answer questions on Covid-19
+2026-05-09 15:26:57,837 [INFO] journalismai_csv —   + [USA] Bloomberg Media creates new tool to make readers, advertisers swoon
+2026-05-09 15:26:57,837 [INFO] journalismai_csv —   + [USA] To apply Machine Learning responsibly, we use it in moderation
+2026-05-09 15:26:57,837 [INFO] journalismai_csv —   + [UK] Automating our coronavirus coverage
+2026-05-09 15:26:57,837 [INFO] journalismai_csv —   + [Sweden] Swedish Radio leverages Peach recommendations for content production
+2026-05-09 15:26:57,837 [INFO] journalismai_csv —   + [Canada] How an AI system is boosting business at The Globe and Mail
+2026-05-09 15:26:57,837 [INFO] journalismai_csv —   + [USA] Analyzing bias in Natural Language models
+2026-05-09 15:26:57,837 [INFO] journalismai_csv —   + [Sweden] Swedish Aftonbladet uses automation to outpace competitors with its Co
+2026-05-09 15:26:57,838 [INFO] journalismai_csv —   + [USA] Facebook ads reveal what the Democratic candidates think will sway Sou
+2026-05-09 15:26:57,838 [INFO] journalismai_csv —   + [UK] How AI can help predict subscription cancellation and keep readers eng
+2026-05-09 15:26:57,838 [INFO] journalismai_csv —   + [Ireland] The new tool helping Asian newsrooms detect fake images
+2026-05-09 15:26:57,838 [INFO] journalismai_csv —   + [Nordics] Schibsted announces collaboration in responsible AI with KTH Royal Ins
+2026-05-09 15:26:57,838 [INFO] journalismai_csv —   + [Global] Reuters uses AI to prototype first ever automated video reports
+2026-05-09 15:26:57,838 [INFO] journalismai_csv —   + [Germany] Axel Springer Academy to integrate Artificial Intelligence into its cu
+2026-05-09 15:26:57,838 [INFO] journalismai_csv —   + [USA] What the AP and Newsday learned from automating coverage of 124 school
+2026-05-09 15:26:57,838 [INFO] journalismai_csv —   + [USA] Tool to help journalists spot doctored images is unveiled by Jigsaw
+2026-05-09 15:26:57,838 [INFO] journalismai_csv —   + [UK] Can synthetic media drive new content expeiences?
+2026-05-09 15:26:57,838 [INFO] journalismai_csv —   + [US / Angola] How Quartz used AI to sort through the Luanda Leaks
+2026-05-09 15:26:57,838 [INFO] journalismai_csv —   + [UK] How we use AI to help fact check party manifestos
+2026-05-09 15:26:57,838 [INFO] journalismai_csv —   + [Global] We used AI to Identify the sex of 340,000 people harmed by medical dev
+2026-05-09 15:26:57,838 [INFO] journalismai_csv —   + [UK] Artificial Intelligence is not the future – It is happening right now
+2026-05-09 15:26:57,839 [INFO] journalismai_csv —   + [USA] How The Wall Street Journal is using Deep Learning to inform content s
+2026-05-09 15:26:57,839 [INFO] journalismai_csv —   + [UK] Scaling responsible Machine Learning at the BBC
+2026-05-09 15:26:57,839 [INFO] journalismai_csv —   + [UK] AI & auto-colourisation – Black & White to colour with Machine Learnin
+2026-05-09 15:26:57,839 [INFO] journalismai_csv —   + [UK] How The Times of London increased digital subscribers 19% in a year
+2026-05-09 15:26:57,839 [INFO] journalismai_csv —   + [USA] How The Wall Street Journal is building an incubator into its newsroom
+2026-05-09 15:26:57,839 [INFO] journalismai_csv —   + [USA] How Piano built a propensity paywall for publishers — and what it’s le
+2026-05-09 15:26:57,839 [INFO] journalismai_csv —   + [USA] Here's how The Washington Post's new computational journalism lab will
+2026-05-09 15:26:57,839 [INFO] journalismai_csv —   + [USA] How Quartz used AI to help reporters search the Mauritius Leaks
+2026-05-09 15:26:57,839 [INFO] journalismai_csv —   + [USA] Spotting fact-checkable tweets
+2026-05-09 15:26:57,839 [INFO] journalismai_csv —   + [USA] IBM's Wimbledon-watching AI is poised to revolutionize sports broadcas
+2026-05-09 15:26:57,839 [INFO] journalismai_csv —   + [Mexico] Journalism and AI team up to measure missing stories
+2026-05-09 15:26:57,840 [INFO] journalismai_csv —   + [USA] The New York Times has a course to teach its reporters data skills, no
+2026-05-09 15:26:57,840 [INFO] journalismai_csv —   + [USA] Rise of the robots: Coming to a first-year intro to journalism class n
+2026-05-09 15:26:57,840 [INFO] journalismai_csv —   + [UK] Times titles halve digital subscriber churn with tailored emails from 
+2026-05-09 15:26:57,840 [INFO] journalismai_csv —   + [UK] Full Fact secures $2 million Google AI grant to fight misinformation
+2026-05-09 15:26:57,840 [INFO] journalismai_csv —   + [USA] AI learns to write headlines (but not this one)
+2026-05-09 15:26:57,840 [INFO] journalismai_csv —   + [UK] Facial recognition, subtitling automation and datasets: How Sky News u
+2026-05-09 15:26:57,840 [INFO] journalismai_csv —   + [USA] We built an 'unbelievable' (but legal) facial recognition machine
+2026-05-09 15:26:57,840 [INFO] journalismai_csv —   + [USA] Spotting circling helicopters
+2026-05-09 15:26:57,840 [INFO] journalismai_csv —   + [USA] US community journalists can learn about algorithms thanks to $100k AI
+2026-05-09 15:26:57,840 [INFO] journalismai_csv —   + [USA] Dissecting a Machine Learning powered investigation
+2026-05-09 15:26:57,840 [INFO] journalismai_csv —   + [Sweden] What happens when bots become editors?
+2026-05-09 15:26:57,841 [INFO] journalismai_csv —   + [Nordics] Identifying biases in the news
+2026-05-09 15:26:57,841 [INFO] journalismai_csv —   + [UK] Stories by numbers: How BBC News is experimenting with semi-automated 
+2026-05-09 15:26:57,841 [INFO] journalismai_csv —   + [Spain] How El País used AI to make their comments section less toxic
+2026-05-09 15:26:57,841 [INFO] journalismai_csv —   + [Global] We cracked the Panama Papers with 400 human brains. Can AI help us nex
+2026-05-09 15:26:57,841 [INFO] journalismai_csv —   + [Global] Making a 'deepfake': How creating our own synthetic video helped us le
+2026-05-09 15:26:57,842 [INFO] journalismai_csv —   + [USA] GE CEO letters decoded: Shrinking ambitions and disappearing buzzwords
+2026-05-09 15:26:57,842 [INFO] journalismai_csv —   + [UK] Why I created a robot to write news stories
+2026-05-09 15:26:57,842 [INFO] journalismai_csv —   + [USA] Quartz AI Studio launches an open-source platform to help journalists 
+2026-05-09 15:26:57,842 [INFO] journalismai_csv —   + [USA] Forbes is building more AI tools for its reporters
+2026-05-09 15:26:57,842 [INFO] journalismai_csv —   + [China] China releases first short video AI production platform
+2026-05-09 15:26:57,842 [INFO] journalismai_csv —   + [China] A look at Toutiao: China’s Artificial Intelligence powered news platfo
+2026-05-09 15:26:57,842 [INFO] journalismai_csv —   + [Ukraine] We’ve got bad news!
+2026-05-09 15:26:57,842 [INFO] journalismai_csv —   + [USA] How The Wall Street Journal is preparing its journalists to detect dee
+2026-05-09 15:26:57,842 [INFO] journalismai_csv —   + [UK] Financial Times tool warns if articles quote too many men
+2026-05-09 15:26:57,842 [INFO] journalismai_csv —   + [UK] RADAR has written 50,000 individual local news stories in three months
+2026-05-09 15:26:57,842 [INFO] journalismai_csv —   + [USA] How does this article make you feel?
+2026-05-09 15:26:57,842 [INFO] journalismai_csv —   + [Global] How Reuters uses robots to analyse data and humans to tell the stories
+2026-05-09 15:26:57,843 [INFO] journalismai_csv —   + [Finland] Yle's smart news assistant Voitto ensures that you don't miss the news
+2026-05-09 15:26:57,843 [INFO] journalismai_csv —   + [USA] Bloomberg Media's Innovation Lab launches "The Bulletin" – an AI-power
+2026-05-09 15:26:57,843 [INFO] journalismai_csv —   + [UK] Getty Images launches a new AI tool that helps pusblishers find the ri
+2026-05-09 15:26:57,843 [INFO] journalismai_csv —   + [Switzerland] How Swiss news publisher NZZ built a flexible paywall using machine le
+2026-05-09 15:26:57,843 [INFO] journalismai_csv —   + [USA] Entering the next century with a new Forbes experience
+2026-05-09 15:26:57,843 [INFO] journalismai_csv —   + [USA] How The New York Times uses software to recognize Members of Congress
+2026-05-09 15:26:57,843 [INFO] journalismai_csv —   + [Japan] This media startup Is beating the competition with a newsroom run by r
+2026-05-09 15:26:57,843 [INFO] journalismai_csv —   + [Global] Concrete and coral. Tracking expansion in the South China Sea
+2026-05-09 15:26:57,843 [INFO] journalismai_csv —   + [USA] Using AI to host better conversations
+2026-05-09 15:26:57,843 [INFO] journalismai_csv —   + [Global] Reuters' new automation tool wants to help reporters spot the hidden s
+2026-05-09 15:26:57,843 [INFO] journalismai_csv —   + [Ukraine] Leprosy of the land
+2026-05-09 15:26:57,843 [INFO] journalismai_csv —   + [Global] Reuters is taking a big gamble on AI-supported journalism
+2026-05-09 15:26:57,844 [INFO] journalismai_csv —   + [USA] After years of testing, The Wall Street Journal has built a paywall th
+2026-05-09 15:26:57,844 [INFO] journalismai_csv —   + [Nordics] Not all news site visitors are created equal. Schibsted is trying to p
+2026-05-09 15:26:57,844 [INFO] journalismai_csv —   + [Argentina] In Argentina, fact-checkers' latest hire is a bot
+2026-05-09 15:26:57,844 [INFO] journalismai_csv —   + [China] China's news agency is reinventing itself with AI
+2026-05-09 15:26:57,844 [INFO] journalismai_csv —   + [USA] With “My WSJ,” The Wall Street Journal makes a personalized content fe
+2026-05-09 15:26:57,844 [INFO] journalismai_csv —   + [UK] BBC will use machine learning to cater to what audiences want to watch
+2026-05-09 15:26:57,844 [INFO] journalismai_csv —   + [USA] The Washington Post's robot reporter has published 850 articles in the
+2026-05-09 15:26:57,844 [INFO] journalismai_csv —   + [USA] We trained a computer to search for hidden spy planes. This is what it
+2026-05-09 15:26:57,844 [INFO] journalismai_csv —   + [France] Mapping 10 years of French broadcast news: INA’s use of AI to make med
+2026-05-09 15:26:57,844 [INFO] base — [JournalismAI] Done — 269 attempted, 269 inserted, 0 duplicates skipped
+2026-05-09 15:34:02,998 [INFO] ona — Fetching ONA landing page: https://www.journalists.org/ai-in-the-newsroom-case-studies
+2026-05-09 15:34:03,102 [WARNING] ona — Could not parse landing page — using known case list
+2026-05-09 15:34:03,104 [INFO] ona —   + [Norway] Djinn, an AI-powered Data Journalism Interface
+2026-05-09 15:34:03,104 [INFO] ona —   + [United States] How Hearst Newspapers built an AI-powered, Slack-based Tool to Help wi
+2026-05-09 15:34:03,104 [INFO] ona —   + [Germany] Enhancing Fact-Checking with AI at Der Spiegel
+2026-05-09 15:34:03,104 [INFO] ona —   + [Netherlands] Transforming Workflows with AI at Zamaneh Media
+2026-05-09 15:34:03,104 [INFO] ona —   + [Canada] Building AI Literacy at Canada's National Public Broadcaster Radio-Can
+2026-05-09 15:34:03,104 [INFO] ona —   + [Germany] How Bayerischer Rundfunk Used Modular Journalism to Personalize Radio 
+2026-05-09 15:34:03,104 [INFO] ona —   + [Sweden] Sweden's Aftonbladet Built AI-Driven Editorial Tools and an Election C
+2026-05-09 15:34:03,104 [INFO] ona —   + [United States] THE CITY's AI-Powered Coverage Audit and Navigation Tool
+2026-05-09 15:34:03,105 [INFO] ona —   + [United Kingdom] Using AI to Analyze Open-Source Intelligence in Ukraine War Reporting
+2026-05-09 15:34:03,105 [INFO] ona —   + [India] How The Times of India Brings Real-Time Personalization to 1,500+ Dail
+2026-05-09 15:34:03,105 [INFO] base — [ONA AI in the Newsroom] Done — 10 attempted, 10 inserted, 0 duplicates skipped
+2026-05-09 15:43:03,542 [INFO] ona — Fetching ONA landing page: https://www.journalists.org/ai-in-the-newsroom-case-studies
+2026-05-09 15:43:04,392 [WARNING] ona — Could not parse landing page — using known case list
+2026-05-09 15:43:04,394 [INFO] base — [ONA AI in the Newsroom] Done — 10 attempted, 0 inserted, 10 duplicates skipped
+2026-05-09 15:43:55,403 [INFO] reuters_dnr —   + [United Kingdom] Reach uses AI tool Gutenbot to rewrite stories across its network
+2026-05-09 15:43:55,403 [INFO] reuters_dnr —   + [Germany] Express.de uses AI bot 'Klara Indernach' to author news stories
+2026-05-09 15:43:55,404 [INFO] reuters_dnr —   + [Indonesia] TVOne uses AI-generated reporters to present content on social media
+2026-05-09 15:43:55,404 [INFO] reuters_dnr —   + [Thailand] Mono 29 deploys AI anchor Nong Marisa to present TV news
+2026-05-09 15:43:55,404 [INFO] reuters_dnr —   + [United Kingdom] BBC trials OpenAI Whisper to add subtitles and transcripts to BBC Soun
+2026-05-09 15:43:55,404 [INFO] reuters_dnr —   + [United Kingdom] BBC News announces AI department to deepen personalisation for younger
+2026-05-09 15:43:55,404 [INFO] reuters_dnr —   + [India] India Today and Miami Herald test AI text-to-audio conversion
+2026-05-09 15:43:55,404 [INFO] reuters_dnr —   + [United States] Miami Herald tests AI text-to-audio conversion for news articles
+2026-05-09 15:43:55,404 [INFO] reuters_dnr —   + [Sweden] Aftonbladet introduces AI-produced 'quick versions' of news stories
+2026-05-09 15:43:55,404 [INFO] reuters_dnr —   + [Argentina] Clarín offers AI-powered supplementary analyses via UalterAI
+2026-05-09 15:43:55,405 [INFO] reuters_dnr —   + [United Kingdom] The Independent launches 'Bulletin' — AI-generated news summaries for 
+2026-05-09 15:43:55,405 [INFO] reuters_dnr —   + [United States] Washington Post launches generative AI tool to answer user questions f
+2026-05-09 15:43:55,405 [INFO] reuters_dnr —   + [United Kingdom] Financial Times launches generative AI tool to answer reader questions
+2026-05-09 15:43:55,405 [INFO] reuters_dnr —   + [Sweden] Aftonbladet uses transparent ethics boxes to explain AI reporting proc
+2026-05-09 15:43:55,405 [INFO] reuters_dnr —   + [Canada] Globe and Mail invests in new journalistic beats including happiness a
+2026-05-09 15:43:55,405 [INFO] base — [Reuters Institute Digital News Report 2025] Done — 15 attempted, 15 inserted, 0 duplicates skipped
