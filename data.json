@@ -1,8 +1,228 @@
 {
-  "generated_at": "2026-05-09 15:03 UTC",
+  "generated_at": "2026-05-09 15:11 UTC",
   "records": [
     {
+      "id": 20,
+      "title": "Patch2Vuln: Agentic Reconstruction of Vulnerabilities from Linux Distribution Binary Patches",
+      "organisation": "Isaac David",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Security updates create a short but important window in which defenders and attackers can compare vulnerable and patched software. Yet in many operational settings, the most accessible artifacts are binary packages rather than source patches or advisory text. This paper asks whether a language-model agent, restricted to local binary-derived evidence, can reconstruct the security meaning of Linux distribution updates. Patch2Vuln is a local, resumable pipeline that extracts old/new ELF pairs, diffs them with Ghidra and Ghidriff, ranks changed functions, builds candidate dossiers, and asks an offline agent to produce a preliminary audit, bounded validation plan, and final audit.   We evaluate Patch2Vuln on 25 Ubuntu `.deb` package pairs: 20 security-update pairs and five negative controls, all manually adjudicated against private source-patch and binary-function ground truth. The agent localizes a verified security-relevant patch function in 10 of 20 security pairs and assigns an accepted",
+      "url": "http://arxiv.org/abs/2605.06601v1"
+    },
+    {
+      "id": 19,
+      "title": "AI CFD Scientist: Toward Open-Ended Computational Fluid Dynamics Discovery with Physics-Aware AI Agents",
+      "organisation": "Nithin Somasekharan",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Recent LLM-based agents have closed substantial portions of the scientific discovery loop in software-only machine-learning research, in chemistry, and in biology. Extending the same loop to high-fidelity physical simulators is harder, because solver completion does not imply physical validity and many failure modes appear only in field-level imagery rather than in solver logs. We present AI CFD Scientist, an open-source AI scientist for computational fluid dynamics (CFD) that, to our knowledge, is the first to span literature-grounded ideation, validated execution, vision-based physics verification, source-code modification, and figure-grounded writing within a single inspectable workflow. Three coupled pathways cover parameter sweeps within a fixed solver, case-local C++ library compilation for new physical models, and open-ended hypothesis search against a reference comparator, all running on OpenFOAM through Foam-Agent. At the center of the framework is a vision-language physics-ve",
+      "url": "http://arxiv.org/abs/2605.06607v1"
+    },
+    {
+      "id": 18,
+      "title": "The Structural Origin of Attention Sink: Variance Discrepancy, Super Neurons, and Dimension Disparity",
+      "organisation": "Siquan Li",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Despite the prevalence of the attention sink phenomenon in Large Language Models (LLMs), where initial tokens disproportionately monopolize attention scores, its structural origins remain elusive. This work provides a \\textit{mechanistic explanation} for this phenomenon. First, we trace its root to the value aggregation process inherent in self-attention, which induces a systematic variance discrepancy. We further demonstrate that this discrepancy is drastically amplified by the activation of super neurons within Feed-Forward Network (FFN) layers. Specifically, the channel-sparse down-projections trigger a dimension disparity of the first-token representation, necessitating the formation of attention sinks as a structural anchor. Then, we validate this causal chain through two controlled interventions: (i) isolating the aggregation effect via attention mask modifications and (ii) amplifying the variance of targeted token representations. Both interventions can replicate attention sinks",
+      "url": "http://arxiv.org/abs/2605.06611v1"
+    },
+    {
+      "id": 17,
+      "title": "SkillOS: Learning Skill Curation for Self-Evolving Agents",
+      "organisation": "Siru Ouyang",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "LLM-based agents are increasingly deployed to handle streaming tasks, yet they often remain one-off problem solvers that fail to learn from past interactions. Reusable skills distilled from experience provide a natural substrate for self-evolution, where high-quality skill curation serves as the key bottleneck. Existing approaches either rely on manual skill curation, prescribe heuristic skill operations, or train for short-horizon skill operations. However, they still struggle to learn complex long-term curation policies from indirect and delayed feedback. To tackle this challenge, we propose SkillOS, an experience-driven RL training recipe for learning skill curation in self-evolving agents. SkillOS pairs a frozen agent executor that retrieves and applies skills with a trainable skill curator that updates an external SkillRepo from accumulated experience. To provide learning signals for curation, we design composite rewards and train on grouped task streams based on skill-relevant ta",
+      "url": "http://arxiv.org/abs/2605.06614v1"
+    },
+    {
+      "id": 16,
+      "title": "When and Why SignSGD Outperforms SGD: A Theoretical Study Based on $\\ell_1$-norm Lower Bounds",
+      "organisation": "Hongyi Tao",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Sign-based optimization algorithms, such as SignSGD and Muon, have garnered significant attention for their remarkable performance in training large foundation models. Despite this empirical success, we still lack a theoretical understanding of when and why these sign-based methods outperform vanilla SGD. The core obstacle is that under standard smoothness and finite variance conditions, SGD is known to be minimax optimal for finding stationary points measured by $\\ell_2$-norms, thereby fundamentally precluding any complexity gains for sign-based methods in standard settings. To overcome this barrier, we analyze sign-based optimizers leveraging $\\ell_1$-norm stationarity, $\\ell_\\infty$-smoothness, and a separable noise model, which can better capture the coordinate-wise nature of signed updates. Under this distinct problem geometry, we derive matched upper and lower bounds for SignSGD and explicitly characterize the problem class in which SignSGD provably dominates SGD. Specifically, w",
+      "url": "http://arxiv.org/abs/2605.06615v1"
+    },
+    {
+      "id": 15,
+      "title": "MASPO: Joint Prompt Optimization for LLM-based Multi-Agent Systems",
+      "organisation": "Zhexuan Wang",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Large language model (LLM)-based Multi-agent systems (MAS) have shown promise in tackling complex collaborative tasks, where agents are typically orchestrated via role-specific prompts. While the quality of these prompts is pivotal, jointly optimizing them across interacting agents remains a non-trivial challenge, primarily due to the misalignment between local agent objectives and holistic system goals. To address this, we introduce MASPO, a novel framework designed to automatically and iteratively refine prompts across the entire system. A core innovation of MASPO is its joint evaluation mechanism, which assesses prompts not merely by their local validity, but by their capacity to facilitate downstream success for successor agents. This effectively bridges the gap between local interactions and global outcomes without relying on ground-truth labels. Furthermore, MASPO employs a data-driven evolutionary beam search to efficiently navigate the high-dimensional prompt space. Extensive e",
+      "url": "http://arxiv.org/abs/2605.06623v1"
+    },
+    {
+      "id": 14,
+      "title": "Can RL Teach Long-Horizon Reasoning to LLMs? Expressiveness Is Key",
+      "organisation": "Tianle Wang",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Reinforcement learning (RL) has been applied to improve large language model (LLM) reasoning, yet the systematic study of how training scales with task difficulty has been hampered by the lack of controlled, scalable environments. We introduce ScaleLogic, a synthetic logical reasoning framework that offers independent control over two axes of difficulty: the depth of the required proof planning (i.e., the horizon) and the expressiveness of the underlying logic. Our proposed framework supports a wide range of logics: from simple implication-only logic (\"if-then\") towards more expressive first-order reasoning with conjunction (\"and\"), disjunction (\"or\"), negation (\"not\"), and universal quantification (\"for all\"). Using this framework, we show that the RL training compute $T$ follows a power law with respect to reasoning depth $D$ ($T \\propto D^γ$, $R^{2} > 0.99$), and that the scaling exponent $γ$ increases monotonically with logical expressiveness, from $1.04$ to $2.60$. On downstream m",
+      "url": "http://arxiv.org/abs/2605.06638v1"
+    },
+    {
+      "id": 13,
+      "title": "Recursive Agent Optimization",
+      "organisation": "Apurva Gandhi",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "We introduce Recursive Agent Optimization (RAO), a reinforcement learning approach for training recursive agents: agents that can spawn and delegate sub-tasks to new instantiations of themselves recursively. Recursive agents implement an inference-time scaling algorithm that naturally allows agents to scale to longer contexts and generalize to more difficult problems via divide-and-conquer. RAO provides a method to train models to best take advantage of such recursive inference, teaching agents when and how to delegate and communicate. We find that recursive agents trained in this way enjoy better training efficiency, can scale to tasks that go beyond the model's context window, generalize to tasks much harder than the ones the agent was trained on, and can enjoy reduced wall-clock time compared to single-agent systems.",
+      "url": "http://arxiv.org/abs/2605.06639v1"
+    },
+    {
+      "id": 12,
+      "title": "GlazyBench: A Benchmark for Ceramic Glaze Property Prediction and Image Generation",
+      "organisation": "Ziyu Zhai",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Developing ceramic glazes is a costly, time-consuming process of trial and error due to complex chemistry, placing a significant burden on independent artists. While recent advances in multimodal AI offer a modern solution, the field lacks the large-scale datasets required to train these models. We propose GlazyBench, the first dataset for AI-assisted glaze design. Comprising 23,148 real glaze formulations, GlazyBench supports two primary tasks: predicting post-firing surface properties, such as color and transparency, from raw materials, and generating accurate visual representations of the glaze based on these properties. We establish comprehensive baselines for property prediction using traditional machine learning and large language models, alongside image generation benchmarks using deep generative and large multimodal models. Our experiments demonstrate promising yet challenging results. GlazyBench pioneers a new research direction in AI-assisted material design, providing a stan",
+      "url": "http://arxiv.org/abs/2605.06641v1"
+    },
+    {
+      "id": 11,
+      "title": "Concept-Based Abductive and Contrastive Explanations for Behaviors of Vision Models",
+      "organisation": "Ronaldo Canizales",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "*Concept-based explanations* offer a promising approach for explaining the predictions of deep neural networks in terms of high-level, human-understandable concepts. However, existing methods either do not establish a causal connection between the concepts and model predictions or are limited in expressivity and only able to infer causal explanations involving single concepts. At the same time, the parallel line of work on *formal abductive and contrastive explanations* computes the minimal set of input features causally relevant for model outcomes but only considers low-level features such as pixels. Merging these two threads, in this work, we propose the notion of *concept-based abductive and contrastive explanations* that capture the minimal sets of high-level concepts causally relevant for model outcomes. We then present a family of algorithms that enumerate all minimal explanations while using *concept erasure* procedures to establish causal relationships. By appropriately aggrega",
+      "url": "http://arxiv.org/abs/2605.06640v1"
+    },
+    {
+      "id": 10,
+      "title": "StraTA: Incentivizing Agentic Reinforcement Learning with Strategic Trajectory Abstraction",
+      "organisation": "Xiangyuan Xue",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Large language models (LLMs) are increasingly used as interactive agents, but optimizing them for long-horizon decision making remains difficult because current methods are largely purely reactive, which weakens both exploration and credit assignment over extended trajectories. In this work, we present Strategic Trajectory Abstraction (StraTA), a simple framework that introduces an explicit trajectory-level strategy into agentic reinforcement learning (RL). StraTA samples a compact strategy from the initial task state, conditions subsequent actions on that strategy, and trains strategy generation and action execution jointly with a hierarchical GRPO-style rollout design, further enhanced by diverse strategy rollout and critical self-judgment. Experiments on ALFWorld, WebShop, and SciWorld show that StraTA consistently improves both sample efficiency and final performance over strong baselines. StraTA reaches success rates of 93.1% on ALFWorld and 84.2% on WebShop. On SciWorld, StraTA a",
+      "url": "http://arxiv.org/abs/2605.06642v1"
+    },
+    {
+      "id": 9,
+      "title": "Are We Making Progress in Multimodal Domain Generalization? A Comprehensive Benchmark Study",
+      "organisation": "Hao Dong",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Despite the growing popularity of Multimodal Domain Generalization (MMDG) for enhancing model robustness, it remains unclear whether reported performance gains reflect genuine algorithmic progress or are artifacts of inconsistent evaluation protocols. Current research is fragmented, with studies varying significantly across datasets, modality configurations, and experimental settings. Furthermore, existing benchmarks focus predominantly on action recognition, often neglecting critical real-world challenges such as input corruptions, missing modalities, and model trustworthiness. This lack of standardization obscures a reliable assessment of the field's advancement. To address this issue, we introduce MMDG-Bench, the first unified and comprehensive benchmark for MMDG, which standardizes evaluation across six datasets spanning three diverse tasks: action recognition, mechanical fault diagnosis, and sentiment analysis. MMDG-Bench encompasses six modality combinations, nine representative ",
+      "url": "http://arxiv.org/abs/2605.06643v1"
+    },
+    {
+      "id": 8,
+      "title": "Superintelligent Retrieval Agent: The Next Frontier of Information Retrieval",
+      "organisation": "Zeyu Yang",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Retrieval-augmented agents are increasingly the interface to large organizational knowledge bases, yet most still treat retrieval as a black box: they issue exploratory queries, inspect returned snippets, and iteratively reformulate until useful evidence emerges. This approach resembles how a newcomer searches an unfamiliar database rather than how an expert navigates it with strong priors about terminology and likely evidence, and results in unnecessary retrieval rounds, increased latency, and poor recall.   We introduce \\textit{SuperIntelligent Retrieval Agent} (SIRA), which defines \\emph{superintelligence} in retrieval as the ability to compress multi-round exploratory search into a single corpus-discriminative retrieval action. SIRA does not merely ask what terms are relevant to the query; it asks which terms are likely to separate the desired evidence from corpus-level confusers. On the corpus side, an LLM enriches each document offline with missing search vocabulary; on the query",
+      "url": "http://arxiv.org/abs/2605.06647v1"
+    },
+    {
+      "id": 7,
+      "title": "AI Co-Mathematician: Accelerating Mathematicians with Agentic AI",
+      "organisation": "Daniel Zheng",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "We introduce the AI co-mathematician, a workbench for mathematicians to interactively leverage AI agents to pursue open-ended research. The AI co-mathematician is optimized to provide holistic support for the exploratory and iterative reality of mathematical workflows, including ideation, literature search, computational exploration, theorem proving and theory building. By providing an asynchronous, stateful workspace that manages uncertainty, refines user intent, tracks failed hypotheses, and outputs native mathematical artifacts, the system mirrors human collaborative workflows. In early tests, the AI co-mathematician helped researchers solve open problems, identify new research directions, and uncover overlooked literature references. Besides demonstrating a highly interactive paradigm for AI-assisted mathematical discovery, the AI co-mathematician also achieves state of the art results on hard problem-solving benchmarks, including scoring 48% on FrontierMath Tier 4, a new high scor",
+      "url": "http://arxiv.org/abs/2605.06651v1"
+    },
+    {
+      "id": 6,
+      "title": "When No Benchmark Exists: Validating Comparative LLM Safety Scoring Without Ground-Truth Labels",
+      "organisation": "Sushant Gautam",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Many deployments must compare candidate language models for safety before a labeled benchmark exists for the relevant language, sector, or regulatory regime. We formalize this setting as benchmarkless comparative safety scoring and specify the contract under which a scenario-based audit can be interpreted as deployment evidence. Scores are valid only under a fixed scenario pack, rubric, auditor, judge, sampling configuration, and rerun budget. Because no labels are available, we replace ground-truth agreement with an instrumental-validity chain: responsiveness to a controlled safe-versus-abliterated contrast, dominance of target-driven variance over auditor and judge artifacts, and stability across reruns.   We instantiate the chain in SimpleAudit, a local-first scoring instrument, and validate it on a Norwegian safety pack. Safe and abliterated targets separate with AUROC values between 0.89 and 1.00, target identity is the dominant variance component ($η^2 \\approx 0.52$), and severit",
+      "url": "http://arxiv.org/abs/2605.06652v1"
+    },
+    {
+      "id": 5,
+      "title": "Optimizer-Model Consistency: Full Finetuning with the Same Optimizer as Pretraining Forgets Less",
+      "organisation": "Yuxing Liu",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Optimizers play an important role in both pretraining and finetuning stages when training large language models (LLMs). In this paper, we present an observation that full finetuning with the same optimizer as in pretraining achieves a better learning-forgetting tradeoff, i.e., forgetting less while achieving the same or better performance on the new task, than other optimizers and, possibly surprisingly, LoRA, during the supervised finetuning (SFT) stage. We term this phenomenon optimizer-model consistency. To better understand it, through controlled experiments and theoretical analysis, we show that: 1) optimizers can shape the models by having regularization effects on the activations, leading to different landscapes around the pretrained checkpoints; 2) in response to this regularization effect, the weight update in SFT should follow some specific structures to lower forgetting of the knowledge learned in pretraining, which can be obtained by using the same optimizer. Moreover, we s",
+      "url": "http://arxiv.org/abs/2605.06654v1"
+    },
+    {
+      "id": 4,
+      "title": "Verifier-Backed Hard Problem Generation for Mathematical Reasoning",
+      "organisation": "Yuhang Lai",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Large Language Models (LLMs) demonstrate strong capabilities for solving scientific and mathematical problems, yet they struggle to produce valid, challenging, and novel problems - an essential component for advancing LLM training and enabling autonomous scientific research. Existing problem generation approaches either depend on expensive human expert involvement or adopt naive self-play paradigms, which frequently yield invalid problems due to reward hacking. This work introduces VHG, a verifier-enhanced hard problem generation framework built upon three-party self-play. By integrating an independent verifier into the conventional setter-solver duality, our design constrains the setter's reward to be jointly determined by problem validity (evaluated by the verifier) and difficulty (assessed by the solver). We instantiate two verifier variants: a Hard symbolic verifier and a Soft LLM-based verifier, with evaluations conducted on indefinite integral tasks and general mathematical reaso",
+      "url": "http://arxiv.org/abs/2605.06660v1"
+    },
+    {
       "id": 3,
+      "title": "BAMI: Training-Free Bias Mitigation in GUI Grounding",
+      "organisation": "Borui Zhang",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "GUI grounding is a critical capability for enabling GUI agents to execute tasks such as clicking and dragging. However, in complex scenarios like the ScreenSpot-Pro benchmark, existing models often suffer from suboptimal performance. Utilizing the proposed \\textbf{Masked Prediction Distribution (MPD)} attribution method, we identify that the primary sources of errors are twofold: high image resolution (leading to precision bias) and intricate interface elements (resulting in ambiguity bias). To address these challenges, we introduce \\textbf{Bias-Aware Manipulation Inference (BAMI)}, which incorporates two key manipulations, coarse-to-fine focus and candidate selection, to effectively mitigate these biases. Our extensive experimental results demonstrate that BAMI significantly enhances the accuracy of various GUI grounding models in a training-free setting. For instance, applying our method to the TianXi-Action-7B model boosts its accuracy on the ScreenSpot-Pro benchmark from 51.9\\% to ",
+      "url": "http://arxiv.org/abs/2605.06664v1"
+    },
+    {
+      "id": 2,
+      "title": "UniPool: A Globally Shared Expert Pool for Mixture-of-Experts",
+      "organisation": "Minbin Huang",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "Modern Mixture-of-Experts (MoE) architectures allocate expert capacity through a rigid per-layer rule: each transformer layer owns a separate expert set. This convention couples depth scaling with linear expert-parameter growth and assumes that every layer needs isolated expert capacity. However, recent analyses and our routing probe challenge this allocation rule: replacing a deeper layer's learned top-k router with uniform random routing drops downstream accuracy by only 1.0-1.6 points across multiple production MoE models. Motivated by this redundancy, we propose UniPool, an MoE architecture that treats expert capacity as a global architectural budget by replacing per-layer expert ownership with a single shared pool accessed by independent per-layer routers. To enable stable and balanced training under sharing, we introduce a pool-level auxiliary loss that balances expert utilization across the entire pool, and adopt NormRouter to provide sparse and scale-stable routing into the sha",
+      "url": "http://arxiv.org/abs/2605.06665v1"
+    },
+    {
+      "id": 1,
+      "title": "ActCam: Zero-Shot Joint Camera and 3D Motion Control for Video Generation",
+      "organisation": "Omar El Khalifi",
+      "country": null,
+      "date_published": "2026-05-07",
+      "source_name": "arXiv",
+      "source_category": "Academic",
+      "summary": "For artistic applications, video generation requires fine-grained control over both performance and cinematography, i.e., the actor's motion and the camera trajectory. We present ActCam, a zero-shot method for video generation that jointly transfers character motion from a driving video into a new scene and enables per-frame control of intrinsic and extrinsic camera parameters. ActCam builds on any pretrained image-to-video diffusion model that accepts conditioning in terms of scene depth and character pose. Given a source video with a moving character and a target camera motion, ActCam generates pose and depth conditions that remain geometrically consistent across frames. We then run a single sampling process with a two-phase conditioning schedule: early denoising steps condition on both pose and sparse depth to enforce scene structure, after which depth is dropped and pose-only guidance refines high-frequency details without over-constraining the generation. We evaluate ActCam on mul",
+      "url": "http://arxiv.org/abs/2605.06667v1"
+    },
+    {
+      "id": 22,
       "title": "A new AI compass to refine the editorial agenda",
       "organisation": "La Silla Rota",
       "country": "Mexico",
@@ -13,7 +233,7 @@
       "url": "https://latamjournalismreview.org/articles/a-new-ai-compass-to-refine-the-editorial-agenda/"
     },
     {
-      "id": 4,
+      "id": 23,
       "title": "How dmg media is building an AI ‘foundational layer’ for the newsroom",
       "organisation": "dmg media",
       "country": "United Kingdom",
@@ -24,7 +244,7 @@
       "url": "https://wan-ifra.org/2026/04/how-dmg-media-is-building-an-ai-foundational-layer-for-the-newsroom/"
     },
     {
-      "id": 5,
+      "id": 24,
       "title": "Bridging the China coverage gap: AI-powered news monitoring",
       "organisation": "CBC",
       "country": "Taiwan",
@@ -35,7 +255,7 @@
       "url": "https://www.journalismai.info/blog/bridging-the-china-coverage-gap-ai-powered-news-monitoring"
     },
     {
-      "id": 6,
+      "id": 25,
       "title": "How The Hindu is embedding AI into its data journalism",
       "organisation": "The Hindu",
       "country": "India",
@@ -46,10 +266,10 @@
       "url": "https://wan-ifra.org/2026/03/how-the-hindu-is-embedding-ai-into-its-data-journalism/"
     },
     {
-      "id": 7,
+      "id": 26,
       "title": "From fine-tuning to smart prompting: Automating routine news at ANKA",
       "organisation": "ANKA",
-      "country": "Turkey",
+      "country": "Turkiye",
       "date_published": "2026-03-03",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -57,7 +277,7 @@
       "url": "https://www.journalismai.info/blog/from-fine-tuning-to-smart-prompting-automating-routine-news-at-anka"
     },
     {
-      "id": 8,
+      "id": 27,
       "title": "Cutting through healthcare data complexity: An AI-powered research tool",
       "organisation": "Pointer",
       "country": "The Netherlands",
@@ -68,7 +288,7 @@
       "url": "https://www.journalismai.info/blog/cutting-through-healthcare-data-complexity"
     },
     {
-      "id": 9,
+      "id": 28,
       "title": "These Brazilian newsrooms are using AI to expose online hate and track federal policy",
       "organisation": "Gênero e Número, AzMina",
       "country": "Brazil",
@@ -79,7 +299,7 @@
       "url": "https://latamjournalismreview.org/articles/these-brazilian-newsrooms-are-using-ai-to-expose-online-hate-and-track-federal-policy/"
     },
     {
-      "id": 10,
+      "id": 29,
       "title": "AI in Latin American newsrooms: Moving from exploration to editorial practice",
       "organisation": "Diario UNO, La Silla Rota, Primicias",
       "country": "Argentina, Mexico, Ecuador",
@@ -90,7 +310,7 @@
       "url": "https://wan-ifra.org/2026/02/artificial-intelligence-in-latin-american-newsrooms-moving-from-exploration-to-editorial-practice/"
     },
     {
-      "id": 12,
+      "id": 31,
       "title": "How The New York Times uses a custom AI tool to track the “manosphere”",
       "organisation": "New York Times",
       "country": "United States",
@@ -101,7 +321,7 @@
       "url": "https://www.niemanlab.org/2026/02/how-the-new-york-times-uses-a-custom-ai-tool-to-track-the-manosphere/"
     },
     {
-      "id": 11,
+      "id": 30,
       "title": "No programmers? No problem: These newsrooms are building their own AI",
       "organisation": "ADN Sur, Búsqueda, OPI Santa Cruz",
       "country": "Argentina, Uruguay",
@@ -112,7 +332,7 @@
       "url": "https://latamjournalismreview.org/articles/no-programmers-no-problem-these-newsrooms-are-building-their-own-ai/"
     },
     {
-      "id": 13,
+      "id": 32,
       "title": "Inside the automation behind El Comercio’s election guides for Peru",
       "organisation": "El Comercio",
       "country": "Peru",
@@ -123,7 +343,7 @@
       "url": "https://latamjournalismreview.org/articles/inside-the-automation-behind-el-comercios-election-guides-for-peru/"
     },
     {
-      "id": 14,
+      "id": 33,
       "title": "How Dennik N tool continues to power publisher revenue",
       "organisation": "Denník N",
       "country": "Slovakia",
@@ -134,7 +354,7 @@
       "url": "https://newsinitiative.withgoogle.com/en-gb/resources/stories/how-dennik-n-tool-continues-to-power-publisher-revenue/"
     },
     {
-      "id": 15,
+      "id": 34,
       "title": "Inside Público’s GenAI-Powered Voting Game",
       "organisation": "Público",
       "country": "Portugal",
@@ -145,7 +365,7 @@
       "url": "https://generative-ai-newsroom.com/inside-p%C3%BAblicos-genai-powered-voting-game-c3e937c8a978"
     },
     {
-      "id": 16,
+      "id": 35,
       "title": "Il Messaggero accelerated subscription growth by introducing new AI-powered digital products and strengthening cross-team collaboration",
       "organisation": "Il Messaggero",
       "country": "Italy",
@@ -156,7 +376,7 @@
       "url": "https://www.ftstrategies.com/en-gb/case-studies/il-messaggero-accelerated-subscription-growth-by-introducing-new-ai-powered-digital-products-and-strengthening-cross-team-collaboration"
     },
     {
-      "id": 17,
+      "id": 36,
       "title": "Beyond blue links: Meet NEO, EBU’s project to reinvent news access",
       "organisation": "EBU",
       "country": "France",
@@ -167,7 +387,7 @@
       "url": "https://www.journalismai.info/blog/beyond-blue-links-how-the-ebu-built-neo-to-reinvent-news-access"
     },
     {
-      "id": 52,
+      "id": 71,
       "title": "Using AI to predict subscriber churn",
       "organisation": "Digitalhaus Franken GmbH",
       "country": "Germany",
@@ -178,7 +398,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/digitalhaus-franken"
     },
     {
-      "id": 51,
+      "id": 70,
       "title": "Using AI to combat misinformation in Syria",
       "organisation": "Verify Media Platform",
       "country": "Turkey",
@@ -189,7 +409,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/verify-media-platform"
     },
     {
-      "id": 50,
+      "id": 69,
       "title": "Understanding anti-gender discourse on YouTube: a feminist approach to AI-powered monitoring",
       "organisation": "Gênero e Número",
       "country": "Brazil",
@@ -200,7 +420,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/genero-e-numero"
     },
     {
-      "id": 49,
+      "id": 68,
       "title": "Building AI accessibility for fact-checkers",
       "organisation": "La Voz (Chequeado)",
       "country": "Argentina",
@@ -211,7 +431,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/chequeado"
     },
     {
-      "id": 48,
+      "id": 67,
       "title": "Building on market needs’ shoulders",
       "organisation": "Mas Voces",
       "country": "United States",
@@ -222,7 +442,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/mas-voces"
     },
     {
-      "id": 47,
+      "id": 66,
       "title": "Bringing AI-powered fact-checking to Africa's languages",
       "organisation": "Tama Media",
       "country": "France",
@@ -233,7 +453,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/tama-media"
     },
     {
-      "id": 46,
+      "id": 65,
       "title": "Using AI to tackle disinformation on social media",
       "organisation": "Newtral",
       "country": "Spain",
@@ -244,7 +464,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/newtral"
     },
     {
-      "id": 45,
+      "id": 64,
       "title": "Using AI to boost its membership strategy",
       "organisation": "Daily Maverick",
       "country": "South Africa",
@@ -255,7 +475,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/daily-maverick"
     },
     {
-      "id": 44,
+      "id": 63,
       "title": "Teaching AI to spot hidden bias",
       "organisation": "Shomrim",
       "country": "Israel",
@@ -266,7 +486,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/shomrim"
     },
     {
-      "id": 43,
+      "id": 62,
       "title": "Building Mongolia's First AI-Powered Fact-Checking System",
       "organisation": "Nest Center",
       "country": "Mongolia",
@@ -277,7 +497,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/nest-center"
     },
     {
-      "id": 42,
+      "id": 61,
       "title": "Unmasking disinformation during elections",
       "organisation": "CCIJ",
       "country": "United States",
@@ -288,7 +508,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/ccij"
     },
     {
-      "id": 41,
+      "id": 60,
       "title": "Reviving regional journalism through personalised community engagement",
       "organisation": "MAKEDONIA",
       "country": "Greece",
@@ -299,7 +519,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/makedonia"
     },
     {
-      "id": 40,
+      "id": 59,
       "title": "Empowering local news through AI efficiency",
       "organisation": "The Oglethorpe Echo",
       "country": "United States",
@@ -310,7 +530,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/the-oglethorpe-echo"
     },
     {
-      "id": 39,
+      "id": 58,
       "title": "Using AI to improve story production workflows",
       "organisation": "Gubbi Labs",
       "country": "India",
@@ -321,7 +541,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/gubbi-labs"
     },
     {
-      "id": 38,
+      "id": 57,
       "title": "Building an AI system to combat climate misinformation",
       "organisation": "Science Feedback",
       "country": "France",
@@ -332,7 +552,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/science-feedback"
     },
     {
-      "id": 37,
+      "id": 56,
       "title": "Building trust in Indigenous communities with AI",
       "organisation": "Verified News Network",
       "country": "United States",
@@ -343,7 +563,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/verified-news-network"
     },
     {
-      "id": 36,
+      "id": 55,
       "title": "Using GenAI to track government promises",
       "organisation": "Full Fact",
       "country": "United Kingdom",
@@ -354,7 +574,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/full-fact"
     },
     {
-      "id": 35,
+      "id": 54,
       "title": "Giving a voice to gun violence numbers",
       "organisation": "Instituto Fogo Cruzado",
       "country": "Brazil",
@@ -365,7 +585,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/fogo-cruzado"
     },
     {
-      "id": 34,
+      "id": 53,
       "title": "Building a custom AI tools hub",
       "organisation": "La Silla Vacía",
       "country": "Colombia",
@@ -376,7 +596,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/la-silla-vacia"
     },
     {
-      "id": 33,
+      "id": 52,
       "title": "Transforming data into actionable insights",
       "organisation": "Sowt",
       "country": "Jordan",
@@ -387,7 +607,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/sowt"
     },
     {
-      "id": 32,
+      "id": 51,
       "title": "Using AI to create SEEK, a GenAI fact-checking search engine",
       "organisation": "VERA Files",
       "country": "Philippines",
@@ -398,7 +618,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/vera-files"
     },
     {
-      "id": 31,
+      "id": 50,
       "title": "Building bridges between newsrooms through an AI-powered newsletter exchange",
       "organisation": "openDemocracy",
       "country": "United Kingdom",
@@ -409,7 +629,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/open-democracy"
     },
     {
-      "id": 30,
+      "id": 49,
       "title": "Building intelligence into fact-checking workflows",
       "organisation": "Maldita.es",
       "country": "Spain",
@@ -420,7 +640,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/malditaes"
     },
     {
-      "id": 29,
+      "id": 48,
       "title": "An AI companion editor for its journalists",
       "organisation": "The European Correspondent",
       "country": "Switzerland",
@@ -431,7 +651,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/the-european-correspondent"
     },
     {
-      "id": 28,
+      "id": 47,
       "title": "Building understandable common knowledge",
       "organisation": "El Surti",
       "country": "Paraguay",
@@ -442,7 +662,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/el-surti"
     },
     {
-      "id": 27,
+      "id": 46,
       "title": "Building Nigeria’s culturally aware transcription tool",
       "organisation": "ICIR Nigeria",
       "country": "Nigeria",
@@ -453,7 +673,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/icir-nigeria"
     },
     {
-      "id": 26,
+      "id": 45,
       "title": "Using AI to deliver service journalism where people are",
       "organisation": "Agencia Mural",
       "country": "Brazil",
@@ -464,7 +684,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/agencia-mural"
     },
     {
-      "id": 25,
+      "id": 44,
       "title": "Powering data-driven investigations with AI",
       "organisation": "CINS",
       "country": "Serbia",
@@ -475,7 +695,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/cins"
     },
     {
-      "id": 24,
+      "id": 43,
       "title": "Serving readers by using AI to answer SRHR questions",
       "organisation": "Raseef22",
       "country": "United Kingdom",
@@ -486,7 +706,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/raseef22"
     },
     {
-      "id": 23,
+      "id": 42,
       "title": "Sustaining media operations during crisis",
       "organisation": "Babel NGO",
       "country": "Ukraine",
@@ -497,7 +717,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/babel-ngo"
     },
     {
-      "id": 22,
+      "id": 41,
       "title": "how to build an AI chatbot that democratises economics",
       "organisation": "Economía para la Pipol",
       "country": "Colombia",
@@ -508,7 +728,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/economia-para-la-pipol"
     },
     {
-      "id": 21,
+      "id": 40,
       "title": "Using custom-AI to enhance its political accountability tool, Digital Democracy",
       "organisation": "CalMatters",
       "country": "United States",
@@ -519,7 +739,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/calmatters"
     },
     {
-      "id": 20,
+      "id": 39,
       "title": "AI platform aids journalists and readers overcome historical amnesia",
       "organisation": "Nawaat",
       "country": "Tunisia",
@@ -530,7 +750,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/nawaat"
     },
     {
-      "id": 19,
+      "id": 38,
       "title": "Building AI for African Voices",
       "organisation": "The Republic",
       "country": "Nigeria",
@@ -541,7 +761,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/the-republic"
     },
     {
-      "id": 18,
+      "id": 37,
       "title": "Factivo AI, a force-multiplier for multi-format journalism",
       "organisation": "Scroll.in",
       "country": "India",
@@ -552,7 +772,7 @@
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/scroll"
     },
     {
-      "id": 53,
+      "id": 72,
       "title": "The Onion's AI Strategy: Why Satire Can't Be Automated",
       "organisation": "The Onion",
       "country": "United States",
@@ -563,7 +783,7 @@
       "url": "https://newsmachines.beehiiv.com/p/the-onion-ai-strategy"
     },
     {
-      "id": 54,
+      "id": 73,
       "title": "How iTromsø Built Norway's Most AI-Ready Newsroom",
       "organisation": "iTromsø",
       "country": "Norway",
@@ -574,7 +794,7 @@
       "url": "https://newsmachines.beehiiv.com/p/how-itroms-built-norway-s-most-ai-ready-newsroom"
     },
     {
-      "id": 55,
+      "id": 74,
       "title": "ChatMigrante: an AI powered tool that supports migrants with accurate, personalized guidance through their migratory process.",
       "organisation": "FactChequeado",
       "country": "United States",
@@ -585,7 +805,7 @@
       "url": "https://awards.journalists.org/entries/chatmigrante-an-ai-powered-tool-that-supports-migrants-with-accurate-personalized-guidance-through-their-migratory-process/"
     },
     {
-      "id": 56,
+      "id": 75,
       "title": "Onet Czat with AI creates simplified experience for Ringier Axel Springer Polska readers",
       "organisation": "Onet Czat",
       "country": "Poland",
@@ -596,7 +816,7 @@
       "url": "https://www.inma.org/blogs/Content-Strategies/post.cfm/onet-czat-with-ai-creates-simplified-experience-for-ringier-axel-springer-polska-readers"
     },
     {
-      "id": 57,
+      "id": 76,
       "title": "Hearst Newspapers leverages AI for a human-centred strategy",
       "organisation": "Hearst Newspapers",
       "country": "Unites Stated",
@@ -607,7 +827,7 @@
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/hearst-newspapers-leverages-ai-for-a-human-centred-strategy?_zs=IL4SR1&_zl=JlEq7"
     },
     {
-      "id": 58,
+      "id": 77,
       "title": "Can AI Triage a Pitch? A Case Study in Editorial Evaluation from Minority Africa",
       "organisation": "Minority Africa",
       "country": "Nigeria, Uganda",
@@ -618,7 +838,7 @@
       "url": "https://generative-ai-newsroom.com/can-ai-triage-a-pitch-a-case-study-in-editorial-evaluation-from-minority-africa-beb864444f9e"
     },
     {
-      "id": 296,
+      "id": 325,
       "title": "Globe and Mail invests in new journalistic beats including happiness and healthy living reporters",
       "organisation": "Globe and Mail",
       "country": "Canada",
@@ -629,7 +849,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 295,
+      "id": 324,
       "title": "Aftonbladet uses transparent ethics boxes to explain AI reporting processes",
       "organisation": "Aftonbladet",
       "country": "Sweden",
@@ -640,7 +860,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 294,
+      "id": 323,
       "title": "Financial Times launches generative AI tool to answer reader questions",
       "organisation": "Financial Times",
       "country": "United Kingdom",
@@ -651,7 +871,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 293,
+      "id": 322,
       "title": "Washington Post launches generative AI tool to answer user questions from article archive",
       "organisation": "Washington Post",
       "country": "United States",
@@ -662,7 +882,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 292,
+      "id": 321,
       "title": "The Independent launches 'Bulletin' — AI-generated news summaries for younger readers",
       "organisation": "The Independent",
       "country": "United Kingdom",
@@ -673,7 +893,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 291,
+      "id": 320,
       "title": "Clarín offers AI-powered supplementary analyses via UalterAI",
       "organisation": "Clarín",
       "country": "Argentina",
@@ -684,7 +904,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 290,
+      "id": 319,
       "title": "Aftonbladet introduces AI-produced 'quick versions' of news stories",
       "organisation": "Aftonbladet",
       "country": "Sweden",
@@ -695,7 +915,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 289,
+      "id": 318,
       "title": "Miami Herald tests AI text-to-audio conversion for news articles",
       "organisation": "Miami Herald",
       "country": "United States",
@@ -706,7 +926,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 288,
+      "id": 317,
       "title": "India Today and Miami Herald test AI text-to-audio conversion",
       "organisation": "India Today",
       "country": "India",
@@ -717,7 +937,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 287,
+      "id": 316,
       "title": "BBC News announces AI department to deepen personalisation for younger audiences",
       "organisation": "BBC",
       "country": "United Kingdom",
@@ -728,7 +948,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 286,
+      "id": 315,
       "title": "BBC trials OpenAI Whisper to add subtitles and transcripts to BBC Sounds",
       "organisation": "BBC",
       "country": "United Kingdom",
@@ -739,7 +959,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 285,
+      "id": 314,
       "title": "Mono 29 deploys AI anchor Nong Marisa to present TV news",
       "organisation": "Mono 29",
       "country": "Thailand",
@@ -750,7 +970,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 284,
+      "id": 313,
       "title": "TVOne uses AI-generated reporters to present content on social media",
       "organisation": "TVOne",
       "country": "Indonesia",
@@ -761,7 +981,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 283,
+      "id": 312,
       "title": "Express.de uses AI bot 'Klara Indernach' to author news stories",
       "organisation": "Express.de",
       "country": "Germany",
@@ -772,7 +992,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 282,
+      "id": 311,
       "title": "Reach uses AI tool Gutenbot to rewrite stories across its network",
       "organisation": "Reach",
       "country": "United Kingdom",
@@ -783,7 +1003,7 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
-      "id": 59,
+      "id": 78,
       "title": "Gruner + Jahr drives a cultural shift toward AI",
       "organisation": "Gruner + Jahr",
       "country": "Germany",
@@ -794,7 +1014,7 @@
       "url": "https://newsinitiative.withgoogle.com/en-gb/resources/stories/gruner-jahr-drives-a-cultural-shift-toward-ai-1/"
     },
     {
-      "id": 60,
+      "id": 79,
       "title": "What Nikkei learnt from building its own Japanese AI chatbot",
       "organisation": "Nikkei",
       "country": "Japan",
@@ -805,7 +1025,7 @@
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/what-nikkei-learnt-building-its-own-japanese-ai-chatbot?Institute_for_the_Study_of_Journalism"
     },
     {
-      "id": 61,
+      "id": 80,
       "title": "How AI summarizes the content of user comments on BR24",
       "organisation": "BR24",
       "country": "Germany",
@@ -816,7 +1036,7 @@
       "url": "https://www.br.de/nachrichten/wissen/wie-ki-den-inhalt-der-user-kommentare-bei-br24-zusammenfasst,UgNIPa2"
     },
     {
-      "id": 62,
+      "id": 81,
       "title": "From Idea to Implementation: Lessons Learned from the First AI Integration Process in a Local Argentine Newsroom",
       "organisation": "0221",
       "country": "Argentina",
@@ -827,7 +1047,7 @@
       "url": "https://theaudiencers.com/from-idea-to-implementation-lessons-learned-from-the-first-ai-integration-process-in-a-local-argentine-newsroom/"
     },
     {
-      "id": 63,
+      "id": 82,
       "title": "How Full Fact Uses Generative AI to Find Harmful Health Advice",
       "organisation": "Full Fact",
       "country": "United Kingdom",
@@ -838,7 +1058,7 @@
       "url": "https://generative-ai-newsroom.com/how-full-fact-uses-generative-ai-to-find-harmful-health-advice-b0e05382ab90"
     },
     {
-      "id": 64,
+      "id": 83,
       "title": "Wall Street Journal taxbot answers questions (while readers try to break it)",
       "organisation": "Wall Street Journal",
       "country": "United States",
@@ -849,7 +1069,7 @@
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/wall-street-journal-taxbot-answers-questions-while-readers-try-to-break-it"
     },
     {
-      "id": 65,
+      "id": 84,
       "title": "From summaries to assisting in investigative reporting, how the FT uses AI",
       "organisation": "FT",
       "country": "United Kingdom",
@@ -860,7 +1080,7 @@
       "url": "https://wan-ifra.org/2025/04/from-summaries-to-assisting-in-investigative-reporting-how-the-ft-uses-ai/"
     },
     {
-      "id": 66,
+      "id": 85,
       "title": "EarthCheckr: Leveraging Generative AI for Environmental Journalism Fact-Checking",
       "organisation": "EarthCheckr",
       "country": null,
@@ -871,7 +1091,7 @@
       "url": "https://generative-ai-newsroom.com/earthcheckr-leveraging-generative-ai-for-environmental-journalism-fact-checking-00a7f82fb0a3"
     },
     {
-      "id": 67,
+      "id": 86,
       "title": "Scroll.in offers a lesson in the personalisation of news",
       "organisation": "Scroll.in",
       "country": "India",
@@ -882,7 +1102,7 @@
       "url": "https://www.inma.org/blogs/Generative-AI-initiative-newsletter/post.cfm/scroll-in-offers-a-lesson-in-the-personalisation-of-news"
     },
     {
-      "id": 69,
+      "id": 88,
       "title": "This AI tool could give newsrooms “eyes and ears where they don’t have them” - \"Roganbot\"",
       "organisation": "Verso",
       "country": "United States",
@@ -893,7 +1113,7 @@
       "url": "https://www.niemanlab.org/2025/03/this-ai-tool-could-give-newsrooms-eyes-and-ears-where-they-dont-have-them/"
     },
     {
-      "id": 68,
+      "id": 87,
       "title": "Ask us your news question – new type of search in Sveriges Radio Play",
       "organisation": "Sveriges Radio",
       "country": "Sweden",
@@ -904,7 +1124,7 @@
       "url": "https://www.sverigesradio.se/artikel/stall-din-nyhetsfraga-till-oss-ny-typ-av-sok-i-sveriges-radio-play"
     },
     {
-      "id": 72,
+      "id": 91,
       "title": "Smart Strategies for Tough Times: How Data and AI Empower Publishers to Reclaim Advertising Revenue",
       "organisation": "United Daily News Group",
       "country": "Taiwan",
@@ -915,7 +1135,7 @@
       "url": "https://www.inma.org/best-practice/Best-Idea-to-Grow-Advertising-Sales/2025-40/Smart-Strategies-for-Tough-Times-How-Data-and-AI-Empower-Publishers-to-Reclaim-Advertising-Revenue"
     },
     {
-      "id": 71,
+      "id": 90,
       "title": "AIAssist: AI-Embedded Newsroom, Centralising Journalism Values",
       "organisation": "United Daily News Group",
       "country": "Taiwan",
@@ -926,7 +1146,7 @@
       "url": "https://www.inma.org/best-practice/Best-Initiative-to-Grow-Subscriptions/2025-41/AIAssist-AI-Embedded-Newsroom-Centralising-Journalism-Values"
     },
     {
-      "id": 70,
+      "id": 89,
       "title": "BZ.Echo | A custom AI platform for Badische Zeitung’s newsrooms",
       "organisation": "Badischer Verlag",
       "country": "Germany",
@@ -937,7 +1157,7 @@
       "url": "https://www.inma.org/best-practice/Best-Use-of-AI-for-Internal-Productivity/2025-698/BZ.Echo"
     },
     {
-      "id": 73,
+      "id": 92,
       "title": "Transforming the FT’s subscriber retention through AI and personalisation",
       "organisation": "FT",
       "country": "United Kingdom",
@@ -948,7 +1168,7 @@
       "url": "https://www.inma.org/best-practice/Best-Initiative-to-Engage-and-Retain-Subscribers/2025-611/Transforming-the-FTs-Subscriber-Retention-Through-AI-and-personalisation"
     },
     {
-      "id": 74,
+      "id": 93,
       "title": "Russmedia Meets AI 2.0",
       "organisation": "Russmedia",
       "country": "Austria",
@@ -959,7 +1179,7 @@
       "url": "https://www.inma.org/best-practice/Best-Use-of-AI-for-Internal-Productivity/2025-397/Russmedia-Meets-AI-2.0"
     },
     {
-      "id": 75,
+      "id": 94,
       "title": "Ringier Slovakia builds out AI to diversify",
       "organisation": "Ringier Slovakia",
       "country": "Slovakia",
@@ -970,7 +1190,7 @@
       "url": "https://newsinitiative.withgoogle.com/resources/stories/ringier-slovakia-builds-out-ai-to-diversify/"
     },
     {
-      "id": 76,
+      "id": 95,
       "title": "How a small Nigerian newsroom used AI for a flooding investigation",
       "organisation": "The Colonist Report",
       "country": "Nigeria",
@@ -981,7 +1201,7 @@
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-small-nigerian-newsroom-used-ai-flooding-investigation"
     },
     {
-      "id": 77,
+      "id": 96,
       "title": "How AI can help fact checkers",
       "organisation": "Full Fact",
       "country": "United Kingdom",
@@ -992,7 +1212,7 @@
       "url": "https://fullfact.org/blog/2025/feb/how-ai-can-help-fact-checkers/"
     },
     {
-      "id": 78,
+      "id": 97,
       "title": "Transforming Longform Text into Multimedia using Generative AI",
       "organisation": "PCIJ",
       "country": "Philippines",
@@ -1003,7 +1223,7 @@
       "url": "https://generative-ai-newsroom.com/transforming-longform-text-into-multimedia-using-generative-ai-5cc50fa9b460"
     },
     {
-      "id": 79,
+      "id": 98,
       "title": "Using genAI to understand impact of journalism: The Agência Pública story",
       "organisation": "Agência Pública",
       "country": "Brazil",
@@ -1014,7 +1234,7 @@
       "url": "https://www.journalismai.info/blog/using-genai-to-understand-impact-of-journalism-the-agncia-pblica-story"
     },
     {
-      "id": 80,
+      "id": 99,
       "title": "Unlocking the future of translation for local journalism: Lessons from CPI’s AI experiment",
       "organisation": "Centro de Periodismo Investigativo (CPI)",
       "country": "Puerto Rico",
@@ -1025,7 +1245,7 @@
       "url": "https://medium.com/american-journalism-project/unlocking-the-future-of-translation-for-local-journalism-lessons-from-cpis-ai-experiment-7e9e1c7578e0"
     },
     {
-      "id": 81,
+      "id": 100,
       "title": "Bonnier News launches GenAI tool in record time",
       "organisation": "Bonnier News",
       "country": "Sweden",
@@ -1036,7 +1256,7 @@
       "url": "https://newsinitiative.withgoogle.com/en-gb/resources/stories/bonnier-news-launches-genai-tool-in-record-time/"
     },
     {
-      "id": 82,
+      "id": 101,
       "title": "How A.I. Tools Helped the Travel Team Study Its ‘Places to Go’ Lists",
       "organisation": "The New York Times",
       "country": "United States",
@@ -1047,7 +1267,7 @@
       "url": "https://www.nytimes.com/2025/01/19/travel/how-ai-tools-helped-the-travel-team-study-its-places-to-go-lists.html"
     },
     {
-      "id": 83,
+      "id": 102,
       "title": "Assembly: Using AI to Transform Coverage of Public Meetings",
       "organisation": "Hearst Newspapers",
       "country": "United States",
@@ -1058,7 +1278,7 @@
       "url": "https://www.inma.org/best-practice/Best-Use-of-AI-for-Internal-Productivity/2025-127/Assembly-Using-AI-to-Transform-Coverage-of-Public-Meetings"
     },
     {
-      "id": 84,
+      "id": 103,
       "title": "Bloomberg Launches Gen AI Summarization for News Content",
       "organisation": "Bloomberg",
       "country": "Global",
@@ -1069,7 +1289,7 @@
       "url": "https://www.bloomberg.com/company/press/bloomberg-launches-gen-ai-summarization-for-news-content/"
     },
     {
-      "id": 85,
+      "id": 104,
       "title": "Creating a user-centric news experience",
       "organisation": "Il Sole 24 Ore",
       "country": "Italy",
@@ -1080,7 +1300,7 @@
       "url": "https://newsinitiative.withgoogle.com/en-gb/resources/stories/creating-a-more-user-centric-news-experience"
     },
     {
-      "id": 86,
+      "id": 105,
       "title": "NTM launches AI-powered automated audio news",
       "organisation": "NTM Media",
       "country": "Sweden",
@@ -1091,7 +1311,7 @@
       "url": "https://www.inma.org/blogs/value-content/post.cfm/ntm-launches-ai-powered-automated-audio-news"
     },
     {
-      "id": 87,
+      "id": 106,
       "title": "From debunking disinformation to turning datasets into stories, AI is changing newsrooms in Nigeria",
       "organisation": "Dubawa",
       "country": "Nigeria",
@@ -1102,7 +1322,7 @@
       "url": "https://ijnet.org/en/story/debunking-disinformation-turning-datasets-stories-ai-changing-newsrooms-nigeria"
     },
     {
-      "id": 89,
+      "id": 108,
       "title": "Why We’re Introducing Generative AI to TIME’s Journalism",
       "organisation": "TIME",
       "country": "United States",
@@ -1113,7 +1333,7 @@
       "url": "https://time.com/7201556/generative-ai-time-journalism/"
     },
     {
-      "id": 88,
+      "id": 107,
       "title": "About TIME’s AI Chatbot",
       "organisation": "TIME",
       "country": "United States",
@@ -1124,7 +1344,7 @@
       "url": "https://time.com/7201512/time-ai-chatbot-about/"
     },
     {
-      "id": 90,
+      "id": 109,
       "title": "E24 embraces cooperation to maximise AI’s potential",
       "organisation": "E24",
       "country": "Norway",
@@ -1135,7 +1355,7 @@
       "url": "https://www.inma.org/blogs/media-leaders/post.cfm/e24-embraces-cooperation-to-maximise-ai-s-potential"
     },
     {
-      "id": 91,
+      "id": 110,
       "title": "Inside the FT’s AI-Powered Story Finding",
       "organisation": "FT",
       "country": "United Kingdom",
@@ -1146,7 +1366,7 @@
       "url": "https://medium.com/ft-product-technology/inside-the-fts-ai-powered-story-finding-efe6d154f20b"
     },
     {
-      "id": 93,
+      "id": 112,
       "title": "Using AI to reveal illegal narco-trafficking airstrips deep in the Amazon",
       "organisation": "Mongabay",
       "country": "Peru",
@@ -1157,7 +1377,7 @@
       "url": "https://awards.journalists.org/entries/using-ai-to-reveal-illegal-narco-trafficking-airstrips-deep-in-the-amazon"
     },
     {
-      "id": 92,
+      "id": 111,
       "title": "Teaching a CustomGPT to Help Inspect the Philippine National Budget",
       "organisation": "Jaemark Tordecilla",
       "country": "Philippines",
@@ -1168,7 +1388,7 @@
       "url": "https://generative-ai-newsroom.com/teaching-a-customgpt-to-help-inspect-the-philippine-national-budget-2acadd25a172"
     },
     {
-      "id": 94,
+      "id": 113,
       "title": "AI in Sports: How ESPN Is Leveraging Tech to Highlight Niche Sports",
       "organisation": "ESPN",
       "country": "United States",
@@ -1179,7 +1399,7 @@
       "url": "https://athelogroup.com/blog/ai-in-sports-how-espn-is-leveraging-tech-to-highlight-niche-sports"
     },
     {
-      "id": 95,
+      "id": 114,
       "title": "Project: VERDAD—tracking misinformation in radio broadcasts using Gemini 1.5",
       "organisation": "Public Data Works",
       "country": "Unites States",
@@ -1190,7 +1410,7 @@
       "url": "https://simonwillison.net/2024/Nov/7/project-verdad/"
     },
     {
-      "id": 96,
+      "id": 115,
       "title": "Aos Fatos using GenAI to surface verified information audiences need",
       "organisation": "Aos Fatos",
       "country": "Brazil",
@@ -1201,7 +1421,7 @@
       "url": "https://www.journalismai.info/blog/a7179akynhl5ocvo75xryautpr4azf"
     },
     {
-      "id": 98,
+      "id": 117,
       "title": "How The Times of India Brings Real-Time Personalization to 1,500+ Daily News Stories",
       "organisation": "Times of India",
       "country": "India",
@@ -1212,10 +1432,10 @@
       "url": "https://journalists.org/resources/case-study-how-the-times-of-india-brings-real-time-personalization-to-1500-daily-news-stories/"
     },
     {
-      "id": 97,
+      "id": 116,
       "title": "Inside the Movement Behind Trump’s Election Lies",
       "organisation": "New York Times",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2024-10-29",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1223,7 +1443,7 @@
       "url": "https://www.nytimes.com/interactive/2024/10/28/us/politics/inside-the-movement-behind-trumps-election-lies.html?unlocked_article_code=1.Vk4.ucv9.dbHVquTQaf0G&smid=nytcore-ios-share&referringSource=articleShare"
     },
     {
-      "id": 99,
+      "id": 118,
       "title": "LN Audio: now in addition to reading your favourite authors, you can listen to them",
       "organisation": "La Nación",
       "country": "Argentina",
@@ -1234,7 +1454,7 @@
       "url": "https://www.lanacion.com.ar/sociedad/ln-audio-ya-podes-leer-a-tus-autores-favoritos-ahora-los-vas-a-poder-escuchar-nid28102024/ | https://www.inma.org/best-practice/Best-New-Audio-Voice-Product-or-Feature/2025-218/AI-Author-Voices"
     },
     {
-      "id": 100,
+      "id": 119,
       "title": "Case Study: Using AI to Analyze Open-Source Intelligence in Ukraine War Reporting",
       "organisation": "BBC",
       "country": "United Kingdom",
@@ -1245,7 +1465,7 @@
       "url": "https://journalists.org/resources/case-study-using-ai-to-analyze-open-source-intelligence-in-ukraine-war-reporting/"
     },
     {
-      "id": 101,
+      "id": 120,
       "title": "A Mixed-Methods Approach to Offline Evaluation of News Recommender Systems",
       "organisation": "DER SPIEGEL",
       "country": "Germany",
@@ -1256,7 +1476,7 @@
       "url": "https://towardsdatascience.com/a-mixed-methods-approach-to-offline-evaluation-of-news-recommender-systems-7dc7e9f0b501"
     },
     {
-      "id": 102,
+      "id": 121,
       "title": "Sweden’s Aftonbladet Built AI-Driven Editorial Tools and an Election Chatbot",
       "organisation": "Aftonbladet",
       "country": "Sweden",
@@ -1267,7 +1487,7 @@
       "url": "https://journalists.org/resources/case-study-swedens-aftonbladet-built-ai-driven-editorial-tools-and-an-election-chatbot/"
     },
     {
-      "id": 104,
+      "id": 123,
       "title": "How Journalism Groups in Africa Are Building AI Tools to Aid Investigations and Fact-Checking",
       "organisation": "FactCheckAfrica, CJID, Dataphyte",
       "country": "Nigeria, Kenya",
@@ -1278,7 +1498,7 @@
       "url": "https://gijn.org/stories/africa-journalism-building-ai-investigations-fact-checking/"
     },
     {
-      "id": 103,
+      "id": 122,
       "title": "How Bayerischer Rundfunk Used Modular Journalism to Personalize Radio News Based on Location",
       "organisation": "Bayerischer Rundfunk",
       "country": "Germany",
@@ -1289,51 +1509,7 @@
       "url": "https://journalists.org/resources/case-study-how-bayerischer-rundfunk-used-modular-journalism-to-personalize-radio-news-based-on-location/"
     },
     {
-      "id": 281,
-      "title": "How The Times of India Brings Real-Time Personalization to 1,500+ Daily News Stories",
-      "organisation": "Times of India",
-      "country": "India",
-      "date_published": "2024-10",
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
-      "id": 280,
-      "title": "Using AI to Analyze Open-Source Intelligence in Ukraine War Reporting",
-      "organisation": "BBC World Service",
-      "country": "United Kingdom",
-      "date_published": "2024-10",
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
-      "id": 279,
-      "title": "THE CITY's AI-Powered Coverage Audit and Navigation Tool",
-      "organisation": "THE CITY",
-      "country": "United States",
-      "date_published": "2024-10",
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
-      "id": 278,
-      "title": "Sweden's Aftonbladet Built AI-Driven Editorial Tools and an Election Chatbot",
-      "organisation": "Aftonbladet",
-      "country": "Sweden",
-      "date_published": "2024-10",
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
-      "id": 105,
+      "id": 124,
       "title": "Chatbot tells story of woman imprisoned for drug trafficking in Paraguay",
       "organisation": "El Surti",
       "country": "Paraguay",
@@ -1344,7 +1520,7 @@
       "url": "https://latamjournalismreview.org/articles/chatbot-tells-story-of-woman-imprisoned-for-drug-trafficking-in-paraguay/"
     },
     {
-      "id": 107,
+      "id": 126,
       "title": "Building AI Literacy at Canada’s National Public Broadcaster Radio-Canada",
       "organisation": "Radio-Canada",
       "country": "Canada",
@@ -1355,10 +1531,10 @@
       "url": "https://journalists.org/resources/case-study-building-ai-literacy-at-canadas-national-public-broadcaster-radio-canada/"
     },
     {
-      "id": 106,
+      "id": 125,
       "title": "SFChronicle unveils AI tool to answer your Kamala Harris questions",
       "organisation": "San Francisco Chronicle | Hearst",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2024-09-24",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1366,7 +1542,7 @@
       "url": "https://getcoai.com/news/sfchronicle-unveils-ai-tool-to-answer-your-kamala-harris-questions/"
     },
     {
-      "id": 108,
+      "id": 127,
       "title": "Transforming Workflows with AI at Zamaneh Media",
       "organisation": "Zamaneh Media",
       "country": "Netherlands",
@@ -1377,7 +1553,7 @@
       "url": "https://journalists.org/resources/case-study-transforming-workflows-with-ai-at-zamaneh-media/"
     },
     {
-      "id": 109,
+      "id": 128,
       "title": "Case Study: Enhancing Fact-Checking with AI at Der Spiegel",
       "organisation": "Der Spiegel",
       "country": "Germany",
@@ -1388,7 +1564,7 @@
       "url": "https://journalists.org/resources/case-study-enhancing-fact-checking-with-ai-at-der-spiegel/"
     },
     {
-      "id": 111,
+      "id": 130,
       "title": "At Times of India Group, AI offers real-time employee feedback, but human touch is essential",
       "organisation": "The Times of India",
       "country": "India",
@@ -1399,7 +1575,7 @@
       "url": "https://www.inma.org/blogs/media-leaders/post.cfm/at-times-group-ai-offers-real-time-employee-feedback-but-human-touch-is-essential"
     },
     {
-      "id": 110,
+      "id": 129,
       "title": "News companies are using GenAI in these 4 interesting ways",
       "organisation": "The New York Times, Dagbladet, Washington Post, Stuff Group",
       "country": "USA, New Zealand, Denmark",
@@ -1410,40 +1586,7 @@
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/news-companies-are-using-genai-in-these-4-interesting-ways"
     },
     {
-      "id": 277,
-      "title": "How Bayerischer Rundfunk Used Modular Journalism to Personalize Radio News Based on Location",
-      "organisation": "Bayerischer Rundfunk",
-      "country": "Germany",
-      "date_published": "2024-09",
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
-      "id": 276,
-      "title": "Building AI Literacy at Canada's National Public Broadcaster Radio-Canada",
-      "organisation": "Radio-Canada",
-      "country": "Canada",
-      "date_published": "2024-09",
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
-      "id": 275,
-      "title": "Transforming Workflows with AI at Zamaneh Media",
-      "organisation": "Zamaneh Media",
-      "country": "Netherlands",
-      "date_published": "2024-09",
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
-      "id": 112,
+      "id": 131,
       "title": "How Hearst Newspapers built an AI-powered, Slack-based Tool to Help With Digital Content Production",
       "organisation": "Hearst Newspapers",
       "country": "United States",
@@ -1454,7 +1597,7 @@
       "url": "https://journalists.org/resources/case-study-how-hearst-newspapers-built-an-ai-powered-slack-based-tool-to-help-with-digital-content-production/"
     },
     {
-      "id": 114,
+      "id": 133,
       "title": "New Washington Post AI tool sifts massive data sets",
       "organisation": "The Washington Post",
       "country": "United States",
@@ -1465,7 +1608,7 @@
       "url": "https://www.axios.com/2024/08/20/washington-post-ai-tool-data"
     },
     {
-      "id": 113,
+      "id": 132,
       "title": "Djinn, an AI-powered Data Journalism Interface",
       "organisation": "iTromsø",
       "country": "Norway",
@@ -1476,7 +1619,7 @@
       "url": "https://journalists.org/resources/case-study-djinn-an-ai-powered-data-journalism-interface/"
     },
     {
-      "id": 115,
+      "id": 134,
       "title": "Operacion Retuit: Information against persecution of journalists in Venezuela, using AI",
       "organisation": "Connectas",
       "country": "Venezuela",
@@ -1487,7 +1630,7 @@
       "url": "https://www.connectas.org/operacion-retuit-information-against-persecution-of-journalists-in-venezuela-using-ai/"
     },
     {
-      "id": 116,
+      "id": 135,
       "title": "Meet NAT, the AI-generated presenter offering soft news to Mexican audiences",
       "organisation": "Grupo Fórmula",
       "country": "Mexico",
@@ -1498,40 +1641,7 @@
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/meet-nat-ai-generated-presenter-offering-soft-news-mexican-audiences"
     },
     {
-      "id": 274,
-      "title": "Enhancing Fact-Checking with AI at Der Spiegel",
-      "organisation": "Der Spiegel",
-      "country": "Germany",
-      "date_published": "2024-08",
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
-      "id": 273,
-      "title": "How Hearst Newspapers built an AI-powered, Slack-based Tool to Help with Digital Content Production",
-      "organisation": "Hearst Newspapers",
-      "country": "United States",
-      "date_published": "2024-08",
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
-      "id": 272,
-      "title": "Djinn, an AI-powered Data Journalism Interface",
-      "organisation": "iTromsø / Polaris Media",
-      "country": "Norway",
-      "date_published": "2024-08",
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
-      "id": 117,
+      "id": 136,
       "title": "How the Jersey Bee uses AI and automation to produce curated local newsletters",
       "organisation": "Jersey Bee",
       "country": "United States",
@@ -1542,7 +1652,7 @@
       "url": "https://www.youtube.com/watch?v=b6xZiMTphD0"
     },
     {
-      "id": 118,
+      "id": 137,
       "title": "Aftonbladet shares 3 lessons learned from its new AI hub",
       "organisation": "Aftonbladet - Schibsted",
       "country": "Sweden",
@@ -1553,10 +1663,10 @@
       "url": "https://www.inma.org/blogs/ideas/post.cfm/aftonbladet-shares-3-lessons-learned-from-its-new-ai-hub"
     },
     {
-      "id": 119,
+      "id": 138,
       "title": "Two months in, what has the FT learned about launching its own generative AI tool, AskFT",
       "organisation": "Financial Times",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2024-06-11",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1564,7 +1674,7 @@
       "url": "https://www.ftstrategies.com/en-gb/insights/what-has-the-ft-learned-about-launching-its-own-generative-ai-tool"
     },
     {
-      "id": 120,
+      "id": 139,
       "title": "Spain’s Relevo boosts homepage engagement by a third with AI-driven coding",
       "organisation": "Relevo",
       "country": "Spain",
@@ -1575,7 +1685,7 @@
       "url": "https://wan-ifra.org/2024/06/spains-relevo-boosts-homepage-engagement-by-a-third-with-ai-driven-coding/"
     },
     {
-      "id": 121,
+      "id": 140,
       "title": "How Norway’s public broadcaster uses AI-generated summaries to reach younger audiences",
       "organisation": "Norwegian Broadcasting Corporation (NRK)",
       "country": "Norway",
@@ -1586,10 +1696,10 @@
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-norways-public-broadcaster-uses-ai-generated-summaries-reach-younger-audiences"
     },
     {
-      "id": 122,
+      "id": 141,
       "title": "Why does ChatGPT 3.5 misidentify President Erdogan's birthplace, and how can we overcome such errors?",
       "organisation": "Teyit",
-      "country": "Turkey",
+      "country": "Turkiye",
       "date_published": "2024-05-24",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1597,7 +1707,7 @@
       "url": "https://en.teyit.org/teyitpedia/why-does-chatgpt-35-misidentify-president-erdogans-birthplace-and-how-can-we-overcome-such-errors"
     },
     {
-      "id": 123,
+      "id": 142,
       "title": "AI is boosting Forbes’ publishing capabilities",
       "organisation": "Forbes",
       "country": "Czech Republic",
@@ -1608,7 +1718,7 @@
       "url": "https://newsinitiative.withgoogle.com/es-mx/resources/stories/ai-is-boosting-forbes-publishing-capabilities"
     },
     {
-      "id": 124,
+      "id": 143,
       "title": "Rede Gazeta experiments with GenAI to create its own news assistant",
       "organisation": "Rede Gazeta",
       "country": "Brazil",
@@ -1619,10 +1729,10 @@
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/rede-gazeta-experiments-with-genai-to-create-its-own-news-assistant"
     },
     {
-      "id": 125,
+      "id": 144,
       "title": "I trained an AI model with my own scripts and created a chatbot to help journalists make viral vertical videos",
       "organisation": "Sophia Smith Galer",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2024-04-16",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1630,7 +1740,7 @@
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/i-trained-ai-model-my-own-scripts-and-created-chatbot-help-journalists-make-viral-vertical"
     },
     {
-      "id": 126,
+      "id": 145,
       "title": "How a Spanish media group created an AI tool to detect audio deepfakes to help journalists in a big election year",
       "organisation": "PRISA",
       "country": "Spain",
@@ -1641,7 +1751,7 @@
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-spanish-media-group-created-ai-tool-detect-audio-deepfakes-help-journalists-big-election"
     },
     {
-      "id": 127,
+      "id": 146,
       "title": "AI in local journalism: How two Brazilian media outlets are using generative AI to provide services to their audiences",
       "organisation": "Agência Tatu / Farolete",
       "country": "Brazil",
@@ -1652,7 +1762,7 @@
       "url": "https://latamjournalismreview.org/articles/ai-in-local-journalism-how-two-brazilian-media-outlets-are-using-generative-ai-to-provide-services-to-their-audiences/"
     },
     {
-      "id": 128,
+      "id": 147,
       "title": "Cuestión Pública of Colombia creates AI tool to improve daily coverage with investigative journalism",
       "organisation": "Cuestión Pública",
       "country": "Colombia",
@@ -1663,7 +1773,7 @@
       "url": "https://latamjournalismreview.org/articles/cuestion-publica-of-colombia-creates-ai-tool-to-improve-daily-coverage-with-investigative-journalism/"
     },
     {
-      "id": 129,
+      "id": 148,
       "title": "Hearst Newspapers leverages AI to build local content, reader loyalty",
       "organisation": "Hearst Newspapers",
       "country": "United States",
@@ -1674,7 +1784,7 @@
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/hearst-newspapers-leverages-ai-to-build-local-content-reader-loyalty"
     },
     {
-      "id": 130,
+      "id": 149,
       "title": "Expanding hyperlocal coverage: Growing a local newsletter portfolio with automation",
       "organisation": "Tamedia",
       "country": "Switzerland",
@@ -1685,7 +1795,7 @@
       "url": "https://www.innovate-local.org/tamedia"
     },
     {
-      "id": 131,
+      "id": 150,
       "title": "How Amedia Got Half Its Journalists Using AI By Keeping It Simple",
       "organisation": "Amedia",
       "country": "Norway",
@@ -1696,10 +1806,10 @@
       "url": "https://www.innovate-local.org/amedia"
     },
     {
-      "id": 132,
+      "id": 151,
       "title": "We Asked an AI to Map Our Stories Across NYC",
       "organisation": "The City NYC",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2024-02-29",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1707,10 +1817,10 @@
       "url": "https://www.thecity.nyc/2024/02/29/chatgpt-map-stories-nyc/"
     },
     {
-      "id": 133,
+      "id": 152,
       "title": "Reach using AI to speed up ‘ripping’ and use same article on multiple sites",
       "organisation": "Reach",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2024-02-22",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1718,7 +1828,7 @@
       "url": "https://pressgazette.co.uk/publishers/nationals/reach-ai-guten/"
     },
     {
-      "id": 134,
+      "id": 153,
       "title": "Semafor executive editor Gina Chua explains its Microsoft-sponsored ‘Signals’ format",
       "organisation": "Semafor",
       "country": "United States",
@@ -1729,7 +1839,7 @@
       "url": "https://pressgazette.co.uk/publishers/digital-journalism/semafor-microsoft-signals-ai/"
     },
     {
-      "id": 135,
+      "id": 154,
       "title": "Teaching a Custom GPT to Read Audit Reports and Support Watchdog Journalism",
       "organisation": "Generative AI Newsroom",
       "country": "Philippines",
@@ -1740,7 +1850,7 @@
       "url": "https://generative-ai-newsroom.com/teaching-a-custom-gpt-to-read-audit-reports-and-support-watchdog-journalism-1e124196ca15"
     },
     {
-      "id": 136,
+      "id": 155,
       "title": "This Brazilian fact-checking org uses a ChatGPT-esque bot to answer reader questions",
       "organisation": "Aos Fatos",
       "country": "Brazil",
@@ -1751,7 +1861,7 @@
       "url": "https://www.niemanlab.org/2024/01/this-brazilian-fact-checking-org-uses-a-chatgpt-esque-bot-to-answer-reader-questions/"
     },
     {
-      "id": 137,
+      "id": 156,
       "title": "Reaching young readers: How Stavanger Aftenblad covers junior football like it’s the Champions League",
       "organisation": "Stavanger Aftenblad",
       "country": "Norway",
@@ -1762,10 +1872,10 @@
       "url": "https://www.innovate-local.org/stavanger-aftenblad"
     },
     {
-      "id": 138,
+      "id": 157,
       "title": "How one of the world’s oldest newspapers is using AI to reinvent journalism",
       "organisation": "Berrow’s Worcester Journal",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2023-12-28",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1773,7 +1883,7 @@
       "url": "https://www.theguardian.com/technology/2023/dec/28/how-one-of-the-worlds-oldest-newspapers-is-using-ai-to-reinvent-journalism"
     },
     {
-      "id": 139,
+      "id": 158,
       "title": "Quispe Chequea: an artificial intelligence verification platform in indigenous languages",
       "organisation": "Ojo Público",
       "country": "Peru",
@@ -1784,10 +1894,10 @@
       "url": "https://ojo-publico.com/4879/quispe-chequea-inteligencia-artificial-contra-la-desinformacion"
     },
     {
-      "id": 140,
+      "id": 159,
       "title": "A Times Investigation Tracked Israel’s Use of One of Its Most Destructive Bombs in South Gaza",
       "organisation": "New York Times",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2023-12-21",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1795,7 +1905,7 @@
       "url": "https://www.nytimes.com/2023/12/21/world/middleeast/israel-gaza-bomb-investigation.html"
     },
     {
-      "id": 141,
+      "id": 160,
       "title": "Argentina’s Clarín introduces AI assistant UalterAI to help boost engagement",
       "organisation": "Clarin",
       "country": "Argentina",
@@ -1806,10 +1916,10 @@
       "url": "https://wan-ifra.org/2024/01/clarin-introduces-ai-assistant-ualterai-to-increase-engagement-on-its-news-site/"
     },
     {
-      "id": 142,
+      "id": 161,
       "title": "How Newsquest and its seven AI-assisted reporters are using ChatGPT",
       "organisation": "Newsquest",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2023-12-15",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1817,7 +1927,7 @@
       "url": "https://pressgazette.co.uk/publishers/regional-newspapers/newsquest-ai-assisted-reporters/"
     },
     {
-      "id": 143,
+      "id": 162,
       "title": "Agência Pública launches reports read by Artificial Intelligence (deprecated)",
       "organisation": "Agência Publica",
       "country": "Brazil",
@@ -1828,10 +1938,10 @@
       "url": "https://apublica.org/2023/10/agencia-publica-lanca-leitura-de-reportagens-por-inteligencia-artificial/"
     },
     {
-      "id": 147,
+      "id": 166,
       "title": "Expanding the Minutes application, which creates transcripts of city council meetings, to include keyword identification and reporter alerts",
       "organisation": "Michigan Radio",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2023-10-10",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1839,10 +1949,10 @@
       "url": "https://www.ap.org/assets/files/ap-local-ai-michigan-radio-oct-2023.pdf"
     },
     {
-      "id": 146,
+      "id": 165,
       "title": "Automated transcription of recorded videos and summarization of the transcripts to create an article’s initial framework",
       "organisation": "KSAT-TV",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2023-10-10",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1850,10 +1960,10 @@
       "url": "https://www.ap.org/assets/files/ap-local-ai-ksat-oct-2023.pdf"
     },
     {
-      "id": 145,
+      "id": 164,
       "title": "Publication of Spanish-language news alerts using National Weather Service data in English",
       "organisation": "El Vocero de Puerto Rico",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2023-10-10",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1861,10 +1971,10 @@
       "url": "https://www.ap.org/assets/files/ap-local-ai-el-vocero-oct-2023.pdf"
     },
     {
-      "id": 144,
+      "id": 163,
       "title": "Automated writing of public safety incidents into the content management system",
       "organisation": "Brainerd Dispatch (Minessota)",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2023-10-10",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1872,7 +1982,7 @@
       "url": "https://www.ap.org/assets/files/ap-local-ai-brainerd-dispatch-oct-2023.pdf"
     },
     {
-      "id": 148,
+      "id": 167,
       "title": "How genAI summaries are boosting Daily Maverick’s readership",
       "organisation": "Daily Maverick",
       "country": "South Africa",
@@ -1883,7 +1993,7 @@
       "url": "https://wan-ifra.org/2023/09/ai-use-cases-how-genai-summaries-are-boosting-daily-mavericks-readership/"
     },
     {
-      "id": 149,
+      "id": 168,
       "title": "AI tools for combating deepfakes",
       "organisation": "IJnet",
       "country": "Global",
@@ -1894,7 +2004,7 @@
       "url": "https://ijnet.org/en/story/ai-tools-combating-deepfakes"
     },
     {
-      "id": 150,
+      "id": 169,
       "title": "Tracking disinformation? These AI tools can help.",
       "organisation": "IJnet",
       "country": "Global",
@@ -1905,7 +2015,7 @@
       "url": "https://ijnet.org/en/story/tracking-disinformation-these-ai-tools-can-help"
     },
     {
-      "id": 151,
+      "id": 170,
       "title": "Reuters launches AI-powered discoverability features for video library on Reuters Connect, accelerating discovery, editing and publishing",
       "organisation": "Reuters",
       "country": "Global",
@@ -1916,10 +2026,10 @@
       "url": "https://www.reutersagency.com/en/media-center/reuters-launches-ai-powered-discoverability-features-for-video-library-on-reuters-connect-accelerating-discovery-editing-and-publishing/"
     },
     {
-      "id": 152,
+      "id": 171,
       "title": "How the Journal Investigated Hidden Lead Cables Circling the U.S.",
       "organisation": "The Wall Street Journal",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2023-07-09",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1927,10 +2037,10 @@
       "url": "https://www.wsj.com/articles/lead-cables-investigation-att-methodology-1703dbb0"
     },
     {
-      "id": 153,
+      "id": 172,
       "title": "Decoding Bureaucracy",
       "organisation": "The Marshall Project",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2023-07-06",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -1938,7 +2048,7 @@
       "url": "https://generative-ai-newsroom.com/decoding-bureaucracy-5b0c1411171"
     },
     {
-      "id": 154,
+      "id": 173,
       "title": "Journalists from Argentina, Paraguay and the Philippines develop image recognition model to make artificial intelligence more inclusive",
       "organisation": "Grupo Octubre, El Surti, GMA Network",
       "country": "Argentina, Paraguay and Philippines",
@@ -1949,7 +2059,7 @@
       "url": "https://latamjournalismreview.org/articles/journalists-from-argentina-paraguay-and-the-philippines-develop-image-recognition-model-to-make-artificial-intelligence-more-inclusive/"
     },
     {
-      "id": 155,
+      "id": 174,
       "title": "World Cup predictions: How many games did our AI get right?",
       "organisation": "Al Jazeera",
       "country": "Global",
@@ -1960,7 +2070,7 @@
       "url": "https://www.aljazeera.com/news/2022/12/19/world-cup-predictions-did-our-ai"
     },
     {
-      "id": 156,
+      "id": 175,
       "title": "What types of local news stories should be automated? The Toronto Star is figuring it out",
       "organisation": "The Toronto Star",
       "country": "Canada",
@@ -1971,7 +2081,7 @@
       "url": "https://www.niemanlab.org/2022/11/what-types-of-local-news-stories-should-be-automated-the-toronto-star-is-figuring-it-out/"
     },
     {
-      "id": 157,
+      "id": 176,
       "title": "Amazon Mining Watch",
       "organisation": "Pulitzer Center´s Rainforest Investigations Network and Earthrise Media",
       "country": "Brazil",
@@ -1982,7 +2092,7 @@
       "url": "https://amazonminingwatch.org/"
     },
     {
-      "id": 158,
+      "id": 177,
       "title": "La minería ilegal montó sus bases aéreas en la selva",
       "organisation": "ArmandoInfo",
       "country": "Venezuela",
@@ -1993,7 +2103,7 @@
       "url": "https://armando.info/la-mineria-ilegal-monto-sus-bases-aereas-en-la-selva/"
     },
     {
-      "id": 159,
+      "id": 178,
       "title": "Computer vision to monitor Elections transparency",
       "organisation": "La Nación",
       "country": "Argentina",
@@ -2004,7 +2114,7 @@
       "url": "https://blogs.lanacion.com.ar/projects/data/elections-data/computer-vision-to-monitor-elections-transparency/"
     },
     {
-      "id": 160,
+      "id": 179,
       "title": "Yeah, neighborhood, drugs and luxury. This is how trap music sounds on playlists and what centennials talk about",
       "organisation": "La Nación",
       "country": "Argentina",
@@ -2015,10 +2125,10 @@
       "url": "https://blogs.lanacion.com.ar/projects/data/yeah-neighborhood-drugs-and-luxury-this-is-how-trap-music-sounds-on-playlists-and-what-centennials-talk-about/"
     },
     {
-      "id": 161,
+      "id": 180,
       "title": "Oriel, Making it easier for journalists to find the best images for stories",
       "organisation": "BBC",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2021-11-30",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2026,10 +2136,10 @@
       "url": "https://bbcnewslabs.co.uk/projects/oriel/"
     },
     {
-      "id": 162,
+      "id": 181,
       "title": "Talking sense: using machine learning to understand quotes",
       "organisation": "The Guardian",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2021-11-25",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2037,7 +2147,7 @@
       "url": "https://www.theguardian.com/info/2021/nov/25/talking-sense-using-machine-learning-to-understand-quotes"
     },
     {
-      "id": 163,
+      "id": 182,
       "title": "How AI is Helping Out in the Newsroom",
       "organisation": "Singapore Press Holdings",
       "country": "Singapore",
@@ -2048,7 +2158,7 @@
       "url": "https://business-of-data.com/articles/how-ai-is-helping-out-in-the-newsroom-ashish-verma/"
     },
     {
-      "id": 164,
+      "id": 183,
       "title": "A Framework for Conversational Apps",
       "organisation": "ABC",
       "country": "Australia",
@@ -2059,7 +2169,7 @@
       "url": "https://developers.digital.abc.net.au/2021/11/03/a-framework-for-conversational-apps/"
     },
     {
-      "id": 165,
+      "id": 184,
       "title": "Hyperdraft: The natural language generation tool powering the ABC Emergency voice app",
       "organisation": "ABC",
       "country": "Australia",
@@ -2070,7 +2180,7 @@
       "url": "https://developers.digital.abc.net.au/2021/06/10/hyperdraft-the-natural-language-generation-tool-powering-the-abc-emergency-voice-app/"
     },
     {
-      "id": 166,
+      "id": 185,
       "title": "For a local newsroom, automation is necessary",
       "organisation": "Bärgslagsbladet (Bonnier News Local)",
       "country": "Sweden",
@@ -2081,7 +2191,7 @@
       "url": "https://www.unitedrobots.ai/for-newsrooms/cases/for-a-local-newsroom-automation-is-necessary"
     },
     {
-      "id": 167,
+      "id": 186,
       "title": "I am a local journalist: what can AI do for me?",
       "organisation": "Bergens Tidende",
       "country": "Norway",
@@ -2092,7 +2202,7 @@
       "url": "https://www.journalism.co.uk/news/i-am-a-local-journalist-what-can-ai-do-for-me-/s2/a814870/"
     },
     {
-      "id": 168,
+      "id": 187,
       "title": "Aggregating Emergency Alerts",
       "organisation": "ABC",
       "country": "Australia",
@@ -2103,10 +2213,10 @@
       "url": "https://developers.digital.abc.net.au/2021/04/09/aggregating-emergency-alerts/"
     },
     {
-      "id": 169,
+      "id": 188,
       "title": "How we calculated the size of the Southwest’s abandoned oil well problem",
       "organisation": "Grist and The Texas Observer",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2021-04-05",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2114,7 +2224,7 @@
       "url": "https://grist.org/energy/scale-of-texas-new-mexico-abandoned-oil-wells"
     },
     {
-      "id": 170,
+      "id": 189,
       "title": "Automated real estate texts drive subscription sales in Norway",
       "organisation": "Bergens Tidende (Schibsted)",
       "country": "Norway",
@@ -2125,10 +2235,10 @@
       "url": "https://www.unitedrobots.ai/for-newsrooms/cases/automated-home-sales-texts-drive-subscription-sales"
     },
     {
-      "id": 171,
+      "id": 190,
       "title": "Predicting FT Trending Topics",
       "organisation": "Financial Times",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2021-03-29",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2136,10 +2246,10 @@
       "url": "https://medium.com/ft-product-technology/predicting-ft-trending-topics-7eda85ece727"
     },
     {
-      "id": 172,
+      "id": 191,
       "title": "Staying on Topic — Building an Automated Topic Model of WSJ News Coverage",
       "organisation": "The Wall Street Journal",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2021-03-26",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2147,7 +2257,7 @@
       "url": "https://medium.com/the-wall-street-journal/staying-on-topic-building-an-automated-topic-model-of-wsj-news-coverage-d4dc4369f71b"
     },
     {
-      "id": 173,
+      "id": 192,
       "title": "Sanoma: Serving subscriptions with the help of technology",
       "organisation": "Helsingin Sanomat",
       "country": "Finland",
@@ -2158,10 +2268,10 @@
       "url": "https://newsinitiative.withgoogle.com/assets/static/docs/cs_gni_sanoma.pdf"
     },
     {
-      "id": 174,
+      "id": 193,
       "title": "The Wall Street Journal uses Narrativa's AI for its news automation",
       "organisation": "The Wall Street Journal",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2021-01-20",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2169,10 +2279,10 @@
       "url": "https://www.narrativa.com/the-wall-street-journal-uses-narrativas-ai-for-its-news-automation/"
     },
     {
-      "id": 175,
+      "id": 194,
       "title": "We recommend articles with a little help from our friends (Machine Learning and reader input)",
       "organisation": "The New York Times",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2021-01-14",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2180,10 +2290,10 @@
       "url": "https://open.nytimes.com/we-recommend-articles-with-a-little-help-from-our-friends-machine-learning-and-reader-input-e17e85d6cf04"
     },
     {
-      "id": 176,
+      "id": 195,
       "title": "COVID-19: USA’s Trib Total Media boosts AI-backed hyperlocal journalism",
       "organisation": "Trib Total Media",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2021-01-12",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2191,7 +2301,7 @@
       "url": "https://wan-ifra.org/2021/01/covid-19-usas-trib-total-media-boosts-ai-backed-hyperlocal-journalism/"
     },
     {
-      "id": 177,
+      "id": 196,
       "title": "Nine improves its image at scale with AI project",
       "organisation": "Nine",
       "country": "Australia",
@@ -2202,7 +2312,7 @@
       "url": "https://www.gxpress.net/nine-improves-its-image-at-scale-with-ai-project-cms-13007"
     },
     {
-      "id": 178,
+      "id": 197,
       "title": "Yle News Lab builds a method that makes the power of social media visible",
       "organisation": "Yle News",
       "country": "Finland",
@@ -2213,7 +2323,7 @@
       "url": "https://newslab.yle.fi/blog/TczBhQQosX8TzGNuQm8aI"
     },
     {
-      "id": 179,
+      "id": 198,
       "title": "NZME boosts engagement with a bespoke content recommendation engine",
       "organisation": "New Zealand Media and Entertainment (NZME)",
       "country": "New Zealand",
@@ -2224,10 +2334,10 @@
       "url": "https://20190322t164649-dot-gweb-news-initiative.appspot.com/assets/static/docs/NZME.pdf"
     },
     {
-      "id": 180,
+      "id": 199,
       "title": "Announcing the launch of the Stanford Cable TV News Analyzer",
       "organisation": "Brown Institute for Media Innovation",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2020-10-24",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2235,7 +2345,7 @@
       "url": "https://brown.stanford.edu/tv-news-analyzer/"
     },
     {
-      "id": 181,
+      "id": 200,
       "title": "Calculating corruption: Peru's Ojo Público creates tool to gauge contracting risks",
       "organisation": "Ojo Público",
       "country": "Peru",
@@ -2246,10 +2356,10 @@
       "url": "https://gijn.org/2020/10/19/calculating-corruption-perus-ojo-publico-creates-tool-to-gauge-contracting-risks/"
     },
     {
-      "id": 182,
+      "id": 201,
       "title": "To find photos in our archive, we taught the CMS how to read",
       "organisation": "The New York Times",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2020-10-08",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2257,7 +2367,7 @@
       "url": "https://open.nytimes.com/to-find-photos-in-our-archive-we-taught-the-cms-how-to-read-f9bd5f6703d7"
     },
     {
-      "id": 183,
+      "id": 202,
       "title": "How we built a cutting-edge NLP model to generte SEO titles",
       "organisation": "Axel Springer",
       "country": "Germany",
@@ -2268,7 +2378,7 @@
       "url": "https://medium.com/axel-springer-tech/how-we-built-a-cutting-edge-nlp-model-to-generate-seo-titles-ac0fc80a5128"
     },
     {
-      "id": 184,
+      "id": 203,
       "title": "Reuters applies AI technology to 100 years of archive video to enable faster discovery",
       "organisation": "Reuters",
       "country": "Global",
@@ -2279,7 +2389,7 @@
       "url": "https://www.reuters.com/article/rpb-lavita-video-archive/reuters-applies-ai-technology-to-100-years-of-archive-video-to-enable-faster-discovery-supported-by-google-dni-idUSKCN2591VO"
     },
     {
-      "id": 185,
+      "id": 204,
       "title": "Bergens Tidende uses AI to reveal newsroom biases, diversify coverage",
       "organisation": "Bergens Tidende",
       "country": "Norway",
@@ -2290,10 +2400,10 @@
       "url": "https://www.inma.org/blogs/media-leaders/post.cfm/bergens-tidende-uses-ai-to-reveal-newsroom-biases-diversify-coverage"
     },
     {
-      "id": 186,
+      "id": 205,
       "title": "Me, you and the machine",
       "organisation": "BBC",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2020-07-20",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2301,10 +2411,10 @@
       "url": "https://www.bbc.co.uk/blogs/internet/entries/b2106d78-762c-403a-901a-2e34894c3ac1"
     },
     {
-      "id": 187,
+      "id": 206,
       "title": "Graphical storytelling: Extracting and painting a fresh perspective",
       "organisation": "BBC",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2020-07-10",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2312,10 +2422,10 @@
       "url": "https://bbcnewslabs.co.uk/news/2020/gst-on-social/"
     },
     {
-      "id": 188,
+      "id": 207,
       "title": "Estimating 3D poses of athletes at live sporting events",
       "organisation": "The New York Times",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2020-06-16",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2323,10 +2433,10 @@
       "url": "https://rd.nytimes.com/projects/estimating-3d-poses-of-athletes-at-live-sporting-events"
     },
     {
-      "id": 189,
+      "id": 208,
       "title": "How KPCC embraced its role as LA's helpdesk – and what we've learned along the way",
       "organisation": "KPCC",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2020-05-28",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2334,10 +2444,10 @@
       "url": "https://medium.com/engagement-at-kpcc/how-kpcc-embraced-its-role-as-las-help-desk-and-what-we-ve-learned-along-the-way-10b548ea23ca"
     },
     {
-      "id": 191,
+      "id": 210,
       "title": "BBC launches pop-up Corona Bot service to answer questions on Covid-19 related changes",
       "organisation": "BBC",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2020-05-27",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2345,7 +2455,7 @@
       "url": "https://www.bbc.co.uk/mediacentre/latestnews/2020/corona-bot"
     },
     {
-      "id": 190,
+      "id": 209,
       "title": "Digitizing a century of history with data",
       "organisation": "South China Morning Post",
       "country": "China",
@@ -2356,10 +2466,10 @@
       "url": "https://medium.com/scmp-inside-the-wonton/digitizing-a-century-of-history-with-data-fd934f4394ba"
     },
     {
-      "id": 192,
+      "id": 211,
       "title": "Bloomberg Media creates new tool to make readers, advertisers swoon",
       "organisation": "Bloomberg",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2020-05-04",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2367,10 +2477,10 @@
       "url": "https://www.adweek.com/performance-marketing/bloomberg-media-creates-new-tool-to-make-readers-advertisers-swoon/"
     },
     {
-      "id": 193,
+      "id": 212,
       "title": "To apply Machine Learning responsibly, we use it in moderation",
       "organisation": "The New York Times",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2020-04-30",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2378,10 +2488,10 @@
       "url": "https://open.nytimes.com/to-apply-machine-learning-responsibly-we-use-it-in-moderation-d001f49e0644"
     },
     {
-      "id": 194,
+      "id": 213,
       "title": "Automating our coronavirus coverage",
       "organisation": "The Times of London",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2020-04-28",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2389,7 +2499,7 @@
       "url": "https://medium.com/digital-times/how-we-automated-our-coronavirus-coverage-ca9d6ad8ab8f"
     },
     {
-      "id": 195,
+      "id": 214,
       "title": "Swedish Radio leverages Peach recommendations for content production",
       "organisation": "Swedish Radio",
       "country": "Sweden",
@@ -2400,7 +2510,7 @@
       "url": "https://tech.ebu.ch/news/2020/04/swedish-radio-leverages-peach-recommendations-for-content-production"
     },
     {
-      "id": 196,
+      "id": 215,
       "title": "How an AI system is boosting business at The Globe and Mail",
       "organisation": "The Globe and Mail",
       "country": "Canada",
@@ -2411,10 +2521,10 @@
       "url": "https://wan-ifra.org/2020/04/how-an-ai-system-is-boosting-business-at-the-globe-and-mail/"
     },
     {
-      "id": 197,
+      "id": 216,
       "title": "Analyzing bias in Natural Language models",
       "organisation": "The New York Times",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2020-03-24",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2422,7 +2532,7 @@
       "url": "https://rd.nytimes.com/projects/analyzing-bias-in-natural-language-models"
     },
     {
-      "id": 198,
+      "id": 217,
       "title": "Swedish Aftonbladet uses automation to outpace competitors with its Covid-19 news coverage",
       "organisation": "Aftonbladet",
       "country": "Sweden",
@@ -2433,10 +2543,10 @@
       "url": "https://www.journalism.co.uk/news/swedish-aftonbladet-uses-automation-to-outpace-competitors-with-its-covid-19-news-coverage/s2/a753239/"
     },
     {
-      "id": 199,
+      "id": 218,
       "title": "Facebook ads reveal what the Democratic candidates think will sway South Carolina voters",
       "organisation": "Quartz",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2020-02-28",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2444,7 +2554,7 @@
       "url": "https://qz.com/1809782/facebook-ads-reveal-each-candidates-top-issue-in-south-carolina/"
     },
     {
-      "id": 201,
+      "id": 220,
       "title": "The new tool helping Asian newsrooms detect fake images",
       "organisation": "Storyful",
       "country": "Ireland",
@@ -2455,10 +2565,10 @@
       "url": "https://www.blog.google/around-the-globe/google-asia/new-tool-helping-asian-newsrooms-detect-fake-images/"
     },
     {
-      "id": 200,
+      "id": 219,
       "title": "How AI can help predict subscription cancellation and keep readers engaged",
       "organisation": "Deep BI",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2020-02-25",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2466,10 +2576,10 @@
       "url": "https://www.journalism.co.uk/news/how-ai-can-help-predict-subscription-cancellation-and-help-you-keep-your-readers-engaged/s2/a752220/"
     },
     {
-      "id": 202,
+      "id": 221,
       "title": "Schibsted announces collaboration in responsible AI with KTH Royal Institute of Technology",
       "organisation": "Schibsted",
-      "country": "Nordic Countries",
+      "country": "Nordics",
       "date_published": "2020-02-11",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2477,7 +2587,7 @@
       "url": "https://schibsted.com/news/schibsted-announces-research-collaboration-in-responsible-ai/"
     },
     {
-      "id": 203,
+      "id": 222,
       "title": "Reuters uses AI to prototype first ever automated video reports",
       "organisation": "Reuters",
       "country": "Global",
@@ -2488,7 +2598,7 @@
       "url": "https://www.forbes.com/sites/simonchandler/2020/02/07/reuters-uses-ai-to-prototype-first-ever-automated-video-reports/?sh=29e9c7f87a2a"
     },
     {
-      "id": 204,
+      "id": 223,
       "title": "Axel Springer Academy to integrate Artificial Intelligence into its curriculum",
       "organisation": "Axel Springer",
       "country": "Germany",
@@ -2499,10 +2609,10 @@
       "url": "https://www.axelspringer.com/en/press-releases/even-more-digital-axel-springer-academy-is-the-first-school-of-journalism-to-integrate-artificial-intelligence-into-its-curriculum?utm_source=dlvr.it&utm_medium=twitter"
     },
     {
-      "id": 205,
+      "id": 224,
       "title": "What the AP and Newsday learned from automating coverage of 124 school districts",
       "organisation": "Associated Press",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2020-02-05",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2510,10 +2620,10 @@
       "url": "https://www.lenfestinstitute.org/news-technology-innovation/what-the-ap-and-newsday-learned-from-automating-coverage-of-124-school-districts/"
     },
     {
-      "id": 206,
+      "id": 225,
       "title": "Tool to help journalists spot doctored images is unveiled by Jigsaw",
       "organisation": "Jigsaw",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2020-02-04",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2521,10 +2631,10 @@
       "url": "https://www.nytimes.com/2020/02/04/technology/jigsaw-doctored-images-disinformation.html"
     },
     {
-      "id": 207,
+      "id": 226,
       "title": "Can synthetic media drive new content expeiences?",
       "organisation": "BBC",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2020-01-29",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2532,7 +2642,7 @@
       "url": "https://www.bbc.co.uk/blogs/internet/entries/b81f12d4-39b7-4624-86ab-01647d2800ec"
     },
     {
-      "id": 208,
+      "id": 227,
       "title": "How Quartz used AI to sort through the Luanda Leaks",
       "organisation": "Quartz",
       "country": "US / Angola",
@@ -2543,10 +2653,10 @@
       "url": "https://qz.com/1786896/ai-for-investigations-sorting-through-the-luanda-leaks"
     },
     {
-      "id": 209,
+      "id": 228,
       "title": "How we use AI to help fact check party manifestos",
       "organisation": "Full Fact",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2019-12-06",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2554,7 +2664,7 @@
       "url": "https://fullfact.org/blog/2019/dec/how-we-use-ai-help-fact-check-party-manifestos/"
     },
     {
-      "id": 210,
+      "id": 229,
       "title": "We used AI to Identify the sex of 340,000 people harmed by medical devices",
       "organisation": "ICIJ",
       "country": "Global",
@@ -2565,10 +2675,10 @@
       "url": "https://www.icij.org/investigations/implant-files/we-used-ai-to-identify-the-sex-of-340000-people-harmed-by-medical-devices/"
     },
     {
-      "id": 211,
+      "id": 230,
       "title": "Artificial Intelligence is not the future – It is happening right now",
       "organisation": "Cardiff University",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2019-11-11",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2576,10 +2686,10 @@
       "url": "https://www.journalism.co.uk/news/artificial-intelligence-is-not-the-future-it-is-happening-right-now/s2/a747107/"
     },
     {
-      "id": 212,
+      "id": 231,
       "title": "How The Wall Street Journal is using Deep Learning to inform content strategy",
       "organisation": "The Wall Street Journal",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-10-11",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2587,10 +2697,10 @@
       "url": "https://medium.com/the-wall-street-journal/how-the-wall-street-journal-is-using-deep-learning-to-inform-content-strategy-4b4a07090110"
     },
     {
-      "id": 213,
+      "id": 232,
       "title": "Scaling responsible Machine Learning at the BBC",
       "organisation": "BBC",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2019-10-04",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2598,10 +2708,10 @@
       "url": "https://www.bbc.co.uk/blogs/internet/entries/4a31d36d-fd0c-4401-b464-d249376aafd1"
     },
     {
-      "id": 214,
+      "id": 233,
       "title": "AI & auto-colourisation – Black & White to colour with Machine Learning",
       "organisation": "BBC",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2019-09-24",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2609,10 +2719,10 @@
       "url": "https://www.bbc.co.uk/rd/blog/2019-09-artificial-intelligence-colourisation-video"
     },
     {
-      "id": 215,
+      "id": 234,
       "title": "How The Times of London increased digital subscribers 19% in a year",
       "organisation": "The Times of London",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2019-08-15",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2620,10 +2730,10 @@
       "url": "https://digiday.com/media/how-the-times-of-londons-year-long-content-review-fuelled-its-drive-to-300000-subscribers/"
     },
     {
-      "id": 216,
+      "id": 235,
       "title": "How The Wall Street Journal is building an incubator into its newsroom",
       "organisation": "The Wall Street Journal",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-08-12",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2631,10 +2741,10 @@
       "url": "https://www.niemanlab.org/2019/08/how-the-wall-street-journal-is-building-an-incubator-into-its-newsroom-with-new-departments-and-plenty-of-hires/"
     },
     {
-      "id": 217,
+      "id": 236,
       "title": "How Piano built a propensity paywall for publishers — and what it’s learned so far",
       "organisation": "Piano",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-08-06",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2642,10 +2752,10 @@
       "url": "https://www.niemanlab.org/2019/08/how-piano-built-a-propensity-paywall-for-publishers-and-what-its-learned-so-far/"
     },
     {
-      "id": 218,
+      "id": 237,
       "title": "Here's how The Washington Post's new computational journalism lab will tackle 2020",
       "organisation": "The Washington Post",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-07-25",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2653,10 +2763,10 @@
       "url": "https://www.niemanlab.org/2019/07/how-to-cover-11250-elections-at-once-heres-how-the-washington-posts-new-computational-journalism-lab-will-tackle-2020/"
     },
     {
-      "id": 219,
+      "id": 238,
       "title": "How Quartz used AI to help reporters search the Mauritius Leaks",
       "organisation": "Quartz",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-07-23",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2664,10 +2774,10 @@
       "url": "https://qz.com/1670632/how-quartz-used-ai-to-help-reporters-search-the-mauritius-leaks/"
     },
     {
-      "id": 220,
+      "id": 239,
       "title": "Spotting fact-checkable tweets",
       "organisation": "Quartz",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-07-22",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2675,10 +2785,10 @@
       "url": "https://qz.ai/spotting-fact-checkable-tweets/"
     },
     {
-      "id": 221,
+      "id": 240,
       "title": "IBM's Wimbledon-watching AI is poised to revolutionize sports broadcasts",
       "organisation": "IBM",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-07-18",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2686,10 +2796,10 @@
       "url": "https://www.digitaltrends.com/cool-tech/ibm-wimbledon-watching-artificial-intelligence-revolutionize-sports/"
     },
     {
-      "id": 223,
+      "id": 242,
       "title": "The New York Times has a course to teach its reporters data skills, now open-source",
       "organisation": "The New York Times",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-06-12",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2697,7 +2807,7 @@
       "url": "https://www.niemanlab.org/2019/06/the-new-york-times-has-a-course-to-teach-its-reporters-data-skills-and-now-theyve-open-sourced-it/"
     },
     {
-      "id": 222,
+      "id": 241,
       "title": "Journalism and AI team up to measure missing stories",
       "organisation": "El Universal",
       "country": "Mexico",
@@ -2708,10 +2818,10 @@
       "url": "https://www.blog.google/outreach-initiatives/google-news-initiative/journalism-and-ai-team-measure-missing-stories/"
     },
     {
-      "id": 224,
+      "id": 243,
       "title": "Rise of the robots: Coming to a first-year intro to journalism class near you",
       "organisation": "Lehigh University",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-06-01",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2719,10 +2829,10 @@
       "url": "https://phys.org/news/2019-07-robots-first-year-intro-journalism-class.html"
     },
     {
-      "id": 225,
+      "id": 244,
       "title": "Times titles halve digital subscriber churn with tailored emails from AI named 'James'",
       "organisation": "The Times of London",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2019-05-27",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2730,10 +2840,10 @@
       "url": "https://www.pressgazette.co.uk/times-titles-halve-digital-subscriber-churn-with-tailored-emails-from-ai-named-james/"
     },
     {
-      "id": 226,
+      "id": 245,
       "title": "Full Fact secures $2 million Google AI grant to fight misinformation",
       "organisation": "Full Fact",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2019-05-20",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2741,10 +2851,10 @@
       "url": "https://www.journalism.co.uk/news/fact-checkers-full-fact-win-2-million-google-ai-grant/s2/a739073/"
     },
     {
-      "id": 227,
+      "id": 246,
       "title": "AI learns to write headlines (but not this one)",
       "organisation": "Axios",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-05-16",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2752,10 +2862,10 @@
       "url": "https://www.axios.com/ai-learns-write-headlines-e578a9ba-1e29-4b15-a809-22437e9691ea.html"
     },
     {
-      "id": 228,
+      "id": 247,
       "title": "Facial recognition, subtitling automation and datasets: How Sky News uses AI to unburden journalists",
       "organisation": "Sky News",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2019-05-14",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2763,10 +2873,10 @@
       "url": "https://www.journalism.co.uk/news/sky-news-embraces-ai-tools/s2/a738749/"
     },
     {
-      "id": 229,
+      "id": 248,
       "title": "We built an 'unbelievable' (but legal) facial recognition machine",
       "organisation": "The New York Times",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-04-16",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2774,10 +2884,10 @@
       "url": "https://www.nytimes.com/interactive/2019/04/16/opinion/facial-recognition-new-york-city.html?"
     },
     {
-      "id": 230,
+      "id": 249,
       "title": "Spotting circling helicopters",
       "organisation": "Quartz",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-04-05",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2785,10 +2895,10 @@
       "url": "https://qz.ai/spotting-circling-helicopters/"
     },
     {
-      "id": 231,
+      "id": 250,
       "title": "US community journalists can learn about algorithms thanks to $100k AI ethics grant",
       "organisation": "Newmark J-School at CUNY",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-04-03",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2796,10 +2906,10 @@
       "url": "https://www.journalism.co.uk/news/us-community-journalists-will-learn-all-about-algorithms-thanks-to-100k-ai-ethics-grant/s2/a736789/"
     },
     {
-      "id": 232,
+      "id": 251,
       "title": "Dissecting a Machine Learning powered investigation",
       "organisation": "Artificial Informer",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-04-01",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2807,7 +2917,7 @@
       "url": "https://artificialinformer.com/issue-one/dissecting-a-machine-learning-powered-investigation.html"
     },
     {
-      "id": 233,
+      "id": 252,
       "title": "What happens when bots become editors?",
       "organisation": "United Robots",
       "country": "Sweden",
@@ -2818,10 +2928,10 @@
       "url": "https://www.journalism.co.uk/news/nordic-news-organisations-shows-that-robot-journalism-can-make-personalisation-pay/s2/a736534/"
     },
     {
-      "id": 234,
+      "id": 253,
       "title": "Identifying biases in the news",
       "organisation": "Schibsted",
-      "country": "Nordic Countries",
+      "country": "Nordics",
       "date_published": "2019-03-24",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2829,10 +2939,10 @@
       "url": "https://schibsted.com/2020/03/24/reaching-diversity-in-the-news/"
     },
     {
-      "id": 235,
+      "id": 254,
       "title": "Stories by numbers: How BBC News is experimenting with semi-automated journalism",
       "organisation": "BBC",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2019-03-22",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2840,7 +2950,7 @@
       "url": "https://medium.com/bbc-news-labs/stories-by-numbers-how-bbc-news-is-experimenting-with-automated-journalism-3d8595a88852"
     },
     {
-      "id": 236,
+      "id": 255,
       "title": "How El País used AI to make their comments section less toxic",
       "organisation": "El País",
       "country": "Spain",
@@ -2851,7 +2961,7 @@
       "url": "https://www.blog.google/outreach-initiatives/google-news-initiative/how-el-pais-used-ai-make-their-comments-section-less-toxic/"
     },
     {
-      "id": 237,
+      "id": 256,
       "title": "We cracked the Panama Papers with 400 human brains. Can AI help us next time?",
       "organisation": "ICIJ",
       "country": "Global",
@@ -2862,7 +2972,7 @@
       "url": "https://medium.com/jsk-class-of-2019/we-cracked-the-panama-papers-with-400-human-brains-can-ai-help-us-next-time-1f97164742a0"
     },
     {
-      "id": 238,
+      "id": 257,
       "title": "Making a 'deepfake': How creating our own synthetic video helped us learn  to spot one",
       "organisation": "Reuters",
       "country": "Global",
@@ -2873,10 +2983,10 @@
       "url": "https://www.pressgazette.co.uk/making-a-deepfake-how-creating-our-own-synthetic-video-helped-us-learn-to-spot-one/"
     },
     {
-      "id": 239,
+      "id": 258,
       "title": "GE CEO letters decoded: Shrinking ambitions and disappearing buzzwords",
       "organisation": "The Wall Street Journal",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-03-01",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2884,10 +2994,10 @@
       "url": "https://www.wsj.com/articles/ge-ceo-letters-decoded-shrinking-ambitions-and-disappearing-buzzwords-11551441600"
     },
     {
-      "id": 240,
+      "id": 259,
       "title": "Why I created a robot to write news stories",
       "organisation": "The Guardian",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2019-02-01",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2895,10 +3005,10 @@
       "url": "https://www.theguardian.com/commentisfree/2019/feb/01/why-i-created-a-robot-to-write-news-stories"
     },
     {
-      "id": 241,
+      "id": 260,
       "title": "Quartz AI Studio launches an open-source platform to help journalists use Machine Learning",
       "organisation": "Quartz",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-01-08",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2906,10 +3016,10 @@
       "url": "https://www.journalism.co.uk/news/quartz-ai-studio-launches-an-open-source-platform-to-help-journalists-use-machine-learning/s2/a732936/"
     },
     {
-      "id": 242,
+      "id": 261,
       "title": "Forbes is building more AI tools for its reporters",
       "organisation": "Forbes",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2019-01-03",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2917,7 +3027,7 @@
       "url": "https://digiday.com/media/forbes-built-a-robot-to-pre-write-articles-for-its-contributors/"
     },
     {
-      "id": 243,
+      "id": 262,
       "title": "China releases first short video AI production platform",
       "organisation": "Xinhua News Agency",
       "country": "China",
@@ -2928,7 +3038,7 @@
       "url": "http://www.xinhuanet.com/english/2018-12/28/c_137704391.htm"
     },
     {
-      "id": 244,
+      "id": 263,
       "title": "A look at Toutiao: China’s Artificial Intelligence powered news platform",
       "organisation": "Toutiao",
       "country": "China",
@@ -2939,7 +3049,7 @@
       "url": "https://medium.com/@chewweichun/a-look-at-toutiao-chinas-artificial-intelligence-powered-news-platform-4eef3c23b79a"
     },
     {
-      "id": 245,
+      "id": 264,
       "title": "We’ve got bad news!",
       "organisation": "Texty",
       "country": "Ukraine",
@@ -2950,10 +3060,10 @@
       "url": "https://texty.org.ua/d/2018/mnews/eng/"
     },
     {
-      "id": 246,
+      "id": 265,
       "title": "How The Wall Street Journal is preparing its journalists to detect deepfakes",
       "organisation": "The Wall Street Journal",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2018-11-15",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2961,10 +3071,10 @@
       "url": "https://www.niemanlab.org/2018/11/how-the-wall-street-journal-is-preparing-its-journalists-to-detect-deepfakes/"
     },
     {
-      "id": 247,
+      "id": 266,
       "title": "Financial Times tool warns if articles quote too many men",
       "organisation": "Financial Times",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2018-11-14",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2972,10 +3082,10 @@
       "url": "https://www.theguardian.com/media/2018/nov/14/financial-times-tool-warns-if-articles-quote-too-many-men"
     },
     {
-      "id": 248,
+      "id": 267,
       "title": "RADAR has written 50,000 individual local news stories in three months with AI technology",
       "organisation": "Press Association",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2018-11-07",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2983,10 +3093,10 @@
       "url": "https://www.newsrewired.com/2018/11/07/press-associations-news-service-radar-has-written-50000-individual-local-news-stories-in-three-months-with-ai-technology/"
     },
     {
-      "id": 249,
+      "id": 268,
       "title": "How does this article make you feel?",
       "organisation": "The New York Times",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2018-10-31",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -2994,7 +3104,7 @@
       "url": "https://open.nytimes.com/how-does-this-article-make-you-feel-4684e5e9c47"
     },
     {
-      "id": 250,
+      "id": 269,
       "title": "How Reuters uses robots to analyse data and humans to tell the stories",
       "organisation": "Reuters",
       "country": "Global",
@@ -3005,7 +3115,7 @@
       "url": "https://www.journalism.co.uk/news/how-reuters-uses-robots-to-analyse-data-and-humans-to-tell-the-stories/s2/a730305/"
     },
     {
-      "id": 251,
+      "id": 270,
       "title": "Yle's smart news assistant Voitto ensures that you don't miss the news you want to read",
       "organisation": "Yle",
       "country": "Finland",
@@ -3016,10 +3126,10 @@
       "url": "https://newslab.yle.fi/blog/16T3d1e7YcuwguOk8gsq8s"
     },
     {
-      "id": 252,
+      "id": 271,
       "title": "Bloomberg Media's Innovation Lab launches \"The Bulletin\" – an AI-powered news feed",
       "organisation": "Bloomberg",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2018-09-18",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -3027,10 +3137,10 @@
       "url": "https://www.bloombergmedia.com/press/bloomberg-medias-innovation-lab-launches-bulletin/"
     },
     {
-      "id": 253,
+      "id": 272,
       "title": "Getty Images launches a new AI tool that helps pusblishers find the right picture for the story",
       "organisation": "Getty Images",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2018-08-06",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -3038,7 +3148,7 @@
       "url": "https://www.journalism.co.uk/news/getty-images-launches-a-new-ai-tool-that-helps-publishers-find-the-right-picture-for-the-story/s2/a725797/"
     },
     {
-      "id": 254,
+      "id": 273,
       "title": "How Swiss news publisher NZZ built a flexible paywall using machine learning",
       "organisation": "Neue Zürcher Zeitung",
       "country": "Switzerland",
@@ -3049,10 +3159,10 @@
       "url": "https://digiday.com/media/swiss-news-publisher-nzz-built-flexible-paywall-using-machine-learning/"
     },
     {
-      "id": 255,
+      "id": 274,
       "title": "Entering the next century with a new Forbes experience",
       "organisation": "Forbes",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2018-07-11",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -3060,10 +3170,10 @@
       "url": "https://www.forbes.com/sites/forbesproductgroup/2018/07/11/entering-the-next-century-with-a-new-forbes-experience/?sh=27fe580e3bf4"
     },
     {
-      "id": 256,
+      "id": 275,
       "title": "How The New York Times uses software to recognize Members of Congress",
       "organisation": "The New York Times",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2018-06-06",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -3071,7 +3181,7 @@
       "url": "https://open.nytimes.com/how-the-new-york-times-uses-software-to-recognize-members-of-congress-29b46dd426c7"
     },
     {
-      "id": 257,
+      "id": 276,
       "title": "This media startup Is beating the competition with a newsroom run by robots",
       "organisation": "JX Press",
       "country": "Japan",
@@ -3082,7 +3192,7 @@
       "url": "https://www.bloomberg.com/news/articles/2018-05-27/the-airline-geek-trying-to-build-a-media-giant-with-no-reporters"
     },
     {
-      "id": 258,
+      "id": 277,
       "title": "Concrete and coral. Tracking expansion in the South China Sea",
       "organisation": "Reuters",
       "country": "Global",
@@ -3093,10 +3203,10 @@
       "url": "http://fingfx.thomsonreuters.com/gfx/rngs/CHINA-SOUTHCHINASEA-BUILDING/010070760H9/index.html"
     },
     {
-      "id": 259,
+      "id": 278,
       "title": "Using AI to host better conversations",
       "organisation": "The New York Times",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2018-05-23",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -3104,7 +3214,7 @@
       "url": "https://www.blog.google/technology/ai/new-york-times-using-ai-host-better-conversations/"
     },
     {
-      "id": 260,
+      "id": 279,
       "title": "Reuters' new automation tool wants to help reporters spot the hidden stories in their data",
       "organisation": "Reuters",
       "country": "Global",
@@ -3115,7 +3225,7 @@
       "url": "https://www.niemanlab.org/2018/03/reuters-new-automation-tool-wants-to-help-reporters-spot-the-hidden-stories-in-their-data-but-wont-take-their-jobs/"
     },
     {
-      "id": 261,
+      "id": 280,
       "title": "Leprosy of the land",
       "organisation": "Texty",
       "country": "Ukraine",
@@ -3126,7 +3236,7 @@
       "url": "https://texty.org.ua/d/2018/amber_eng/"
     },
     {
-      "id": 262,
+      "id": 281,
       "title": "Reuters is taking a big gamble on AI-supported journalism",
       "organisation": "Reuters",
       "country": "Global",
@@ -3137,10 +3247,10 @@
       "url": "https://www.wired.co.uk/article/reuters-artificial-intelligence-journalism-newsroom-ai-lynx-insight"
     },
     {
-      "id": 263,
+      "id": 282,
       "title": "After years of testing, The Wall Street Journal has built a paywall that bends to the individual reader",
       "organisation": "The Wall Street Journal",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2018-02-22",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -3148,10 +3258,10 @@
       "url": "https://www.niemanlab.org/2018/02/after-years-of-testing-the-wall-street-journal-has-built-a-paywall-that-bends-to-the-individual-reader/"
     },
     {
-      "id": 264,
+      "id": 283,
       "title": "Not all news site visitors are created equal. Schibsted is trying to predict the ones who will pay up",
       "organisation": "Schibsted",
-      "country": "Nordic Countries",
+      "country": "Nordics",
       "date_published": "2018-02-12",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -3159,7 +3269,7 @@
       "url": "https://www.niemanlab.org/2018/02/not-all-news-site-visitors-are-created-equal-schibsted-is-trying-to-predict-the-ones-who-will-pay-up/"
     },
     {
-      "id": 265,
+      "id": 284,
       "title": "In Argentina, fact-checkers' latest hire is a bot",
       "organisation": "Chequeado",
       "country": "Argentina",
@@ -3170,7 +3280,7 @@
       "url": "https://www.poynter.org/fact-checking/2018/in-argentina-fact-checkers%C2%92-latest-hire-is-a-bot/"
     },
     {
-      "id": 266,
+      "id": 285,
       "title": "China's news agency is reinventing itself with AI",
       "organisation": "Xinhua News Agency",
       "country": "China",
@@ -3181,10 +3291,10 @@
       "url": "https://www.niemanlab.org/2018/01/chinas-news-agency-is-reinventing-itself-with-ai/"
     },
     {
-      "id": 267,
+      "id": 286,
       "title": "With “My WSJ,” The Wall Street Journal makes a personalized content feed central to its app",
       "organisation": "The Wall Street Journal",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2017-12-11",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -3192,10 +3302,10 @@
       "url": "https://www.niemanlab.org/2017/12/with-my-wsj-the-wall-street-journal-makes-a-personalized-content-feed-central-to-its-app/"
     },
     {
-      "id": 268,
+      "id": 287,
       "title": "BBC will use machine learning to cater to what audiences want to watch",
       "organisation": "BBC",
-      "country": "United Kingdom",
+      "country": "UK",
       "date_published": "2017-10-19",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -3203,10 +3313,10 @@
       "url": "https://www.theverge.com/2017/10/19/16503658/bbc-data-analytics-machine-learning-curation-tv"
     },
     {
-      "id": 269,
+      "id": 288,
       "title": "The Washington Post's robot reporter has published 850 articles in the past year",
       "organisation": "The Washington Post",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2017-09-14",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -3214,10 +3324,10 @@
       "url": "https://digiday.com/media/washington-posts-robot-reporter-published-500-articles-last-year/"
     },
     {
-      "id": 270,
+      "id": 289,
       "title": "We trained a computer to search for hidden spy planes. This is what it found",
       "organisation": "BuzzFeed News",
-      "country": "United States",
+      "country": "USA",
       "date_published": "2017-08-08",
       "source_name": "JournalismAI",
       "source_category": "Database",
@@ -3225,7 +3335,117 @@
       "url": "https://www.buzzfeednews.com/article/peteraldhous/hidden-spy-planes"
     },
     {
-      "id": 271,
+      "id": 300,
+      "title": "How The Times of India Brings Real-Time Personalization to 1,500+ Daily News Stories",
+      "organisation": "Times of India",
+      "country": "India",
+      "date_published": null,
+      "source_name": "ONA AI in the Newsroom",
+      "source_category": "Database",
+      "summary": null,
+      "url": null
+    },
+    {
+      "id": 299,
+      "title": "Using AI to Analyze Open-Source Intelligence in Ukraine War Reporting",
+      "organisation": "BBC World Service",
+      "country": "United Kingdom",
+      "date_published": null,
+      "source_name": "ONA AI in the Newsroom",
+      "source_category": "Database",
+      "summary": null,
+      "url": null
+    },
+    {
+      "id": 298,
+      "title": "THE CITY's AI-Powered Coverage Audit and Navigation Tool",
+      "organisation": "THE CITY",
+      "country": "United States",
+      "date_published": null,
+      "source_name": "ONA AI in the Newsroom",
+      "source_category": "Database",
+      "summary": null,
+      "url": null
+    },
+    {
+      "id": 297,
+      "title": "Sweden's Aftonbladet Built AI-Driven Editorial Tools and an Election Chatbot",
+      "organisation": "Aftonbladet",
+      "country": "Sweden",
+      "date_published": null,
+      "source_name": "ONA AI in the Newsroom",
+      "source_category": "Database",
+      "summary": null,
+      "url": null
+    },
+    {
+      "id": 296,
+      "title": "How Bayerischer Rundfunk Used Modular Journalism to Personalize Radio News Based on Location",
+      "organisation": "Bayerischer Rundfunk",
+      "country": "Germany",
+      "date_published": null,
+      "source_name": "ONA AI in the Newsroom",
+      "source_category": "Database",
+      "summary": null,
+      "url": null
+    },
+    {
+      "id": 295,
+      "title": "Building AI Literacy at Canada's National Public Broadcaster Radio-Canada",
+      "organisation": "Radio-Canada",
+      "country": "Canada",
+      "date_published": null,
+      "source_name": "ONA AI in the Newsroom",
+      "source_category": "Database",
+      "summary": null,
+      "url": null
+    },
+    {
+      "id": 294,
+      "title": "Transforming Workflows with AI at Zamaneh Media",
+      "organisation": "Zamaneh Media",
+      "country": "Netherlands",
+      "date_published": null,
+      "source_name": "ONA AI in the Newsroom",
+      "source_category": "Database",
+      "summary": null,
+      "url": null
+    },
+    {
+      "id": 293,
+      "title": "Enhancing Fact-Checking with AI at Der Spiegel",
+      "organisation": "Der Spiegel",
+      "country": "Germany",
+      "date_published": null,
+      "source_name": "ONA AI in the Newsroom",
+      "source_category": "Database",
+      "summary": null,
+      "url": null
+    },
+    {
+      "id": 292,
+      "title": "How Hearst Newspapers built an AI-powered, Slack-based Tool to Help with Digital Content Production",
+      "organisation": "Hearst Newspapers",
+      "country": "United States",
+      "date_published": null,
+      "source_name": "ONA AI in the Newsroom",
+      "source_category": "Database",
+      "summary": null,
+      "url": null
+    },
+    {
+      "id": 291,
+      "title": "Djinn, an AI-powered Data Journalism Interface",
+      "organisation": "iTromsø / Polaris Media",
+      "country": "Norway",
+      "date_published": null,
+      "source_name": "ONA AI in the Newsroom",
+      "source_category": "Database",
+      "summary": null,
+      "url": null
+    },
+    {
+      "id": 290,
       "title": "Mapping 10 years of French broadcast news: INA’s use of AI to make media coverage visible",
       "organisation": "INA",
       "country": "France",
@@ -3234,10 +3454,21 @@
       "source_category": "Database",
       "summary": "Research & Innovation",
       "url": "https://www.journalismai.info/blog/mapping-10-years-of-french-broadcast-news-how-ina-uses-ai-to-make-media-coverage-visible"
+    },
+    {
+      "id": 21,
+      "title": "Exploring the intersection of AI and journalism",
+      "organisation": null,
+      "country": null,
+      "date_published": null,
+      "source_name": "JournalismAI",
+      "source_category": "Database",
+      "summary": "Artificial intelligence is already used by journalists and news organisations in a variety of different ways. Many experiments and collaborations pop up on a daily basis, showing how a responsible use of AI and machine learning can open up new opportunities, as well as improving existing workflows and tools.",
+      "url": "mailto:ana@journalismai.info?"
     }
   ],
   "stats": {
-    "total": 294,
+    "total": 315,
     "by_year": [
       [
         "2017",
@@ -3269,7 +3500,7 @@
       ],
       [
         "2024",
-        61
+        51
       ],
       [
         "2025",
@@ -3277,17 +3508,25 @@
       ],
       [
         "2026",
-        13
+        33
       ]
     ],
     "top_countries": [
       [
+        "USA",
+        55
+      ],
+      [
+        "UK",
+        26
+      ],
+      [
         "United States",
-        78
+        24
       ],
       [
         "United Kingdom",
-        42
+        16
       ],
       [
         "Germany",
@@ -3331,14 +3570,6 @@
       ],
       [
         "Peru",
-        4
-      ],
-      [
-        "France",
-        4
-      ],
-      [
-        "Philippines",
         4
       ]
     ],
