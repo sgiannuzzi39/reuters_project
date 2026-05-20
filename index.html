@@ -367,15 +367,16 @@ nav {
   color: var(--ash); text-align: center; min-width: 60px;
 }
 .timeline-bars {
-  display: flex; gap: 6px; align-items: flex-end; height: 240px;
+  display: flex; gap: 6px; align-items: flex-end; height: 220px;
   border-bottom: 1px solid var(--rule); margin-bottom: 20px; min-width: 540px;
 }
 .timeline-bar-group {
-  flex: 1; display: flex; flex-direction: column-reverse; min-width: 60px;
-  cursor: pointer; position: relative;
+  flex: 1; display: flex; flex-direction: column; justify-content: flex-end;
+  align-items: stretch; min-width: 60px; cursor: pointer; position: relative;
+  height: 100%;
 }
 .timeline-segment {
-  width: 100%; transition: opacity 0.2s; overflow: hidden;
+  width: 100%; flex-shrink: 0;
 }
 .timeline-bar-group:hover .timeline-segment { opacity: 0.85; }
 .bar-tooltip {
@@ -914,70 +915,87 @@ function buildTimeline() {
   var years = data.years;
   var cats = Object.keys(data.categories);
   var colors = cats.map(function(c) { return CAT_COLORS[c] || '#c8bfad'; });
+  var chartH = 220;
 
-  // Find max total per year for scaling
+  // Total per year for scaling
   var totals = years.map(function(_, yi) {
     return cats.reduce(function(s, c) { return s + (data.categories[c][yi] || 0); }, 0);
   });
   var maxTotal = Math.max.apply(null, totals);
-  var chartH = 220; // px
 
   // Year labels
   document.getElementById('timelineYears').innerHTML = years.map(function(yr) {
     return '<div class="timeline-year-label">' + yr + '</div>';
   }).join('');
 
-  // Build bars
+  // Build bars — use percentage heights so they work reliably
   var barsHtml = '';
   years.forEach(function(yr, yi) {
     var total = totals[yi];
     var tooltipRows = cats.map(function(c, ci) {
       var n = data.categories[c][yi] || 0;
       if (!n) return '';
-      return '<div class="tooltip-row"><div class="tooltip-swatch" style="background:' + colors[ci] + '"></div>' +
-             '<span style="flex:1">' + c + '</span><strong>' + n + '</strong></div>';
+      return '<div class="tooltip-row">' +
+        '<div class="tooltip-swatch" style="background:' + colors[ci] + '"></div>' +
+        '<span style="flex:1">' + c + '</span><strong>' + n + '</strong></div>';
     }).filter(Boolean).join('');
 
+    // Build segments bottom-up using percentage of chartH
     var segments = '';
-    // Draw from bottom (largest first for visual stability)
     cats.forEach(function(c, ci) {
       var n = data.categories[c][yi] || 0;
       if (!n) return;
-      var h = Math.round((n / maxTotal) * chartH);
-      segments += '<div class="timeline-segment" style="height:' + h + 'px;background:' + colors[ci] +
-                  ';opacity:0.9" title="' + c + ': ' + n + '"></div>';
+      var pct = (n / maxTotal * 100).toFixed(2);
+      segments += '<div class="timeline-segment" data-pct="' + pct +
+        '" style="height:0;background:' + colors[ci] + '"></div>';
     });
 
     barsHtml += '<div class="timeline-bar-group">' +
-      '<div class="bar-tooltip"><div class="tooltip-year">' + yr + ' · ' + total + ' cases</div>' + tooltipRows + '</div>' +
+      '<div class="bar-tooltip">' +
+        '<div class="tooltip-year">' + yr + ' &middot; ' + total + ' cases</div>' +
+        tooltipRows +
+      '</div>' +
       segments +
       '</div>';
   });
-  document.getElementById('timelineBars').innerHTML = barsHtml;
+
+  var barsEl = document.getElementById('timelineBars');
+  barsEl.innerHTML = barsHtml;
 
   // Legend
-  var legendHtml = cats.map(function(c, ci) {
-    return '<div class="legend-item"><div class="legend-dot" style="background:' + colors[ci] + '"></div>' + c + '</div>';
+  document.getElementById('timelineLegend').innerHTML = cats.map(function(c, ci) {
+    return '<div class="legend-item">' +
+      '<div class="legend-dot" style="background:' + colors[ci] + '"></div>' + c + '</div>';
   }).join('');
-  document.getElementById('timelineLegend').innerHTML = legendHtml;
 
-  // Animate in on scroll
-  var tlObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.timeline-segment').forEach(function(seg, i) {
-          seg.style.transition = 'height 0.6s cubic-bezier(0.22,1,0.36,1) ' + (i * 0.03) + 's, opacity 0.3s';
-          var finalH = seg.style.height;
-          seg.style.height = '0';
-          seg.style.opacity = '0';
-          setTimeout(function() { seg.style.height = finalH; seg.style.opacity = '0.9'; }, 50);
-        });
-        tlObserver.unobserve(e.target);
-      }
+  // Animate bars in when section scrolls into view
+  var animated = false;
+  function animateBars() {
+    if (animated) return;
+    animated = true;
+    barsEl.querySelectorAll('.timeline-bar-group').forEach(function(group, gi) {
+      group.querySelectorAll('.timeline-segment').forEach(function(seg, si) {
+        var pct = parseFloat(seg.getAttribute('data-pct'));
+        var targetH = Math.round(pct / 100 * chartH);
+        seg.style.transition = 'none';
+        seg.style.height = '0px';
+        var delay = (gi * 60 + si * 20);
+        setTimeout(function() {
+          seg.style.transition = 'height 0.7s cubic-bezier(0.22,1,0.36,1)';
+          seg.style.height = targetH + 'px';
+        }, delay);
+      });
     });
-  }, { threshold: 0.2 });
-  var tl = document.getElementById('timelineBars');
-  if (tl) tlObserver.observe(tl);
+  }
+
+  var tlObserver = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) { animateBars(); tlObserver.disconnect(); }
+  }, { threshold: 0.15 });
+  tlObserver.observe(document.getElementById('timelineChart'));
+
+  // Also fire immediately if already in view (page loads scrolled down)
+  var rect = document.getElementById('timelineChart').getBoundingClientRect();
+  if (rect.top < window.innerHeight) animateBars();
 }
 
 function buildBarChart(id, items, limit) {
@@ -1021,5 +1039,6 @@ init();
 </script>
 </body>
 </html>
+
 
 
