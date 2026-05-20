@@ -3,166 +3,516 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI in the Newsroom - Dataset Explorer</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>AI in the Newsroom — Dataset Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink:     #1a1a1a;
-    --paper:   #f5f0e8;
-    --cream:   #ede8dc;
-    --rule:    #c8bfad;
-    --accent:  #c0392b;
-    --accent2: #2c5f8a;
-    --muted:   #7a7060;
-    --tag-bg:  #e8e2d6;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; }
+:root {
+  --paper:   #f7f5f0;
+  --ink:     #2c2825;
+  --rust:    #c44b28;
+  --rust-lt: rgba(196,75,40,0.08);
+  --ash:     #756f69;
+  --rule:    #e4dfd8;
+  --card:    #faf8f5;
+  --mono:    'JetBrains Mono', monospace;
+  --sans:    'DM Sans', sans-serif;
+  --serif:   'DM Serif Display', serif;
+  --green:   #2a8d46;
+  --blue:    #1a6dd4;
+  --amber:   #cc7722;
+  --radius:  2px;
+}
 
-  .masthead { background: var(--ink); color: var(--paper); padding: 40px 48px 32px; border-bottom: 3px solid var(--accent); }
-  .masthead-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--rule); margin-bottom: 12px; }
-  .masthead h1 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 4vw, 48px); line-height: 1.1; font-weight: 400; }
-  .masthead h1 em { font-style: italic; color: #c8bfad; }
-  .masthead-meta { margin-top: 16px; font-size: 12px; color: var(--rule); display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
-  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; margin-right: 6px; }
-  .generated { font-family: 'DM Mono', monospace; font-size: 10px; color: #555; margin-left: auto; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1px; background: var(--rule); border-bottom: 1px solid var(--rule); }
-  .stat-cell { background: var(--cream); padding: 20px 24px; text-align: center; }
-  .stat-num { font-family: 'DM Serif Display', serif; font-size: 36px; color: var(--accent); line-height: 1; }
-  .stat-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
 
-  .layout { display: grid; grid-template-columns: 280px 1fr; min-height: calc(100vh - 220px); }
+/* ── Grain overlay ──────────────────────────────────────────────────── */
+.grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-  .sidebar { background: var(--cream); border-right: 1px solid var(--rule); overflow-y: auto; position: sticky; top: 0; max-height: calc(100vh - 220px); }
-  .sidebar-section { padding: 18px 18px 14px; border-bottom: 1px solid var(--rule); }
-  .sidebar-title { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+/* ── Fade-up animation ─────────────────────────────────────────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
 
-  .search-wrap { position: relative; }
-  .search-wrap input { width: 100%; padding: 8px 10px 8px 32px; border: 1px solid var(--rule); background: white; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink); border-radius: 2px; outline: none; }
-  .search-wrap input:focus { border-color: var(--accent2); }
-  .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 13px; }
+/* ── Nav ───────────────────────────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(247,245,240,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  padding: 0 32px;
+}
+.nav-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 48px;
+}
+.nav-brand {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+}
+.brand-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--rust);
+  animation: pulse 3s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+.nav-meta { font-family: var(--mono); font-size: 10px; color: var(--ash); letter-spacing: 0.05em; }
 
-  .year-chart { display: flex; align-items: flex-end; gap: 3px; height: 52px; margin-top: 8px; }
-  .year-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; }
-  .year-bar { width: 100%; background: var(--rule); border-radius: 1px 1px 0 0; transition: background 0.15s; min-height: 2px; }
-  .year-bar-wrap:hover .year-bar, .year-bar-wrap.active .year-bar { background: var(--accent); }
-  .year-label { font-size: 8px; color: var(--muted); font-family: 'DM Mono', monospace; }
+/* ── Hero ──────────────────────────────────────────────────────────── */
+.hero {
+  max-width: 1280px; margin: 0 auto;
+  padding: 72px 32px 56px;
+  border-bottom: 1px solid var(--rule);
+}
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--rust); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::after {
+  content: ''; flex: 1; max-width: 48px; height: 1px; background: var(--rust); opacity: 0.4;
+}
+.hero h1 {
+  font-family: var(--serif); font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400; line-height: 1.05; letter-spacing: -0.01em;
+  color: var(--ink); margin-bottom: 20px;
+}
+.hero h1 em { font-style: italic; color: var(--rust); }
+.hero-sub {
+  font-size: 15px; color: var(--ash); line-height: 1.6; max-width: 560px;
+  margin-bottom: 32px;
+}
+.hero-sources {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.source-pill {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--ash);
+  border: 1px solid var(--rule); border-radius: 20px;
+  padding: 4px 12px; background: var(--card);
+}
 
-  .filter-btn { display: flex; width: 100%; padding: 5px 8px; background: none; border: none; text-align: left; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--ink); border-radius: 2px; justify-content: space-between; align-items: center; transition: background 0.12s; }
-  .filter-btn:hover { background: var(--tag-bg); }
-  .filter-btn.active { background: var(--ink); color: white; }
-  .filter-btn.active .filter-count { background: var(--accent); color: white; }
-  .filter-count { font-family: 'DM Mono', monospace; font-size: 10px; background: var(--tag-bg); padding: 1px 6px; border-radius: 10px; color: var(--muted); flex-shrink: 0; margin-left: 6px; }
+/* ── Stats band ────────────────────────────────────────────────────── */
+.stats-band {
+  border-bottom: 1px solid var(--rule);
+  background: var(--card);
+}
+.stats-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+  display: grid; grid-template-columns: repeat(5, 1fr);
+}
+.stat-cell {
+  padding: 32px 24px; text-align: center;
+  border-right: 1px solid var(--rule);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--serif); font-size: 48px; line-height: 1;
+  color: var(--rust); display: block; margin-bottom: 6px;
+  counter-reset: num;
+}
+.stat-label {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--ash);
+}
 
-  .reset-btn { width: 100%; padding: 8px; background: none; border: 1px solid var(--rule); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); cursor: pointer; border-radius: 2px; transition: all 0.15s; }
-  .reset-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+/* ── Section divider ───────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--rule), transparent);
+  margin: 0;
+}
 
-  .main { overflow-y: auto; }
-  .toolbar { padding: 10px 24px; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; background: white; position: sticky; top: 0; z-index: 10; }
-  .result-count { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
-  .result-count strong { color: var(--ink); font-size: 14px; }
-  .sort-select { font-family: 'DM Sans', sans-serif; font-size: 12px; border: 1px solid var(--rule); padding: 5px 8px; background: white; color: var(--ink); cursor: pointer; }
+/* ── Main layout ───────────────────────────────────────────────────── */
+.layout {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+  display: grid; grid-template-columns: 260px 1fr;
+  gap: 0 40px; min-height: 60vh;
+}
 
-  .cards { padding: 12px 20px; display: flex; flex-direction: column; gap: 1px; }
-  .card { background: white; border: 1px solid var(--rule); padding: 14px 18px; display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; align-items: start; transition: border-color 0.15s, box-shadow 0.15s; }
-  .card:hover { border-color: var(--accent2); box-shadow: 2px 2px 0 var(--accent2); }
-  .card-title { font-family: 'DM Serif Display', serif; font-size: 15px; font-weight: 400; line-height: 1.3; color: var(--ink); }
-  .card-title a { color: inherit; text-decoration: none; }
-  .card-title a:hover { color: var(--accent2); }
-  .card-date { grid-column: 2; grid-row: 1; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; text-align: right; }
-  .card-meta { font-size: 11px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; grid-column: 1 / -1; }
-  .tag { display: inline-block; padding: 2px 7px; background: var(--tag-bg); border-radius: 2px; font-size: 10px; font-family: 'DM Mono', monospace; color: var(--muted); letter-spacing: 0.3px; }
-  .tag.source { background: #dce8f0; color: #2c5f8a; }
-  .tag.country { background: #f0e8dc; color: #8a5c2c; }
+/* ── Sidebar ───────────────────────────────────────────────────────── */
+.sidebar {
+  padding: 32px 0 32px;
+  position: sticky; top: 48px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  border-right: 1px solid var(--rule);
+  padding-right: 32px;
+}
+.sidebar::-webkit-scrollbar { width: 3px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 2px; }
 
-  .loading, .no-results { padding: 60px 24px; text-align: center; color: var(--muted); }
-  .loading p, .no-results p:first-child { font-family: 'DM Serif Display', serif; font-size: 24px; margin-bottom: 8px; }
+.sidebar-section { margin-bottom: 28px; }
+.sidebar-label {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--ash); margin-bottom: 10px;
+  display: block;
+}
 
-  .pagination { padding: 20px 24px; display: flex; justify-content: center; gap: 4px; }
-  .page-btn { padding: 6px 12px; border: 1px solid var(--rule); background: white; font-family: 'DM Mono', monospace; font-size: 11px; cursor: pointer; border-radius: 2px; color: var(--ink); transition: all 0.15s; }
-  .page-btn:hover { background: var(--ink); color: white; border-color: var(--ink); }
-  .page-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-  .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+/* Search */
+.search-wrap { position: relative; }
+.search-input {
+  width: 100%; padding: 8px 12px 8px 34px;
+  border: 1px solid var(--rule); border-radius: var(--radius);
+  background: white; font-family: var(--sans); font-size: 13px;
+  color: var(--ink); outline: none; transition: border-color 0.2s;
+}
+.search-input:focus { border-color: var(--rust); }
+.search-icon {
+  position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+  color: var(--ash); font-size: 14px; pointer-events: none;
+}
 
-  @media (max-width: 768px) {
-    .layout { grid-template-columns: 1fr; }
-    .sidebar { position: static; max-height: none; border-right: none; border-bottom: 1px solid var(--rule); }
-    .masthead { padding: 24px; }
-    .generated { display: none; }
-  }
+/* Year bars */
+.year-chart {
+  display: flex; align-items: flex-end; gap: 4px; height: 60px; margin-top: 8px;
+}
+.year-bar-wrap {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;
+}
+.year-bar {
+  width: 100%; background: var(--rule); border-radius: 2px 2px 0 0;
+  transition: background 0.2s, transform 0.2s; min-height: 3px; transform-origin: bottom;
+}
+.year-bar-wrap:hover .year-bar { background: var(--rust); transform: scaleY(1.05); }
+.year-bar-wrap.active .year-bar { background: var(--rust); }
+.year-label {
+  font-family: var(--mono); font-size: 8px; color: var(--ash);
+  transition: color 0.2s;
+}
+.year-bar-wrap.active .year-label,
+.year-bar-wrap:hover .year-label { color: var(--rust); }
+
+/* Filter pills */
+.filter-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px; border-radius: 20px;
+  border: 1px solid var(--rule); background: var(--card);
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.03em;
+  color: var(--ash); cursor: pointer; transition: all 0.15s;
+  margin: 2px; white-space: nowrap;
+}
+.filter-pill:hover { border-color: var(--rust); color: var(--rust); background: var(--rust-lt); }
+.filter-pill.active { background: var(--rust); border-color: var(--rust); color: white; }
+.filter-pill .pill-count {
+  font-size: 9px; opacity: 0.7; background: rgba(0,0,0,0.1);
+  border-radius: 10px; padding: 0 5px;
+}
+.filter-pill.active .pill-count { background: rgba(255,255,255,0.25); opacity: 1; }
+.pill-group { display: flex; flex-wrap: wrap; gap: 2px; }
+
+/* Reset */
+.reset-btn {
+  width: 100%; padding: 8px; border: 1px solid var(--rule);
+  border-radius: var(--radius); background: none;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ash); cursor: pointer;
+  transition: all 0.15s; margin-top: 8px;
+}
+.reset-btn:hover { background: var(--rust); color: white; border-color: var(--rust); }
+
+/* ── Main content ──────────────────────────────────────────────────── */
+.main { padding: 32px 0; min-width: 0; }
+
+/* Toolbar */
+.toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.result-count { font-family: var(--mono); font-size: 11px; color: var(--ash); }
+.result-count strong { font-size: 16px; color: var(--ink); font-weight: 500; }
+.sort-select {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em;
+  border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: 6px 10px; background: white; color: var(--ash); cursor: pointer;
+  text-transform: uppercase;
+}
+
+/* Active filter banner */
+.active-filter-bar {
+  display: none; align-items: center; gap: 10px;
+  background: var(--rust); color: white;
+  padding: 10px 16px; border-radius: var(--radius);
+  margin-bottom: 16px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em;
+}
+.active-filter-bar.show { display: flex; }
+.filter-bar-label { text-transform: uppercase; opacity: 0.7; }
+.filter-bar-value { font-weight: 500; text-transform: uppercase; }
+.filter-bar-clear {
+  margin-left: auto; background: rgba(255,255,255,0.2); border: none;
+  color: white; padding: 4px 12px; border-radius: var(--radius);
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.05em;
+  text-transform: uppercase; cursor: pointer; transition: background 0.15s;
+}
+.filter-bar-clear:hover { background: rgba(255,255,255,0.35); }
+
+/* Cards */
+.cards { display: flex; flex-direction: column; gap: 1px; }
+
+.card {
+  background: white; border: 1px solid var(--rule);
+  border-radius: var(--radius); padding: 20px 24px;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 8px 16px; align-items: start;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  position: relative; overflow: hidden;
+}
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%; background: transparent;
+  transition: background 0.2s;
+}
+.card:hover {
+  border-color: var(--rust); box-shadow: 0 4px 20px rgba(196,75,40,0.08);
+  transform: translateX(2px);
+}
+.card:hover::before { background: var(--rust); }
+
+.card-title {
+  font-family: var(--serif); font-size: 16px; font-weight: 400;
+  line-height: 1.4; color: var(--ink);
+}
+.card-title a { color: inherit; text-decoration: none; transition: color 0.2s; }
+.card-title a:hover { color: var(--rust); }
+
+.card-date {
+  grid-column: 2; grid-row: 1;
+  font-family: var(--mono); font-size: 10px; color: var(--ash);
+  white-space: nowrap; padding-top: 2px;
+}
+
+.card-meta {
+  grid-column: 1 / -1;
+  display: flex; flex-wrap: wrap; gap: 5px; align-items: center;
+}
+.card-org { font-size: 12px; color: var(--ash); margin-right: 4px; }
+
+.tag {
+  display: inline-block; padding: 2px 8px; border-radius: 12px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em;
+  text-transform: uppercase; border: 1px solid var(--rule);
+  background: var(--card); color: var(--ash);
+}
+.tag.country { background: #f0f7ff; border-color: #cce0ff; color: #1a5db0; }
+.tag.source  { background: #f0f9f2; border-color: #bbe5c3; color: #236634; }
+.tag.cat     { background: var(--rust-lt); border-color: rgba(196,75,40,0.2); color: var(--rust); }
+
+/* Loading / empty */
+.state-msg {
+  padding: 80px 24px; text-align: center; color: var(--ash);
+}
+.state-msg p:first-child {
+  font-family: var(--serif); font-size: 28px; color: var(--ink);
+  margin-bottom: 10px; font-style: italic;
+}
+.state-msg p { font-size: 13px; }
+
+/* Pagination */
+.pagination {
+  padding: 32px 0 0; display: flex; justify-content: center; gap: 4px;
+}
+.page-btn {
+  padding: 7px 14px; border: 1px solid var(--rule); background: white;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em;
+  cursor: pointer; border-radius: var(--radius); color: var(--ash);
+  transition: all 0.15s;
+}
+.page-btn:hover:not(:disabled) { background: var(--ink); color: white; border-color: var(--ink); }
+.page-btn.active { background: var(--rust); color: white; border-color: var(--rust); }
+.page-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+
+/* ── Horizontal bar chart ──────────────────────────────────────────── */
+.chart-section {
+  border-top: 1px solid var(--rule); padding: 48px 32px;
+  background: var(--card);
+}
+.chart-inner { max-width: 1280px; margin: 0 auto; }
+.chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.chart-title {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--ash); margin-bottom: 20px;
+}
+.bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.bar-label { font-size: 12px; color: var(--ink); min-width: 140px; }
+.bar-track {
+  flex: 1; height: 20px; background: var(--rule); border-radius: 2px; overflow: hidden;
+}
+.bar-fill {
+  height: 100%; border-radius: 2px; background: var(--rust);
+  transform-origin: left; transform: scaleX(0);
+  transition: transform 1s cubic-bezier(0.22,1,0.36,1);
+}
+.bar-fill.animated { transform: scaleX(1); }
+.bar-count { font-family: var(--mono); font-size: 10px; color: var(--ash); min-width: 28px; text-align: right; }
+
+/* ── Footer ────────────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--rule); padding: 32px;
+  font-family: var(--mono); font-size: 10px; color: var(--ash);
+  text-align: center; letter-spacing: 0.05em;
+}
+.footer-inner { max-width: 1280px; margin: 0 auto; }
+
+/* ── Responsive ────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; max-height: none; border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 24px; }
+  .stats-inner { grid-template-columns: repeat(3, 1fr); }
+  .stat-cell:nth-child(3) { border-right: none; }
+  .chart-grid { grid-template-columns: 1fr; }
+  .hero { padding: 48px 24px 40px; }
+  .layout { padding: 0 24px; }
+  nav { padding: 0 24px; }
+}
+@media (max-width: 560px) {
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+}
 </style>
 </head>
 <body>
+<div class="grain"></div>
 
-<div class="masthead">
-  <div class="masthead-label">Oxford Dissertation Research - AI in Journalism</div>
-  <h1>AI Adoption in News Organisations<br><em>Dataset Explorer</em></h1>
-  <div class="masthead-meta">
-    <span><span class="dot"></span>JournalismAI Case Studies</span>
-    <span><span class="dot"></span>ONA AI in the Newsroom</span>
-    <span><span class="dot"></span>Reuters Institute DNR 2025</span>
-    <span class="generated" id="generatedAt"></span>
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="#">
+      <span class="brand-dot"></span>
+      AI in the Newsroom
+    </a>
+    <span class="nav-meta" id="generatedAt"></span>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero fade-up">
+  <div class="hero-eyebrow">Oxford Dissertation Research</div>
+  <h1>AI Adoption in<br><em>News Organisations</em></h1>
+  <p class="hero-sub">A systematic dataset of publicly documented AI use cases in newsrooms worldwide, aggregated from leading industry databases and research reports.</p>
+  <div class="hero-sources" id="heroSources">
+    <span class="source-pill">JournalismAI Case Studies</span>
+    <span class="source-pill">ONA AI in the Newsroom</span>
+    <span class="source-pill">Reuters Institute DNR 2025</span>
+    <span class="source-pill">WAN-IFRA / Women in News</span>
+  </div>
+</section>
+
+<!-- Stats -->
+<div class="stats-band">
+  <div class="stats-inner" id="statsRow">
+    <div class="stat-cell"><span class="stat-num">—</span><span class="stat-label">Loading</span></div>
   </div>
 </div>
 
-<div class="stats-row" id="statsRow">
-  <div class="stat-cell"><div class="stat-num">...</div><div class="stat-label">Loading</div></div>
-</div>
+<div class="divider"></div>
 
+<!-- Main layout -->
 <div class="layout">
+  <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-section">
-      <div class="sidebar-title">Search</div>
+      <span class="sidebar-label">Search</span>
       <div class="search-wrap">
-        <span class="search-icon">&#x2315;</span>
-        <input type="text" id="searchInput" placeholder="Organisation, keyword...">
+        <span class="search-icon">⌕</span>
+        <input class="search-input" type="text" id="searchInput" placeholder="Organisation, keyword…">
       </div>
     </div>
+
     <div class="sidebar-section">
-      <div class="sidebar-title">Year</div>
+      <span class="sidebar-label">Year</span>
       <div class="year-chart" id="yearChart"></div>
     </div>
+
     <div class="sidebar-section">
-      <div class="sidebar-title">Category</div>
-      <div id="categoryFilters"></div>
+      <span class="sidebar-label">Category</span>
+      <div class="pill-group" id="categoryFilters"></div>
     </div>
+
     <div class="sidebar-section">
-      <div class="sidebar-title">Source</div>
-      <div id="sourceFilters"></div>
+      <span class="sidebar-label">Source</span>
+      <div class="pill-group" id="sourceFilters"></div>
     </div>
+
     <div class="sidebar-section">
-      <div class="sidebar-title">Country</div>
-      <div id="countryFilters"></div>
+      <span class="sidebar-label">Country</span>
+      <div class="pill-group" id="countryFilters"></div>
     </div>
-    <div class="sidebar-section">
-      <button class="reset-btn" id="resetBtn">Reset all filters</button>
-    </div>
+
+    <button class="reset-btn" id="resetBtn">↺ Reset all filters</button>
   </aside>
 
+  <!-- Main -->
   <main class="main">
     <div class="toolbar">
-      <div class="result-count" id="resultCount">Loading...</div>
+      <div class="result-count" id="resultCount">Loading…</div>
       <select class="sort-select" id="sortSelect">
-        <option value="date_desc">Date: newest first</option>
-        <option value="date_asc">Date: oldest first</option>
-        <option value="title_asc">Title A-Z</option>
-        <option value="org_asc">Organisation A-Z</option>
+        <option value="date_desc">Newest first</option>
+        <option value="date_asc">Oldest first</option>
+        <option value="title_asc">Title A–Z</option>
+        <option value="org_asc">Organisation A–Z</option>
       </select>
     </div>
+
+    <div class="active-filter-bar" id="activeFilterBar">
+      <span class="filter-bar-label">Filtered by</span>
+      <span class="filter-bar-value" id="activeFilterLabel"></span>
+      <button class="filter-bar-clear" id="filterBarClear">Clear all</button>
+    </div>
+
     <div class="cards" id="cards">
-      <div class="loading"><p>Loading data...</p><p>Fetching use cases from database</p></div>
+      <div class="state-msg"><p>Loading data…</p><p>Fetching use cases</p></div>
     </div>
     <div class="pagination" id="pagination"></div>
   </main>
 </div>
+
+<!-- Chart section -->
+<section class="chart-section fade-up">
+  <div class="chart-inner">
+    <div class="chart-grid">
+      <div>
+        <div class="chart-title">Top categories</div>
+        <div id="catChart"></div>
+      </div>
+      <div>
+        <div class="chart-title">Top countries</div>
+        <div id="countryChart"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    Oxford University Dissertation · AI in Journalism · Data collected from publicly available sources
+  </div>
+</footer>
 
 <script>
 var ALL_DATA = [];
 var STATS = {};
 var filtered = [];
 var currentPage = 1;
-var PAGE_SIZE = 30;
+var PAGE_SIZE = 25;
 var activeYear = null;
 var activeCategories = new Set();
 var activeSources = new Set();
@@ -175,74 +525,69 @@ function esc(s) {
   return el.innerHTML;
 }
 
+// ── Fade-up observer ────────────────────────────────────────────────
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+
+// ── Init ────────────────────────────────────────────────────────────
 function init() {
   fetch('data.json')
-    .then(function(resp) {
-      if (!resp.ok) throw new Error('HTTP ' + resp.status + ' loading data.json');
-      return resp.json();
-    })
+    .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(function(payload) {
       ALL_DATA = payload.records;
       STATS = payload.stats;
-      var genEl = document.getElementById('generatedAt');
-      if (genEl) genEl.textContent = 'Generated ' + payload.generated_at;
+      var g = document.getElementById('generatedAt');
+      if (g) g.textContent = 'Updated ' + payload.generated_at;
       filtered = ALL_DATA.slice();
       buildStats();
       buildYearChart();
       buildFilters('categoryFilters', 'categories', activeCategories, toggleCategory);
       buildFilters('sourceFilters', 'sources', activeSources, toggleSource);
       buildFilters('countryFilters', 'countries', activeCountries, toggleCountry);
+      buildCharts();
       applyFilters();
     })
     .catch(function(err) {
       document.getElementById('cards').innerHTML =
-        '<div class="no-results"><p>Error loading data</p><p>' + err.message + '</p></div>';
-      console.error('Dashboard error:', err);
+        '<div class="state-msg"><p>Could not load data</p><p>' + err.message + '</p></div>';
     });
 
   document.getElementById('searchInput').addEventListener('input', function(e) {
     searchQuery = e.target.value.toLowerCase();
-    currentPage = 1;
-    applyFilters();
+    currentPage = 1; applyFilters();
   });
-
-  document.getElementById('sortSelect').addEventListener('change', function() {
-    render();
-  });
-
-  document.getElementById('resetBtn').addEventListener('click', function() {
-    resetAll();
-  });
+  document.getElementById('sortSelect').addEventListener('change', render);
+  document.getElementById('resetBtn').addEventListener('click', resetAll);
+  document.getElementById('filterBarClear').addEventListener('click', resetAll);
 }
 
+// ── Stats ────────────────────────────────────────────────────────────
 function buildStats() {
-  var orgs = {};
-  var countries = {};
-  var sources = {};
-  var years = {};
+  var orgs = {}, countries = {}, sources = {}, years = {};
   ALL_DATA.forEach(function(d) {
     if (d.organisation) orgs[d.organisation] = true;
     if (d.source_name) sources[d.source_name] = true;
     var yr = (d.date_published || '').slice(0, 4);
     if (yr && parseInt(yr) > 2010) years[yr] = true;
-    (d.country || '').split(',').forEach(function(c) {
-      c = c.trim();
-      if (c) countries[c] = true;
-    });
+    (d.country || '').split(',').forEach(function(c) { c = c.trim(); if (c) countries[c] = true; });
   });
-  var html =
+  document.getElementById('statsRow').innerHTML =
     mkStat(ALL_DATA.length, 'Use Cases') +
     mkStat(Object.keys(orgs).length, 'Organisations') +
     mkStat(Object.keys(countries).length, 'Countries') +
     mkStat(Object.keys(sources).length, 'Sources') +
     mkStat(Object.keys(years).length, 'Years Covered');
-  document.getElementById('statsRow').innerHTML = html;
 }
-
 function mkStat(n, label) {
-  return '<div class="stat-cell"><div class="stat-num">' + n + '</div><div class="stat-label">' + label + '</div></div>';
+  return '<div class="stat-cell fade-up visible"><span class="stat-num">' + n +
+    '</span><span class="stat-label">' + label + '</span></div>';
 }
 
+// ── Year chart ───────────────────────────────────────────────────────
 function buildYearChart() {
   var years = STATS.by_year || [];
   if (!years.length) return;
@@ -250,99 +595,86 @@ function buildYearChart() {
   years.forEach(function(y) { if (y[1] > maxN) maxN = y[1]; });
   var html = '';
   years.forEach(function(item) {
-    var yr = item[0];
-    var n = item[1];
-    var h = Math.max(4, Math.round(n / maxN * 46));
+    var yr = item[0], n = item[1];
+    var h = Math.max(4, Math.round(n / maxN * 52));
     var cls = activeYear === yr ? 'year-bar-wrap active' : 'year-bar-wrap';
     html += '<div class="' + cls + '" data-year="' + yr + '" title="' + yr + ': ' + n + ' cases">' +
             '<div class="year-bar" style="height:' + h + 'px"></div>' +
             '<div class="year-label">' + yr.slice(2) + '</div></div>';
   });
-  var container = document.getElementById('yearChart');
-  container.innerHTML = html;
-  container.querySelectorAll('.year-bar-wrap').forEach(function(el) {
-    el.addEventListener('click', function() {
-      toggleYear(el.getAttribute('data-year'));
-    });
+  var c = document.getElementById('yearChart');
+  c.innerHTML = html;
+  c.querySelectorAll('.year-bar-wrap').forEach(function(el) {
+    el.addEventListener('click', function() { toggleYear(el.getAttribute('data-year')); });
   });
 }
-
 function toggleYear(yr) {
   activeYear = activeYear === yr ? null : yr;
-  buildYearChart();
-  currentPage = 1;
-  applyFilters();
+  buildYearChart(); currentPage = 1; applyFilters();
 }
 
-function buildFilters(containerId, mode, activeSet, toggleFn) {
+// ── Filter pills ─────────────────────────────────────────────────────
+function buildFilters(id, mode, activeSet, fn) {
   var counts = {};
   ALL_DATA.forEach(function(r) {
-    var vals;
-    if (mode === 'categories') {
-      vals = (r.summary || '').split(',').map(function(s) { return s.trim(); }).filter(Boolean);
-    } else if (mode === 'sources') {
-      vals = r.source_name ? [r.source_name] : [];
-    } else {
-      vals = (r.country || '').split(',').map(function(s) { return s.trim(); }).filter(Boolean);
-    }
+    var vals = mode === 'categories'
+      ? (r.summary || '').split(',').map(function(s) { return s.trim(); }).filter(Boolean)
+      : mode === 'sources' ? (r.source_name ? [r.source_name] : [])
+      : (r.country || '').split(',').map(function(s) { return s.trim(); }).filter(Boolean);
     vals.forEach(function(v) { if (v) counts[v] = (counts[v] || 0) + 1; });
   });
-
   var sorted = Object.keys(counts)
     .map(function(k) { return [k, counts[k]]; })
-    .sort(function(a, b) { return b[1] - a[1]; })
-    .slice(0, 20);
-
+    .sort(function(a, b) { return b[1] - a[1]; }).slice(0, 18);
   var html = '';
   sorted.forEach(function(item) {
-    var val = item[0];
-    var count = item[1];
-    var cls = activeSet.has(val) ? 'filter-btn active' : 'filter-btn';
+    var val = item[0], count = item[1];
+    var cls = 'filter-pill' + (activeSet.has(val) ? ' active' : '');
     html += '<button class="' + cls + '" data-val="' + esc(val) + '">' +
-            '<span>' + esc(val) + '</span>' +
-            '<span class="filter-count">' + count + '</span>' +
-            '</button>';
+            esc(val) + '<span class="pill-count">' + count + '</span></button>';
   });
-
-  var container = document.getElementById(containerId);
+  var container = document.getElementById(id);
   container.innerHTML = html;
-  container.querySelectorAll('.filter-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      toggleFn(btn.getAttribute('data-val'));
-    });
+  container.querySelectorAll('.filter-pill').forEach(function(btn) {
+    btn.addEventListener('click', function() { fn(btn.getAttribute('data-val')); });
   });
 }
+function toggleCategory(v) { toggle(v, activeCategories); buildFilters('categoryFilters', 'categories', activeCategories, toggleCategory); currentPage = 1; applyFilters(); }
+function toggleSource(v)   { toggle(v, activeSources);   buildFilters('sourceFilters',   'sources',    activeSources,    toggleSource);   currentPage = 1; applyFilters(); }
+function toggleCountry(v)  { toggle(v, activeCountries);  buildFilters('countryFilters',  'countries',  activeCountries,  toggleCountry);  currentPage = 1; applyFilters(); }
+function toggle(v, set) { if (set.has(v)) { set.delete(v); } else { set.add(v); } }
 
-function toggleCategory(val) {
-  if (activeCategories.has(val)) { activeCategories.delete(val); } else { activeCategories.add(val); }
-  buildFilters('categoryFilters', 'categories', activeCategories, toggleCategory);
-  currentPage = 1; applyFilters();
-}
-function toggleSource(val) {
-  if (activeSources.has(val)) { activeSources.delete(val); } else { activeSources.add(val); }
-  buildFilters('sourceFilters', 'sources', activeSources, toggleSource);
-  currentPage = 1; applyFilters();
-}
-function toggleCountry(val) {
-  if (activeCountries.has(val)) { activeCountries.delete(val); } else { activeCountries.add(val); }
-  buildFilters('countryFilters', 'countries', activeCountries, toggleCountry);
-  currentPage = 1; applyFilters();
+// ── Active filter bar ────────────────────────────────────────────────
+function updateFilterBar() {
+  var parts = [];
+  if (activeYear) parts.push(activeYear);
+  activeCategories.forEach(function(v) { parts.push(v); });
+  activeSources.forEach(function(v) { parts.push(v); });
+  activeCountries.forEach(function(v) { parts.push(v); });
+  if (searchQuery) parts.push('"' + searchQuery + '"');
+  var bar = document.getElementById('activeFilterBar');
+  var lbl = document.getElementById('activeFilterLabel');
+  if (parts.length) {
+    bar.classList.add('show');
+    lbl.textContent = parts.join(' · ');
+  } else {
+    bar.classList.remove('show');
+  }
 }
 
+// ── Filter & render ──────────────────────────────────────────────────
 function applyFilters() {
   filtered = ALL_DATA.filter(function(r) {
     if (activeYear && (r.date_published || '').slice(0, 4) !== activeYear) return false;
     if (activeCategories.size > 0) {
       var cats = (r.summary || '').split(',').map(function(s) { return s.trim(); });
-      var ok = false;
-      cats.forEach(function(c) { if (activeCategories.has(c)) ok = true; });
+      var ok = false; cats.forEach(function(c) { if (activeCategories.has(c)) ok = true; });
       if (!ok) return false;
     }
     if (activeSources.size > 0 && !activeSources.has(r.source_name)) return false;
     if (activeCountries.size > 0) {
       var cs = (r.country || '').split(',').map(function(s) { return s.trim(); });
-      var ok2 = false;
-      cs.forEach(function(c) { if (activeCountries.has(c)) ok2 = true; });
+      var ok2 = false; cs.forEach(function(c) { if (activeCountries.has(c)) ok2 = true; });
       if (!ok2) return false;
     }
     if (searchQuery) {
@@ -351,6 +683,7 @@ function applyFilters() {
     }
     return true;
   });
+  updateFilterBar();
   render();
 }
 
@@ -363,7 +696,6 @@ function render() {
     if (sort === 'org_asc')   return (a.organisation || '').localeCompare(b.organisation || '');
     return 0;
   });
-
   var totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
   if (currentPage > totalPages) currentPage = 1;
   var page = sorted.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
@@ -373,73 +705,101 @@ function render() {
 
   if (sorted.length === 0) {
     document.getElementById('cards').innerHTML =
-      '<div class="no-results"><p>No results</p><p>Try adjusting your filters</p></div>';
+      '<div class="state-msg"><p>No results</p><p>Try adjusting your filters or search</p></div>';
     document.getElementById('pagination').innerHTML = '';
     return;
   }
 
-  var cardsHtml = '';
+  var html = '';
   page.forEach(function(r) {
-    var date = (r.date_published || '-').slice(0, 7);
-    var cats = (r.summary || '').split(',').map(function(s) { return s.trim(); }).filter(Boolean).slice(0, 3);
+    var date = (r.date_published || '—').slice(0, 7);
+    var cats = (r.summary || '').split(',').map(function(s) { return s.trim(); }).filter(Boolean).slice(0, 2);
+    var country1 = r.country ? r.country.split(',')[0].trim() : '';
     var titleInner = r.url
       ? '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.title || 'Untitled') + '</a>'
       : esc(r.title || 'Untitled');
-    var country1 = r.country ? r.country.split(',')[0].trim() : '';
     var tagsHtml = '';
     if (country1) tagsHtml += '<span class="tag country">' + esc(country1) + '</span>';
     tagsHtml += '<span class="tag source">' + esc(r.source_name) + '</span>';
-    cats.forEach(function(c) { tagsHtml += '<span class="tag">' + esc(c) + '</span>'; });
-    cardsHtml +=
-      '<div class="card">' +
-        '<div class="card-title">' + titleInner + '</div>' +
-        '<div class="card-date">' + esc(date) + '</div>' +
-        '<div class="card-meta">' +
-          (r.organisation ? '<span>' + esc(r.organisation) + '</span>' : '') +
-          tagsHtml +
-        '</div>' +
-      '</div>';
+    cats.forEach(function(c) { tagsHtml += '<span class="tag cat">' + esc(c) + '</span>'; });
+    html += '<div class="card">' +
+      '<div class="card-title">' + titleInner + '</div>' +
+      '<div class="card-date">' + esc(date) + '</div>' +
+      '<div class="card-meta">' +
+        (r.organisation ? '<span class="card-org">' + esc(r.organisation) + '</span>' : '') +
+        tagsHtml +
+      '</div></div>';
   });
-  document.getElementById('cards').innerHTML = cardsHtml;
+  document.getElementById('cards').innerHTML = html;
 
+  // Pagination
   var pages = [];
   if (totalPages > 1) {
-    pages.push('<button class="page-btn" id="prevBtn"' + (currentPage === 1 ? ' disabled' : '') + '>Prev</button>');
+    pages.push('<button class="page-btn" id="prevBtn"' + (currentPage === 1 ? ' disabled' : '') + '>← Prev</button>');
     for (var i = 1; i <= totalPages; i++) {
       if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 2) {
         pages.push('<button class="page-btn' + (i === currentPage ? ' active' : '') + '" data-page="' + i + '">' + i + '</button>');
       } else if (Math.abs(i - currentPage) === 3) {
-        pages.push('<span style="padding:6px 4px;color:var(--muted);font-size:11px">...</span>');
+        pages.push('<span style="padding:8px 4px;color:var(--ash);font-family:var(--mono);font-size:10px">…</span>');
       }
     }
-    pages.push('<button class="page-btn" id="nextBtn"' + (currentPage === totalPages ? ' disabled' : '') + '>Next</button>');
+    pages.push('<button class="page-btn" id="nextBtn"' + (currentPage === totalPages ? ' disabled' : '') + '>Next →</button>');
   }
-  var paginationEl = document.getElementById('pagination');
-  paginationEl.innerHTML = pages.join('');
-  paginationEl.querySelectorAll('[data-page]').forEach(function(btn) {
+  var pag = document.getElementById('pagination');
+  pag.innerHTML = pages.join('');
+  pag.querySelectorAll('[data-page]').forEach(function(btn) {
     btn.addEventListener('click', function() { goPage(parseInt(btn.getAttribute('data-page'))); });
   });
-  var prevBtn = document.getElementById('prevBtn');
-  var nextBtn = document.getElementById('nextBtn');
-  if (prevBtn) prevBtn.addEventListener('click', function() { goPage(currentPage - 1); });
-  if (nextBtn) nextBtn.addEventListener('click', function() { goPage(currentPage + 1); });
+  var prev = document.getElementById('prevBtn'), next = document.getElementById('nextBtn');
+  if (prev) prev.addEventListener('click', function() { goPage(currentPage - 1); });
+  if (next) next.addEventListener('click', function() { goPage(currentPage + 1); });
 }
 
-function goPage(p) {
-  currentPage = p;
-  render();
-  window.scrollTo(0, 0);
+function goPage(p) { currentPage = p; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+// ── Charts ───────────────────────────────────────────────────────────
+function buildCharts() {
+  buildBarChart('catChart', STATS.top_categories || [], 10);
+  buildBarChart('countryChart', STATS.top_countries || [], 10);
 }
 
+function buildBarChart(id, items, limit) {
+  var container = document.getElementById(id);
+  if (!container || !items.length) return;
+  var top = items.slice(0, limit);
+  var maxN = top[0][1];
+  var html = '';
+  top.forEach(function(item) {
+    var label = item[0], count = item[1];
+    var pct = count / maxN;
+    html += '<div class="bar-row">' +
+      '<span class="bar-label">' + esc(label) + '</span>' +
+      '<div class="bar-track"><div class="bar-fill" style="width:' + (pct * 100).toFixed(1) + '%"></div></div>' +
+      '<span class="bar-count">' + count + '</span>' +
+    '</div>';
+  });
+  container.innerHTML = html;
+
+  // Animate bars when visible
+  var barObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.bar-fill').forEach(function(bar) {
+          bar.classList.add('animated');
+        });
+        barObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  barObserver.observe(container);
+}
+
+// ── Reset ────────────────────────────────────────────────────────────
 function resetAll() {
-  activeYear = null;
-  activeCategories.clear();
-  activeSources.clear();
-  activeCountries.clear();
-  searchQuery = '';
+  activeYear = null; activeCategories.clear(); activeSources.clear(); activeCountries.clear();
+  searchQuery = ''; currentPage = 1;
   document.getElementById('searchInput').value = '';
   document.getElementById('sortSelect').value = 'date_desc';
-  currentPage = 1;
   buildYearChart();
   buildFilters('categoryFilters', 'categories', activeCategories, toggleCategory);
   buildFilters('sourceFilters', 'sources', activeSources, toggleSource);

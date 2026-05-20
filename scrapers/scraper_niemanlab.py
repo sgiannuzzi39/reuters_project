@@ -11,18 +11,25 @@ Usage:
 
 import argparse
 import logging
+import sys
 import time
+from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
+from dateutil import parser as dateutil_parser
 
-from scraper_base import get_db, insert_use_case, log_summary
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from scraper_base import get_db, insert_use_case, is_ai_journalism_relevant, log_summary
 
 logger = logging.getLogger("niemanlab")
+logging.basicConfig(level=logging.INFO,
+                    format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 BASE_URL    = "https://www.niemanlab.org"
-SEARCH_URL  = "https://www.niemanlab.org/?s={query}&paged={page}"
+# Real pagination format discovered by inspecting next-page links
+SEARCH_URL  = "https://www.niemanlab.org/page/{page}/?s={query}"
 SOURCE_NAME = "Nieman Lab"
 SOURCE_CAT  = "Industry"
 
@@ -55,61 +62,112 @@ def get_soup(url: str) -> BeautifulSoup | None:
         return None
 
 
+def _parse_date(text: str) -> str | None:
+    """Parse Nieman Lab date strings like 'Feb.  27, 2023, 12:45 p.m.' → '2023-02-27'."""
+    try:
+        return dateutil_parser.parse(text, fuzzy=True).strftime("%Y-%m-%d")
+    except Exception:
+        return None
+
+
 def parse_article_page(url: str) -> dict:
-    """Fetch a single article and extract full text + metadata."""
+    """
+    Fetch a single Nieman Lab page and extract metadata + text.
+
+    Nieman Lab has two article templates:
+      - /reading/slug  — curated external links ("What We're Reading")
+      - /YYYY/MM/slug  — original Nieman Lab articles
+
+    For /reading/ pages the organisation is the external publication (e.g.
+    "Financial Times") and the canonical URL is the external article link,
+    which is more useful for the dissertation database than the Nieman Lab
+    pointer page.
+    """
     soup = get_soup(url)
     if not soup:
         return {}
 
-    # Published date — Nieman Lab uses <time> with datetime attr
-    time_tag  = soup.find("time")
-    date_pub  = time_tag.get("datetime", "")[:10] if time_tag else None
+    # ── "What We're Reading" template (/reading/ URLs) ─────────────────────
+    wwr = soup.select_one(".wwr-full-item")
+    if wwr:
+        # External article URL
+        ext_link = wwr.select_one(".wwr-full-link")
+        ext_url  = ext_link.get("href") if ext_link else url
 
-    # Author — used as a proxy; not the news org
-    author_tag = soup.select_one(".post-author a, .byline a, .author a")
-    author     = author_tag.get_text(strip=True) if author_tag else None
+        # Organisation: flag text is "Publication / Authors / Date"
+        flag_tag = wwr.select_one(".wwr-full-flag")
+        organisation = None
+        date_pub = None
+        if flag_tag:
+            # Remove the inner span (contains date) to get just "Pub / Authors"
+            flag_span = flag_tag.find("span")
+            date_text = flag_span.get_text(strip=True).lstrip("/").strip() if flag_span else ""
+            date_pub  = _parse_date(date_text)
+            if flag_span:
+                flag_span.decompose()
+            flag_text    = flag_tag.get_text(strip=True)
+            organisation = flag_text.split("/")[0].strip() or None
 
-    # Body text
-    body_div = soup.select_one(".article-body, .entry-content, #content article")
-    raw_text = body_div.get_text(separator="\n", strip=True) if body_div else ""
+        deck_tag = wwr.select_one(".wwr-full-deck")
+        summary  = deck_tag.get_text(strip=True) if deck_tag else ""
+        # Strip the "— LO" editor-initials suffix
+        summary  = summary.rsplit("—", 1)[0].strip().strip('"').strip("'")
 
-    # Try to extract the news organisation from the text (rough heuristic)
-    # LLM will do this properly in Phase 3; we just grab the first 1000 chars here
+        return {
+            "url":           ext_url,
+            "date_published": date_pub,
+            "organisation":  organisation,
+            "summary":       summary[:500] if summary else None,
+            "raw_text":      summary[:5000],
+        }
+
+    # ── Original Nieman Lab article template (/YYYY/MM/ URLs) ──────────────
+    date_tag = soup.select_one(".simple-bylinedate")
+    date_pub = _parse_date(date_tag.get_text(strip=True)) if date_tag else None
+
+    author_tag = soup.select_one(".bylineauthorname")
+    author = author_tag.get_text(strip=True) if author_tag else None
+
+    deck_tag  = soup.select_one(".simple-post-deck")
+    deck      = deck_tag.get_text(strip=True) if deck_tag else ""
+
+    body_div  = soup.select_one(".simple-body")
+    body_text = body_div.get_text(separator="\n", strip=True) if body_div else ""
+
+    raw_text = "\n\n".join(filter(None, [deck, body_text]))
+
     return {
         "date_published": date_pub,
-        "organisation":   author,          # Phase 3 LLM will refine this
-        "raw_text":       raw_text[:5000], # cap at 5 000 chars
+        "organisation":   author,   # Phase 3 LLM will extract the actual news org
+        "summary":        deck[:500] if deck else None,
+        "raw_text":       raw_text[:5000],
     }
 
 
 def parse_search_results(soup: BeautifulSoup, query: str) -> list[dict]:
-    """Parse a search results page and return a list of partial records."""
+    """Parse a Nieman Lab search results page and return partial records."""
     records = []
 
-    # Nieman Lab search results are article cards
-    articles = soup.select("article, .post-item, .search-result")
-    if not articles:
-        # Fallback: any <h2> with a link inside the main content
-        articles = soup.select("main h2, .entry-title")
+    # Real card class discovered by inspecting the live page
+    cards = soup.select("div.simple-loop-article")
 
-    for art in articles:
-        link_tag = art.find("a", href=True) if art.name != "a" else art
+    for card in cards:
+        link_tag = card.select_one(".simple-loop-headline a")
         if not link_tag:
             continue
 
-        href  = link_tag["href"]
+        href = link_tag.get("href", "")
         if not href.startswith("http"):
             href = BASE_URL + href
 
-        # Skip tag/category pages
-        if any(x in href for x in ["/tag/", "/category/", "/author/"]):
+        if any(x in href for x in ["/tag/", "/category/", "/author/", "/page/"]):
             continue
 
-        title_tag = art.find(["h2", "h3", "h1"])
-        title     = title_tag.get_text(strip=True) if title_tag else link_tag.get_text(strip=True)
+        title = link_tag.get_text(strip=True)
 
-        excerpt_tag = art.select_one("p, .excerpt, .entry-summary")
-        summary     = excerpt_tag.get_text(strip=True) if excerpt_tag else ""
+        # Date visible on the card
+        date_tag = card.select_one(".simple-loop-date")
+        card_date = _parse_date(date_tag.get_text(strip=True)) if date_tag else None
 
         records.append({
             "source_name":     SOURCE_NAME,
@@ -117,7 +175,8 @@ def parse_search_results(soup: BeautifulSoup, query: str) -> list[dict]:
             "source_url":      SEARCH_URL.format(query=query, page=1),
             "title":           title,
             "url":             href,
-            "summary":         summary[:500],
+            "summary":         "",
+            "date_published":  card_date,
         })
 
     return records
@@ -131,13 +190,18 @@ def scrape(queries: list[str] | None = None, max_pages: int = 5) -> None:
     conn      = get_db()
     attempted = 0
     inserted  = 0
+    skipped   = 0
 
     for query in queries:
         logger.info("Searching Nieman Lab for: %r", query)
         query_enc = query.replace(" ", "+")
 
         for page in range(1, max_pages + 1):
-            url  = SEARCH_URL.format(query=query_enc, page=page)
+            # Page 1 doesn't use /page/1/ — that returns a 404
+            if page == 1:
+                url = f"{BASE_URL}/?s={query_enc}"
+            else:
+                url = SEARCH_URL.format(query=query_enc, page=page)
             soup = get_soup(url)
 
             if not soup:
@@ -152,19 +216,29 @@ def scrape(queries: list[str] | None = None, max_pages: int = 5) -> None:
             for partial in partial_records:
                 attempted += 1
 
-                # Fetch the full article for richer text
                 detail = parse_article_page(partial["url"])
-                record = {**partial, **detail}  # detail fields override partial where set
+                record = {**partial, **detail}
+
+                if not is_ai_journalism_relevant(
+                    record.get("title", ""),
+                    record.get("summary", ""),
+                    record.get("raw_text", ""),
+                ):
+                    skipped += 1
+                    logger.debug("  ✗ not relevant: %s", record.get("title", "")[:80])
+                    time.sleep(0.5)
+                    continue
 
                 if insert_use_case(conn, record):
                     inserted += 1
                     logger.info("  + %s", record.get("title", "")[:80])
 
-                time.sleep(1.5)   # polite delay between article fetches
+                time.sleep(1.5)
 
-            time.sleep(2)         # delay between pages
+            time.sleep(2)
 
-    log_summary(SOURCE_NAME, attempted, inserted)
+    logger.info("[Nieman Lab] %d relevance-filtered out", skipped)
+    log_summary(SOURCE_NAME, attempted, inserted, filtered=skipped)
     conn.close()
 
 

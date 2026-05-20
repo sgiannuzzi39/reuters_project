@@ -11,6 +11,9 @@ pypdf>=4.0.0
 # Deduplication
 rapidfuzz>=3.5.0
 
+# LLM filtering
+openai>=1.30.0           # relevance classification during scraping (set OPENAI_API_KEY)
+
 # Data / export (Phase 3+)
 pandas>=2.0.0            # optional, useful for analysis
 
