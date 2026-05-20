@@ -29,6 +29,7 @@ ROOT_DIR = Path(__file__).resolve().parent
 
 def load_data(db_path):
     conn = get_db(db_path)
+    conn.execute("PRAGMA query_only = ON;")  # enforce read-only — dashboard never writes
     records = conn.execute("""
         SELECT id, title, organisation, country, date_published,
                source_name, source_category, summary, url
@@ -55,11 +56,35 @@ def load_data(db_path):
             if cat:
                 by_category[cat] = by_category.get(cat, 0) + 1
 
+    # Category by year matrix for the timeline chart
+    top_cat_names = [c for c, _ in sorted(by_category.items(), key=lambda x: -x[1])[:10]]
+    year_cat = {}
+    for r in data:
+        yr = (r["date_published"] or "")[:4]
+        if not yr or not yr.isdigit() or int(yr) < 2017 or int(yr) > 2025:
+            continue
+        if yr not in year_cat:
+            year_cat[yr] = {}
+        for cat in (r["summary"] or "").split(","):
+            cat = cat.strip()
+            if cat in top_cat_names:
+                year_cat[yr][cat] = year_cat[yr].get(cat, 0) + 1
+
+    timeline_years = sorted(year_cat.keys())
+    cat_by_year = {
+        "years":      timeline_years,
+        "categories": {
+            cat: [year_cat.get(yr, {}).get(cat, 0) for yr in timeline_years]
+            for cat in top_cat_names
+        }
+    }
+
     stats = {
         "total":          len(data),
         "by_year":        sorted(by_year.items()),
         "top_countries":  sorted(by_country.items(),  key=lambda x: -x[1])[:15],
         "top_categories": sorted(by_category.items(), key=lambda x: -x[1])[:12],
+        "cat_by_year":    cat_by_year,
     }
     conn.close()
     return data, stats
@@ -411,29 +436,114 @@ nav {
 .page-btn.active { background: var(--rust); color: white; border-color: var(--rust); }
 .page-btn:disabled { opacity: 0.25; cursor: not-allowed; }
 
-/* ── Horizontal bar chart ──────────────────────────────────────────── */
-.chart-section {
-  border-top: 1px solid var(--rule); padding: 48px 32px;
-  background: var(--card);
+/* ── Insights section ──────────────────────────────────────────────── */
+.insights-section {
+  border-top: 1px solid var(--rule); background: var(--card);
+  padding: 64px 32px 80px;
 }
-.chart-inner { max-width: 1280px; margin: 0 auto; }
-.chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-.chart-title {
+.insights-inner { max-width: 1280px; margin: 0 auto; }
+.insights-header { margin-bottom: 48px; }
+.insights-title {
+  font-family: var(--serif); font-size: clamp(28px, 3vw, 42px);
+  font-weight: 400; line-height: 1.1; margin-bottom: 14px; margin-top: 12px;
+}
+.insights-sub {
+  font-size: 14px; color: var(--ash); max-width: 600px; line-height: 1.6;
+}
+
+/* ── Stacked timeline ──────────────────────────────────────────────── */
+.timeline-chart {
+  background: white; border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: 32px 32px 24px; margin-bottom: 40px; overflow-x: auto;
+}
+.timeline-years { display: flex; gap: 0; margin-bottom: 12px; }
+.timeline-year-label {
+  flex: 1; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+  color: var(--ash); text-align: center; min-width: 60px;
+}
+.timeline-bars {
+  display: flex; gap: 6px; align-items: flex-end; height: 240px;
+  border-bottom: 1px solid var(--rule); margin-bottom: 20px; min-width: 540px;
+}
+.timeline-bar-group {
+  flex: 1; display: flex; flex-direction: column-reverse; min-width: 60px;
+  cursor: pointer; position: relative;
+}
+.timeline-segment {
+  width: 100%; transition: opacity 0.2s; overflow: hidden;
+}
+.timeline-bar-group:hover .timeline-segment { opacity: 0.85; }
+.bar-tooltip {
+  display: none; position: absolute; bottom: 105%; left: 50%; transform: translateX(-50%);
+  background: var(--ink); color: white; border-radius: var(--radius);
+  padding: 10px 14px; width: 180px; z-index: 20; margin-bottom: 6px;
+  font-family: var(--mono); font-size: 9px; line-height: 1.8; letter-spacing: 0.03em;
+  pointer-events: none; box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.bar-tooltip::after {
+  content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  border: 5px solid transparent; border-top-color: var(--ink);
+}
+.timeline-bar-group:hover .bar-tooltip { display: block; }
+.tooltip-year { font-size: 11px; font-weight: 500; margin-bottom: 4px; opacity: 0.7; }
+.tooltip-row { display: flex; justify-content: space-between; gap: 8px; }
+.tooltip-swatch { width: 8px; height: 8px; border-radius: 1px; flex-shrink: 0; margin-top: 2px; }
+.timeline-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.legend-item {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em;
+  color: var(--ash); text-transform: uppercase;
+}
+.legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+/* ── Annotation cards ──────────────────────────────────────────────── */
+.annotation-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px; margin-bottom: 48px;
+}
+.annotation-card {
+  background: white; border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: 20px; position: relative; overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.annotation-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 3px; background: var(--rust); opacity: 0.5;
+}
+.annotation-card:hover { border-color: var(--rust); box-shadow: 0 4px 16px rgba(196,75,40,0.08); }
+.annotation-year {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--rust); margin-bottom: 6px;
+}
+.annotation-label {
+  font-family: var(--serif); font-size: 16px; font-style: italic;
+  color: var(--ink); margin-bottom: 10px;
+}
+.annotation-text { font-size: 12px; color: var(--ash); line-height: 1.6; }
+
+/* ── Secondary bar charts ──────────────────────────────────────────── */
+.chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.chart-panel {
+  background: white; border: 1px solid var(--rule);
+  border-radius: var(--radius); padding: 24px;
+}
+.chart-panel-label {
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
   text-transform: uppercase; color: var(--ash); margin-bottom: 20px;
 }
 .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.bar-label { font-size: 12px; color: var(--ink); min-width: 140px; }
-.bar-track {
-  flex: 1; height: 20px; background: var(--rule); border-radius: 2px; overflow: hidden;
+.bar-label {
+  font-size: 12px; color: var(--ink); min-width: 130px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+.bar-track { flex: 1; height: 18px; background: var(--rule); border-radius: 2px; overflow: hidden; }
 .bar-fill {
   height: 100%; border-radius: 2px; background: var(--rust);
   transform-origin: left; transform: scaleX(0);
   transition: transform 1s cubic-bezier(0.22,1,0.36,1);
 }
 .bar-fill.animated { transform: scaleX(1); }
-.bar-count { font-family: var(--mono); font-size: 10px; color: var(--ash); min-width: 28px; text-align: right; }
+.bar-count { font-family: var(--mono); font-size: 10px; color: var(--ash); min-width: 26px; text-align: right; }
 
 /* ── Footer ────────────────────────────────────────────────────────── */
 footer {
@@ -449,13 +559,16 @@ footer {
   .sidebar { position: static; max-height: none; border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 24px; }
   .stats-inner { grid-template-columns: repeat(3, 1fr); }
   .stat-cell:nth-child(3) { border-right: none; }
+  .annotation-grid { grid-template-columns: 1fr 1fr; }
   .chart-grid { grid-template-columns: 1fr; }
+  .insights-section { padding: 48px 24px 64px; }
   .hero { padding: 48px 24px 40px; }
   .layout { padding: 0 24px; }
   nav { padding: 0 24px; }
 }
 @media (max-width: 560px) {
   .stats-inner { grid-template-columns: 1fr 1fr; }
+  .annotation-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -555,19 +668,60 @@ footer {
   </main>
 </div>
 
-<!-- Chart section -->
-<section class="chart-section fade-up">
-  <div class="chart-inner">
-    <div class="chart-grid">
-      <div>
-        <div class="chart-title">Top categories</div>
+<!-- Insights section -->
+<section class="insights-section">
+  <div class="insights-inner">
+
+    <!-- Section header -->
+    <div class="insights-header fade-up">
+      <div class="hero-eyebrow">Insights</div>
+      <h2 class="insights-title">How AI adoption has evolved</h2>
+      <p class="insights-sub">Category distribution across <span id="insightsTotalYears"></span> years of documented use cases, revealing which types of AI adoption emerged when — and what that suggests about the trajectory of AI in journalism.</p>
+    </div>
+
+    <!-- Stream / stacked bar chart -->
+    <div class="timeline-chart fade-up" id="timelineChart">
+      <div class="timeline-years" id="timelineYears"></div>
+      <div class="timeline-bars" id="timelineBars"></div>
+      <div class="timeline-legend" id="timelineLegend"></div>
+    </div>
+
+    <!-- Annotation cards -->
+    <div class="annotation-grid fade-up">
+      <div class="annotation-card">
+        <div class="annotation-year">2017 – 2020</div>
+        <div class="annotation-label">Foundation era</div>
+        <p class="annotation-text">Early adoption concentrated in core production tasks — automation, newsgathering tools, and subscription optimisation. Research labs at major outlets (NYT, BBC, Reuters) dominate.</p>
+      </div>
+      <div class="annotation-card">
+        <div class="annotation-year">2021 – 2022</div>
+        <div class="annotation-label">Consolidation</div>
+        <p class="annotation-text">A quieter period of embedding earlier experiments into workflows. Investigations and synthetic media grow. Fewer splashy launches, more operational integration.</p>
+      </div>
+      <div class="annotation-card">
+        <div class="annotation-year">2023 – 2024</div>
+        <div class="annotation-label">Generative AI wave</div>
+        <p class="annotation-text">ChatGPT's launch reshapes the landscape. Generative AI and News distribution surge. Audience Engagement tools proliferate. The mix of who is experimenting broadens dramatically.</p>
+      </div>
+      <div class="annotation-card">
+        <div class="annotation-year">2025</div>
+        <div class="annotation-label">Scaling &amp; strategy</div>
+        <p class="annotation-text">News production and distribution reach peak documented volume. AI Strategy cases suggest newsrooms moving from experiments to institutional policy. A more mature, if uneven, adoption landscape.</p>
+      </div>
+    </div>
+
+    <!-- Secondary bar charts -->
+    <div class="chart-grid fade-up">
+      <div class="chart-panel">
+        <div class="chart-panel-label">Top categories overall</div>
         <div id="catChart"></div>
       </div>
-      <div>
-        <div class="chart-title">Top countries</div>
+      <div class="chart-panel">
+        <div class="chart-panel-label">Top countries</div>
         <div id="countryChart"></div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -828,9 +982,97 @@ function render() {
 function goPage(p) { currentPage = p; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
 // ── Charts ───────────────────────────────────────────────────────────
+var CAT_COLORS = {
+  'News production':       '#c44b28',
+  'Newsgathering':         '#e07b4a',
+  'Audience Engagement':   '#2a8d46',
+  'AI Strategy':           '#1a6dd4',
+  'News distribution':     '#8b5cf6',
+  'Generative AI':         '#cc7722',
+  'Investigations':        '#d42020',
+  'Fact-checking':         '#0891b2',
+  'Research & Innovation': '#756f69',
+  'Synthetic Media':       '#be185d'
+};
+
 function buildCharts() {
+  buildTimeline();
   buildBarChart('catChart', STATS.top_categories || [], 10);
   buildBarChart('countryChart', STATS.top_countries || [], 10);
+  var yr = document.getElementById('insightsTotalYears');
+  if (yr && STATS.by_year) yr.textContent = STATS.by_year.length;
+}
+
+function buildTimeline() {
+  var data = STATS.cat_by_year;
+  if (!data) return;
+  var years = data.years;
+  var cats = Object.keys(data.categories);
+  var colors = cats.map(function(c) { return CAT_COLORS[c] || '#c8bfad'; });
+
+  // Find max total per year for scaling
+  var totals = years.map(function(_, yi) {
+    return cats.reduce(function(s, c) { return s + (data.categories[c][yi] || 0); }, 0);
+  });
+  var maxTotal = Math.max.apply(null, totals);
+  var chartH = 220; // px
+
+  // Year labels
+  document.getElementById('timelineYears').innerHTML = years.map(function(yr) {
+    return '<div class="timeline-year-label">' + yr + '</div>';
+  }).join('');
+
+  // Build bars
+  var barsHtml = '';
+  years.forEach(function(yr, yi) {
+    var total = totals[yi];
+    var tooltipRows = cats.map(function(c, ci) {
+      var n = data.categories[c][yi] || 0;
+      if (!n) return '';
+      return '<div class="tooltip-row"><div class="tooltip-swatch" style="background:' + colors[ci] + '"></div>' +
+             '<span style="flex:1">' + c + '</span><strong>' + n + '</strong></div>';
+    }).filter(Boolean).join('');
+
+    var segments = '';
+    // Draw from bottom (largest first for visual stability)
+    cats.forEach(function(c, ci) {
+      var n = data.categories[c][yi] || 0;
+      if (!n) return;
+      var h = Math.round((n / maxTotal) * chartH);
+      segments += '<div class="timeline-segment" style="height:' + h + 'px;background:' + colors[ci] +
+                  ';opacity:0.9" title="' + c + ': ' + n + '"></div>';
+    });
+
+    barsHtml += '<div class="timeline-bar-group">' +
+      '<div class="bar-tooltip"><div class="tooltip-year">' + yr + ' · ' + total + ' cases</div>' + tooltipRows + '</div>' +
+      segments +
+      '</div>';
+  });
+  document.getElementById('timelineBars').innerHTML = barsHtml;
+
+  // Legend
+  var legendHtml = cats.map(function(c, ci) {
+    return '<div class="legend-item"><div class="legend-dot" style="background:' + colors[ci] + '"></div>' + c + '</div>';
+  }).join('');
+  document.getElementById('timelineLegend').innerHTML = legendHtml;
+
+  // Animate in on scroll
+  var tlObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.timeline-segment').forEach(function(seg, i) {
+          seg.style.transition = 'height 0.6s cubic-bezier(0.22,1,0.36,1) ' + (i * 0.03) + 's, opacity 0.3s';
+          var finalH = seg.style.height;
+          seg.style.height = '0';
+          seg.style.opacity = '0';
+          setTimeout(function() { seg.style.height = finalH; seg.style.opacity = '0.9'; }, 50);
+        });
+        tlObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  var tl = document.getElementById('timelineBars');
+  if (tl) tlObserver.observe(tl);
 }
 
 function buildBarChart(id, items, limit) {
@@ -838,30 +1080,23 @@ function buildBarChart(id, items, limit) {
   if (!container || !items.length) return;
   var top = items.slice(0, limit);
   var maxN = top[0][1];
-  var html = '';
-  top.forEach(function(item) {
+  var html = top.map(function(item) {
     var label = item[0], count = item[1];
-    var pct = count / maxN;
-    html += '<div class="bar-row">' +
-      '<span class="bar-label">' + esc(label) + '</span>' +
-      '<div class="bar-track"><div class="bar-fill" style="width:' + (pct * 100).toFixed(1) + '%"></div></div>' +
-      '<span class="bar-count">' + count + '</span>' +
-    '</div>';
-  });
+    return '<div class="bar-row">' +
+      '<span class="bar-label" title="' + esc(label) + '">' + esc(label) + '</span>' +
+      '<div class="bar-track"><div class="bar-fill" style="width:' + (count/maxN*100).toFixed(1) + '%"></div></div>' +
+      '<span class="bar-count">' + count + '</span></div>';
+  }).join('');
   container.innerHTML = html;
-
-  // Animate bars when visible
-  var barObserver = new IntersectionObserver(function(entries) {
+  var barObs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting) {
-        e.target.querySelectorAll('.bar-fill').forEach(function(bar) {
-          bar.classList.add('animated');
-        });
-        barObserver.unobserve(e.target);
+        e.target.querySelectorAll('.bar-fill').forEach(function(b) { b.classList.add('animated'); });
+        barObs.unobserve(e.target);
       }
     });
   }, { threshold: 0.2 });
-  barObserver.observe(container);
+  barObs.observe(container);
 }
 
 // ── Reset ────────────────────────────────────────────────────────────
@@ -881,6 +1116,7 @@ init();
 </script>
 </body>
 </html>
+
 
 """
 
