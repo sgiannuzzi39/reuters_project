@@ -475,17 +475,13 @@ nav {
 }
 .timeline-bar-group:hover .timeline-segment { opacity: 0.85; }
 .bar-tooltip {
-  display: none; position: absolute; bottom: 105%; left: 50%; transform: translateX(-50%);
+  display: none; position: fixed;
   background: var(--ink); color: white; border-radius: var(--radius);
-  padding: 10px 14px; width: 180px; z-index: 20; margin-bottom: 6px;
+  padding: 10px 14px; width: 190px; z-index: 9000;
   font-family: var(--mono); font-size: 9px; line-height: 1.8; letter-spacing: 0.03em;
-  pointer-events: none; box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  pointer-events: none; box-shadow: 0 4px 16px rgba(0,0,0,0.25);
 }
-.bar-tooltip::after {
-  content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-  border: 5px solid transparent; border-top-color: var(--ink);
-}
-.timeline-bar-group:hover .bar-tooltip { display: block; }
+.timeline-bar-group:hover .timeline-segment { opacity: 0.82; }
 .tooltip-year { font-size: 11px; font-weight: 500; margin-bottom: 4px; opacity: 0.7; }
 .tooltip-row { display: flex; justify-content: space-between; gap: 8px; }
 .tooltip-swatch { width: 8px; height: 8px; border-radius: 1px; flex-shrink: 0; margin-top: 2px; }
@@ -1023,19 +1019,10 @@ function buildTimeline() {
     return '<div class="timeline-year-label">' + yr + '</div>';
   }).join('');
 
-  // Build bars — use percentage heights so they work reliably
+  // Build bars — no tooltip inside, just data attributes
   var barsHtml = '';
   years.forEach(function(yr, yi) {
     var total = totals[yi];
-    var tooltipRows = cats.map(function(c, ci) {
-      var n = data.categories[c][yi] || 0;
-      if (!n) return '';
-      return '<div class="tooltip-row">' +
-        '<div class="tooltip-swatch" style="background:' + colors[ci] + '"></div>' +
-        '<span style="flex:1">' + c + '</span><strong>' + n + '</strong></div>';
-    }).filter(Boolean).join('');
-
-    // Build segments bottom-up using percentage of chartH
     var segments = '';
     cats.forEach(function(c, ci) {
       var n = data.categories[c][yi] || 0;
@@ -1044,18 +1031,59 @@ function buildTimeline() {
       segments += '<div class="timeline-segment" data-pct="' + pct +
         '" style="height:0;background:' + colors[ci] + '"></div>';
     });
-
-    barsHtml += '<div class="timeline-bar-group">' +
-      '<div class="bar-tooltip">' +
-        '<div class="tooltip-year">' + yr + ' &middot; ' + total + ' cases</div>' +
-        tooltipRows +
-      '</div>' +
-      segments +
-      '</div>';
+    // Store tooltip content as a data attribute on the group
+    var tipContent = yr + '|' + total + '|' + cats.map(function(c, ci) {
+      return (data.categories[c][yi] || 0) + '|' + c + '|' + colors[ci];
+    }).join('~');
+    barsHtml += '<div class="timeline-bar-group" data-tip="' + tipContent + '">' + segments + '</div>';
   });
 
   var barsEl = document.getElementById('timelineBars');
   barsEl.innerHTML = barsHtml;
+
+  // Single shared tooltip element on body
+  var sharedTip = document.getElementById('sharedBarTooltip');
+  if (!sharedTip) {
+    sharedTip = document.createElement('div');
+    sharedTip.id = 'sharedBarTooltip';
+    sharedTip.className = 'bar-tooltip';
+    document.body.appendChild(sharedTip);
+  }
+
+  barsEl.querySelectorAll('.timeline-bar-group').forEach(function(group) {
+    group.addEventListener('mouseenter', function() {
+      var parts = group.getAttribute('data-tip').split('|');
+      var yr = parts[0], total = parts[1];
+      var rows = parts.slice(2).join('|');
+      // rows: n|cat|color~n|cat|color...
+      var rowsHtml = rows.split('~').map(function(r) {
+        var rp = r.split('|');
+        var n = parseInt(rp[0]);
+        if (!n) return '';
+        return '<div class="tooltip-row">' +
+          '<div class="tooltip-swatch" style="background:' + rp[2] + '"></div>' +
+          '<span style="flex:1">' + rp[1] + '</span><strong>' + n + '</strong></div>';
+      }).filter(Boolean).join('');
+      sharedTip.innerHTML = '<div class="tooltip-year">' + yr + ' &middot; ' + total + ' cases</div>' + rowsHtml;
+      sharedTip.style.display = 'block';
+    });
+    group.addEventListener('mouseleave', function() {
+      sharedTip.style.display = 'none';
+    });
+    group.addEventListener('mousemove', function(e) {
+      var x = e.clientX;
+      var y = e.clientY;
+      var tipW = 190;
+      var tipH = sharedTip.offsetHeight;
+      var vw = window.innerWidth;
+      // Flip left if near right edge
+      var left = (x + tipW + 16 > vw) ? x - tipW - 8 : x + 14;
+      // Place above cursor, but not off top of screen
+      var top = Math.max(8, y - tipH - 8);
+      sharedTip.style.left = left + 'px';
+      sharedTip.style.top  = top + 'px';
+    });
+  });
 
   // Legend
   document.getElementById('timelineLegend').innerHTML = cats.map(function(c, ci) {
@@ -1088,7 +1116,6 @@ function buildTimeline() {
   }, { threshold: 0.15 });
   tlObserver.observe(document.getElementById('timelineChart'));
 
-  // Also fire immediately if already in view (page loads scrolled down)
   var rect = document.getElementById('timelineChart').getBoundingClientRect();
   if (rect.top < window.innerHeight) animateBars();
 }
