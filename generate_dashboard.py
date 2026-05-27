@@ -2,10 +2,11 @@
 generate_dashboard.py
 ---------------------
 Generates two files for GitHub Pages:
-  - index.html   (the dashboard UI — static, never changes)
-  - data.json    (the data, fetched by the browser at runtime)
+  - index.html      (the main dashboard UI)
+  - spreadsheet.html (full scrollable table view)
+  - data.json        (the data, fetched by both pages at runtime)
 
-Run this any time after adding new scraped data, then commit and push both files.
+Run this any time after adding new scraped data, then commit and push.
 
 Usage:
     python generate_dashboard.py
@@ -29,7 +30,7 @@ ROOT_DIR = Path(__file__).resolve().parent
 
 def load_data(db_path):
     conn = get_db(db_path)
-    conn.execute("PRAGMA query_only = ON;")  # enforce read-only — dashboard never writes
+    conn.execute("PRAGMA query_only = ON;")
     records = conn.execute("""
         SELECT id, title, organisation, country, date_published,
                source_name, source_category, summary, url
@@ -56,7 +57,6 @@ def load_data(db_path):
             if cat:
                 by_category[cat] = by_category.get(cat, 0) + 1
 
-    # Category by year matrix for the timeline chart
     top_cat_names = [c for c, _ in sorted(by_category.items(), key=lambda x: -x[1])[:10]]
     year_cat = {}
     for r in data:
@@ -90,7 +90,7 @@ def load_data(db_path):
     return data, stats
 
 
-# ── HTML template (no data embedded — fetches data.json at runtime) ────────────
+# ── index.html template ────────────────────────────────────────────────────────
 
 HTML = """\
 <!DOCTYPE html>
@@ -131,22 +131,18 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Grain overlay ──────────────────────────────────────────────────── */
 .grain {
   position: fixed; inset: 0; pointer-events: none; z-index: 9999;
   opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ── Fade-up animation ─────────────────────────────────────────────── */
 .fade-up {
-  opacity: 0;
-  transform: translateY(24px);
+  opacity: 0; transform: translateY(24px);
   transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
 }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-/* ── Nav ───────────────────────────────────────────────────────────── */
 nav {
   position: sticky; top: 0; z-index: 100;
   background: rgba(247,245,240,0.92);
@@ -170,8 +166,15 @@ nav {
 }
 @keyframes pulse { 0%,100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
 .nav-meta { font-family: var(--mono); font-size: 10px; color: var(--ash); letter-spacing: 0.05em; }
+.nav-links { display: flex; align-items: center; gap: 20px; }
+.nav-link {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ash); text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-link:hover { color: var(--rust); }
+.nav-link.active { color: var(--rust); }
 
-/* ── Hero ──────────────────────────────────────────────────────────── */
 .hero {
   max-width: 1280px; margin: 0 auto;
   padding: 72px 32px 56px;
@@ -195,9 +198,7 @@ nav {
   font-size: 15px; color: var(--ash); line-height: 1.6; max-width: 560px;
   margin-bottom: 32px;
 }
-.hero-sources {
-  display: flex; flex-wrap: wrap; gap: 8px;
-}
+.hero-sources { display: flex; flex-wrap: wrap; gap: 8px; }
 .source-pill {
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em;
   text-transform: uppercase; color: var(--ash);
@@ -205,45 +206,30 @@ nav {
   padding: 4px 12px; background: var(--card);
 }
 
-/* ── Stats band ────────────────────────────────────────────────────── */
-.stats-band {
-  border-bottom: 1px solid var(--rule);
-  background: var(--card);
-}
+.stats-band { border-bottom: 1px solid var(--rule); background: var(--card); }
 .stats-inner {
   max-width: 1280px; margin: 0 auto; padding: 0 32px;
   display: grid; grid-template-columns: repeat(5, 1fr);
 }
-.stat-cell {
-  padding: 32px 24px; text-align: center;
-  border-right: 1px solid var(--rule);
-}
+.stat-cell { padding: 32px 24px; text-align: center; border-right: 1px solid var(--rule); }
 .stat-cell:last-child { border-right: none; }
 .stat-num {
   font-family: var(--serif); font-size: 48px; line-height: 1;
   color: var(--rust); display: block; margin-bottom: 6px;
-  counter-reset: num;
 }
 .stat-label {
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
   text-transform: uppercase; color: var(--ash);
 }
 
-/* ── Section divider ───────────────────────────────────────────────── */
-.divider {
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--rule), transparent);
-  margin: 0;
-}
+.divider { height: 1px; background: linear-gradient(to right, transparent, var(--rule), transparent); }
 
-/* ── Main layout ───────────────────────────────────────────────────── */
 .layout {
   max-width: 1280px; margin: 0 auto; padding: 0 32px;
   display: grid; grid-template-columns: 260px 1fr;
   gap: 0 40px; min-height: 60vh;
 }
 
-/* ── Sidebar ───────────────────────────────────────────────────────── */
 .sidebar {
   padding: 32px 0 32px;
   position: sticky; top: 48px;
@@ -254,15 +240,12 @@ nav {
 }
 .sidebar::-webkit-scrollbar { width: 3px; }
 .sidebar::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 2px; }
-
 .sidebar-section { margin-bottom: 28px; }
 .sidebar-label {
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--ash); margin-bottom: 10px;
-  display: block;
+  text-transform: uppercase; color: var(--ash); margin-bottom: 10px; display: block;
 }
 
-/* Search */
 .search-wrap { position: relative; }
 .search-input {
   width: 100%; padding: 8px 12px 8px 34px;
@@ -276,27 +259,17 @@ nav {
   color: var(--ash); font-size: 14px; pointer-events: none;
 }
 
-/* Year bars */
-.year-chart {
-  display: flex; align-items: flex-end; gap: 4px; height: 60px; margin-top: 8px;
-}
-.year-bar-wrap {
-  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;
-}
+.year-chart { display: flex; align-items: flex-end; gap: 4px; height: 60px; margin-top: 8px; }
+.year-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
 .year-bar {
   width: 100%; background: var(--rule); border-radius: 2px 2px 0 0;
   transition: background 0.2s, transform 0.2s; min-height: 3px; transform-origin: bottom;
 }
 .year-bar-wrap:hover .year-bar { background: var(--rust); transform: scaleY(1.05); }
 .year-bar-wrap.active .year-bar { background: var(--rust); }
-.year-label {
-  font-family: var(--mono); font-size: 8px; color: var(--ash);
-  transition: color 0.2s;
-}
-.year-bar-wrap.active .year-label,
-.year-bar-wrap:hover .year-label { color: var(--rust); }
+.year-label { font-family: var(--mono); font-size: 8px; color: var(--ash); transition: color 0.2s; }
+.year-bar-wrap.active .year-label, .year-bar-wrap:hover .year-label { color: var(--rust); }
 
-/* Filter pills */
 .filter-pill {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 4px 10px; border-radius: 20px;
@@ -307,14 +280,10 @@ nav {
 }
 .filter-pill:hover { border-color: var(--rust); color: var(--rust); background: var(--rust-lt); }
 .filter-pill.active { background: var(--rust); border-color: var(--rust); color: white; }
-.filter-pill .pill-count {
-  font-size: 9px; opacity: 0.7; background: rgba(0,0,0,0.1);
-  border-radius: 10px; padding: 0 5px;
-}
+.filter-pill .pill-count { font-size: 9px; opacity: 0.7; background: rgba(0,0,0,0.1); border-radius: 10px; padding: 0 5px; }
 .filter-pill.active .pill-count { background: rgba(255,255,255,0.25); opacity: 1; }
 .pill-group { display: flex; flex-wrap: wrap; gap: 2px; }
 
-/* Reset */
 .reset-btn {
   width: 100%; padding: 8px; border: 1px solid var(--rule);
   border-radius: var(--radius); background: none;
@@ -324,10 +293,8 @@ nav {
 }
 .reset-btn:hover { background: var(--rust); color: white; border-color: var(--rust); }
 
-/* ── Main content ──────────────────────────────────────────────────── */
 .main { padding: 32px 0; min-width: 0; }
 
-/* Toolbar */
 .toolbar {
   display: flex; align-items: center; justify-content: space-between;
   margin-bottom: 20px; padding-bottom: 16px;
@@ -342,7 +309,6 @@ nav {
   text-transform: uppercase;
 }
 
-/* Active filter banner */
 .active-filter-bar {
   display: none; align-items: center; gap: 10px;
   background: var(--rust); color: white;
@@ -361,7 +327,6 @@ nav {
 }
 .filter-bar-clear:hover { background: rgba(255,255,255,0.35); }
 
-/* Cards */
 .cards { display: flex; flex-direction: column; gap: 1px; }
 
 .card {
@@ -374,34 +339,16 @@ nav {
 }
 .card::before {
   content: ''; position: absolute; top: 0; left: 0;
-  width: 3px; height: 100%; background: transparent;
-  transition: background 0.2s;
+  width: 3px; height: 100%; background: transparent; transition: background 0.2s;
 }
-.card:hover {
-  border-color: var(--rust); box-shadow: 0 4px 20px rgba(196,75,40,0.08);
-  transform: translateX(2px);
-}
+.card:hover { border-color: var(--rust); box-shadow: 0 4px 20px rgba(196,75,40,0.08); transform: translateX(2px); }
 .card:hover::before { background: var(--rust); }
-
-.card-title {
-  font-family: var(--serif); font-size: 16px; font-weight: 400;
-  line-height: 1.4; color: var(--ink);
-}
+.card-title { font-family: var(--serif); font-size: 16px; font-weight: 400; line-height: 1.4; color: var(--ink); }
 .card-title a { color: inherit; text-decoration: none; transition: color 0.2s; }
 .card-title a:hover { color: var(--rust); }
-
-.card-date {
-  grid-column: 2; grid-row: 1;
-  font-family: var(--mono); font-size: 10px; color: var(--ash);
-  white-space: nowrap; padding-top: 2px;
-}
-
-.card-meta {
-  grid-column: 1 / -1;
-  display: flex; flex-wrap: wrap; gap: 5px; align-items: center;
-}
+.card-date { grid-column: 2; grid-row: 1; font-family: var(--mono); font-size: 10px; color: var(--ash); white-space: nowrap; padding-top: 2px; }
+.card-meta { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
 .card-org { font-size: 12px; color: var(--ash); margin-right: 4px; }
-
 .tag {
   display: inline-block; padding: 2px 8px; border-radius: 12px;
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em;
@@ -412,67 +359,35 @@ nav {
 .tag.source  { background: #f0f9f2; border-color: #bbe5c3; color: #236634; }
 .tag.cat     { background: var(--rust-lt); border-color: rgba(196,75,40,0.2); color: var(--rust); }
 
-/* Loading / empty */
-.state-msg {
-  padding: 80px 24px; text-align: center; color: var(--ash);
-}
-.state-msg p:first-child {
-  font-family: var(--serif); font-size: 28px; color: var(--ink);
-  margin-bottom: 10px; font-style: italic;
-}
+.state-msg { padding: 80px 24px; text-align: center; color: var(--ash); }
+.state-msg p:first-child { font-family: var(--serif); font-size: 28px; color: var(--ink); margin-bottom: 10px; font-style: italic; }
 .state-msg p { font-size: 13px; }
 
-/* Pagination */
-.pagination {
-  padding: 32px 0 0; display: flex; justify-content: center; gap: 4px;
-}
+.pagination { padding: 32px 0 0; display: flex; justify-content: center; gap: 4px; }
 .page-btn {
   padding: 7px 14px; border: 1px solid var(--rule); background: white;
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em;
-  cursor: pointer; border-radius: var(--radius); color: var(--ash);
-  transition: all 0.15s;
+  cursor: pointer; border-radius: var(--radius); color: var(--ash); transition: all 0.15s;
 }
 .page-btn:hover:not(:disabled) { background: var(--ink); color: white; border-color: var(--ink); }
 .page-btn.active { background: var(--rust); color: white; border-color: var(--rust); }
 .page-btn:disabled { opacity: 0.25; cursor: not-allowed; }
 
-/* ── Insights section ──────────────────────────────────────────────── */
-.insights-section {
-  border-top: 1px solid var(--rule); background: var(--card);
-  padding: 64px 32px 80px;
-}
+.insights-section { border-top: 1px solid var(--rule); background: var(--card); padding: 64px 32px 80px; }
 .insights-inner { max-width: 1280px; margin: 0 auto; }
 .insights-header { margin-bottom: 48px; }
-.insights-title {
-  font-family: var(--serif); font-size: clamp(28px, 3vw, 42px);
-  font-weight: 400; line-height: 1.1; margin-bottom: 14px; margin-top: 12px;
-}
-.insights-sub {
-  font-size: 14px; color: var(--ash); max-width: 600px; line-height: 1.6;
-}
+.insights-title { font-family: var(--serif); font-size: clamp(28px, 3vw, 42px); font-weight: 400; line-height: 1.1; margin-bottom: 14px; margin-top: 12px; }
+.insights-sub { font-size: 14px; color: var(--ash); max-width: 600px; line-height: 1.6; }
 
-/* ── Stacked timeline ──────────────────────────────────────────────── */
 .timeline-chart {
   background: white; border: 1px solid var(--rule); border-radius: var(--radius);
   padding: 32px 32px 24px; margin-bottom: 40px; overflow-x: auto;
 }
 .timeline-years { display: flex; gap: 0; margin-bottom: 12px; }
-.timeline-year-label {
-  flex: 1; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
-  color: var(--ash); text-align: center; min-width: 60px;
-}
-.timeline-bars {
-  display: flex; gap: 6px; align-items: flex-end; height: 220px;
-  border-bottom: 1px solid var(--rule); margin-bottom: 20px; min-width: 540px;
-}
-.timeline-bar-group {
-  flex: 1; display: flex; flex-direction: column; justify-content: flex-end;
-  align-items: stretch; min-width: 60px; cursor: pointer; position: relative;
-  height: 100%;
-}
-.timeline-segment {
-  width: 100%; flex-shrink: 0;
-}
+.timeline-year-label { flex: 1; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--ash); text-align: center; min-width: 60px; }
+.timeline-bars { display: flex; gap: 6px; align-items: flex-end; height: 220px; border-bottom: 1px solid var(--rule); margin-bottom: 20px; min-width: 540px; }
+.timeline-bar-group { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; min-width: 60px; cursor: pointer; position: relative; height: 100%; }
+.timeline-segment { width: 100%; flex-shrink: 0; }
 .timeline-bar-group:hover .timeline-segment { opacity: 0.85; }
 .bar-tooltip {
   display: none; position: fixed;
@@ -481,76 +396,38 @@ nav {
   font-family: var(--mono); font-size: 9px; line-height: 1.8; letter-spacing: 0.03em;
   pointer-events: none; box-shadow: 0 4px 16px rgba(0,0,0,0.25);
 }
-.timeline-bar-group:hover .timeline-segment { opacity: 0.82; }
 .tooltip-year { font-size: 11px; font-weight: 500; margin-bottom: 4px; opacity: 0.7; }
 .tooltip-row { display: flex; justify-content: space-between; gap: 8px; }
 .tooltip-swatch { width: 8px; height: 8px; border-radius: 1px; flex-shrink: 0; margin-top: 2px; }
 .timeline-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; }
-.legend-item {
-  display: flex; align-items: center; gap: 6px;
-  font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em;
-  color: var(--ash); text-transform: uppercase;
-}
+.legend-item { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em; color: var(--ash); text-transform: uppercase; }
 .legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
 
-/* ── Annotation cards ──────────────────────────────────────────────── */
-.annotation-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 16px; margin-bottom: 48px;
-}
+.annotation-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
 .annotation-card {
   background: white; border: 1px solid var(--rule); border-radius: var(--radius);
   padding: 20px; position: relative; overflow: hidden;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
-.annotation-card::before {
-  content: ''; position: absolute; top: 0; left: 0;
-  width: 100%; height: 3px; background: var(--rust); opacity: 0.5;
-}
+.annotation-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--rust); opacity: 0.5; }
 .annotation-card:hover { border-color: var(--rust); box-shadow: 0 4px 16px rgba(196,75,40,0.08); }
-.annotation-year {
-  font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--rust); margin-bottom: 6px;
-}
-.annotation-label {
-  font-family: var(--serif); font-size: 16px; font-style: italic;
-  color: var(--ink); margin-bottom: 10px;
-}
+.annotation-year { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); margin-bottom: 6px; }
+.annotation-label { font-family: var(--serif); font-size: 16px; font-style: italic; color: var(--ink); margin-bottom: 10px; }
 .annotation-text { font-size: 12px; color: var(--ash); line-height: 1.6; }
 
-/* ── Secondary bar charts ──────────────────────────────────────────── */
 .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.chart-panel {
-  background: white; border: 1px solid var(--rule);
-  border-radius: var(--radius); padding: 24px;
-}
-.chart-panel-label {
-  font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--ash); margin-bottom: 20px;
-}
+.chart-panel { background: white; border: 1px solid var(--rule); border-radius: var(--radius); padding: 24px; }
+.chart-panel-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); margin-bottom: 20px; }
 .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.bar-label {
-  font-size: 12px; color: var(--ink); min-width: 130px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
+.bar-label { font-size: 12px; color: var(--ink); min-width: 130px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .bar-track { flex: 1; height: 18px; background: var(--rule); border-radius: 2px; overflow: hidden; }
-.bar-fill {
-  height: 100%; border-radius: 2px; background: var(--rust);
-  transform-origin: left; transform: scaleX(0);
-  transition: transform 1s cubic-bezier(0.22,1,0.36,1);
-}
+.bar-fill { height: 100%; border-radius: 2px; background: var(--rust); transform-origin: left; transform: scaleX(0); transition: transform 1s cubic-bezier(0.22,1,0.36,1); }
 .bar-fill.animated { transform: scaleX(1); }
 .bar-count { font-family: var(--mono); font-size: 10px; color: var(--ash); min-width: 26px; text-align: right; }
 
-/* ── Footer ────────────────────────────────────────────────────────── */
-footer {
-  border-top: 1px solid var(--rule); padding: 32px;
-  font-family: var(--mono); font-size: 10px; color: var(--ash);
-  text-align: center; letter-spacing: 0.05em;
-}
+footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mono); font-size: 10px; color: var(--ash); text-align: center; letter-spacing: 0.05em; }
 .footer-inner { max-width: 1280px; margin: 0 auto; }
 
-/* ── Responsive ────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }
   .sidebar { position: static; max-height: none; border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 24px; }
@@ -572,18 +449,20 @@ footer {
 <body>
 <div class="grain"></div>
 
-<!-- Nav -->
 <nav>
   <div class="nav-inner">
     <a class="nav-brand" href="#">
       <span class="brand-dot"></span>
       AI in the Newsroom
     </a>
-    <span class="nav-meta" id="generatedAt"></span>
+    <div class="nav-links">
+      <a class="nav-link active" href="index.html">Overview</a>
+      <a class="nav-link" href="spreadsheet.html">Spreadsheet</a>
+      <span class="nav-meta" id="generatedAt"></span>
+    </div>
   </div>
 </nav>
 
-<!-- Hero -->
 <section class="hero fade-up">
   <div class="hero-eyebrow">Oxford Dissertation Research</div>
   <h1>AI Adoption in<br><em>News Organisations</em></h1>
@@ -591,12 +470,13 @@ footer {
   <div class="hero-sources" id="heroSources">
     <span class="source-pill">JournalismAI Case Studies</span>
     <span class="source-pill">ONA AI in the Newsroom</span>
-    <span class="source-pill">Reuters Institute DNR 2025</span>
-    <span class="source-pill">WAN-IFRA / Women in News</span>
+    <span class="source-pill">Reuters Institute</span>
+    <span class="source-pill">WAN-IFRA</span>
+    <span class="source-pill">INMA</span>
+    <span class="source-pill">Generative AI Newsroom</span>
   </div>
 </section>
 
-<!-- Stats -->
 <div class="stats-band">
   <div class="stats-inner" id="statsRow">
     <div class="stat-cell"><span class="stat-num">—</span><span class="stat-label">Loading</span></div>
@@ -605,9 +485,7 @@ footer {
 
 <div class="divider"></div>
 
-<!-- Main layout -->
 <div class="layout">
-  <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-section">
       <span class="sidebar-label">Search</span>
@@ -640,7 +518,6 @@ footer {
     <button class="reset-btn" id="resetBtn">↺ Reset all filters</button>
   </aside>
 
-  <!-- Main -->
   <main class="main">
     <div class="toolbar">
       <div class="result-count" id="resultCount">Loading…</div>
@@ -665,25 +542,20 @@ footer {
   </main>
 </div>
 
-<!-- Insights section -->
 <section class="insights-section">
   <div class="insights-inner">
-
-    <!-- Section header -->
     <div class="insights-header fade-up">
       <div class="hero-eyebrow">Insights</div>
       <h2 class="insights-title">How AI adoption has evolved</h2>
       <p class="insights-sub">Category distribution across <span id="insightsTotalYears"></span> years of documented use cases, revealing which types of AI adoption emerged when — and what that suggests about the trajectory of AI in journalism.</p>
     </div>
 
-    <!-- Stream / stacked bar chart -->
     <div class="timeline-chart fade-up" id="timelineChart">
       <div class="timeline-years" id="timelineYears"></div>
       <div class="timeline-bars" id="timelineBars"></div>
       <div class="timeline-legend" id="timelineLegend"></div>
     </div>
 
-    <!-- Annotation cards -->
     <div class="annotation-grid fade-up">
       <div class="annotation-card">
         <div class="annotation-year">2017 – 2020</div>
@@ -707,7 +579,6 @@ footer {
       </div>
     </div>
 
-    <!-- Secondary bar charts -->
     <div class="chart-grid fade-up">
       <div class="chart-panel">
         <div class="chart-panel-label">Top categories overall</div>
@@ -718,7 +589,6 @@ footer {
         <div id="countryChart"></div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -746,7 +616,6 @@ function esc(s) {
   return el.innerHTML;
 }
 
-// ── Fade-up observer ────────────────────────────────────────────────
 var observer = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
     if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
@@ -754,7 +623,6 @@ var observer = new IntersectionObserver(function(entries) {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
 
-// ── Init ────────────────────────────────────────────────────────────
 function init() {
   fetch('data.json')
     .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
@@ -786,7 +654,6 @@ function init() {
   document.getElementById('filterBarClear').addEventListener('click', resetAll);
 }
 
-// ── Stats ────────────────────────────────────────────────────────────
 function buildStats() {
   var orgs = {}, countries = {}, sources = {}, years = {};
   ALL_DATA.forEach(function(d) {
@@ -808,7 +675,6 @@ function mkStat(n, label) {
     '</span><span class="stat-label">' + label + '</span></div>';
 }
 
-// ── Year chart ───────────────────────────────────────────────────────
 function buildYearChart() {
   var years = STATS.by_year || [];
   if (!years.length) return;
@@ -834,7 +700,6 @@ function toggleYear(yr) {
   buildYearChart(); currentPage = 1; applyFilters();
 }
 
-// ── Filter pills ─────────────────────────────────────────────────────
 function buildFilters(id, mode, activeSet, fn) {
   var counts = {};
   ALL_DATA.forEach(function(r) {
@@ -865,7 +730,6 @@ function toggleSource(v)   { toggle(v, activeSources);   buildFilters('sourceFil
 function toggleCountry(v)  { toggle(v, activeCountries);  buildFilters('countryFilters',  'countries',  activeCountries,  toggleCountry);  currentPage = 1; applyFilters(); }
 function toggle(v, set) { if (set.has(v)) { set.delete(v); } else { set.add(v); } }
 
-// ── Active filter bar ────────────────────────────────────────────────
 function updateFilterBar() {
   var parts = [];
   if (activeYear) parts.push(activeYear);
@@ -875,15 +739,10 @@ function updateFilterBar() {
   if (searchQuery) parts.push('"' + searchQuery + '"');
   var bar = document.getElementById('activeFilterBar');
   var lbl = document.getElementById('activeFilterLabel');
-  if (parts.length) {
-    bar.classList.add('show');
-    lbl.textContent = parts.join(' · ');
-  } else {
-    bar.classList.remove('show');
-  }
+  if (parts.length) { bar.classList.add('show'); lbl.textContent = parts.join(' · '); }
+  else { bar.classList.remove('show'); }
 }
 
-// ── Filter & render ──────────────────────────────────────────────────
 function applyFilters() {
   filtered = ALL_DATA.filter(function(r) {
     if (activeYear && (r.date_published || '').slice(0, 4) !== activeYear) return false;
@@ -953,7 +812,6 @@ function render() {
   });
   document.getElementById('cards').innerHTML = html;
 
-  // Pagination
   var pages = [];
   if (totalPages > 1) {
     pages.push('<button class="page-btn" id="prevBtn"' + (currentPage === 1 ? ' disabled' : '') + '>← Prev</button>');
@@ -978,7 +836,6 @@ function render() {
 
 function goPage(p) { currentPage = p; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-// ── Charts ───────────────────────────────────────────────────────────
 var CAT_COLORS = {
   'News production':       '#c44b28',
   'Newsgathering':         '#e07b4a',
@@ -1008,18 +865,15 @@ function buildTimeline() {
   var colors = cats.map(function(c) { return CAT_COLORS[c] || '#c8bfad'; });
   var chartH = 220;
 
-  // Total per year for scaling
   var totals = years.map(function(_, yi) {
     return cats.reduce(function(s, c) { return s + (data.categories[c][yi] || 0); }, 0);
   });
   var maxTotal = Math.max.apply(null, totals);
 
-  // Year labels
   document.getElementById('timelineYears').innerHTML = years.map(function(yr) {
     return '<div class="timeline-year-label">' + yr + '</div>';
   }).join('');
 
-  // Build bars — no tooltip inside, just data attributes
   var barsHtml = '';
   years.forEach(function(yr, yi) {
     var total = totals[yi];
@@ -1031,7 +885,6 @@ function buildTimeline() {
       segments += '<div class="timeline-segment" data-pct="' + pct +
         '" style="height:0;background:' + colors[ci] + '"></div>';
     });
-    // Store tooltip content as a data attribute on the group
     var tipContent = yr + '|' + total + '|' + cats.map(function(c, ci) {
       return (data.categories[c][yi] || 0) + '|' + c + '|' + colors[ci];
     }).join('~');
@@ -1041,7 +894,6 @@ function buildTimeline() {
   var barsEl = document.getElementById('timelineBars');
   barsEl.innerHTML = barsHtml;
 
-  // Single shared tooltip element on body
   var sharedTip = document.getElementById('sharedBarTooltip');
   if (!sharedTip) {
     sharedTip = document.createElement('div');
@@ -1055,67 +907,47 @@ function buildTimeline() {
       var parts = group.getAttribute('data-tip').split('|');
       var yr = parts[0], total = parts[1];
       var rows = parts.slice(2).join('|');
-      // rows: n|cat|color~n|cat|color...
       var rowsHtml = rows.split('~').map(function(r) {
-        var rp = r.split('|');
-        var n = parseInt(rp[0]);
+        var rp = r.split('|'); var n = parseInt(rp[0]);
         if (!n) return '';
-        return '<div class="tooltip-row">' +
-          '<div class="tooltip-swatch" style="background:' + rp[2] + '"></div>' +
+        return '<div class="tooltip-row"><div class="tooltip-swatch" style="background:' + rp[2] + '"></div>' +
           '<span style="flex:1">' + rp[1] + '</span><strong>' + n + '</strong></div>';
       }).filter(Boolean).join('');
       sharedTip.innerHTML = '<div class="tooltip-year">' + yr + ' &middot; ' + total + ' cases</div>' + rowsHtml;
       sharedTip.style.display = 'block';
     });
-    group.addEventListener('mouseleave', function() {
-      sharedTip.style.display = 'none';
-    });
+    group.addEventListener('mouseleave', function() { sharedTip.style.display = 'none'; });
     group.addEventListener('mousemove', function(e) {
-      var x = e.clientX;
-      var y = e.clientY;
-      var tipW = 190;
-      var tipH = sharedTip.offsetHeight;
-      var vw = window.innerWidth;
-      // Flip left if near right edge
-      var left = (x + tipW + 16 > vw) ? x - tipW - 8 : x + 14;
-      // Place above cursor, but not off top of screen
-      var top = Math.max(8, y - tipH - 8);
+      var tipW = 190, tipH = sharedTip.offsetHeight, vw = window.innerWidth;
+      var left = (e.clientX + tipW + 16 > vw) ? e.clientX - tipW - 8 : e.clientX + 14;
       sharedTip.style.left = left + 'px';
-      sharedTip.style.top  = top + 'px';
+      sharedTip.style.top  = Math.max(8, e.clientY - tipH - 8) + 'px';
     });
   });
 
-  // Legend
   document.getElementById('timelineLegend').innerHTML = cats.map(function(c, ci) {
-    return '<div class="legend-item">' +
-      '<div class="legend-dot" style="background:' + colors[ci] + '"></div>' + c + '</div>';
+    return '<div class="legend-item"><div class="legend-dot" style="background:' + colors[ci] + '"></div>' + c + '</div>';
   }).join('');
 
-  // Animate bars in when section scrolls into view
   var animated = false;
   function animateBars() {
-    if (animated) return;
-    animated = true;
+    if (animated) return; animated = true;
     barsEl.querySelectorAll('.timeline-bar-group').forEach(function(group, gi) {
       group.querySelectorAll('.timeline-segment').forEach(function(seg, si) {
         var pct = parseFloat(seg.getAttribute('data-pct'));
         var targetH = Math.round(pct / 100 * chartH);
-        seg.style.transition = 'none';
-        seg.style.height = '0px';
-        var delay = (gi * 60 + si * 20);
+        seg.style.transition = 'none'; seg.style.height = '0px';
         setTimeout(function() {
           seg.style.transition = 'height 0.7s cubic-bezier(0.22,1,0.36,1)';
           seg.style.height = targetH + 'px';
-        }, delay);
+        }, gi * 60 + si * 20);
       });
     });
   }
-
-  var tlObserver = new IntersectionObserver(function(entries) {
-    if (entries[0].isIntersecting) { animateBars(); tlObserver.disconnect(); }
+  var tlObs = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) { animateBars(); tlObs.disconnect(); }
   }, { threshold: 0.15 });
-  tlObserver.observe(document.getElementById('timelineChart'));
-
+  tlObs.observe(document.getElementById('timelineChart'));
   var rect = document.getElementById('timelineChart').getBoundingClientRect();
   if (rect.top < window.innerHeight) animateBars();
 }
@@ -1127,8 +959,7 @@ function buildBarChart(id, items, limit) {
   var maxN = top[0][1];
   var html = top.map(function(item) {
     var label = item[0], count = item[1];
-    return '<div class="bar-row">' +
-      '<span class="bar-label" title="' + esc(label) + '">' + esc(label) + '</span>' +
+    return '<div class="bar-row"><span class="bar-label" title="' + esc(label) + '">' + esc(label) + '</span>' +
       '<div class="bar-track"><div class="bar-fill" style="width:' + (count/maxN*100).toFixed(1) + '%"></div></div>' +
       '<span class="bar-count">' + count + '</span></div>';
   }).join('');
@@ -1144,7 +975,6 @@ function buildBarChart(id, items, limit) {
   barObs.observe(container);
 }
 
-// ── Reset ────────────────────────────────────────────────────────────
 function resetAll() {
   activeYear = null; activeCategories.clear(); activeSources.clear(); activeCountries.clear();
   searchQuery = ''; currentPage = 1;
@@ -1161,10 +991,449 @@ init();
 </script>
 </body>
 </html>
+"""
 
 
+# ── spreadsheet.html template ──────────────────────────────────────────────────
 
+SPREADSHEET_HTML = """\
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI in the Newsroom — Spreadsheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:   #f7f5f0;
+  --ink:     #2c2825;
+  --rust:    #c44b28;
+  --rust-lt: rgba(196,75,40,0.07);
+  --ash:     #756f69;
+  --rule:    #e4dfd8;
+  --card:    #faf8f5;
+  --mono:    'JetBrains Mono', monospace;
+  --sans:    'DM Sans', sans-serif;
+  --serif:   'DM Serif Display', serif;
+  --nav-h:   48px;
+  --strip-h: 56px;
+}
 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body { font-family: var(--sans); background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; }
+
+/* Nav */
+nav {
+  height: var(--nav-h); flex-shrink: 0;
+  background: rgba(247,245,240,0.96); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; z-index: 20;
+}
+.nav-brand {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+}
+.brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rust); animation: pulse 3s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity:0.6; transform:scale(1); } 50% { opacity:1; transform:scale(1.2); } }
+.nav-links { display: flex; align-items: center; gap: 20px; }
+.nav-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ash); text-decoration: none; transition: color 0.15s; }
+.nav-link:hover { color: var(--rust); }
+.nav-link.active { color: var(--rust); }
+.nav-meta { font-family: var(--mono); font-size: 10px; color: var(--ash); letter-spacing: 0.05em; }
+
+/* Stats strip */
+.stats-strip {
+  height: var(--strip-h); flex-shrink: 0;
+  background: var(--card); border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; padding: 0 24px; gap: 0; overflow-x: auto;
+}
+.strip-title { font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--ink); margin-right: 24px; white-space: nowrap; }
+.stat-chips { display: flex; gap: 1px; flex-wrap: nowrap; }
+.stat-chip { display: flex; align-items: center; gap: 6px; padding: 4px 14px; background: white; border: 1px solid var(--rule); border-radius: 2px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; color: var(--ash); white-space: nowrap; }
+.stat-chip strong { font-size: 13px; color: var(--rust); font-weight: 500; }
+
+/* App body */
+.app-body { flex: 1; display: grid; grid-template-columns: 228px 1fr; overflow: hidden; min-height: 0; }
+
+/* Sidebar */
+.sidebar {
+  background: var(--card); border-right: 1px solid var(--rule);
+  overflow-y: auto; padding: 16px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.sidebar::-webkit-scrollbar { width: 3px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 2px; }
+.sidebar-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); display: block; margin-bottom: 7px; }
+
+.search-wrap { position: relative; }
+.search-input { width: 100%; padding: 7px 10px 7px 30px; border: 1px solid var(--rule); border-radius: 2px; background: white; font-family: var(--sans); font-size: 12px; color: var(--ink); outline: none; }
+.search-input:focus { border-color: var(--rust); }
+.search-icon { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--ash); font-size: 13px; pointer-events: none; }
+
+.year-chart { display: flex; align-items: flex-end; gap: 3px; height: 48px; margin-top: 4px; }
+.year-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; }
+.year-bar { width: 100%; background: var(--rule); border-radius: 2px 2px 0 0; transition: background 0.15s; min-height: 2px; }
+.year-bar-wrap:hover .year-bar, .year-bar-wrap.active .year-bar { background: var(--rust); }
+.year-label { font-family: var(--mono); font-size: 8px; color: var(--ash); transition: color 0.15s; }
+.year-bar-wrap.active .year-label, .year-bar-wrap:hover .year-label { color: var(--rust); }
+
+.pill-group { display: flex; flex-wrap: wrap; gap: 3px; }
+.filter-pill { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 20px; border: 1px solid var(--rule); background: white; font-family: var(--mono); font-size: 9px; letter-spacing: 0.03em; color: var(--ash); cursor: pointer; transition: all 0.12s; white-space: nowrap; }
+.filter-pill:hover { border-color: var(--rust); color: var(--rust); background: var(--rust-lt); }
+.filter-pill.active { background: var(--rust); border-color: var(--rust); color: white; }
+.filter-pill .cnt { opacity: 0.6; font-size: 8px; }
+.filter-pill.active .cnt { opacity: 0.8; }
+
+.reset-btn { width: 100%; padding: 7px; border: 1px solid var(--rule); border-radius: 2px; background: none; font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ash); cursor: pointer; transition: all 0.12s; margin-top: auto; }
+.reset-btn:hover { background: var(--rust); color: white; border-color: var(--rust); }
+
+/* Table panel */
+.table-panel { display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+
+.toolbar { flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; background: white; border-bottom: 1px solid var(--rule); gap: 12px; }
+.result-count { font-family: var(--mono); font-size: 11px; color: var(--ash); white-space: nowrap; }
+.result-count strong { color: var(--ink); font-size: 13px; }
+.active-filter-tag { display: none; align-items: center; gap: 6px; background: var(--rust-lt); border: 1px solid rgba(196,75,40,0.2); border-radius: 20px; padding: 3px 10px; font-family: var(--mono); font-size: 9px; color: var(--rust); letter-spacing: 0.04em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.active-filter-tag.show { display: flex; }
+.filter-clear { background: none; border: none; color: var(--rust); cursor: pointer; font-size: 13px; line-height: 1; padding: 0 0 0 2px; flex-shrink: 0; }
+
+/* Scrollable table wrapper */
+.table-wrap { flex: 1; overflow: auto; min-height: 0; }
+.table-wrap::-webkit-scrollbar { width: 6px; height: 6px; }
+.table-wrap::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+.table-wrap::-webkit-scrollbar-corner { background: var(--card); }
+
+/* Data table */
+.data-table { width: 100%; border-collapse: collapse; font-size: 12.5px; table-layout: fixed; }
+
+.data-table thead th {
+  position: sticky; top: 0;
+  background: var(--card); border-bottom: 2px solid var(--rule);
+  padding: 9px 12px; text-align: left;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ash); white-space: nowrap; cursor: pointer; user-select: none; z-index: 5;
+}
+.data-table thead th:hover { color: var(--rust); }
+.data-table thead th.sorted-asc, .data-table thead th.sorted-desc { color: var(--rust); }
+.sort-arrow { margin-left: 4px; opacity: 0.35; font-size: 10px; }
+.sorted-asc .sort-arrow, .sorted-desc .sort-arrow { opacity: 1; }
+
+.col-n    { width: 40px; }
+.col-date { width: 74px; }
+.col-title { width: auto; min-width: 200px; }
+.col-org  { width: 155px; }
+.col-ctry { width: 96px; }
+.col-src  { width: 135px; }
+.col-type { width: 80px; }
+
+.data-table tbody tr { border-bottom: 1px solid var(--rule); transition: background 0.08s; }
+.data-table tbody tr:hover { background: var(--rust-lt); }
+.data-table tbody tr:last-child { border-bottom: none; }
+.data-table td { padding: 8px 12px; vertical-align: middle; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+td.col-n { font-family: var(--mono); font-size: 10px; color: var(--rule); text-align: right; padding-right: 8px; }
+td.col-date { font-family: var(--mono); font-size: 11px; color: var(--ash); }
+td.col-title { white-space: normal; line-height: 1.35; }
+td.col-title a { color: var(--ink); text-decoration: none; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+td.col-title a:hover { color: var(--rust); text-decoration: underline; }
+td.col-title span { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+td.col-org { font-size: 12px; color: var(--ash); }
+td.col-ctry { font-family: var(--mono); font-size: 10px; }
+
+.src-badge { display: inline-block; padding: 2px 7px; border-radius: 2px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.03em; background: #e8f4ec; color: #236634; border: 1px solid #c3e0cb; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+.type-badge { display: inline-block; padding: 2px 7px; border-radius: 2px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.03em; white-space: nowrap; }
+.type-academic { background: #eef2fb; color: #1a4b9a; border: 1px solid #c5d4f0; }
+.type-industry { background: #fdf3e8; color: #8a4a0a; border: 1px solid #f0d5b0; }
+.type-curated  { background: #f2ebfb; color: #5b1fa8; border: 1px solid #d8c4f2; }
+.type-database { background: var(--rust-lt); color: var(--rust); border: 1px solid rgba(196,75,40,0.2); }
+.type-other    { background: var(--card); color: var(--ash); border: 1px solid var(--rule); }
+
+.empty-state { padding: 80px 24px; text-align: center; color: var(--ash); }
+.empty-state p:first-child { font-family: var(--serif); font-size: 24px; color: var(--ink); font-style: italic; margin-bottom: 8px; }
+
+@media (max-width: 860px) {
+  html, body { overflow: auto; }
+  .app-body { grid-template-columns: 1fr; }
+  .sidebar { max-height: 240px; border-right: none; border-bottom: 1px solid var(--rule); }
+  .strip-title { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <span class="brand-dot"></span>
+    AI in the Newsroom
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">Overview</a>
+    <a class="nav-link active" href="spreadsheet.html">Spreadsheet</a>
+    <span class="nav-meta" id="generatedAt"></span>
+  </div>
+</nav>
+
+<div class="stats-strip">
+  <span class="strip-title">All Use Cases</span>
+  <div class="stat-chips" id="statChips">
+    <div class="stat-chip"><strong>—</strong>&nbsp;loading</div>
+  </div>
+</div>
+
+<div class="app-body">
+  <aside class="sidebar">
+    <div>
+      <span class="sidebar-label">Search</span>
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input class="search-input" type="text" id="searchInput" placeholder="Title, organisation…">
+      </div>
+    </div>
+    <div>
+      <span class="sidebar-label">Year</span>
+      <div class="year-chart" id="yearChart"></div>
+    </div>
+    <div>
+      <span class="sidebar-label">Source</span>
+      <div class="pill-group" id="sourceFilters"></div>
+    </div>
+    <div>
+      <span class="sidebar-label">Country</span>
+      <div class="pill-group" id="countryFilters"></div>
+    </div>
+    <div>
+      <span class="sidebar-label">Type</span>
+      <div class="pill-group" id="typeFilters"></div>
+    </div>
+    <button class="reset-btn" id="resetBtn">↺ Reset filters</button>
+  </aside>
+
+  <div class="table-panel">
+    <div class="toolbar">
+      <div class="result-count" id="resultCount">Loading…</div>
+      <div class="active-filter-tag" id="activeFilterTag">
+        <span id="activeFilterLabel"></span>
+        <button class="filter-clear" id="filterClear" title="Clear all filters">✕</button>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th class="col-n">#</th>
+            <th class="col-date" data-col="date">Date <span class="sort-arrow">↕</span></th>
+            <th class="col-title" data-col="title">Title <span class="sort-arrow">↕</span></th>
+            <th class="col-org" data-col="org">Organisation <span class="sort-arrow">↕</span></th>
+            <th class="col-ctry" data-col="country">Country <span class="sort-arrow">↕</span></th>
+            <th class="col-src" data-col="source">Source <span class="sort-arrow">↕</span></th>
+            <th class="col-type" data-col="type">Type <span class="sort-arrow">↕</span></th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr><td colspan="7"><div class="empty-state"><p>Loading…</p><p>Fetching use cases</p></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+var ALL_DATA = [], STATS = {}, filtered = [];
+var activeYear = null, activeSources = new Set(), activeCountries = new Set(), activeTypes = new Set();
+var searchQuery = '', sortCol = 'date', sortDir = -1;
+
+function esc(s) { var el = document.createElement('div'); el.textContent = String(s||''); return el.innerHTML; }
+
+function init() {
+  fetch('data.json')
+    .then(function(r) { if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(function(p) {
+      ALL_DATA = p.records; STATS = p.stats;
+      var g = document.getElementById('generatedAt');
+      if (g) g.textContent = 'Updated ' + p.generated_at;
+      filtered = ALL_DATA.slice();
+      buildStats();
+      buildYearChart();
+      buildFilters('sourceFilters',  'source',  activeSources,  toggleSource);
+      buildFilters('countryFilters', 'country', activeCountries, toggleCountry);
+      buildFilters('typeFilters',    'type',    activeTypes,     toggleType);
+      applyFilters();
+    })
+    .catch(function(err) {
+      document.getElementById('tableBody').innerHTML =
+        '<tr><td colspan="7"><div class="empty-state"><p>Could not load data</p><p>'+err.message+'</p></div></td></tr>';
+    });
+  document.getElementById('searchInput').addEventListener('input', function(e) { searchQuery = e.target.value.toLowerCase(); applyFilters(); });
+  document.getElementById('resetBtn').addEventListener('click', resetAll);
+  document.getElementById('filterClear').addEventListener('click', resetAll);
+  document.querySelectorAll('thead th[data-col]').forEach(function(th) {
+    th.addEventListener('click', function() {
+      var col = th.getAttribute('data-col');
+      if (sortCol === col) sortDir = -sortDir; else { sortCol = col; sortDir = col === 'date' ? -1 : 1; }
+      updateSortHeaders(); render();
+    });
+  });
+}
+
+function buildStats() {
+  var orgs={}, countries={}, sources={}, years={};
+  ALL_DATA.forEach(function(d) {
+    if (d.organisation) orgs[d.organisation]=true;
+    if (d.source_name)  sources[d.source_name]=true;
+    var yr=(d.date_published||'').slice(0,4); if(yr&&parseInt(yr)>2010) years[yr]=true;
+    (d.country||'').split(',').forEach(function(c){c=c.trim();if(c)countries[c]=true;});
+  });
+  document.getElementById('statChips').innerHTML =
+    chip(ALL_DATA.length,'use cases')+chip(Object.keys(orgs).length,'organisations')+
+    chip(Object.keys(countries).length,'countries')+chip(Object.keys(sources).length,'sources')+
+    chip(Object.keys(years).length,'years covered');
+}
+function chip(n,l){return '<div class="stat-chip"><strong>'+n+'</strong>&nbsp;'+l+'</div>';}
+
+function buildYearChart() {
+  var years=STATS.by_year||[]; if(!years.length)return;
+  var maxN=0; years.forEach(function(y){if(y[1]>maxN)maxN=y[1];});
+  var html='';
+  years.forEach(function(item){
+    var yr=item[0],n=item[1],h=Math.max(2,Math.round(n/maxN*44));
+    var cls='year-bar-wrap'+(activeYear===yr?' active':'');
+    html+='<div class="'+cls+'" data-year="'+yr+'" title="'+yr+': '+n+'">'+
+          '<div class="year-bar" style="height:'+h+'px"></div>'+
+          '<div class="year-label">'+yr.slice(2)+'</div></div>';
+  });
+  var c=document.getElementById('yearChart'); c.innerHTML=html;
+  c.querySelectorAll('.year-bar-wrap').forEach(function(el){
+    el.addEventListener('click',function(){
+      activeYear=activeYear===el.getAttribute('data-year')?null:el.getAttribute('data-year');
+      buildYearChart(); applyFilters();
+    });
+  });
+}
+
+function buildFilters(id,mode,activeSet,fn) {
+  var counts={};
+  ALL_DATA.forEach(function(r){
+    var vals=mode==='source'?[r.source_name||'']:mode==='type'?[r.source_category||'']:(r.country||'').split(',').map(function(s){return s.trim();}).filter(Boolean);
+    vals.forEach(function(v){if(v)counts[v]=(counts[v]||0)+1;});
+  });
+  var sorted=Object.keys(counts).map(function(k){return[k,counts[k]];}).sort(function(a,b){return b[1]-a[1];}).slice(0,20);
+  var html='';
+  sorted.forEach(function(item){
+    var val=item[0],count=item[1];
+    html+='<button class="filter-pill'+(activeSet.has(val)?' active':'')+'" data-val="'+esc(val)+'">'+esc(val)+' <span class="cnt">'+count+'</span></button>';
+  });
+  var c=document.getElementById(id); c.innerHTML=html;
+  c.querySelectorAll('.filter-pill').forEach(function(btn){btn.addEventListener('click',function(){fn(btn.getAttribute('data-val'));});});
+}
+function toggleSource(v){toggle(v,activeSources);buildFilters('sourceFilters','source',activeSources,toggleSource);applyFilters();}
+function toggleCountry(v){toggle(v,activeCountries);buildFilters('countryFilters','country',activeCountries,toggleCountry);applyFilters();}
+function toggleType(v){toggle(v,activeTypes);buildFilters('typeFilters','type',activeTypes,toggleType);applyFilters();}
+function toggle(v,set){if(set.has(v))set.delete(v);else set.add(v);}
+
+function updateFilterTag() {
+  var parts=[];
+  if(activeYear)parts.push(activeYear);
+  activeSources.forEach(function(v){parts.push(v);});
+  activeCountries.forEach(function(v){parts.push(v);});
+  activeTypes.forEach(function(v){parts.push(v);});
+  if(searchQuery)parts.push('"'+searchQuery+'"');
+  var tag=document.getElementById('activeFilterTag');
+  var lbl=document.getElementById('activeFilterLabel');
+  if(parts.length){tag.classList.add('show');lbl.textContent=parts.join(' · ');}
+  else tag.classList.remove('show');
+}
+
+function applyFilters() {
+  filtered=ALL_DATA.filter(function(r){
+    if(activeYear&&(r.date_published||'').slice(0,4)!==activeYear)return false;
+    if(activeSources.size>0&&!activeSources.has(r.source_name))return false;
+    if(activeTypes.size>0&&!activeTypes.has(r.source_category))return false;
+    if(activeCountries.size>0){
+      var cs=(r.country||'').split(',').map(function(s){return s.trim();});
+      var ok=false;cs.forEach(function(c){if(activeCountries.has(c))ok=true;});
+      if(!ok)return false;
+    }
+    if(searchQuery){
+      var hay=[r.title,r.organisation,r.country,r.source_name].join(' ').toLowerCase();
+      if(hay.indexOf(searchQuery)===-1)return false;
+    }
+    return true;
+  });
+  updateFilterTag(); render();
+}
+
+function sortData(arr) {
+  return arr.slice().sort(function(a,b){
+    var va='',vb='';
+    if(sortCol==='date'){va=a.date_published||'';vb=b.date_published||'';}
+    else if(sortCol==='title'){va=(a.title||'').toLowerCase();vb=(b.title||'').toLowerCase();}
+    else if(sortCol==='org'){va=(a.organisation||'').toLowerCase();vb=(b.organisation||'').toLowerCase();}
+    else if(sortCol==='country'){va=(a.country||'').toLowerCase();vb=(b.country||'').toLowerCase();}
+    else if(sortCol==='source'){va=(a.source_name||'').toLowerCase();vb=(b.source_name||'').toLowerCase();}
+    else if(sortCol==='type'){va=(a.source_category||'').toLowerCase();vb=(b.source_category||'').toLowerCase();}
+    if(va<vb)return -sortDir; if(va>vb)return sortDir; return 0;
+  });
+}
+
+function updateSortHeaders() {
+  document.querySelectorAll('thead th[data-col]').forEach(function(th){
+    th.classList.remove('sorted-asc','sorted-desc');
+    var arrow=th.querySelector('.sort-arrow');
+    if(th.getAttribute('data-col')===sortCol){
+      th.classList.add(sortDir===1?'sorted-asc':'sorted-desc');
+      if(arrow)arrow.textContent=sortDir===1?'↑':'↓';
+    } else { if(arrow)arrow.textContent='↕'; }
+  });
+}
+
+function render() {
+  var rows=sortData(filtered);
+  document.getElementById('resultCount').innerHTML='Showing <strong>'+rows.length+'</strong> of '+ALL_DATA.length+' use cases';
+  if(!rows.length){
+    document.getElementById('tableBody').innerHTML='<tr><td colspan="7"><div class="empty-state"><p>No results</p><p>Try adjusting your filters or search</p></div></td></tr>';
+    return;
+  }
+  var tc={'Academic':'type-academic','Industry':'type-industry','Curated':'type-curated','Database':'type-database'};
+  var html='';
+  rows.forEach(function(r,i){
+    var date=(r.date_published||'—').slice(0,7);
+    var country=r.country?r.country.split(',')[0].trim():'—';
+    var cls=tc[r.source_category]||'type-other';
+    var titleEl=r.url?'<a href="'+esc(r.url)+'" target="_blank" rel="noopener">'+esc(r.title||'Untitled')+'</a>':'<span>'+esc(r.title||'Untitled')+'</span>';
+    html+='<tr>'+
+      '<td class="col-n">'+(i+1)+'</td>'+
+      '<td class="col-date">'+esc(date)+'</td>'+
+      '<td class="col-title">'+titleEl+'</td>'+
+      '<td class="col-org">'+esc(r.organisation||'—')+'</td>'+
+      '<td class="col-ctry">'+esc(country)+'</td>'+
+      '<td class="col-src"><span class="src-badge">'+esc(r.source_name||'—')+'</span></td>'+
+      '<td class="col-type"><span class="type-badge '+cls+'">'+esc(r.source_category||'—')+'</span></td>'+
+      '</tr>';
+  });
+  document.getElementById('tableBody').innerHTML=html;
+}
+
+function resetAll() {
+  activeYear=null;activeSources.clear();activeCountries.clear();activeTypes.clear();
+  searchQuery='';sortCol='date';sortDir=-1;
+  document.getElementById('searchInput').value='';
+  buildYearChart();
+  buildFilters('sourceFilters','source',activeSources,toggleSource);
+  buildFilters('countryFilters','country',activeCountries,toggleCountry);
+  buildFilters('typeFilters','type',activeTypes,toggleType);
+  updateSortHeaders(); applyFilters();
+}
+
+init();
+</script>
+</body>
+</html>
 """
 
 
@@ -1172,7 +1441,7 @@ init();
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate index.html + data.json from the use cases database")
+        description="Generate index.html + spreadsheet.html + data.json from the use cases database")
     parser.add_argument("--db",      default=str(DB_PATH),  help="Path to SQLite database")
     parser.add_argument("--out-dir", default=str(ROOT_DIR), help="Output directory (default: project root)")
     args = parser.parse_args()
@@ -1194,24 +1463,23 @@ def main():
 
     # Write data.json
     data_path = out_dir / "data.json"
-    payload = {
-        "generated_at": generated_at,
-        "records":      data,
-        "stats":        stats,
-    }
-    data_path.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2),
-        encoding="utf-8"
-    )
-    print("Data written:     ", data_path, " (", data_path.stat().st_size // 1024, "KB)")
+    payload = {"generated_at": generated_at, "records": data, "stats": stats}
+    data_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    print("Data written:        ", data_path, f"({data_path.stat().st_size // 1024} KB)")
 
     # Write index.html
     html_path = out_dir / "index.html"
     html_path.write_text(HTML, encoding="utf-8")
-    print("Dashboard written:", html_path)
+    print("Dashboard written:   ", html_path)
+
+    # Write spreadsheet.html
+    sheet_path = out_dir / "spreadsheet.html"
+    sheet_path.write_text(SPREADSHEET_HTML, encoding="utf-8")
+    print("Spreadsheet written: ", sheet_path)
+
     print()
     print("Next steps:")
-    print("  git add index.html data.json")
+    print("  git add index.html spreadsheet.html data.json")
     print("  git commit -m 'Refresh dashboard'")
     print("  git push")
 

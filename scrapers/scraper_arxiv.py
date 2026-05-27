@@ -1,151 +1,273 @@
 """
 scraper_arxiv.py
 ----------------
-Scrapes arXiv for papers on AI in journalism using the arXiv API.
-No scraping restrictions — this uses the official arXiv API.
- 
+Scrapes the arXiv API (export.arxiv.org/api/query) for academic papers
+about AI use cases in news organisations and journalism.
+
+The arXiv Atom API requires no key and returns up to 2 000 results per
+request.  We keep batches at 100 and paginate.  arXiv asks for at least
+3 seconds between requests; this scraper waits 3 s between pages and 5 s
+between queries.
+
+Search queries target distinct facets:
+  - robot/automated/computational journalism
+  - AI in newsrooms and news writing
+  - NLG for news
+  - LLM / generative AI in journalism
+  - Fact-checking and misinformation detection
+  - News recommendation and personalisation
+  - Media bias detection
+
 Usage:
     python scraper_arxiv.py
-    python scraper_arxiv.py --max-results 200 --query "AI newsroom"
+    python scraper_arxiv.py --dry-run
 """
- 
+
 import argparse
 import logging
+import re
+import sys
 import time
-import urllib.parse
-import xml.etree.ElementTree as ET
- 
+from pathlib import Path
+
 import requests
- 
-from scraper_base import get_db, insert_use_case, log_summary
- 
+from bs4 import BeautifulSoup
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from scraper_base import get_db, insert_use_case, is_ai_journalism_relevant, log_summary
+
 logger = logging.getLogger("arxiv")
- 
+logging.basicConfig(level=logging.INFO,
+                    format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
+
 # ── Config ─────────────────────────────────────────────────────────────────────
-ARXIV_API   = "https://export.arxiv.org/api/query"
+API_URL     = "http://export.arxiv.org/api/query"
+SOURCE_URL  = "https://arxiv.org/search/"
 SOURCE_NAME = "arXiv"
 SOURCE_CAT  = "Academic"
-SOURCE_URL  = "https://arxiv.org/search/?query=journalism+AI&searchtype=all"
- 
-# Namespace used in arXiv Atom feeds
-NS = {
-    "atom":    "http://www.w3.org/2005/Atom",
-    "opensearch": "http://a9.com/-/spec/opensearch/1.1/",
-    "arxiv":   "http://arxiv.org/schemas/atom",
-}
- 
-DEFAULT_QUERIES = [
-    "journalism artificial intelligence",
-    "AI newsroom",
-    "news automation natural language processing",
-    "computational journalism",
-    "news recommendation deep learning",
+
+BATCH_SIZE             = 100   # results per API request
+MAX_RESULTS_PER_QUERY  = 300   # cap per query
+DELAY_BETWEEN_PAGES    = 3.0   # seconds — arXiv guideline
+DELAY_BETWEEN_QUERIES  = 5.0
+
+# Simple two-term queries — broad enough to catch any paper where both concepts
+# appear anywhere in the text. The LLM relevance filter handles false positives.
+SEARCH_QUERIES = [
+    'all:journalism AND all:"artificial intelligence"',
+    'all:journalism AND all:"machine learning"',
+    'all:journalism AND all:"deep learning"',
+    'all:journalism AND all:"large language model"',
+    'all:journalism AND all:"generative AI"',
+    'all:journalism AND all:GPT',
+    'all:journalism AND all:NLP',
+    'all:newsroom AND all:"artificial intelligence"',
+    'all:newsroom AND all:"machine learning"',
+    'all:newsroom AND all:"language model"',
+    'all:newsroom AND all:"generative AI"',
+    'all:"news organization" AND all:"artificial intelligence"',
+    'all:"news organization" AND all:"machine learning"',
+    'all:"news media" AND all:"machine learning"',
+    'all:"news media" AND all:"artificial intelligence"',
+    'all:"fake news" AND all:detection',
+    'all:misinformation AND all:detection AND all:news',
+    'all:"fact-checking" AND all:"machine learning"',
+    'all:"news recommendation" AND all:"machine learning"',
+    'all:"media bias" AND all:"machine learning"',
 ]
- 
- 
-# ── Fetch ──────────────────────────────────────────────────────────────────────
-def fetch_arxiv_page(query: str, start: int, max_results: int) -> ET.Element:
-    params = {
-        "search_query": f"all:{query}",
-        "start":        start,
-        "max_results":  max_results,
-        "sortBy":       "submittedDate",
-        "sortOrder":    "descending",
+
+
+# ── HTTP helper ────────────────────────────────────────────────────────────────
+HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (compatible; dissertation-research-bot/1.0; "
+        "+https://ox.ac.uk) AppleWebKit/537.36"
+    )
+}
+
+
+def get(params: dict) -> BeautifulSoup | None:
+    """Fetch one page of arXiv API results; returns parsed Atom XML or None."""
+    for attempt in range(3):
+        try:
+            resp = requests.get(API_URL, params=params, headers=HEADERS, timeout=30)
+            if resp.status_code == 429:
+                wait = 60 * (attempt + 1)
+                logger.warning("Rate-limited — sleeping %d s", wait)
+                time.sleep(wait)
+                continue
+            resp.raise_for_status()
+            return BeautifulSoup(resp.text, "xml")
+        except requests.RequestException as e:
+            logger.warning("Request failed (attempt %d): %s", attempt + 1, e)
+            time.sleep(10 * (attempt + 1))
+    return None
+
+
+# ── Parsing ────────────────────────────────────────────────────────────────────
+def _arxiv_id(raw_id: str) -> str:
+    """Normalise 'http://arxiv.org/abs/2301.12345v2' → '2301.12345'."""
+    m = re.search(r"arxiv\.org/abs/([^v]+)", raw_id)
+    return m.group(1) if m else raw_id
+
+
+def _parse_entry(entry) -> dict:
+    title_el = entry.find("title")
+    title = title_el.get_text(strip=True) if title_el else None
+
+    summary_el = entry.find("summary")
+    abstract = summary_el.get_text(strip=True) if summary_el else ""
+
+    published_el = entry.find("published")
+    date_published = None
+    if published_el:
+        raw = published_el.get_text(strip=True)
+        date_published = raw[:10] if raw else None   # keep YYYY-MM-DD
+
+    authors = [a.find("name").get_text(strip=True)
+               for a in entry.find_all("author") if a.find("name")]
+    author_str = ", ".join(authors[:5])
+    if len(authors) > 5:
+        author_str += " et al."
+
+    # Canonical URL — prefer the HTML abs page over the PDF link
+    url = None
+    for link in entry.find_all("link"):
+        if link.get("rel") == "alternate" or link.get("type") == "text/html":
+            url = link.get("href")
+            break
+    if not url:
+        id_el = entry.find("id")
+        url = id_el.get_text(strip=True) if id_el else None
+
+    # arXiv paper ID for deduplication across queries
+    id_el = entry.find("id")
+    paper_id = _arxiv_id(id_el.get_text(strip=True)) if id_el else None
+
+    return {
+        "_paper_id":      paper_id,
+        "title":          title,
+        "organisation":   author_str or None,
+        "date_published": date_published,
+        "summary":        abstract[:500] if abstract else None,
+        "raw_text":       abstract[:5000] if abstract else None,
+        "url":            url,
     }
-    url = f"{ARXIV_API}?{urllib.parse.urlencode(params)}"
-    logger.info("Fetching arXiv: start=%d  query=%r", start, query)
- 
-    for attempt in range(5):
-        resp = requests.get(url, timeout=30)
-        if resp.status_code == 429:
-            wait = 30 * (attempt + 1)  # 30s, 60s, 90s ...
-            logger.warning("Rate limited (429) — waiting %ds before retry %d/5", wait, attempt + 1)
-            time.sleep(wait)
-            continue
-        resp.raise_for_status()
-        return ET.fromstring(resp.text)
- 
-    raise RuntimeError("arXiv API returned 429 after 5 retries — try again in a few minutes")
- 
- 
-def parse_entries(root: ET.Element) -> list[dict]:
-    records = []
-    for entry in root.findall("atom:entry", NS):
-        title      = (entry.findtext("atom:title", "", NS) or "").strip().replace("\n", " ")
-        summary    = (entry.findtext("atom:summary", "", NS) or "").strip().replace("\n", " ")
-        published  = (entry.findtext("atom:published", "", NS) or "")[:10]  # YYYY-MM-DD
-        url        = (entry.findtext("atom:id", "", NS) or "").strip()
- 
-        # Authors → use the first as a proxy for "organisation" (no news org here)
-        authors = entry.findall("atom:author", NS)
-        first_author = authors[0].findtext("atom:name", "", NS) if authors else ""
- 
-        # Categories / subject tags
-        cats = [c.get("term", "") for c in entry.findall("atom:category", NS)]
- 
-        records.append({
-            "source_name":     SOURCE_NAME,
-            "source_category": SOURCE_CAT,
-            "source_url":      SOURCE_URL,
-            "title":           title,
-            "organisation":    first_author,   # closest proxy available
-            "country":         None,           # not available in arXiv metadata
-            "date_published":  published,
-            "url":             url,
-            "summary":         summary[:1000], # cap for DB storage
-            "raw_text":        f"Title: {title}\n\nAbstract: {summary}\n\nCategories: {', '.join(cats)}",
-        })
-    return records
- 
- 
+
+
+def _total_results(soup: BeautifulSoup) -> int:
+    el = soup.find("totalResults")
+    try:
+        return int(el.get_text(strip=True)) if el else 0
+    except ValueError:
+        return 0
+
+
+# ── Search ─────────────────────────────────────────────────────────────────────
+def search_papers(query: str) -> list[dict]:
+    papers = []
+    start  = 0
+
+    while len(papers) < MAX_RESULTS_PER_QUERY:
+        params = {
+            "search_query": query,
+            "start":        start,
+            "max_results":  BATCH_SIZE,
+            "sortBy":       "submittedDate",
+            "sortOrder":    "descending",
+        }
+        soup = get(params)
+        if not soup:
+            break
+
+        entries = soup.find_all("entry")
+        if not entries:
+            break
+
+        total = _total_results(soup)
+        papers.extend(_parse_entry(e) for e in entries)
+        logger.info("  '%s': fetched %d (offset %d / %d available)",
+                    query[:60], len(entries), start, total)
+
+        if start + BATCH_SIZE >= total or len(entries) < BATCH_SIZE:
+            break
+
+        start += BATCH_SIZE
+        time.sleep(DELAY_BETWEEN_PAGES)
+
+    return papers
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
-def scrape(queries: list[str] | None = None, max_results: int = 100) -> None:
-    if queries is None:
-        queries = DEFAULT_QUERIES
- 
+def scrape(dry_run: bool = False) -> None:
+    seen_ids: set[str]      = set()
+    all_records: list[dict] = []
+
+    for i, query in enumerate(SEARCH_QUERIES):
+        logger.info("Query %d/%d: %s", i + 1, len(SEARCH_QUERIES), query)
+        papers = search_papers(query)
+        new = 0
+        for paper in papers:
+            pid = paper.get("_paper_id") or paper.get("url") or ""
+            if pid and pid not in seen_ids:
+                seen_ids.add(pid)
+                all_records.append(paper)
+                new += 1
+        logger.info("  → %d new (total unique: %d)", new, len(all_records))
+        time.sleep(DELAY_BETWEEN_QUERIES)
+
+    logger.info("Collected %d unique papers across %d queries",
+                len(all_records), len(SEARCH_QUERIES))
+
+    if dry_run:
+        for r in all_records:
+            print(f"  [{(r.get('title') or '?')[:75]}]")
+            print(f"    {r.get('date_published', '?')}  {r.get('url', '')[:80]}")
+        return
+
     conn      = get_db()
     attempted = 0
     inserted  = 0
-    page_size = 50   # arXiv recommends ≤100 per request; 50 is safe
- 
-    for query in queries:
-        start = 0
-        fetched_this_query = 0
- 
-        while fetched_this_query < max_results:
-            batch = min(page_size, max_results - fetched_this_query)
-            root  = fetch_arxiv_page(query, start, batch)
- 
-            entries = parse_entries(root)
-            if not entries:
-                logger.info("No more results for query %r", query)
-                break
- 
-            for record in entries:
-                attempted += 1
-                if insert_use_case(conn, record):
-                    inserted += 1
- 
-            fetched_this_query += len(entries)
-            start              += len(entries)
- 
-            # Be polite — arXiv requests a 3-second gap between calls
-            time.sleep(3)
- 
-            if len(entries) < batch:
-                break   # fewer results than requested = last page
- 
-    log_summary(SOURCE_NAME, attempted, inserted)
+    skipped   = 0
+
+    for record in all_records:
+        record.pop("_paper_id", None)
+
+        if not record.get("title"):
+            skipped += 1
+            continue
+
+        attempted += 1
+        record.update({
+            "source_name":     SOURCE_NAME,
+            "source_category": SOURCE_CAT,
+            "source_url":      SOURCE_URL,
+        })
+
+        if not is_ai_journalism_relevant(
+            record.get("title", ""),
+            record.get("summary", ""),
+            record.get("raw_text", ""),
+        ):
+            skipped += 1
+            logger.debug("  ✗ not relevant: %s", (record.get("title") or "")[:80])
+            time.sleep(0.3)
+            continue
+
+        if insert_use_case(conn, record):
+            inserted += 1
+            logger.info("  + %s", (record.get("title") or "")[:80])
+
+        time.sleep(0.5)
+
+    log_summary(SOURCE_NAME, attempted, inserted, filtered=skipped)
     conn.close()
- 
- 
+
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Scrape arXiv for AI-in-journalism papers")
-    parser.add_argument("--max-results", type=int, default=100,
-                        help="Max results per query (default 100)")
-    parser.add_argument("--query", type=str, default=None,
-                        help="Single custom query (overrides defaults)")
+    parser = argparse.ArgumentParser(
+        description="Scrape arXiv API for AI-in-journalism papers")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="List papers without inserting into the DB")
     args = parser.parse_args()
- 
-    queries = [args.query] if args.query else None
-    scrape(queries=queries, max_results=args.max_results)
+    scrape(dry_run=args.dry_run)

@@ -1,6 +1,171 @@
 {
-  "generated_at": "2026-05-20 11:31 UTC",
+  "generated_at": "2026-05-27 11:11 UTC",
   "records": [
+    {
+      "id": 615,
+      "title": "Finnish Newsroom’s AI tool Wrongly Suggests Russian Drones Entered Airspace",
+      "organisation": "Clare Spencer",
+      "country": null,
+      "date_published": "2026-05-27",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "LLM press release scanning tool inaccurately reported that Russian drones had entered Finland. It wasn’t true, and human journalists did not catch it before publication.",
+      "url": "https://generative-ai-newsroom.com/finnish-newsrooms-ai-tool-wrongly-suggests-russian-drones-entered-airspace-3c9cc49f88c8"
+    },
+    {
+      "id": 554,
+      "title": "Micropayments for news have failed everywhere. Can they succeed in Kenya?",
+      "organisation": "Maurice Oniang'o",
+      "country": null,
+      "date_published": "2026-05-26",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "Two big newspapers are leveraging mobile payments to offer day passes and access to articles for small prices. Maurice Oniang’o examines if it’s working",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/micropayments-news-have-failed-everywhere-can-they-succeed-kenya"
+    },
+    {
+      "id": 487,
+      "title": "How Mediengruppe Pressedruck uses AI to reclaim journalists’ time",
+      "organisation": "Mediengruppe Pressedruck",
+      "country": null,
+      "date_published": "2026-05-22",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "The German publisher’s AI-powered solution adapts and shortens press releases and police reports for their print edition, freeing reporters to focus more on high-value journalism.",
+      "url": "https://wan-ifra.org/2026/05/how-mediengruppe-pressedruck-uses-ai-to-reclaim-journalists-time/"
+    },
+    {
+      "id": 488,
+      "title": "Germany’s General-Anzeiger gears AI projects to increase overall staff use",
+      "organisation": "AI workshops",
+      "country": null,
+      "date_published": "2026-05-20",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "When it comes to using AI, news publishers often seem to be looking for a specific problem to solve, or a use case where they believe incorporating AI technology can help them make immediate improvements and operate more efficiently with something they can implement and then scale.",
+      "url": "https://wan-ifra.org/2026/05/germanys-general-anzeiger-gears-ai-projects-to-increase-overall-staff-use/"
+    },
+    {
+      "id": 601,
+      "title": "New York Times, India’s Times Internet experiment with GenAI advertising",
+      "organisation": null,
+      "country": null,
+      "date_published": "2026-05-17",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Acouple of INMA members have told me that they are experimenting with using GenAI to come up with ideas on the creative side of marketing and advertising.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/new-york-times-india-s-times-internet-experiment-with-genai-advertising"
+    },
+    {
+      "id": 603,
+      "title": "Ippen Digital shares the why behind its AI-driven newsroom",
+      "organisation": null,
+      "country": null,
+      "date_published": "2026-05-12",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "It’s not often that one meets an editor-in-chief who publicly declares that his aim is an AI-driven newsroom. These are not words that usually fit in the same sentence together. Data-driven, sure. But AI-driven?",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ippen-digital-shares-the-why-behind-its-ai-drive-newsroom"
+    },
+    {
+      "id": 602,
+      "title": "HT Media experiments with AI in personalising content",
+      "organisation": null,
+      "country": null,
+      "date_published": "2026-05-12",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "What could be more personalised than letting the user themself pick the content they want to consume?",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ht-media-experiments-with-ai-in-personalising-content"
+    },
+    {
+      "id": 597,
+      "title": "What does GenAI mean for the ROI of audio?",
+      "organisation": null,
+      "country": null,
+      "date_published": "2026-05-12",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "News publishers are becoming far more ambitious and innovative about using GenAI in audio than they had been in the past — and finding the ROI on audio-related tools often makes them worth investing in.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/what-does-genai-mean-for-the-roi-of-audio"
+    },
+    {
+      "id": 594,
+      "title": "GenAI tool saves €500,000 annually at OVB Media",
+      "organisation": null,
+      "country": null,
+      "date_published": "2026-05-12",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "How often do you develop a tool within 10 weeks that saves half a million euros annually?",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-tool-saves-500-000-annually-at-ovb-media"
+    },
+    {
+      "id": 605,
+      "title": "Media companies are using GenAI in multiple ways right now",
+      "organisation": null,
+      "country": null,
+      "date_published": "2026-05-11",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Many in our industry are already using GenAI in interesting ways. The most common theme? Using it as an assistant for busy reporters and editors in relatively low-risk ways, particularly on the back end. For example:",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/media-companies-are-using-genai-in-multiple-ways-right-now"
+    },
+    {
+      "id": 604,
+      "title": "Latin American media companies are finding their way with GenAI, too",
+      "organisation": null,
+      "country": null,
+      "date_published": "2026-05-11",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "When we talk about innovation and particularly the use of AI, large European companies tend to dominate the conversation. Theirs are often groundbreaking use cases, implemented in structures that allow them to move quickly because they have long embraced digital transformation.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/latin-american-media-companies-are-finding-their-way-with-genai-too"
+    },
+    {
+      "id": 599,
+      "title": "News media publishers are extracting value from chat products",
+      "organisation": null,
+      "country": null,
+      "date_published": "2026-05-11",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "The question of ROI is increasingly popping up in connection with another popular GenAI product: chat.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/news-media-publishers-are-extracting-value-from-chat-products"
+    },
+    {
+      "id": 598,
+      "title": "Hearst Newspapers leverages AI to build local content, reader loyalty",
+      "organisation": null,
+      "country": null,
+      "date_published": "2026-05-11",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "At Hearst Newspapers, the emphasis is on creating innovative, high-impact, high-value content that can’t be found elsewhere. During the recent INMA WebinarFuture-proofing news in the GenAI era, members heard how the company uses AI innovation to build loyalty.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/hearst-newspapers-leverages-ai-to-build-local-content-reader-loyalty"
+    },
+    {
+      "id": 596,
+      "title": "Ippen Digital, Mediafin share how they created customer-facing GenAI products",
+      "organisation": null,
+      "country": null,
+      "date_published": "2026-05-11",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "With generative AI becoming so prevalent, news publishers are either looking at how to use the technology to improve the customer experience while also integrating it into internal workflows.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ippen-digital-medifin-share-how-they-created-customer-facing-genai-products"
+    },
+    {
+      "id": 595,
+      "title": "Rede Gazeta experiments with GenAI to create its own news assistant",
+      "organisation": null,
+      "country": null,
+      "date_published": "2026-05-11",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Rede Gazetain Brazil has faced digital transformation challenges familiar to many legacy media companies, completing its move to digital-only in early 2020.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/rede-gazeta-experiments-with-genai-to-create-its-own-news-assistant"
+    },
     {
       "id": 20,
       "title": "Patch2Vuln: Agentic Reconstruction of Vulnerabilities from Linux Distribution Binary Patches",
@@ -222,6 +387,50 @@
       "url": "http://arxiv.org/abs/2605.06667v1"
     },
     {
+      "id": 489,
+      "title": "NZZ is turning its archives into a newsroom tool",
+      "organisation": "Alban Mazrekaj",
+      "country": null,
+      "date_published": "2026-04-23",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "At Switzerland’s Neue Zürcher Zeitung (NZZ), AI development is increasingly focused on the newsroom itself – specifically, how journalists access and use the publisher’s 250 years of archived content.",
+      "url": "https://wan-ifra.org/2026/04/nzz-is-turning-its-archives-into-a-newsroom-tool/"
+    },
+    {
+      "id": 491,
+      "title": "How Rheinische Post built an AI governance that aligns with its digital subscriber goals",
+      "organisation": "Margret Seeger",
+      "country": null,
+      "date_published": "2026-04-21",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "A well-defined AI framework has allowed Rheinische Post to provide AI training to more than 1,000 of its employees. The publisher’s more than 20 AI projects cut across the whole organisation, from the newsroom and print production to sales and customer service.",
+      "url": "https://wan-ifra.org/2026/04/how-rheinische-post-built-an-ai-governance-that-aligns-with-its-digital-subscriber-goals/"
+    },
+    {
+      "id": 490,
+      "title": "At Deccan Herald, AI turns articles into instant infographics",
+      "organisation": "Deccan Herald",
+      "country": null,
+      "date_published": "2026-04-21",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "When readers arrive at a story with limited time, long paragraphs are often the first thing they skip. For Deccan Herald, this posed a familiar challenge: how to surface key information quickly without adding to already stretched editorial workflows.",
+      "url": "https://wan-ifra.org/2026/04/at-deccan-herald-ai-turns-articles-into-instant-infographics/"
+    },
+    {
+      "id": 492,
+      "title": "At The Quint, AI is helping readers navigate long-form journalism",
+      "organisation": "AI in the newsroom",
+      "country": null,
+      "date_published": "2026-04-20",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "When readers click into a long investigation, interest doesn’t always translate into attention. For The Quint, analytics showed a familiar pattern: a portion of such readers showed strong traffic to in-depth stories, but weaker engagement post landing.",
+      "url": "https://wan-ifra.org/2026/04/at-the-quint-ai-is-helping-readers-navigate-long-form-journalism/"
+    },
+    {
       "id": 22,
       "title": "A new AI compass to refine the editorial agenda",
       "organisation": "La Silla Rota",
@@ -231,6 +440,17 @@
       "source_category": "Database",
       "summary": "AI Strategy ,News production ,Audience Engagement,Analytics",
       "url": "https://latamjournalismreview.org/articles/a-new-ai-compass-to-refine-the-editorial-agenda/"
+    },
+    {
+      "id": 493,
+      "title": "How dmg media is building an AI ‘foundational layer’ for the newsroom",
+      "organisation": "Daily Mail",
+      "country": null,
+      "date_published": "2026-04-08",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "The publisher of Daily Mail has developed a comprehensive suite of AI tools, collectively titled Mail iQ, that assist journalists with copy editing, filling in metadata and creating social media assets. The goal is to transition AI from experimental proof-of-concepts into a scalable infrastructure that automates the editorial team’s administrative tasks.",
+      "url": "https://wan-ifra.org/2026/04/how-dmg-media-is-building-an-ai-foundational-layer-for-the-newsroom/"
     },
     {
       "id": 23,
@@ -253,6 +473,17 @@
       "source_category": "Industry",
       "summary": "Emma Tucker, editor-in-chief of The Wall Street Journal, on the AI tools the Journal has built",
       "url": "https://pressgazette.co.uk/news-leaders/wsj-subscriptions-success-not-an-accident-editor-emma-tucker-interview/"
+    },
+    {
+      "id": 616,
+      "title": "How to Budget for Your Newsroom’s AI Project",
+      "organisation": "Clare Spencer",
+      "country": null,
+      "date_published": "2026-03-31",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "Token costs may not be your biggest expense.",
+      "url": "https://generative-ai-newsroom.com/how-to-budget-for-your-newsrooms-ai-project-28d7e5a169a0"
     },
     {
       "id": 384,
@@ -286,6 +517,17 @@
       "source_category": "Database",
       "summary": "Newsgathering,Audience Engagement,Generative AI",
       "url": "https://wan-ifra.org/2026/03/how-the-hindu-is-embedding-ai-into-its-data-journalism/"
+    },
+    {
+      "id": 600,
+      "title": "News publishers can benefit from these 11 GenAI uses",
+      "organisation": null,
+      "country": null,
+      "date_published": "2026-03-04",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Here are some practical applications of GenAI that have emerged over the past couple of weeks:",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/news-publishers-can-benefit-from-these-11-genai-uses"
     },
     {
       "id": 26,
@@ -330,6 +572,17 @@
       "source_category": "Database",
       "summary": "Newsgathering,Investigations,Generative AI",
       "url": "https://latamjournalismreview.org/articles/these-brazilian-newsrooms-are-using-ai-to-expose-online-hate-and-track-federal-policy/"
+    },
+    {
+      "id": 495,
+      "title": "Monetising journalism: Is true crime the prime niche for you?",
+      "organisation": "A+E Networks EMEA)",
+      "country": null,
+      "date_published": "2026-02-20",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "True crime news products have helped a handful of publishers into the premium content realm, growing huge audiences. But can the revenue match the hype?",
+      "url": "https://wan-ifra.org/2026/02/monetising-journalism-is-true-crime-the-prime-niche-for-you/"
     },
     {
       "id": 29,
@@ -431,6 +684,17 @@
       "url": "https://digiday.com/future-of-tv/inside-nbcuniversals-test-to-use-ai-agents-to-sell-ads-against-a-live-nfl-game/"
     },
     {
+      "id": 610,
+      "title": "Coding Agents for Investigative Journalism",
+      "organisation": "Nick Hagar",
+      "country": null,
+      "date_published": "2026-01-27",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "A case study in using AI coding agents to recreate a MuckRock investigation with a human-in-the-loop.",
+      "url": "https://generative-ai-newsroom.com/coding-agents-for-investigative-journalism-8b65bc30f9ea"
+    },
+    {
       "id": 343,
       "title": "A scrappy story-sharing tool with local newsroom DNA gains traction",
       "organisation": "Sarah Scire",
@@ -453,6 +717,17 @@
       "url": "https://newsinitiative.withgoogle.com/en-gb/resources/stories/how-dennik-n-tool-continues-to-power-publisher-revenue/"
     },
     {
+      "id": 617,
+      "title": "Inside Público’s GenAI-Powered Voting Game",
+      "organisation": "Clare Spencer",
+      "country": null,
+      "date_published": "2026-01-12",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "Transforming boring political documents into a game to engage voters.",
+      "url": "https://generative-ai-newsroom.com/inside-p%C3%BAblicos-genai-powered-voting-game-c3e937c8a978"
+    },
+    {
       "id": 34,
       "title": "Inside Público’s GenAI-Powered Voting Game",
       "organisation": "Público",
@@ -462,6 +737,17 @@
       "source_category": "Database",
       "summary": "Audience Engagement",
       "url": "https://generative-ai-newsroom.com/inside-p%C3%BAblicos-genai-powered-voting-game-c3e937c8a978"
+    },
+    {
+      "id": 625,
+      "title": "Experimenting with NotebookLM Use Cases",
+      "organisation": "Clare Spencer",
+      "country": null,
+      "date_published": "2025-12-22",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "I put NotebookLM to the test for a year-end review and for helping to cover a conference.",
+      "url": "https://generative-ai-newsroom.com/experimenting-with-notebooklm-use-cases-c82b68fc75c4"
     },
     {
       "id": 35,
@@ -486,6 +772,39 @@
       "url": "https://pressgazette.co.uk/news/former-future-editor-launches-ai-powered-cycling-news-website/"
     },
     {
+      "id": 611,
+      "title": "The New Economics of News in the AI Era",
+      "organisation": "Clare Spencer",
+      "country": null,
+      "date_published": "2025-12-08",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "Litigation, regulation, and negotiation are all on the table as news organizations forge a sustainable path.",
+      "url": "https://generative-ai-newsroom.com/the-new-economics-of-news-in-the-ai-era-5aca243b4431"
+    },
+    {
+      "id": 558,
+      "title": "GenAI provides newsrooms with opportunities to improve and deepen research ",
+      "organisation": "Paula Felps",
+      "country": null,
+      "date_published": "2025-11-23",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "As part of its ongoing Webinar series with OpenAI, the INMA Generative AI Initiative recently offered an in-depth look at how news media companies are using generative AI to improve their research.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-provides-newsrooms-with-opportunities-to-improve-and-deepen-research"
+    },
+    {
+      "id": 557,
+      "title": "Time creates new GenAI tool to engage audiences",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-11-23",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "As more and morenews consumers turn to answer enginesfor information, Time is stepping up its game to hang on to its audience.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/time-creates-new-genai-tool-to-engage-audiences"
+    },
+    {
       "id": 36,
       "title": "Beyond blue links: Meet NEO, EBU’s project to reinvent news access",
       "organisation": "EBU",
@@ -495,6 +814,17 @@
       "source_category": "Database",
       "summary": "Audience Engagement,News distribution",
       "url": "https://www.journalismai.info/blog/beyond-blue-links-how-the-ebu-built-neo-to-reinvent-news-access"
+    },
+    {
+      "id": 633,
+      "title": "Could NotebookLM be the Next Interface for News?",
+      "organisation": "Clare Spencer",
+      "country": null,
+      "date_published": "2025-11-19",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "The Economist is one of a select few publishers to be featured on Google NotebookLM. Should newsrooms prepare for a world where Google controls the front end to the news experience?",
+      "url": "https://generative-ai-newsroom.com/could-notebooklm-be-the-next-interface-for-news-853daab5044a"
     },
     {
       "id": 409,
@@ -926,6 +1256,50 @@
       "url": "https://www.nytimes.com/2025/11/07/business/media/ai-news-media.html"
     },
     {
+      "id": 559,
+      "title": "Media companies share AI-powered newsroom initiatives",
+      "organisation": "Brie Logsdon",
+      "country": null,
+      "date_published": "2025-11-06",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "AI is no longer a futuristic concept, but a present-day imperative, according to Sonali Verma,INMA Generative AI Initiativelead.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/media-companies-share-ai-powered-newsroom-initiatives"
+    },
+    {
+      "id": 560,
+      "title": "AI helps newsrooms, ad targeting at Boston Globe, Philadelphia Inquirer",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-11-05",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Fresh fromINMA’s Media Tech and AI Weekin San Francisco, I am looking back at several case studies that serve assolid examples of AI use by news brands and what they have learned from their experiments.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ai-helps-newsroom-ad-targeting-at-boston-globe-philadelphia-inquirer"
+    },
+    {
+      "id": 626,
+      "title": "Inside the New Multilingual Newsrooms using GenAI for Translation",
+      "organisation": "Clare Spencer",
+      "country": null,
+      "date_published": "2025-11-04",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "Chicago’s La Voz, The Economist’s Español TikTok channel, and BBC News Polska have all benefitted from careful use of translation tools with human oversight.",
+      "url": "https://generative-ai-newsroom.com/inside-the-new-multilingual-newsrooms-using-genai-for-translation-4c3b17269811"
+    },
+    {
+      "id": 496,
+      "title": "A small Norwegian newsroom punches above its weight with a data-driven, human-centred AI strategy",
+      "organisation": "iTromsø",
+      "country": null,
+      "date_published": "2025-11-04",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2025-11-04. iTromsø, a 25-reporter newsroom in northern Norway, is showing how a small local publisher can produce original, locally relevant data stories using self-developed AI tools. Its owner, Polaris Media, has built a structure that lets successful, bottom-up innovations scale across the organisation.",
+      "url": "https://wan-ifra.org/2025/11/a-small-norwegian-newsroom-punches-above-its-weight-with-a-data-driven-human-centred-ai-strategy/"
+    },
+    {
       "id": 472,
       "title": "How The Times is using AI to model synthetic focus groups from human audiences",
       "organisation": "Tim Peterson",
@@ -1003,6 +1377,17 @@
       "url": "https://newsmachines.beehiiv.com/p/the-onion-ai-strategy"
     },
     {
+      "id": 619,
+      "title": "How The Philadelphia Inquirer is Teaching Journalists the Limits of GenAI",
+      "organisation": "Clare Spencer",
+      "country": null,
+      "date_published": "2025-10-14",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "The Philadelphia Inquirer is training journalists to change their mindset to get the most out of GenAI.",
+      "url": "https://generative-ai-newsroom.com/how-the-philadelphia-inquirer-is-teaching-journalists-the-limits-of-genai-9f74146f91c3"
+    },
+    {
       "id": 411,
       "title": "Washington Post’s chatbot has received ‘tens of millions’ of queries",
       "organisation": "Alice Brooker",
@@ -1012,6 +1397,17 @@
       "source_category": "Industry",
       "summary": "Arc XP chief executive Matthew Monahan spoke at Press Gazette’s Future of Media conference.",
       "url": "https://pressgazette.co.uk/press-gazette-events/washington-posts-chatbot-has-receioved-tens-of-millions-of-queries/"
+    },
+    {
+      "id": 623,
+      "title": "Improving the Accessibility of Infographics with AI-Generated Alt-Text",
+      "organisation": "Clare Spencer",
+      "country": null,
+      "date_published": "2025-10-01",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "The Austrian Press Agency (APA) uses generative AI to create text to describe charts and graphs for visually impaired people.",
+      "url": "https://generative-ai-newsroom.com/improving-the-accessibility-of-infographics-with-ai-generated-alt-text-f56aa3aef661"
     },
     {
       "id": 413,
@@ -1058,6 +1454,17 @@
       "url": "https://pressgazette.co.uk/press-gazette-events/chatgpt-is-ghost-of-what-publishers-provide-directly/"
     },
     {
+      "id": 497,
+      "title": "Newslaundry’s AI chatbot is doing more than answering queries",
+      "organisation": "AI chatbots",
+      "country": null,
+      "date_published": "2025-09-22",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "India’s Newslaundry has built an in-house AI chatbot, Ask Birubala, to handle subscriber queries and streamline the publisher’s support workflows. Beyond troubleshooting, the tool is reshaping internal roles and strengthening its subscription-first strategy.",
+      "url": "https://wan-ifra.org/2025/09/newslaundrys-ai-chatbot-is-doing-more-than-answering-queries/"
+    },
+    {
       "id": 468,
       "title": "Inside The New York Times’ AI newsroom strategy",
       "organisation": "Sara Guaglione",
@@ -1091,6 +1498,17 @@
       "url": "https://awards.journalists.org/entries/chatmigrante-an-ai-powered-tool-that-supports-migrants-with-accurate-personalized-guidance-through-their-migratory-process/"
     },
     {
+      "id": 561,
+      "title": "BBC, orthopedic podcast illustrate best practices for audio GenAI applications",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-09-02",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Many publishers are doing interesting work using audio applications of GenAI. A couple of them caught my eye because in each case, the newsroom is easily extending its ability to reach new audiences by using GenAI — and ensuring human judgment is applied carefully as well.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/bbc-orthopedic-podcast-illustrate-best-practices-for-audio-genai-applications"
+    },
+    {
       "id": 382,
       "title": "Can AI help local journalists cover 169 towns? CT Mirror is working to find out",
       "organisation": "Owen Auston-Babcock",
@@ -1113,6 +1531,28 @@
       "url": "https://www.niemanlab.org/2025/08/local-newsrooms-are-building-ai-chatbots-fast-and-cheap/"
     },
     {
+      "id": 476,
+      "title": "The Seattle Medium embraces AI without losing its soul",
+      "organisation": null,
+      "country": null,
+      "date_published": "2025-08-21",
+      "source_name": "Editor & Publisher",
+      "source_category": "Industry",
+      "summary": "AI is no longer a buzzword in local newsrooms — it’s becoming the backbone of how small publishers survive and grow. That message came through loud and clear in a recent E&P–sponsored webinar, where Seattle Medium digital and social media manager Josiah Scott joined Nota’s CEO Josh Brandau and COO Evan Young to share how one minority-owned newsroom is using assistive AI to expand its reach, boost engagement, and grow revenue without losing its soul.",
+      "url": "https://www.editorandpublisher.com/stories/the-seattle-medium-embraces-ai-without-losing-its-soul,257367"
+    },
+    {
+      "id": 562,
+      "title": "Times of India uses GenAI as an engine for new products — and revenue",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-08-19",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "One of the many outstanding speakers at INMA’sMumbai conferencein July was the head of digital design and product atThe Times of India, Rohit Garg, who outlined dozens of ways AI is helping one of India’s largest news publishers go faster and further than ever before.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/times-of-india-uses-genai-as-an-engine-for-new-products-and-revenue"
+    },
+    {
       "id": 75,
       "title": "Onet Czat with AI creates simplified experience for Ringier Axel Springer Polska readers",
       "organisation": "Onet Czat",
@@ -1122,6 +1562,28 @@
       "source_category": "Database",
       "summary": "Audience Engagement,News distribution",
       "url": "https://www.inma.org/blogs/Content-Strategies/post.cfm/onet-czat-with-ai-creates-simplified-experience-for-ringier-axel-springer-polska-readers"
+    },
+    {
+      "id": 563,
+      "title": "Hearst Newspapers leverages AI for a human-centred strategy",
+      "organisation": "Paula Felps",
+      "country": null,
+      "date_published": "2025-08-10",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "As AI began entering newsrooms, Hearst Newspapers created a distinct plan for integrating into its network of local publications.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/hearst-newspapers-leverages-ai-for-a-human-centred-strategy"
+    },
+    {
+      "id": 498,
+      "title": "Inside Reuters’ approach to Gen AI in the newsroom",
+      "organisation": "Gen AI",
+      "country": null,
+      "date_published": "2025-08-10",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "Reuters moved early to embed generative AI into its newsroom – not as a replacement for journalists, but as a tool to reduce routine work, augment reporting, and responsibly transform how news is delivered. Grounded in its Trust Principles, the organisation is pairing innovation with oversight, transparency and editorial accountability.",
+      "url": "https://wan-ifra.org/2025/08/109439/"
     },
     {
       "id": 76,
@@ -1135,6 +1597,28 @@
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/hearst-newspapers-leverages-ai-for-a-human-centred-strategy?_zs=IL4SR1&_zl=JlEq7"
     },
     {
+      "id": 564,
+      "title": "HT builds AI-driven platform for ad clients",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-08-05",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Advertising is the largest revenue driver for HT Media, as it is for most Indian news companies.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ht-builds-ai-driven-platform-for-ad-clients"
+    },
+    {
+      "id": 565,
+      "title": "HT Media makes “disproportionate gains” with AI",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-08-04",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Imarveled at the clarity and speed with which some Indian news companies are approaching AI initiatives during INMA’s dynamitestudy tour and conferencein Mumbai.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ht-media-makes-disproportionate-gains-with-ai"
+    },
+    {
       "id": 347,
       "title": "The good, the bad, and the completely made-up: Newsrooms on wrestling accurate answers out of AI",
       "organisation": "Josh Axelrod",
@@ -1144,6 +1628,83 @@
       "source_category": "Industry",
       "summary": "“If we sit on the sideline and observe, I think the risk is too high that we are gonna be left behind.”",
       "url": "https://www.niemanlab.org/2025/08/the-good-the-bad-and-the-completely-made-up-newsrooms-on-wrestling-accurate-answers-out-of-ai/"
+    },
+    {
+      "id": 631,
+      "title": "The Newspapers Using Generative AI to Surface Restaurant Reviews",
+      "organisation": "Clare Spencer",
+      "country": null,
+      "date_published": "2025-07-16",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "Examples in leveraging local content archives to create new user value",
+      "url": "https://generative-ai-newsroom.com/the-newspapers-using-generative-ai-to-surface-restaurant-reviews-4ed4a75d21c2"
+    },
+    {
+      "id": 621,
+      "title": "Agentic Search for Investigative Journalism",
+      "organisation": "Evan Chen",
+      "country": null,
+      "date_published": "2025-07-14",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "Developing a tool to enable analysis of TIF Spending in Chicago",
+      "url": "https://generative-ai-newsroom.com/agentic-search-for-investigative-journalism-43faa44ade99"
+    },
+    {
+      "id": 499,
+      "title": "Cómo cuatro medios latinoamericanos están usando inteligencia artificial para transformar sus redacciones",
+      "organisation": null,
+      "country": null,
+      "date_published": "2025-07-08",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "07-08-2025. La inteligencia artificial ya no es una promesa lejana para el periodismo. En América Latina, diversas redacciones están ya aplicándola como una herramienta real y estratégica para automatizar procesos, liberar recursos, experimentar con nuevos formatos y fortalecer su misión informativa.",
+      "url": "https://wan-ifra.org/2025/07/como-cuatro-medios-latinoamericanos-estan-usando-inteligencia-artificial-para-transformar-sus-redacciones/"
+    },
+    {
+      "id": 609,
+      "title": "Personalizing Newsletters: A Case Study on Iterative Prompt Evaluation and Improvement",
+      "organisation": "Ashlyn Wang",
+      "country": null,
+      "date_published": "2025-06-30",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "Exploring a practical workflow for how targeted prompting can help refine AI-generated newsletter headlines",
+      "url": "https://generative-ai-newsroom.com/personalizing-newsletters-a-case-study-on-iterative-prompt-evaluation-and-improvement-a9f1141900fd"
+    },
+    {
+      "id": 566,
+      "title": "Bonnier News transformed its print production through automation",
+      "organisation": "Paula Felps",
+      "country": null,
+      "date_published": "2025-06-26",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "For years, Benjamin Peetre worked on “trying to make nice printed pages for the readers to enjoy.” Today, as senior print developer at Bonnier News Local, he’s still doing that — but now he has some help from robots.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/bonnier-news-transformed-its-print-production-through-automation"
+    },
+    {
+      "id": 500,
+      "title": "AI tools help The Quint drive engagement, subscriptions",
+      "organisation": "The Quint",
+      "country": null,
+      "date_published": "2025-06-26",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2025-06-26. The Quint, a digital news platform based in India, has developed a suite of AI-powered features aimed at deepening reader engagement. These tools, built entirely in-house, have contributed to a noticeable increase in time spent on the site.",
+      "url": "https://wan-ifra.org/2025/06/ai-tools-help-the-quint-drive-engagement-subscriptions/"
+    },
+    {
+      "id": 567,
+      "title": "AI can create content but not journalism",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-06-23",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Even as the team under Jessica Bulthé, who heads data and insights atMediahuisin Belgium, works to acclimatise journalists to AI, Bulthé was very clear on one point:",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ai-can-create-content-but-not-journalism"
     },
     {
       "id": 417,
@@ -1166,6 +1727,17 @@
       "source_category": "Industry",
       "summary": "BBC News Polska has a small team adapting and translating the corporation’s wider news content.",
       "url": "https://pressgazette.co.uk/publishers/digital-journalism/bbc-ai-translation-poland/"
+    },
+    {
+      "id": 627,
+      "title": "Can AI Triage a Pitch? A Case Study in Editorial Evaluation from Minority Africa",
+      "organisation": "Caleb Okereke",
+      "country": null,
+      "date_published": "2025-06-18",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "With too many pitches and too few editors, we built an AI model to help us “decide” what stories to tell. Here’s what we learned and how we’re evaluating it.",
+      "url": "https://generative-ai-newsroom.com/can-ai-triage-a-pitch-a-case-study-in-editorial-evaluation-from-minority-africa-beb864444f9e"
     },
     {
       "id": 338,
@@ -1210,6 +1782,17 @@
       "source_category": "Industry",
       "summary": "“Summaries aren’t a replacement for journalism: they can’t exist without it.” The Wall Street Journal, Bloomberg, and Yahoo News on what they’ve learned rolling out AI-powered summaries.",
       "url": "https://www.niemanlab.org/2025/06/lets-get-to-the-point-three-newsrooms-on-generating-ai-summaries-for-news/"
+    },
+    {
+      "id": 630,
+      "title": "How a Danish News Service Made a Profit with its Transcription Tool",
+      "organisation": "Clare Spencer",
+      "country": null,
+      "date_published": "2025-06-02",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "A software engineer at Zetland created the transcription tool Good Tape, which has brought in millions of dollars.",
+      "url": "https://generative-ai-newsroom.com/how-a-danish-news-service-made-a-profit-with-its-transcription-tool-285bc05b7cf9"
     },
     {
       "id": 325,
@@ -1377,6 +1960,28 @@
       "url": "https://www.digitalnewsreport.org/"
     },
     {
+      "id": 502,
+      "title": "Divining data: How AI invigorates The New York Times’ approach to investigative reporting",
+      "organisation": "WAN-IFR's World News Media Congress",
+      "country": null,
+      "date_published": "2025-05-30",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2025-05-30. By building tools based on repeated patterns, The New York Times is strategically applying AI as a force multiplier for investigative journalism – while maintaining traditional journalistic standards of accuracy and verification, explains Zach Seward.",
+      "url": "https://wan-ifra.org/2025/05/divining-data-how-ai-invigorates-the-new-york-times-approach-to-investigative-reporting/"
+    },
+    {
+      "id": 501,
+      "title": "How to integrate AI into your newsroom: ‘Not just as a tool, but as a transformative force.’",
+      "organisation": "Fabian Heckenberger",
+      "country": null,
+      "date_published": "2025-05-30",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2025-05-30. AI is more than just another layer on top of the newsroom transformation configuration, says Süddeutsche Zeitung’s Fabian Heckenberger: ‘It reshapes strategy, tools, culture, audience relations, everything…’",
+      "url": "https://wan-ifra.org/2025/05/how-to-integrate-ai-into-your-newsroom-not-just-as-a-tool-but-as-a-transformative-force/"
+    },
+    {
       "id": 78,
       "title": "Gruner + Jahr drives a cultural shift toward AI",
       "organisation": "Gruner + Jahr",
@@ -1386,6 +1991,17 @@
       "source_category": "Database",
       "summary": "News production",
       "url": "https://newsinitiative.withgoogle.com/en-gb/resources/stories/gruner-jahr-drives-a-cultural-shift-toward-ai-1/"
+    },
+    {
+      "id": 538,
+      "title": "What Nikkei learnt from building its own Japanese AI chatbot",
+      "organisation": "Gretel Kahn",
+      "country": null,
+      "date_published": "2025-05-20",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "The new tool, which Nikkei created by building its own model, is embedded in articles and suggests questions to spark conversations with readers",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/what-nikkei-learnt-building-its-own-japanese-ai-chatbot"
     },
     {
       "id": 79,
@@ -1410,6 +2026,17 @@
       "url": "https://www.br.de/nachrichten/wissen/wie-ki-den-inhalt-der-user-kommentare-bei-br24-zusammenfasst,UgNIPa2"
     },
     {
+      "id": 503,
+      "title": "From Norway to India: How AI is reshaping global fact-checking efforts",
+      "organisation": "Dataful",
+      "country": null,
+      "date_published": "2025-05-13",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2025-05-13. “We know how fake news spreads, and it spreads rather quickly,” said Shashank Chouhan, Output Editor for BBC Indian Languages, Collective Newsroom, underlining the urgent need for fact-checking in today’s information landscape.",
+      "url": "https://wan-ifra.org/2025/05/from-norway-to-india-how-ai-is-reshaping-global-fact-checking-efforts/"
+    },
+    {
       "id": 418,
       "title": "Google AI Overviews leads to dramatic reduction in clickthroughs for Mail Online",
       "organisation": "Charlotte Tobitt",
@@ -1421,6 +2048,17 @@
       "url": "https://pressgazette.co.uk/publishers/digital-journalism/google-ai-overviews-leads-to-dramatic-reduction-in-click-throughs-for-mail-online/"
     },
     {
+      "id": 568,
+      "title": "GenAI helps news companies better respond to their audience",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-05-11",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "There is a mismatch between how quickly tech companies are moving and how fast media organisations can determine the risks and opportunities associated with new AI models and tools.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-helps-news-companies-better-respond-to-their-audience"
+    },
+    {
       "id": 81,
       "title": "From Idea to Implementation: Lessons Learned from the First AI Integration Process in a Local Argentine Newsroom",
       "organisation": "0221",
@@ -1430,6 +2068,17 @@
       "source_category": "Database",
       "summary": "AI Strategy",
       "url": "https://theaudiencers.com/from-idea-to-implementation-lessons-learned-from-the-first-ai-integration-process-in-a-local-argentine-newsroom/"
+    },
+    {
+      "id": 569,
+      "title": "In-house AI tool at Amedia used by 51% of journalists",
+      "organisation": "Paula Felps",
+      "country": null,
+      "date_published": "2025-05-07",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "When Amedia, Norway’s largest local news publisher, started looking at how to integrate generative AI into its journalism, it had a clear goal: make journalists more efficient and improve journalism.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/in-house-ai-tool-at-amedia-used-by-51-of-journalists"
     },
     {
       "id": 466,
@@ -1542,6 +2191,17 @@
       "url": "https://womeninnews.org/wp-content/uploads/2025/05/The-Age-of-AI-in-the-newsroom-Report_EN.pdf"
     },
     {
+      "id": 570,
+      "title": "Wall Street Journal taxbot answers questions (while readers try to break it)",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-04-29",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "The Wall Street Journal built a chat product,Lars, the AI taxbot, to answer readers’ questions on filing U.S. taxes.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/wall-street-journal-taxbot-answers-questions-while-readers-try-to-break-it"
+    },
+    {
       "id": 83,
       "title": "Wall Street Journal taxbot answers questions (while readers try to break it)",
       "organisation": "Wall Street Journal",
@@ -1551,6 +2211,50 @@
       "source_category": "Database",
       "summary": "News distribution",
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/wall-street-journal-taxbot-answers-questions-while-readers-try-to-break-it"
+    },
+    {
+      "id": 571,
+      "title": "AI advice from The New York Times: Listen more than you talk",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-04-28",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Rubina Madan Fillion, associate editorial director of AI initiatives at The New York Times, has clear advice: You have to ensure humans are part of the process from early on, and you should make sure they are journalists.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/advice-from-the-new-york-times-listen-more-than-you-talk"
+    },
+    {
+      "id": 572,
+      "title": "The Guardian tries to teach the machine news sense",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-04-27",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Chris Moran, head of editorial innovation at The Guardian, and his team wanted to give AI an ambitious task: live blog summaries.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/the-guardian-tries-to-teach-the-machine-news-sense"
+    },
+    {
+      "id": 573,
+      "title": "AI-generated content is working well at many news companies",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-04-14",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "There are plenty of examples of how AI-generated content is raising eyebrows right now. You’ve already read about theLos Angeles Times’initiative on this. You have probably also come across references toIl Foglio, the Italian publication that createdan entirely AI-generated newspaper, complete with opinions and letters to the editor, mainly to be provocative.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ai-generated-content-is-working-well-at-many-news-companies"
+    },
+    {
+      "id": 504,
+      "title": "From lab to newsroom: How Reuters builds AI tools journalists actually use",
+      "organisation": "Mahcine Learning",
+      "country": null,
+      "date_published": "2025-04-14",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2025-04-14. Reuters is shaping the future of journalism with a three-pronged AI strategy: encouraging staff-wide experimentation through its internal tool Open Arena, transforming newsroom workflows, and integrating AI tools into customer-facing platforms.",
+      "url": "https://wan-ifra.org/2025/04/from-lab-to-newsroom-how-reuters-builds-ai-tools-journalists-actually-use/"
     },
     {
       "id": 84,
@@ -1597,6 +2301,28 @@
       "url": "https://digiday.com/media/how-time-evaluates-and-vets-ai-tools/"
     },
     {
+      "id": 574,
+      "title": "Hearst Newspapers uses GenAI to transform its advertising department",
+      "organisation": "Paula Felps",
+      "country": null,
+      "date_published": "2025-03-24",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Much of the news media industry’s focus on AI tools has centred around newsroom and content tools. But as the industry becomes more comfortable with the technology, generative AI is making its way into other departments.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/hearst-newspapers-uses-genai-to-transform-its-advertising-department"
+    },
+    {
+      "id": 575,
+      "title": "Globe and Mail shares its AI strategies for content creation ",
+      "organisation": "Paula Felps",
+      "country": null,
+      "date_published": "2025-03-23",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "As companies continue exploring how to implement generative AI into operations, they must find ways to do so without compromising trust and brand reputation.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/globe-and-mail-shares-its-ai-strategies-for-content-creation"
+    },
+    {
       "id": 381,
       "title": "Opinion |An Italian newspaper launched a generative AI experiment. It’s not going well",
       "organisation": "Alex Mahadevan",
@@ -1619,6 +2345,17 @@
       "url": "https://pressgazette.co.uk/publishers/bulletin-the-independent-ai-summaries-time-poor/"
     },
     {
+      "id": 576,
+      "title": "Scroll.in shares a lesson in the personalisation of news",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-03-17",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "In need of a bit of inspiration? Let me tell you about a small newsroom doing extremely innovative audience-facing work with generative AI.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/scroll-in-shares-a-lesson-in-the-personalisation-of-news"
+    },
+    {
       "id": 349,
       "title": "Local newsrooms are using AI to listen in on public meetings",
       "organisation": "Andrew Deck",
@@ -1628,6 +2365,17 @@
       "source_category": "Industry",
       "summary": "Chalkbeat and Midcoast Villager have already published stories with sources and leads pulled from AI transcriptions.",
       "url": "https://www.niemanlab.org/2025/03/local-newsrooms-are-using-ai-to-listen-in-on-public-meetings/"
+    },
+    {
+      "id": 632,
+      "title": "EarthCheckr: Leveraging Generative AI for Environmental Journalism Fact-Checking",
+      "organisation": "Sam Schramski",
+      "country": null,
+      "date_published": "2025-03-12",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "How the Earth Journalism Network developed a tool to support the fact-checking process",
+      "url": "https://generative-ai-newsroom.com/earthcheckr-leveraging-generative-ai-for-environmental-journalism-fact-checking-00a7f82fb0a3"
     },
     {
       "id": 85,
@@ -1740,6 +2488,17 @@
       "url": "https://www.inma.org/best-practice/Best-Use-of-AI-for-Internal-Productivity/2025-397/Russmedia-Meets-AI-2.0"
     },
     {
+      "id": 505,
+      "title": "How Denmark’s Ekstra Bladet used AI to boost subscriptions by 35%",
+      "organisation": "Denmark",
+      "country": null,
+      "date_published": "2025-02-28",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2025-02-28. JP/Politikens, one of the largest media groups in Denmark, began experimenting with AI in late 2019, well ahead of the current boom. The publisher established a project in October 2020 with a 17-person team around its AI efforts at Ekstra Bladet, one of its three national legacy news brands.",
+      "url": "https://wan-ifra.org/2025/02/how-denmarks-ekstra-bladet-used-ai-to-boost-subscriptions-by-35/"
+    },
+    {
       "id": 94,
       "title": "Ringier Slovakia builds out AI to diversify",
       "organisation": "Ringier Slovakia",
@@ -1749,6 +2508,39 @@
       "source_category": "Database",
       "summary": "News distribution",
       "url": "https://newsinitiative.withgoogle.com/resources/stories/ringier-slovakia-builds-out-ai-to-diversify/"
+    },
+    {
+      "id": 506,
+      "title": "Lab to launch: The Hindu’s AI integration strategy",
+      "organisation": "AI compliance",
+      "country": null,
+      "date_published": "2025-02-25",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2025-02-25. As artificial intelligence (AI) reshapes global newsrooms, The Hindu is taking a structured approach to AI adoption, ensuring that technology enhances newsroom efficiency while maintaining human editorial oversight.",
+      "url": "https://wan-ifra.org/2025/02/lab-to-launch-the-hindus-ai-integration-strategy/"
+    },
+    {
+      "id": 612,
+      "title": "How to Check if AI Assistants Are Distorting Your News Stories",
+      "organisation": "Clare Spencer",
+      "country": null,
+      "date_published": "2025-02-19",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "How to Check Whether AI Assistants Are Distorting Your News Stories",
+      "url": "https://generative-ai-newsroom.com/how-to-check-if-ai-assistants-are-distorting-your-news-stories-1fd7d2002a1c"
+    },
+    {
+      "id": 539,
+      "title": "How a small Nigerian newsroom used AI for a flooding investigation",
+      "organisation": "Laura Oliver",
+      "country": null,
+      "date_published": "2025-02-17",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "The Colonist Report used AI to analyse 3,000 pages of documents on government support. Founder Elfredah Kevin-Alerechi explains how",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-small-nigerian-newsroom-used-ai-flooding-investigation"
     },
     {
       "id": 95,
@@ -1762,6 +2554,17 @@
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-small-nigerian-newsroom-used-ai-flooding-investigation"
     },
     {
+      "id": 577,
+      "title": "GenAI goes multimodal at Politico",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-02-16",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Here’s an interesting multimodal GenAI use case, this one fromAxel Springer-ownedPolitico, in Washington, D.C.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-goes-multimodal-at-politico"
+    },
+    {
       "id": 96,
       "title": "How AI can help fact checkers",
       "organisation": "Full Fact",
@@ -1771,6 +2574,17 @@
       "source_category": "Database",
       "summary": "Fact-checking",
       "url": "https://fullfact.org/blog/2025/feb/how-ai-can-help-fact-checkers/"
+    },
+    {
+      "id": 540,
+      "title": "How I used generative AI to turn a powerful long-form story into an illustrated video",
+      "organisation": "Jaemark Tordecilla",
+      "country": null,
+      "date_published": "2025-02-07",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "Filipino journalist Jaemark Tordecilla explains how he experimented with this new technology to bring an investigative piece into another medium",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-i-used-generative-ai-turn-powerful-long-form-story-illustrated-video"
     },
     {
       "id": 97,
@@ -1795,6 +2609,28 @@
       "url": "https://www.journalismai.info/blog/using-genai-to-understand-impact-of-journalism-the-agncia-pblica-story"
     },
     {
+      "id": 578,
+      "title": "15 news brands experiment with AI in unique ways",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-02-02",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "There are some really cool AI projects under way right now, at large news organisations and at small ones, from which we can all draw some inspiration.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/15-news-brands-experiment-with-ai-in-unique-ways"
+    },
+    {
+      "id": 507,
+      "title": "Data drives 280% subscription growth at Taiwan’s United Daily News Group",
+      "organisation": "Newsroom transformation",
+      "country": null,
+      "date_published": "2025-01-31",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2025-01-31. United Daily News Group (UDN) in Taiwan has significantly reshaped its subscription growth through a homegrown data-driven curation program called “Curate X.”",
+      "url": "https://wan-ifra.org/2025/01/data-drives-280-subscription-growth-at-taiwans-united-daily-news/"
+    },
+    {
       "id": 99,
       "title": "Unlocking the future of translation for local journalism: Lessons from CPI’s AI experiment",
       "organisation": "Centro de Periodismo Investigativo (CPI)",
@@ -1806,6 +2642,17 @@
       "url": "https://medium.com/american-journalism-project/unlocking-the-future-of-translation-for-local-journalism-lessons-from-cpis-ai-experiment-7e9e1c7578e0"
     },
     {
+      "id": 477,
+      "title": "How media brands are transforming revenue and audience growth with Audience.io’s engagement solutions",
+      "organisation": null,
+      "country": null,
+      "date_published": "2025-01-30",
+      "source_name": "Editor & Publisher",
+      "source_category": "Industry",
+      "summary": "As digital transformation reshapes the media landscape, organizations must innovate to stay ahead. The Baltimore Times and Gray Media have done just that—leveraging Audience.io’s interactive solutions to drive revenue, boost engagement, and capture first-party data. In a recent Editor & Publisher webinar, Paris Brown (Publisher, The Baltimore Times), Ryan Pinnell (Regional Sales Director, Gray Media), and Creighton Green (Co-founder, Audience.io) shared their success strategies. Watch now to dis",
+      "url": "https://www.editorandpublisher.com/stories/how-media-brands-are-transforming-revenue-and-audience-growth-with-audienceios-engagement,254061"
+    },
+    {
       "id": 100,
       "title": "Bonnier News launches GenAI tool in record time",
       "organisation": "Bonnier News",
@@ -1815,6 +2662,17 @@
       "source_category": "Database",
       "summary": "Generative AI",
       "url": "https://newsinitiative.withgoogle.com/en-gb/resources/stories/bonnier-news-launches-genai-tool-in-record-time/"
+    },
+    {
+      "id": 579,
+      "title": "Innovative GenAI uses cases you should know about",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2025-01-19",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Ithought it would be nice to start off the year with some positive, inspiring examples of how AI is actually helping news media businesses serve their staff and their audiences better.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/innovative-genai-uses-cases-you-should-know-about"
     },
     {
       "id": 101,
@@ -1894,6 +2752,17 @@
       "url": "https://www.inma.org/blogs/value-content/post.cfm/ntm-launches-ai-powered-automated-audio-news"
     },
     {
+      "id": 541,
+      "title": "These Nordic newsrooms pioneered AI independently of Big Tech. Here’s what they learnt",
+      "organisation": "Marina Adami",
+      "country": null,
+      "date_published": "2024-12-20",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "They teamed up with researchers for almost four years and used AI to create unique recommending systems and a useful multi-tasking tool",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/these-nordic-newsrooms-pioneered-ai-independently-big-tech-heres-what-they-learnt"
+    },
+    {
       "id": 423,
       "title": "‘Paywalls safest way to guarantee journalistic jobs’ says Bloomberg editor in chief",
       "organisation": "Bron Maher",
@@ -1938,6 +2807,17 @@
       "url": "https://time.com/7201512/time-ai-chatbot-about/"
     },
     {
+      "id": 580,
+      "title": "Telegraph envisions UX transformation via GenAI",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2024-12-08",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Systematic experimentation with generative AI has the potential to be transformative and move publishers away from the article being the atomic unit of content, according Dylan Jacques, director of technology at Britain’sTelegraph Media Group.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/telegraph-envisions-ux-transformation-via-genai"
+    },
+    {
       "id": 109,
       "title": "E24 embraces cooperation to maximise AI’s potential",
       "organisation": "E24",
@@ -1958,6 +2838,17 @@
       "source_category": "Database",
       "summary": "Newsgathering",
       "url": "https://medium.com/ft-product-technology/inside-the-fts-ai-powered-story-finding-efe6d154f20b"
+    },
+    {
+      "id": 542,
+      "title": "I created an AI chatbot to speak to my country’s budget. Here’s how I did it",
+      "organisation": "Jaemark Tordecilla",
+      "country": null,
+      "date_published": "2024-11-25",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "Filipino journalist Jaemark Tordecilla explains how he made and refined a tool that makes it easier to report on public spending in his home country",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/i-created-ai-chatbot-speak-my-countrys-budget-heres-how-i-did-it"
     },
     {
       "id": 112,
@@ -1991,6 +2882,39 @@
       "source_category": "Database",
       "summary": "AI Strategy",
       "url": "https://athelogroup.com/blog/ai-in-sports-how-espn-is-leveraging-tech-to-highlight-niche-sports"
+    },
+    {
+      "id": 479,
+      "title": "The Houston Defender’s AI transformation",
+      "organisation": null,
+      "country": null,
+      "date_published": "2024-11-21",
+      "source_name": "Editor & Publisher",
+      "source_category": "Industry",
+      "summary": "The Defender Network has transformed its newsroom efficiency and audience engagement with Nota, an AI-powered tool tailored for modern journalism. Clyde Jiles, Strategic Alliance Manager at the Defender Network, shared how Nota helped cut content production time from 90 minutes to just 15, allowing their small team to focus on impactful storytelling. With features like tone customization and SEO optimization, Nota enabled the Defender to boost digital engagement and reach more readers without co",
+      "url": "https://www.editorandpublisher.com/stories/the-houston-defenders-ai-transformation,253086"
+    },
+    {
+      "id": 480,
+      "title": "How Canyon Media utilized “Best of” to drive $600,000+ in new revenue",
+      "organisation": null,
+      "country": null,
+      "date_published": "2024-11-19",
+      "source_name": "Editor & Publisher",
+      "source_category": "Industry",
+      "summary": "Elite Insights and St. George News have revolutionized how media companies engage with their communities and generate revenue through innovative “Best Of” programs. These initiatives, powered by Elite Insights’ comprehensive software, enable publishers to create seamless, end-to-end campaigns that drive audience participation, build advertiser relationships, and unlock significant revenue streams. For St. George News, this approach has transformed their business, generating over $600,000 in annu",
+      "url": "https://www.editorandpublisher.com/stories/how-canyon-media-utilized-best-of-to-drive-600000plus-in-new-revenue,253031"
+    },
+    {
+      "id": 622,
+      "title": "AI-Powered Content Audits for Local News",
+      "organisation": "Rahul Bhargava",
+      "country": null,
+      "date_published": "2024-11-18",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "How to responsibly use AI to help with understanding your coverage",
+      "url": "https://generative-ai-newsroom.com/ai-powered-content-audits-for-local-news-0608773996ec"
     },
     {
       "id": 424,
@@ -2048,6 +2972,17 @@
       "url": "https://www.journalismai.info/blog/a7179akynhl5ocvo75xryautpr4azf"
     },
     {
+      "id": 508,
+      "title": "The Economist launches AI translated videos to connect with young audiences in multiple languages",
+      "organisation": "Espresso",
+      "country": null,
+      "date_published": "2024-10-30",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-10-30. “Students are a really important funnel for The Economist. Most people I speak to will say ‘I signed up when I was a student, and I’m still a subscriber, 30-40 years later,’” Liv Moloney, Head of Video, The Economist, told participants at our Newsroom Summit conference in Zurich last week.",
+      "url": "https://wan-ifra.org/2024/10/the-economist-launches-ai-translated-videos-to-connect-with-young-audiences-in-multiple-languages/"
+    },
+    {
       "id": 117,
       "title": "How The Times of India Brings Real-Time Personalization to 1,500+ Daily News Stories",
       "organisation": "Times of India",
@@ -2079,6 +3014,28 @@
       "source_category": "Database",
       "summary": "News distribution",
       "url": "https://www.lanacion.com.ar/sociedad/ln-audio-ya-podes-leer-a-tus-autores-favoritos-ahora-los-vas-a-poder-escuchar-nid28102024/ | https://www.inma.org/best-practice/Best-New-Audio-Voice-Product-or-Feature/2025-218/AI-Author-Voices"
+    },
+    {
+      "id": 478,
+      "title": "New Jersey Hills Media Group’s transition to ICANON Newzware: A case study of efficiency, innovation, and sustainability",
+      "organisation": null,
+      "country": null,
+      "date_published": "2024-10-27",
+      "source_name": "Editor & Publisher",
+      "source_category": "Industry",
+      "summary": "In the world of local journalism, the need for both cost-effectiveness and cutting-edge technology is becoming increasingly critical, especially for mid-sized newspapers. The New Jersey Hills Media Group (NMG) recently embraced a new technological partner: Newzware. This business software platform, developed by ICANON Associates, is designed to help publishers streamline operations, reduce costs, and focus on the core mission of local journalism. The transition proved to be a turning point in ho",
+      "url": "https://www.editorandpublisher.com/stories/new-jersey-hills-media-groups-transition-to-icanon-newzware-a-case-studyof-efficiency,252670"
+    },
+    {
+      "id": 509,
+      "title": "How UK’s Reach is using AI to help produce more content faster",
+      "organisation": "Reach plc",
+      "country": null,
+      "date_published": "2024-10-25",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-10-25. Reach plc, the largest publisher in the UK, reaches 69 percent of the country’s population online. It is redefining its approach to journalism by using AI innovations and data-driven decision-making to strengthen its commitment to free access to news.",
+      "url": "https://wan-ifra.org/2024/10/how-uks-reach-is-using-ai-to-help-produce-more-content-faster/"
     },
     {
       "id": 119,
@@ -2125,6 +3082,17 @@
       "url": "https://rjionline.org/news/how-enhanced-audience-engagement-helps-sustain-newsrooms/"
     },
     {
+      "id": 510,
+      "title": "How DC Thomson use data journalism to track the vitality of city centres",
+      "organisation": "DC Thompson",
+      "country": null,
+      "date_published": "2024-10-02",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-10-02. DC Thompson launched a project in 2023 to quantify the decline of city high streets in Scotland, driven by post-pandemic challenges and shifting shopping habits. It is an excellent example of how newsrooms can produce data to underpin valuable local journalism.",
+      "url": "https://wan-ifra.org/2024/10/how-dc-thomson-use-data-journalism-to-track-the-vitality-of-city-centres/"
+    },
+    {
       "id": 123,
       "title": "How Journalism Groups in Africa Are Building AI Tools to Aid Investigations and Fact-Checking",
       "organisation": "FactCheckAfrica, CJID, Dataphyte",
@@ -2156,6 +3124,17 @@
       "source_category": "Database",
       "summary": "Generative AI,Audience Engagement",
       "url": "https://latamjournalismreview.org/articles/chatbot-tells-story-of-woman-imprisoned-for-drug-trafficking-in-paraguay/"
+    },
+    {
+      "id": 581,
+      "title": "Case studies show how GenAI is helping news companies better serve readers",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2024-09-29",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Judging by the number of AI use cases that have popped up over the past few weeks, it looks like the last quarter was jam-packed with experimentation for many news organisations across the world.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/case-studies-show-how-genai-is-helping-news-companies-better-serve-readers"
     },
     {
       "id": 427,
@@ -2235,6 +3214,28 @@
       "url": "https://www.journalism.co.uk/what-the-financial-times-learned-from-experimenting-with-ai/"
     },
     {
+      "id": 511,
+      "title": "How AI ‘answer’ engine Perplexity plans to collaborate with publishers",
+      "organisation": null,
+      "country": null,
+      "date_published": "2024-09-09",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-09-09. Perplexity, an AI “answer” engine startup, made headlines in July when it unveiled a revenue-sharing program, partnering initially with Fortune, Der Spiegel, Texas Tribune, and WordPress. The tech platform aims to expand its collaborations, particularly with international media outlets, by year’s end.",
+      "url": "https://wan-ifra.org/2024/09/how-ai-answer-engine-perplexity-plans-to-collaborate-with-publishers/"
+    },
+    {
+      "id": 582,
+      "title": "Aftonbladet sparks interest in elections using its new chatbot",
+      "organisation": "Paula Felps",
+      "country": null,
+      "date_published": "2024-09-08",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Although Aftonbladet has been working with AI for a few years, the “AI boom” that began in late 2022 prompted the company to start experimenting with and implementing generative AI into its journalism.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/aftonbladet-sparks-interest-in-elections-using-its-new-chatbot"
+    },
+    {
       "id": 380,
       "title": "Opinion |Breaking down ESPN’s decision to use AI to write some game stories",
       "organisation": "Tom Jones",
@@ -2246,6 +3247,28 @@
       "url": "https://www.poynter.org/commentary/2024/espn-artificial-intelligence-pll-nwsl-coverage/"
     },
     {
+      "id": 481,
+      "title": "How did 209 Multimedia transform obituaries & legals business?",
+      "organisation": null,
+      "country": null,
+      "date_published": "2024-09-05",
+      "source_name": "Editor & Publisher",
+      "source_category": "Industry",
+      "summary": "209 Multimedia recently streamlined its legal notice and obituary management with the help of Column’s Public Notice Platform, transforming an otherwise labor-intensive process into an efficient workflow. Saresa Shutes, who oversees legal notices, obituaries, and classifieds, previously spent hours manually handling ads, a process prone to human error. Now, thanks to Column, Shutes can process legal ads five times faster while drastically reducing mistakes, saving time and money for the company.",
+      "url": "https://www.editorandpublisher.com/stories/how-did-209-multimedia-transform-obituaries-legals-business,251788"
+    },
+    {
+      "id": 583,
+      "title": "Washington Post’s chatbot offers Climate Answers ",
+      "organisation": "Paula Felps",
+      "country": null,
+      "date_published": "2024-09-04",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Chatbots are increasingly becoming an in-house tool for news media companies looking for ways to use generative AI.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/washington-post-s-chatbot-offers-climate-answers"
+    },
+    {
       "id": 128,
       "title": "Case Study: Enhancing Fact-Checking with AI at Der Spiegel",
       "organisation": "Der Spiegel",
@@ -2255,6 +3278,17 @@
       "source_category": "Database",
       "summary": "Fact-checking",
       "url": "https://journalists.org/resources/case-study-enhancing-fact-checking-with-ai-at-der-spiegel/"
+    },
+    {
+      "id": 584,
+      "title": "News companies are using GenAI in these 4 interesting ways",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2024-09-02",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "The New York Timesis pleased with the performance of itsGenAI ad-targeting experimentBrandMatch. After runninga beta testwith six brands across tech, finance, luxury, and other categories, the news publication is now inviting other advertisers to try BrandMatch as well.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/news-companies-are-using-genai-in-these-4-interesting-ways"
     },
     {
       "id": 130,
@@ -2312,6 +3346,17 @@
       "url": "https://journalists.org/resources/case-study-djinn-an-ai-powered-data-journalism-interface/"
     },
     {
+      "id": 585,
+      "title": "Schibsted is making audience gains with AI-driven personalised audio playlists",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2024-08-18",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Are you thinking about using GenAI for audio?",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/schibsted-is-making-audience-gains-with-ai-driven-personalised-audio-playlists"
+    },
+    {
       "id": 134,
       "title": "Operacion Retuit: Information against persecution of journalists in Venezuela, using AI",
       "organisation": "Connectas",
@@ -2321,6 +3366,39 @@
       "source_category": "Database",
       "summary": "News distribution",
       "url": "https://www.connectas.org/operacion-retuit-information-against-persecution-of-journalists-in-venezuela-using-ai/"
+    },
+    {
+      "id": 586,
+      "title": "Svenska Dagbladet embraces audio to increase engagement",
+      "organisation": "Paula Felps",
+      "country": null,
+      "date_published": "2024-08-11",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Audio is becoming increasingly important to audiences, and according to Sonali Verma, lead of the INMA Generative AI Initiative, it is one of the most prevalent ways news media companies are experimenting with generative AI.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/svenska-dagbladet-embraces-audio-to-increase-engagement"
+    },
+    {
+      "id": 543,
+      "title": "Meet NAT, the AI-generated presenter offering soft news to Mexican audiences",
+      "organisation": "Gretel Kahn",
+      "country": null,
+      "date_published": "2024-08-09",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "“The stories she presents are focused towards young people who don’t connect with old-style newscasts,” says Oswaldo Aguilar from Grupo Fórmula",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/meet-nat-ai-generated-presenter-offering-soft-news-mexican-audiences"
+    },
+    {
+      "id": 512,
+      "title": "‘Your job five years from now probably does not yet exist’ – WaPo’s AI Editor Phoebe Connelly",
+      "organisation": "Andrew Deck",
+      "country": null,
+      "date_published": "2024-08-09",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-08-09. The Washington Post’s Senior Editor for AI Strategy and Innovation shares key learnings, inspirations – and why she’s excited about the future of journalism.",
+      "url": "https://wan-ifra.org/2024/08/your-job-five-years-from-now-probably-does-not-yet-exist-wapos-ai-editor-phoebe-connelly/"
     },
     {
       "id": 135,
@@ -2334,6 +3412,61 @@
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/meet-nat-ai-generated-presenter-offering-soft-news-mexican-audiences"
     },
     {
+      "id": 587,
+      "title": "Expressen’s AI tool improves efficiency, creativity in the newsroom",
+      "organisation": "Paula Felps",
+      "country": null,
+      "date_published": "2024-08-07",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "As more news media companies become aware of the many ways they can harness generative AI, they may face a challenge getting internal teams on board with using those tools.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/expressen-s-ai-tool-improves-efficiency-creativity-in-the-newsroom"
+    },
+    {
+      "id": 588,
+      "title": "AI gives Times Internet a Twitter feel while HT focuses on content automation",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2024-08-05",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "As part of the recentINMA South Asia News Media Festival, I recently spentI spent two days on astudy tourof more than half a dozen publications and then two days at theconference, hearing about the different, innovative ways in which AI is being used in Indian news publications and about the challenges that they are facing.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ai-gives-times-internet-a-twitter-feel-while-ht-focuses-on-content-automation"
+    },
+    {
+      "id": 544,
+      "title": "The day AI clones took over a Swiss radio station",
+      "organisation": "Gretel Kahn",
+      "country": null,
+      "date_published": "2024-08-02",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "“We wanted to understand how it feels like to listen to radio that is made by a computer,” says Antoine Multone from Couleur 3.",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/day-ai-clones-took-over-swiss-radio-station"
+    },
+    {
+      "id": 624,
+      "title": "“This Article is AI-Generated”: AI Disclosure and Labeling for News Content",
+      "organisation": "Jessica Zier",
+      "country": null,
+      "date_published": "2024-08-01",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "This past spring, Hoodline, a hyper-local news outlet based in various US cities, was found to be using AI for article generation. That alone is not worth getting upset about, but the lack oftransparencyabout the outlet’s AI usedrew criticism from readers and journalistsalike. Particularly troubling was the misleading use of AI-generated personas, which included bylines and headshots for the supposed journalist authors. Hoodline does not have a masthead showing who’s a person and what’s an AI, l",
+      "url": "https://generative-ai-newsroom.com/this-article-is-ai-generated-ai-disclosure-and-labeling-for-news-content-73d6e6cb6d50"
+    },
+    {
+      "id": 513,
+      "title": "How India’s Amar Ujala is using AI to boost engagement and fuel subscriptions",
+      "organisation": "AI Summit",
+      "country": null,
+      "date_published": "2024-08-01",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-08-01. “We started with paid digital subscriptions during Covid, and we started very slowly. We don’t have a hard paywall,” says Vikas Shekhawat, AGM of Products, Amar Ujala Digital. Today, they are using AI to help them build engagement across their user base with the aim of increasing their paid subscribers.",
+      "url": "https://wan-ifra.org/2024/08/how-indias-amar-ujala-is-using-ai-to-boost-engagement-and-fuel-subscriptions/"
+    },
+    {
       "id": 136,
       "title": "How the Jersey Bee uses AI and automation to produce curated local newsletters",
       "organisation": "Jersey Bee",
@@ -2343,6 +3476,50 @@
       "source_category": "Database",
       "summary": "News distribution",
       "url": "https://www.youtube.com/watch?v=b6xZiMTphD0"
+    },
+    {
+      "id": 545,
+      "title": "When AI meets creative writing: an audio experiment at Czech Radio",
+      "organisation": "Gretel Kahn",
+      "country": null,
+      "date_published": "2024-07-26",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "In 2020 Anna Vošalíková created a show to explore how AI might impact fiction writing. Four seasons later, the experiment is more relevant than ever",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/when-ai-meets-creative-writing-audio-experiment-czech-radio"
+    },
+    {
+      "id": 514,
+      "title": "How India’s HT Media uses AI to boost traffic and editorial efficiency",
+      "organisation": "Hindustan Times",
+      "country": null,
+      "date_published": "2024-07-23",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-07-23. In February 2023, Hindustan Times (HT Media Ltd.), one of the biggest news organisations in India, launched its AI efforts with a 15-person team. The focus areas included an AI-led newsroom, a GenAI-based newsbot, personalisation, audience monetisation, revenue management, and subscription acquisition and churn models.",
+      "url": "https://wan-ifra.org/2024/07/how-indias-ht-media-uses-ai-to-boost-traffic-and-editorial-efficiency/"
+    },
+    {
+      "id": 589,
+      "title": "Aftonbladet, Washington Post find success with new chat products",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2024-07-22",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "The team at Sweden’sAftonbladettook on an interesting challenge this year: What if they picked a topic their audience typically does not engage with and built a chat product around it to drive engagement?",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/aftonbladet-washington-post-find-success-with-new-chat-products"
+    },
+    {
+      "id": 546,
+      "title": "How small Colombian investigative outlet Cuestión Pública is using AI to stay relevant on social media",
+      "organisation": "Marina Adami",
+      "country": null,
+      "date_published": "2024-07-19",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "AI-powered interface Odín cuts the time it takes to produce an X thread on their findings from three hours to 15 minutes, explains founder Claudia Báez",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-small-colombian-investigative-outlet-cuestion-publica-using-ai-stay-relevant-social-media"
     },
     {
       "id": 430,
@@ -2356,6 +3533,39 @@
       "url": "https://pressgazette.co.uk/publishers/broadcast/gb-news-radio-ai-sports-bulletins/"
     },
     {
+      "id": 515,
+      "title": "How JP/Politikens leveraged early AI expertise to build centralised news products",
+      "organisation": "AI Innovation",
+      "country": null,
+      "date_published": "2024-07-12",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-07-12. JP/Politikens, one of the largest media groups in Denmark, began experimenting with AI in late 2019, well ahead of the current boom. The brand established a project around its AI efforts at the time at Ekstra Bladet, one of its three national legacy news brands.",
+      "url": "https://wan-ifra.org/2024/07/how-jp-politikens-leveraged-early-ai-expertise-to-build-centralised-news-products/"
+    },
+    {
+      "id": 516,
+      "title": "Aftonbladet serves up innovation with AI Buffet",
+      "organisation": "Aftonbladet",
+      "country": null,
+      "date_published": "2024-07-11",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-07-11. Aftonbladet, one of the largest news organisations in the Nordics and a flagship brand of Schibsted, reaches around 4 million of Sweden’s 10 million population daily. The newsroom has been experimenting with AI for several years now, particularly in the segmentation and personalisation of its front page.",
+      "url": "https://wan-ifra.org/2024/07/aftonbladet-serves-up-innovation-with-ai-buffet/"
+    },
+    {
+      "id": 482,
+      "title": "How UK’s #4 Iliffe Media monetizes their SMB advertisers with AI and human touch",
+      "organisation": null,
+      "country": null,
+      "date_published": "2024-07-04",
+      "source_name": "Editor & Publisher",
+      "source_category": "Industry",
+      "summary": "Explore how Iliffe Media Group uses AI to drive immediate new revenues with \"Smart Ads.\" By offering an affordable, combined print and digital ad package, they turned a significant portion of their small print advertisers into digital clients. This efficient and cost-effective solution generated over 100 new ads per week within 20 days, creating a substantial six- to seven-digit pound revenue opportunity without adding operation overhead to their team. Learn how they bridged the digital gap for ",
+      "url": "https://www.editorandpublisher.com/stories/how-uks-4-iliffe-media-monetizes-their-smb-advertisers-with-ai-and-human-touch,250727"
+    },
+    {
       "id": 137,
       "title": "Aftonbladet shares 3 lessons learned from its new AI hub",
       "organisation": "Aftonbladet - Schibsted",
@@ -2365,6 +3575,39 @@
       "source_category": "Database",
       "summary": "AI Strategy",
       "url": "https://www.inma.org/blogs/ideas/post.cfm/aftonbladet-shares-3-lessons-learned-from-its-new-ai-hub"
+    },
+    {
+      "id": 518,
+      "title": "Hyper local journalism: How Crosstown built a platform for neighbourhood newsletters",
+      "organisation": "Congress 2024",
+      "country": null,
+      "date_published": "2024-06-21",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-06-21. The United States is ahead of the curve when it comes to the decline of local news. It may also be true to say that it’s ahead of the curve when it comes to innovation around tackling this problem. One brilliant example is Crosstown in Los Angeles.",
+      "url": "https://wan-ifra.org/2024/06/hyper-local-journalism-how-crosstown-built-a-platform-for-neighbourhood-newsletters/"
+    },
+    {
+      "id": 517,
+      "title": "Tailored news, AI tools drive Onet’s digital success in Poland",
+      "organisation": "Axel Springer",
+      "country": null,
+      "date_published": "2024-06-21",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-06-21. Onet, a leading news brand in Poland, has significantly grown by leveraging AI tools to offer personalised content to its users, which has increased user engagement and content diversity. Olga Korolec shared insights at WAN-IFRA’s recent Congress in Copenhagen.",
+      "url": "https://wan-ifra.org/2024/06/tailored-news-ai-tools-drive-onets-digital-success-in-poland/"
+    },
+    {
+      "id": 590,
+      "title": "Der Spiegel, The Times share how they put GenAI tools to work in the newsroom ",
+      "organisation": "Paula Felps",
+      "country": null,
+      "date_published": "2024-06-12",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Generative AI presents numerous opportunities for newsrooms to become more efficient, and during this week’s Webinar, INMA members heard how two European companies are harnessing GenAI’s power and reaping its benefits.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/der-spiegel-the-times-share-how-they-put-genai-tools-to-work-in-the-newsroom"
     },
     {
       "id": 138,
@@ -2378,6 +3621,28 @@
       "url": "https://www.ftstrategies.com/en-gb/insights/what-has-the-ft-learned-about-launching-its-own-generative-ai-tool"
     },
     {
+      "id": 591,
+      "title": "India Today features GenAI-powered TV anchor ",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2024-06-09",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "Let’s talk about a bold use of consumer-facing generative AI:A TV anchorthat is allowed to interview India’s prime minister and its biggest movie star.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/india-today-features-genai-powered-tv-anchor"
+    },
+    {
+      "id": 519,
+      "title": "Spain’s Relevo boosts homepage engagement by a third with AI-driven coding",
+      "organisation": "AI tools",
+      "country": null,
+      "date_published": "2024-06-05",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-06-05. Relevo, a Spanish sports news site targeting Gen Z and Millennials, developed the “slick” metric (swipes + clicks) to measure engagement, using AI to create tools for analysing headline lengths, which boosted engagement significantly.",
+      "url": "https://wan-ifra.org/2024/06/spains-relevo-boosts-homepage-engagement-by-a-third-with-ai-driven-coding/"
+    },
+    {
       "id": 139,
       "title": "Spain’s Relevo boosts homepage engagement by a third with AI-driven coding",
       "organisation": "Relevo",
@@ -2387,6 +3652,17 @@
       "source_category": "Database",
       "summary": "Analytics,Audience Engagement",
       "url": "https://wan-ifra.org/2024/06/spains-relevo-boosts-homepage-engagement-by-a-third-with-ai-driven-coding/"
+    },
+    {
+      "id": 547,
+      "title": "How Norway’s public broadcaster uses AI-generated summaries to reach younger audiences",
+      "organisation": "Marina Adami",
+      "country": null,
+      "date_published": "2024-06-04",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "Preliminary data suggests younger audiences are more likely to click on these summaries and readers who click on them spend more time with a piece",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-norways-public-broadcaster-uses-ai-generated-summaries-reach-younger-audiences"
     },
     {
       "id": 431,
@@ -2411,6 +3687,39 @@
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-norways-public-broadcaster-uses-ai-generated-summaries-reach-younger-audiences"
     },
     {
+      "id": 520,
+      "title": "FT CEO: News orgs ‘have leverage and should insist on payment’ from AI companies",
+      "organisation": "AI Q&amp;A tool",
+      "country": null,
+      "date_published": "2024-05-29",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-05-29. John Ridding described disintermediation as the “biggest threat” facing the industry, at WAN-IFRA’s World News Media Congress 2024 in Copenhagen.",
+      "url": "https://wan-ifra.org/2024/05/ft-ceo-news-orgs-have-leverage-and-should-insist-on-payment-from-ai-companies/"
+    },
+    {
+      "id": 592,
+      "title": "GenAI case studies include automated video transcripts, radio traffic reports",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2024-05-28",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "What are news brands doing with GenAI right now?",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-case-studies-include-automated-video-transcripts-radio-traffic-reports"
+    },
+    {
+      "id": 593,
+      "title": "Nikkei, Stuff monetise generative AI content",
+      "organisation": "Sonali Verma",
+      "country": null,
+      "date_published": "2024-05-27",
+      "source_name": "INMA",
+      "source_category": "Industry",
+      "summary": "We have heard about using GenAI tosummariseandcreate different versions ofan article. Here’s a news organisation that repackages several articles into one — and then sells that to an entirely new market.",
+      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/nikkei-stuff-monetise-generative-ai-content"
+    },
+    {
       "id": 141,
       "title": "Why does ChatGPT 3.5 misidentify President Erdogan's birthplace, and how can we overcome such errors?",
       "organisation": "Teyit",
@@ -2420,6 +3729,39 @@
       "source_category": "Database",
       "summary": "Generative AI,Evaluation",
       "url": "https://en.teyit.org/teyitpedia/why-does-chatgpt-35-misidentify-president-erdogans-birthplace-and-how-can-we-overcome-such-errors"
+    },
+    {
+      "id": 548,
+      "title": "This newsroom has been experimenting with AI since 2020. Here is what they have learned",
+      "organisation": "Gretel Kahn",
+      "country": null,
+      "date_published": "2024-05-23",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "“Look at your mission, understand what you really want to do with technology and do not rush it,” says Uli Köppen, head of AI at Bayerischer Rundfunk",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/newsroom-has-been-experimenting-ai-2020-here-what-they-have-learned"
+    },
+    {
+      "id": 521,
+      "title": "Indonesia’s IDN Media leveraging AI to offer greater value, user experience",
+      "organisation": "AI tools",
+      "country": null,
+      "date_published": "2024-05-13",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-05-13. “AI is just a tool… it’s never the end-product,” noted Auriel Aulia Widjaja, Head of Product at Indonesia’s IDN Media, which began as a single news website 10 years ago and now comprises seven media verticals, a live-streaming super app, and various digital media and experiential businesses with over 70 million monthly active users across its ecosystem.",
+      "url": "https://wan-ifra.org/2024/05/indonesias-idn-media-leveraging-ai-to-offer-greater-value-user-experience/"
+    },
+    {
+      "id": 483,
+      "title": "How AI is generating millions in turnkey SMB ad revenue across Europe.",
+      "organisation": null,
+      "country": null,
+      "date_published": "2024-05-09",
+      "source_name": "Editor & Publisher",
+      "source_category": "Industry",
+      "summary": "In this fast paced, E&P Sponsored Webinar learn how European media companies are generating over a hundred thousand dollars each in new, turn-key, SMB ad revenue, using an AI tool that instantly develops complete marketing campaigns for local advertisers.",
+      "url": "https://www.editorandpublisher.com/stories/webinar-template,248837"
     },
     {
       "id": 142,
@@ -2444,6 +3786,17 @@
       "url": "https://www.journalism.co.uk/axel-springer-ceo-on-openai-deal-we-must-protect-intellectual-property-of-news-content/"
     },
     {
+      "id": 484,
+      "title": "Revolutionizing Newsroom Efficiency: How AI Solutions empower award-winning teams to focus on reporting, not publishing tasks.",
+      "organisation": null,
+      "country": null,
+      "date_published": "2024-04-25",
+      "source_name": "Editor & Publisher",
+      "source_category": "Industry",
+      "summary": "Imagine an assistive AI tool that efficiently reformats your newsroom content into various text, audio, and video formats instantly. Not only does it streamline the process, but it also autonomously generates headlines and keywords to optimize SEO performance for your stories.  Watch this insightful E&P Sponsored Webinar, where we'll delve into how NOTA is reshaping the landscape of news content creation. Explore their suite of assistive AI tools designed to amplify the impact and reach of human",
+      "url": "https://www.editorandpublisher.com/stories/revolutionizing-newsroom-efficiency-how-notas-ai-solutions-empower-award-winning-teams-like,248880"
+    },
+    {
       "id": 143,
       "title": "Rede Gazeta experiments with GenAI to create its own news assistant",
       "organisation": "Rede Gazeta",
@@ -2453,6 +3806,17 @@
       "source_category": "Database",
       "summary": "Generative AI",
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/rede-gazeta-experiments-with-genai-to-create-its-own-news-assistant"
+    },
+    {
+      "id": 522,
+      "title": "Norway’s VG finding success with six AI-related newsroom tools",
+      "organisation": "Open AI",
+      "country": null,
+      "date_published": "2024-04-17",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-04-17. Verdens Gang (VG), one of Norway’s premier news outlets, is using AI to help enhance its newsroom productivity. With a team of seven developers, VG is experimenting with various AI-driven tools built to meet the needs of the newsroom.",
+      "url": "https://wan-ifra.org/2024/04/norways-vg-finding-success-with-six-ai-related-newsroom-tools/"
     },
     {
       "id": 352,
@@ -2486,6 +3850,17 @@
       "source_category": "Industry",
       "summary": "This article was migrated from an old version of our website in 2025. As a result, it might have some low-quality images or non-functioning links - if there's any issues you'd like to see fixed, get in touch with us at info@journalism.co.uk.",
       "url": "https://www.journalism.co.uk/how-greenlandic-publisher-uses-automated-translations-to-boost-their-subscription-numbers/"
+    },
+    {
+      "id": 550,
+      "title": "How a Spanish media group created an AI tool to detect audio deepfakes to help journalists in a big election year",
+      "organisation": "Olalla Novoa",
+      "country": null,
+      "date_published": "2024-04-08",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "\"These are the problems we wanted to tackle and we wanted to tackle them fast,\" writes product manager Olalla Novoa, who led on this new initiative",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-spanish-media-group-created-ai-tool-detect-audio-deepfakes-help-journalists-big-election"
     },
     {
       "id": 145,
@@ -2565,6 +3940,17 @@
       "url": "https://www.innovate-local.org/tamedia"
     },
     {
+      "id": 620,
+      "title": "We Built a News Site Powered by LLMs and Public Data: Here’s What We Learned",
+      "organisation": "Matthew Conlen",
+      "country": null,
+      "date_published": "2024-03-06",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "The methods journalists use to help people understand the world invariably evolve to grapple with its complexities. Traditional shoe-leather reporting has been supplemented with quantitative and social science methods — analyzing datasets, conducting surveys, and creating predictive models. Yet as the volume and pace of data grows, it’s a challenge for data journalists to make sense of it all.",
+      "url": "https://generative-ai-newsroom.com/we-built-a-news-site-powered-by-llms-and-public-data-heres-what-we-learned-aba6c52a7ee4"
+    },
+    {
       "id": 150,
       "title": "How Amedia Got Half Its Journalists Using AI By Keeping It Simple",
       "organisation": "Amedia",
@@ -2574,6 +3960,17 @@
       "source_category": "Database",
       "summary": "Generative AI,AI Strategy",
       "url": "https://www.innovate-local.org/amedia"
+    },
+    {
+      "id": 523,
+      "title": "Scroll’s AI journey: Progress, challenges and some key learnings",
+      "organisation": "Chat GPT",
+      "country": null,
+      "date_published": "2024-03-04",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-03-04. Scroll, an independent Indian news organisation, began exploring ways to incorporate Artificial Intelligence into its workflow in 2021. The digital-only organisation wanted to adapt its long-form reportage to different formats and video seemed to be its best bet to reach a large audience.",
+      "url": "https://wan-ifra.org/2024/03/scrolls-ai-journey-progress-challenges-and-some-key-learnings/"
     },
     {
       "id": 151,
@@ -2596,6 +3993,17 @@
       "source_category": "Database",
       "summary": "News production",
       "url": "https://pressgazette.co.uk/publishers/nationals/reach-ai-guten/"
+    },
+    {
+      "id": 551,
+      "title": "I created an AI tool to help investigative journalists find stories in audit reports. Here’s how I did it and why it matters",
+      "organisation": "Jaemark Tordecilla",
+      "country": null,
+      "date_published": "2024-02-16",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "Filipino journalist Jaemark Tordecilla created a custom GPT to advance watchdog journalism. He hopes it inspires colleagues in other countries",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/i-created-ai-tool-help-investigative-journalists-find-stories-audit-reports-heres-how-i-did-it"
     },
     {
       "id": 153,
@@ -2629,6 +4037,17 @@
       "source_category": "Industry",
       "summary": "During the 2024 Grammy Awards, one name aims to strike a different kind of chord: Watson.",
       "url": "https://digiday.com/media-buying/the-recording-academy-and-ibm-are-bringing-generative-ai-to-the-2024-grammys/"
+    },
+    {
+      "id": 524,
+      "title": "Argentina’s Clarín introduces AI assistant UalterAI to help boost engagement",
+      "organisation": "AI article summaries",
+      "country": null,
+      "date_published": "2024-01-11",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2024-01-11. Argentina’s Clarín has added an AI tool to its website to enhance reader engagement. On each published story, readers can now choose AI written summaries, select alternative formats and find additional context for the original news item.",
+      "url": "https://wan-ifra.org/2024/01/clarin-introduces-ai-assistant-ualterai-to-increase-engagement-on-its-news-site/"
     },
     {
       "id": 155,
@@ -2829,6 +4248,17 @@
       "url": "https://wan-ifra.org/2023/09/ai-use-cases-how-genai-summaries-are-boosting-daily-mavericks-readership/"
     },
     {
+      "id": 525,
+      "title": "Originator Profile: Cross-industry project aims for safer cyberspace",
+      "organisation": "Yomiuri Shimbun",
+      "country": null,
+      "date_published": "2023-09-27",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2023-09-27. Yomiuri Shimbun, along with other media and tech companies in Japan, have introduced a special project for news and advertiser safety – Originator Profile. Although in testing phase, the technology aims to provide transparency in news articles and safe advertisements that are third-party verified, thus preventing the distribution of fake news content and ad fraud.",
+      "url": "https://wan-ifra.org/2023/09/originator-profile-cross-industry-project-aims-for-safer-cyberspace/"
+    },
+    {
       "id": 458,
       "title": "Getty Images gets into the generative AI race with its own image platform",
       "organisation": "Marty Swant",
@@ -2950,6 +4380,17 @@
       "url": "https://www.wsj.com/articles/lead-cables-investigation-att-methodology-1703dbb0"
     },
     {
+      "id": 613,
+      "title": "Decoding Bureaucracy",
+      "organisation": "Andrew Rodriguez Calderón",
+      "country": null,
+      "date_published": "2023-07-06",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "Generative AI for Accessible Government Policies",
+      "url": "https://generative-ai-newsroom.com/decoding-bureaucracy-5b0c1411171"
+    },
+    {
       "id": 172,
       "title": "Decoding Bureaucracy",
       "organisation": "The Marshall Project",
@@ -2961,6 +4402,17 @@
       "url": "https://generative-ai-newsroom.com/decoding-bureaucracy-5b0c1411171"
     },
     {
+      "id": 526,
+      "title": "A decade with AI: How Norway’s Adresseavisen uses AI to boost engagement",
+      "organisation": "Adresseavisen",
+      "country": null,
+      "date_published": "2023-07-05",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2023-07-05. For many people working in journalism, their first question about Generative AI is: ‘Will AI take my job?,’ says Christer Johnsen of Adresseavisen. His response is: “No, but a reporter who knows how to use AI might.”",
+      "url": "https://wan-ifra.org/2023/07/a-decade-with-ai-how-norways-adresseavisen-uses-ai-to-boost-engagement/"
+    },
+    {
       "id": 363,
       "title": "How Mediahuis is easing generative AI into its newsrooms",
       "organisation": "Press Gazette",
@@ -2970,6 +4422,39 @@
       "source_category": "Industry",
       "summary": "“The publisher is currently producing a ‘Newscondenser’ – an in-house tool that uses generative AI to summarise stories, create bullet points and generate ten headlines for a journalist to choose from. The headline creator combines insights from a ‘recommendation engine’, which suggests the headline that could work best given the metric in which a journalist is most interested.”",
       "url": "https://pressgazette.co.uk/publishers/digital-journalism/how-mediahuis-is-easing-ai-into-its-newsrooms/"
+    },
+    {
+      "id": 614,
+      "title": "Using ChatGPT to Correct Spanish Grammar and Style in News Articles",
+      "organisation": "Karen De la Hoz",
+      "country": null,
+      "date_published": "2023-06-13",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "La Silla Vacía, a well-known Colombian digital native media outlet focused on political coverage, has a section calledEn Vivo(Live). All the journalists in the newsroom work at least a 6-hour shift every 15 days to update this section. Its objective is to narrate, through short and concise text entries, the main news of the moment.",
+      "url": "https://generative-ai-newsroom.com/using-chatgpt-to-correct-spanish-grammar-and-style-in-news-articles-733c9c83de9a"
+    },
+    {
+      "id": 629,
+      "title": "Building a GPT-4 Powered Google Docs Extension for News Quiz Generation",
+      "organisation": "Nikita Roy",
+      "country": null,
+      "date_published": "2023-06-08",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "News quizzes offer an engaging way to connect with our audience and repurpose our news content. However, creating these quizzes requires a significant investment of time and resources to ensure that each question is carefully crafted and relevant. That’s where we saw the potential of generative AI in helping automate this workflow.The NRI Nationhas integrated the capabilities of generative AI, specifically GPT-4 to streamline the process of crafting news quizzes, enabling us to deliver our news ",
+      "url": "https://generative-ai-newsroom.com/building-a-gpt-4-powered-google-docs-extension-for-news-quiz-generation-34b7e6bcdc4d"
+    },
+    {
+      "id": 485,
+      "title": "Ogden Newspapers migrates 75% of public notice orders to self-serve",
+      "organisation": null,
+      "country": null,
+      "date_published": "2023-06-02",
+      "source_name": "Editor & Publisher",
+      "source_category": "Industry",
+      "summary": "In less than six months of rolling out the Column platform, Ogden Newspapers successfully migrated 75% of their public notice orders to self-serve. Implementing the new platform involved a well-defined plan and strong collaboration. The final result was an enhanced customer experience with greatly improved efficiency.",
+      "url": "https://www.editorandpublisher.com/stories/ogden-newspapers-migrates-75-of-public-notice-orders-to-self-serve,244004"
     },
     {
       "id": 446,
@@ -2992,6 +4477,39 @@
       "source_category": "Industry",
       "summary": "Aftonbladet’s deputy editor said the paper hoped to “provoke a debate” with the AI rap music.",
       "url": "https://pressgazette.co.uk/news/aftonbladet-schibsted-ai-rap/"
+    },
+    {
+      "id": 618,
+      "title": "How the YESEO app tested GPT models with users",
+      "organisation": "Ryan Restivo",
+      "country": null,
+      "date_published": "2023-05-11",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "How the YESEO App Tested GPT Models for Headline Generation with Users",
+      "url": "https://generative-ai-newsroom.com/how-the-yeseo-app-tested-gpt-models-with-users-94838bad328"
+    },
+    {
+      "id": 628,
+      "title": "Document Summaries in Danish with OpenAI",
+      "organisation": "Tore G. C. Rich",
+      "country": null,
+      "date_published": "2023-05-04",
+      "source_name": "Generative AI Newsroom",
+      "source_category": "Academic",
+      "summary": "On Denmark’s most visited news site Ekstrabladet.dk, wepublishautomatically generated local news articles in Danish as a part of thePlatform Intelligence in News (PIN) project. In these automatically generated articles we cover topics including companies’ financial reports, inspection reports for food establishments, and real-estate sales. The articles are generated with rule-based NLG (Natural Language Generation) using data retrieved automatically via APIs.",
+      "url": "https://generative-ai-newsroom.com/summaries-in-danish-with-openai-cbb814a119f2"
+    },
+    {
+      "id": 527,
+      "title": "DM Me: Documented shows how instant messaging tools can boost service journalism",
+      "organisation": "Aldana Vales",
+      "country": null,
+      "date_published": "2023-04-14",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2023-04-14. Deep research into the immigrant community it was trying to serve led Documented to WhatsApp – and the launch of an innovative news service that is rapidly expanding its reach among New York’s immigrant communities.",
+      "url": "https://wan-ifra.org/2023/04/dm-me-documented-shows-how-instant-messaging-tools-can-boost-service-journalism/"
     },
     {
       "id": 456,
@@ -3082,6 +4600,61 @@
       "url": "https://www.niemanlab.org/2022/11/what-types-of-local-news-stories-should-be-automated-the-toronto-star-is-figuring-it-out/"
     },
     {
+      "id": 486,
+      "title": "Restoration NewsMedia Profits with New 48-Hour Automated Affidavits",
+      "organisation": null,
+      "country": null,
+      "date_published": "2022-09-01",
+      "source_name": "Editor & Publisher",
+      "source_category": "Industry",
+      "summary": "\"There’s got to be a better way” was what Keven Zepezauer and his team kept saying to each other whenever they talked about affidavits. Zepezauer, the president and publisher of Restoration NewsMedia in North Carolina, knew that the public notice process — with all its labor-intensive, manual inefficiencies — was a problem. “It was ugly,” Zepezauer stated. “We had a full-time person dedicated just to affidavits. We knew we needed to do something different.”",
+      "url": "https://www.editorandpublisher.com/stories/restoration-newsmedia-profits-with-new-48-hour-automated-affidavits,239750"
+    },
+    {
+      "id": 528,
+      "title": "Tracking gender balance and analysing online content: Experts share AI use cases",
+      "organisation": "CivicSignal",
+      "country": null,
+      "date_published": "2022-07-22",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2022-07-22. Artificial Intelligence isn’t just for big publishers. That’s the key takeaway from two executives working in African media who showcased how they are leveraging the technology during WAN-IFRA’s recent Digital Media Africa conference.",
+      "url": "https://wan-ifra.org/2022/07/tracking-gender-balance-and-analysing-online-content-experts-share-ai-use-cases/"
+    },
+    {
+      "id": 529,
+      "title": "Audience engagement, revenue opportunities in metaverse and NFTs",
+      "organisation": "Chen May Yee",
+      "country": null,
+      "date_published": "2022-06-17",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2022-06-17. In March and April this year, the South China Morning Post sold around HK$2 million (about US$255,000) worth of non-fungible tokens (NFTs) featuring images from its historical archives.",
+      "url": "https://wan-ifra.org/2022/06/new-audience-engagements-revenue-opportunities-await-news-industry-in-metaverse-and-nfts/"
+    },
+    {
+      "id": 552,
+      "title": "How a local paper in Argentina uses AI to publish hundreds of sports pieces a month",
+      "organisation": "Laura Oliver",
+      "country": null,
+      "date_published": "2022-06-02",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "“Having robots doesn’t mean we don’t need to hire journalists – it’s the opposite,” says Pablo Pechuan, news manager at ‘Diario Huarpe’",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-local-paper-argentina-uses-ai-publish-hundreds-sports-pieces-month"
+    },
+    {
+      "id": 530,
+      "title": "How The Guardian and AFP used machine learning to understand quotes",
+      "organisation": "The Guardian",
+      "country": null,
+      "date_published": "2022-05-11",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2022-05-11. Quotes have always been used in news articles to bring life to a story and, more importantly, to add authenticity, accuracy and balance. Data scientists at The Guardian and AFP have found a way to give quotes a life of their own and to ensure that the accuracy and attribution of the sources are ironclad – thanks in part to AI.",
+      "url": "https://wan-ifra.org/2022/05/how-the-guardian-and-afp-used-machine-learning-to-understand-quotes/"
+    },
+    {
       "id": 176,
       "title": "Amazon Mining Watch",
       "organisation": "Pulitzer Center´s Rainforest Investigations Network and Earthrise Media",
@@ -3102,6 +4675,17 @@
       "source_category": "Industry",
       "summary": "This article appeared in the Tow Center for Digital Journalism’s newsletter.Click hereto subscribe.",
       "url": "https://www.cjr.org/tow_center/the-tow-center-newsletter-experimenting-with-automated-news-at-the-bbc.php"
+    },
+    {
+      "id": 553,
+      "title": "From trap lyrics to election coverage: lessons on AI from an old Argentinian newspaper",
+      "organisation": "Laura Oliver",
+      "country": null,
+      "date_published": "2022-02-07",
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "“We should learn the skills together and then compete for the stories,” says pioneering journalist Florencia Coelho from 'La Nación'",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/news/trap-lyrics-election-coverage-lessons-ai-old-argentinian-newspaper"
     },
     {
       "id": 177,
@@ -3181,6 +4765,17 @@
       "url": "https://developers.digital.abc.net.au/2021/11/03/a-framework-for-conversational-apps/"
     },
     {
+      "id": 531,
+      "title": "‘Listen’ and ‘Auditorial’ experiments shed a positive light on audio’s accessibility",
+      "organisation": "Auditorial",
+      "country": null,
+      "date_published": "2021-10-06",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "2021-10-06. Two experiments with producing audio content illustrate the challenges and opportunities for news publishers in this booming space.",
+      "url": "https://wan-ifra.org/2021/10/listen-and-auditorial-experiments-shed-a-positive-light-on-audios-accessibility/"
+    },
+    {
       "id": 370,
       "title": "Covering COVID-19 with automated news",
       "organisation": "Samuel Danzon-Chambaud",
@@ -3201,6 +4796,17 @@
       "source_category": "Database",
       "summary": "Synthetic Media",
       "url": "https://developers.digital.abc.net.au/2021/06/10/hyperdraft-the-natural-language-generation-tool-powering-the-abc-emergency-voice-app/"
+    },
+    {
+      "id": 532,
+      "title": "How BBC News Labs uses AI-powered content automation to engage young audiences",
+      "organisation": "Automation",
+      "country": null,
+      "date_published": "2021-06-07",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "BBC News Labs is a cross-functional innovation team whose latest experimentation involves machine summarisation and the automation of image galleries and graphical stories from text.",
+      "url": "https://wan-ifra.org/2021/06/how-bbc-news-labs-uses-ai-powered-content-automation-to-engage-young-audiences/"
     },
     {
       "id": 185,
@@ -3278,6 +4884,17 @@
       "source_category": "Database",
       "summary": "AI Strategy",
       "url": "https://medium.com/the-wall-street-journal/staying-on-topic-building-an-automated-topic-model-of-wsj-news-coverage-d4dc4369f71b"
+    },
+    {
+      "id": 533,
+      "title": "Daily Star aims for higher reader engagement with Facebook Messenger Bot",
+      "organisation": "Bangladesh Media",
+      "country": null,
+      "date_published": "2021-03-23",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "As the digital publishing space keeps getting more innovative every day, customer experience has never been more crucial. The Daily Star, Bangladesh, has re-launched its Facebook messenger bot with improved features for better audience engagement and interactivity. In this post, Tajdin Hassan, Chief Strategy and Digital Transformation Officer at the Star, writes about what they are doing.",
+      "url": "https://wan-ifra.org/2021/03/how-the-daily-star-aims-higher-reader-engagement-with-facebook-messenger-bot/"
     },
     {
       "id": 192,
@@ -4391,6 +6008,17 @@
       "url": "https://www.niemanlab.org/2018/03/reuters-new-automation-tool-wants-to-help-reporters-spot-the-hidden-stories-in-their-data-but-wont-take-their-jobs/"
     },
     {
+      "id": 534,
+      "title": "FranceTV Lab: testing new tools in the lab first to facilitate adoption in the newsroom",
+      "organisation": null,
+      "country": null,
+      "date_published": "2018-04-24",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "In the lab, FranceTV tests new tools and learns how to use them before introducing them to the newsroom. A way to spread the digital culture among journalists, who tend to be conservative and not always open to new ways of working.",
+      "url": "https://wan-ifra.org/2018/04/francetv-lab-testing-new-tools-in-the-lab-first-to-facilitate-adoption-in-the-newsroom/"
+    },
+    {
       "id": 280,
       "title": "Leprosy of the land",
       "organisation": "Texty",
@@ -4655,6 +6283,17 @@
       "url": "https://www.journalism.co.uk/how-on-the-wight-is-experimenting-with-automation-in-news/"
     },
     {
+      "id": 535,
+      "title": "Storytelling’s fight for flight",
+      "organisation": null,
+      "country": null,
+      "date_published": "2015-07-15",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "Where does the world’s love-hate relationship with unmanned aerial vehicles (UAVs) and drone technology really lie? Rebecca Jayne Pattison reports from a recent mash-up of experts.",
+      "url": "https://wan-ifra.org/2015/07/storytellings-fight-for-flight/"
+    },
+    {
       "id": 386,
       "title": "AP uses automation to increase story output tenfold",
       "organisation": null,
@@ -4699,6 +6338,17 @@
       "url": "https://www.poynter.org/reporting-editing/2014/robot-reporters-the-guardian-gives-it-a-go/"
     },
     {
+      "id": 536,
+      "title": "Klaus Steupert: Operator models as an attractive alternative for newspaper production",
+      "organisation": null,
+      "country": null,
+      "date_published": "2014-01-30",
+      "source_name": "WAN-IFRA",
+      "source_category": "Industry",
+      "summary": "Overcapacity in print and high costs are forcing printers to think about alternatives. Klaus Steupert, Managing Director of IE Graphic Engineering, indicates a possibility that, although in discussion, has not yet been fully implemented.",
+      "url": "https://wan-ifra.org/2014/01/klaus-steupert-operator-models-as-an-attractive-alternative-for-newspaper-production/"
+    },
+    {
       "id": 371,
       "title": "Yahoo algorithm predicts what people want to read, increases home page clicks",
       "organisation": "Steve Myers",
@@ -4730,6 +6380,17 @@
       "source_category": "Industry",
       "summary": "XML-tagged fields will allow super-fast interpretation of news",
       "url": "https://www.journalism.co.uk/dow-jones-develops-news-feed-for-automated-trading-and-analysis/"
+    },
+    {
+      "id": 537,
+      "title": "New AI & tech collabs for electoral accountability - the Meedan story",
+      "organisation": "Marina Adami",
+      "country": null,
+      "date_published": null,
+      "source_name": "Reuters Institute",
+      "source_category": "Academic",
+      "summary": "Dr Dima Saber is the director ofprogramsand impact lead atMeedan, a nonprofit focused on enabling access to reliable information during major events such as elections, climate and public health emergencies, armed conflicts and social turmoil. Meedan works with over 70 organisations in more than 45 countries across North Africa and Western Asia, Latin America and the Caribbean, Sub-Saharan Africa and the Asia-Pacific region.",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/calendar/new-ai-tech-collabs-electoral-accountability-meedan-story"
     },
     {
       "id": 455,
@@ -5074,11 +6735,11 @@
     }
   ],
   "stats": {
-    "total": 461,
+    "total": 612,
     "by_year": [
       [
         "2015",
-        3
+        4
       ],
       [
         "2016",
@@ -5090,7 +6751,7 @@
       ],
       [
         "2018",
-        28
+        29
       ],
       [
         "2019",
@@ -5102,27 +6763,27 @@
       ],
       [
         "2021",
-        19
+        22
       ],
       [
         "2022",
-        6
+        12
       ],
       [
         "2023",
-        37
+        46
       ],
       [
         "2024",
-        69
+        120
       ],
       [
         "2025",
-        130
+        183
       ],
       [
         "2026",
-        42
+        67
       ]
     ],
     "top_countries": [
