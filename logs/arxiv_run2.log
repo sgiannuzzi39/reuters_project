@@ -1,0 +1,11 @@
+2026-05-29 13:01:53,422 [INFO] arxiv — Query 1/20: all:journalism AND all:"artificial intelligence"
+2026-05-29 13:02:09,021 [WARNING] arxiv — Rate-limited — sleeping 60 s
+2026-05-29 13:03:09,423 [WARNING] arxiv — Rate-limited — sleeping 120 s
+2026-05-29 13:05:39,694 [WARNING] arxiv — Request failed (attempt 3): HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=30)
+2026-05-29 13:06:09,700 [INFO] arxiv —   → 0 new (total unique: 0)
+2026-05-29 13:06:14,705 [INFO] arxiv — Query 2/20: all:journalism AND all:"machine learning"
+2026-05-29 13:06:25,710 [WARNING] arxiv — Rate-limited — sleeping 60 s
+2026-05-29 13:07:56,109 [WARNING] arxiv — Request failed (attempt 2): HTTPS2026-05-29 13:09:07,126 [WARNING] arxiv — Request failed (attempt 3): HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=30)
+2026-05-29 13:09:37,132 [INFO] arxiv —   → 0 new (total unique: 0)
+2026-05-29 13:09:42,134 [INFO] arxiv — Query 3/20: all:journalism AND all:"deep learning"
+2026-05-29 13:09:42,692 [WARNING] arxiv — Rate-limited — sleeping 60 s

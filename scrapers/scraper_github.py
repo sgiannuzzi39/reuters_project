@@ -13,7 +13,7 @@ Authentication (REQUIRED):
   Unauthenticated requests allow only 10/min — far too slow.
   Create a free personal access token (no scopes needed for public repos):
     1. Go to github.com/settings/tokens/new
-    2. Give it any name, set no scopes (public repo read is default)
+    2 Give it any name, set no scopes (public repo read is default)
     3. Copy the token and set:
           export GITHUB_TOKEN=<your-token>
   With a token: 30 search req/min, 5 000 core req/hour.
@@ -195,7 +195,15 @@ def get(url: str, params: dict | None = None) -> dict | None:
 def fetch_readme(full_name: str) -> str:
     """Return first 2000 chars of the repo README, decoded from base64."""
     url = README_URL.format(full_name=full_name)
-    data = get(url)
+    # Fetch directly — 404 means no README, don't retry it
+    try:
+        resp = requests.get(url, headers=_headers(), timeout=15)
+        if resp.status_code in (404, 403, 422):
+            return ""
+        resp.raise_for_status()
+        data = resp.json()
+    except requests.RequestException:
+        return ""
     if not data or data.get("encoding") != "base64":
         return ""
     try:
