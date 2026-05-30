@@ -372,14 +372,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
   <div class="hero-eyebrow">Oxford Dissertation Research</div>
   <h1>AI Adoption in<br><em>News Organisations</em></h1>
   <p class="hero-sub">A systematic dataset of publicly documented AI use cases in newsrooms worldwide, aggregated from leading industry databases and research reports.</p>
-  <div class="hero-sources" id="heroSources">
-    <span class="source-pill">JournalismAI Case Studies</span>
-    <span class="source-pill">ONA AI in the Newsroom</span>
-    <span class="source-pill">Reuters Institute</span>
-    <span class="source-pill">WAN-IFRA</span>
-    <span class="source-pill">INMA</span>
-    <span class="source-pill">Generative AI Newsroom</span>
-  </div>
+  <div class="hero-sources" id="heroSources"></div>
 </section>
 
 <div class="stats-band">
@@ -406,7 +399,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
     </div>
 
     <div class="sidebar-section">
-      <span class="sidebar-label">Category</span>
+      <span class="sidebar-label">Type</span>
       <div class="pill-group" id="categoryFilters"></div>
     </div>
 
@@ -452,7 +445,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
     <div class="insights-header fade-up">
       <div class="hero-eyebrow">Insights</div>
       <h2 class="insights-title">How AI adoption has evolved</h2>
-      <p class="insights-sub">Category distribution across <span id="insightsTotalYears"></span> years of documented use cases, revealing which types of AI adoption emerged when — and what that suggests about the trajectory of AI in journalism.</p>
+      <p class="insights-sub">Source type distribution across <span id="insightsTotalYears"></span> years of documented use cases, showing how industry coverage, academic research, curated reports, and structured databases have each contributed to the recorded picture of AI adoption in journalism.</p>
     </div>
 
     <div class="timeline-chart fade-up" id="timelineChart">
@@ -486,7 +479,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
 
     <div class="chart-grid fade-up">
       <div class="chart-panel">
-        <div class="chart-panel-label">Top categories overall</div>
+        <div class="chart-panel-label">Records by source</div>
         <div id="catChart"></div>
       </div>
       <div class="chart-panel">
@@ -538,6 +531,12 @@ function init() {
       if (g) g.textContent = 'Updated ' + payload.generated_at;
       filtered = ALL_DATA.slice();
       buildStats();
+      var hs = document.getElementById('heroSources');
+      if (hs && STATS.source_names) {
+        hs.innerHTML = STATS.source_names.map(function(s) {
+          return '<span class="source-pill">' + esc(s) + '</span>';
+        }).join('');
+      }
       buildYearChart();
       buildFilters('categoryFilters', 'categories', activeCategories, toggleCategory);
       buildFilters('sourceFilters', 'sources', activeSources, toggleSource);
@@ -609,7 +608,7 @@ function buildFilters(id, mode, activeSet, fn) {
   var counts = {};
   ALL_DATA.forEach(function(r) {
     var vals = mode === 'categories'
-      ? (r.summary || '').split(',').map(function(s) { return s.trim(); }).filter(Boolean)
+      ? (r.source_category ? [r.source_category] : [])
       : mode === 'sources' ? (r.source_name ? [r.source_name] : [])
       : (r.country || '').split(',').map(function(s) { return s.trim(); }).filter(Boolean);
     vals.forEach(function(v) { if (v) counts[v] = (counts[v] || 0) + 1; });
@@ -651,11 +650,7 @@ function updateFilterBar() {
 function applyFilters() {
   filtered = ALL_DATA.filter(function(r) {
     if (activeYear && (r.date_published || '').slice(0, 4) !== activeYear) return false;
-    if (activeCategories.size > 0) {
-      var cats = (r.summary || '').split(',').map(function(s) { return s.trim(); });
-      var ok = false; cats.forEach(function(c) { if (activeCategories.has(c)) ok = true; });
-      if (!ok) return false;
-    }
+    if (activeCategories.size > 0 && !activeCategories.has(r.source_category)) return false;
     if (activeSources.size > 0 && !activeSources.has(r.source_name)) return false;
     if (activeCountries.size > 0) {
       var cs = (r.country || '').split(',').map(function(s) { return s.trim(); });
@@ -698,7 +693,6 @@ function render() {
   var html = '';
   page.forEach(function(r) {
     var date = (r.date_published || '—').slice(0, 7);
-    var cats = (r.summary || '').split(',').map(function(s) { return s.trim(); }).filter(Boolean).slice(0, 2);
     var country1 = r.country ? r.country.split(',')[0].trim() : '';
     var titleInner = r.url
       ? '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.title || 'Untitled') + '</a>'
@@ -706,7 +700,7 @@ function render() {
     var tagsHtml = '';
     if (country1) tagsHtml += '<span class="tag country">' + esc(country1) + '</span>';
     tagsHtml += '<span class="tag source">' + esc(r.source_name) + '</span>';
-    cats.forEach(function(c) { tagsHtml += '<span class="tag cat">' + esc(c) + '</span>'; });
+    if (r.source_category) tagsHtml += '<span class="tag cat">' + esc(r.source_category) + '</span>';
     html += '<div class="card">' +
       '<div class="card-title">' + titleInner + '</div>' +
       '<div class="card-date">' + esc(date) + '</div>' +
@@ -742,21 +736,15 @@ function render() {
 function goPage(p) { currentPage = p; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
 var CAT_COLORS = {
-  'News production':       '#c44b28',
-  'Newsgathering':         '#e07b4a',
-  'Audience Engagement':   '#2a8d46',
-  'AI Strategy':           '#1a6dd4',
-  'News distribution':     '#8b5cf6',
-  'Generative AI':         '#cc7722',
-  'Investigations':        '#d42020',
-  'Fact-checking':         '#0891b2',
-  'Research & Innovation': '#756f69',
-  'Synthetic Media':       '#be185d'
+  'Industry':  '#c44b28',
+  'Database':  '#2a8d46',
+  'Academic':  '#1a6dd4',
+  'Curated':   '#8b5cf6',
 };
 
 function buildCharts() {
   buildTimeline();
-  buildBarChart('catChart', STATS.top_categories || [], 10);
+  buildBarChart('catChart', STATS.top_sources || [], 15);
   buildBarChart('countryChart', STATS.top_countries || [], 10);
   var yr = document.getElementById('insightsTotalYears');
   if (yr && STATS.by_year) yr.textContent = STATS.by_year.length;

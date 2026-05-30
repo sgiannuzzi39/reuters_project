@@ -188,7 +188,6 @@ def _parse_space(space: dict) -> dict:
     title       = card.get("title") or space_id.split("/")[-1]
     description = card.get("short_description") or ""
     tags        = card.get("tags") or space.get("tags") or []
-    author      = space.get("author", "")
     created_at  = (space.get("createdAt") or "")[:10]
     url         = f"https://huggingface.co/spaces/{space_id}"
     likes       = space.get("likes", 0)
@@ -199,7 +198,7 @@ def _parse_space(space: dict) -> dict:
         "_tags":       tags,
         "_likes":      likes,
         "title":       title or space_id,
-        "organisation": author or None,
+        "organisation": None,   # not stored — member usernames are personal data
         "date_published": created_at or None,
         "url":         url,
         "summary":     description[:500] if description else None,
@@ -228,7 +227,7 @@ def scrape(dry_run: bool = False) -> None:
                 member_spaces.append(s)
                 new += 1
         if new:
-            logger.info("  [%d/%d] %s: %d new spaces", i + 1, len(members), username, new)
+            logger.info("  [%d/%d] member: %d new spaces", i + 1, len(members), new)
         time.sleep(DELAY)
 
     all_spaces = org_spaces + member_spaces

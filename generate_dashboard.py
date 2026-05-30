@@ -40,35 +40,42 @@ def load_data(db_path):
     """).fetchall()
     data = [dict(r) for r in records]
 
+    COUNTRY_NORM = {
+        "USA": "United States", "U.S.": "United States", "US": "United States",
+        "UK":  "United Kingdom", "U.K.": "United Kingdom",
+    }
+
     by_year     = {}
     by_country  = {}
     by_category = {}
+    by_source   = {}
 
     for r in data:
         yr = (r["date_published"] or "")[:4]
-        if yr and yr.isdigit() and 2015 <= int(yr) <= 2030:
+        if yr and yr.isdigit() and 2010 <= int(yr) <= 2030:
             by_year[yr] = by_year.get(yr, 0) + 1
         for c in (r["country"] or "").split(","):
-            c = c.strip()
+            c = COUNTRY_NORM.get(c.strip(), c.strip())
             if c and c != "Global":
                 by_country[c] = by_country.get(c, 0) + 1
-        for cat in (r["summary"] or "").split(","):
-            cat = cat.strip()
-            if cat:
-                by_category[cat] = by_category.get(cat, 0) + 1
+        cat = (r["source_category"] or "").strip()
+        if cat:
+            by_category[cat] = by_category.get(cat, 0) + 1
+        src = (r["source_name"] or "").strip()
+        if src:
+            by_source[src] = by_source.get(src, 0) + 1
 
     top_cat_names = [c for c, _ in sorted(by_category.items(), key=lambda x: -x[1])[:10]]
     year_cat = {}
     for r in data:
         yr = (r["date_published"] or "")[:4]
-        if not yr or not yr.isdigit() or int(yr) < 2017 or int(yr) > 2025:
+        if not yr or not yr.isdigit() or int(yr) < 2017 or int(yr) > 2026:
             continue
         if yr not in year_cat:
             year_cat[yr] = {}
-        for cat in (r["summary"] or "").split(","):
-            cat = cat.strip()
-            if cat in top_cat_names:
-                year_cat[yr][cat] = year_cat[yr].get(cat, 0) + 1
+        cat = (r["source_category"] or "").strip()
+        if cat in top_cat_names:
+            year_cat[yr][cat] = year_cat[yr].get(cat, 0) + 1
 
     timeline_years = sorted(year_cat.keys())
     cat_by_year = {
@@ -84,6 +91,8 @@ def load_data(db_path):
         "by_year":        sorted(by_year.items()),
         "top_countries":  sorted(by_country.items(),  key=lambda x: -x[1])[:15],
         "top_categories": sorted(by_category.items(), key=lambda x: -x[1])[:12],
+        "top_sources":    sorted(by_source.items(),   key=lambda x: -x[1])[:15],
+        "source_names":   sorted(by_source.keys()),
         "cat_by_year":    cat_by_year,
     }
     conn.close()
@@ -467,14 +476,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
   <div class="hero-eyebrow">Oxford Dissertation Research</div>
   <h1>AI Adoption in<br><em>News Organisations</em></h1>
   <p class="hero-sub">A systematic dataset of publicly documented AI use cases in newsrooms worldwide, aggregated from leading industry databases and research reports.</p>
-  <div class="hero-sources" id="heroSources">
-    <span class="source-pill">JournalismAI Case Studies</span>
-    <span class="source-pill">ONA AI in the Newsroom</span>
-    <span class="source-pill">Reuters Institute</span>
-    <span class="source-pill">WAN-IFRA</span>
-    <span class="source-pill">INMA</span>
-    <span class="source-pill">Generative AI Newsroom</span>
-  </div>
+  <div class="hero-sources" id="heroSources"></div>
 </section>
 
 <div class="stats-band">
@@ -501,7 +503,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
     </div>
 
     <div class="sidebar-section">
-      <span class="sidebar-label">Category</span>
+      <span class="sidebar-label">Type</span>
       <div class="pill-group" id="categoryFilters"></div>
     </div>
 
@@ -547,7 +549,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
     <div class="insights-header fade-up">
       <div class="hero-eyebrow">Insights</div>
       <h2 class="insights-title">How AI adoption has evolved</h2>
-      <p class="insights-sub">Category distribution across <span id="insightsTotalYears"></span> years of documented use cases, revealing which types of AI adoption emerged when — and what that suggests about the trajectory of AI in journalism.</p>
+      <p class="insights-sub">Source type distribution across <span id="insightsTotalYears"></span> years of documented use cases, showing how industry coverage, academic research, curated reports, and structured databases have each contributed to the recorded picture of AI adoption in journalism.</p>
     </div>
 
     <div class="timeline-chart fade-up" id="timelineChart">
@@ -581,7 +583,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
 
     <div class="chart-grid fade-up">
       <div class="chart-panel">
-        <div class="chart-panel-label">Top categories overall</div>
+        <div class="chart-panel-label">Records by source</div>
         <div id="catChart"></div>
       </div>
       <div class="chart-panel">
@@ -633,6 +635,12 @@ function init() {
       if (g) g.textContent = 'Updated ' + payload.generated_at;
       filtered = ALL_DATA.slice();
       buildStats();
+      var hs = document.getElementById('heroSources');
+      if (hs && STATS.source_names) {
+        hs.innerHTML = STATS.source_names.map(function(s) {
+          return '<span class="source-pill">' + esc(s) + '</span>';
+        }).join('');
+      }
       buildYearChart();
       buildFilters('categoryFilters', 'categories', activeCategories, toggleCategory);
       buildFilters('sourceFilters', 'sources', activeSources, toggleSource);
@@ -704,7 +712,7 @@ function buildFilters(id, mode, activeSet, fn) {
   var counts = {};
   ALL_DATA.forEach(function(r) {
     var vals = mode === 'categories'
-      ? (r.summary || '').split(',').map(function(s) { return s.trim(); }).filter(Boolean)
+      ? (r.source_category ? [r.source_category] : [])
       : mode === 'sources' ? (r.source_name ? [r.source_name] : [])
       : (r.country || '').split(',').map(function(s) { return s.trim(); }).filter(Boolean);
     vals.forEach(function(v) { if (v) counts[v] = (counts[v] || 0) + 1; });
@@ -746,11 +754,7 @@ function updateFilterBar() {
 function applyFilters() {
   filtered = ALL_DATA.filter(function(r) {
     if (activeYear && (r.date_published || '').slice(0, 4) !== activeYear) return false;
-    if (activeCategories.size > 0) {
-      var cats = (r.summary || '').split(',').map(function(s) { return s.trim(); });
-      var ok = false; cats.forEach(function(c) { if (activeCategories.has(c)) ok = true; });
-      if (!ok) return false;
-    }
+    if (activeCategories.size > 0 && !activeCategories.has(r.source_category)) return false;
     if (activeSources.size > 0 && !activeSources.has(r.source_name)) return false;
     if (activeCountries.size > 0) {
       var cs = (r.country || '').split(',').map(function(s) { return s.trim(); });
@@ -793,7 +797,6 @@ function render() {
   var html = '';
   page.forEach(function(r) {
     var date = (r.date_published || '—').slice(0, 7);
-    var cats = (r.summary || '').split(',').map(function(s) { return s.trim(); }).filter(Boolean).slice(0, 2);
     var country1 = r.country ? r.country.split(',')[0].trim() : '';
     var titleInner = r.url
       ? '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.title || 'Untitled') + '</a>'
@@ -801,7 +804,7 @@ function render() {
     var tagsHtml = '';
     if (country1) tagsHtml += '<span class="tag country">' + esc(country1) + '</span>';
     tagsHtml += '<span class="tag source">' + esc(r.source_name) + '</span>';
-    cats.forEach(function(c) { tagsHtml += '<span class="tag cat">' + esc(c) + '</span>'; });
+    if (r.source_category) tagsHtml += '<span class="tag cat">' + esc(r.source_category) + '</span>';
     html += '<div class="card">' +
       '<div class="card-title">' + titleInner + '</div>' +
       '<div class="card-date">' + esc(date) + '</div>' +
@@ -837,21 +840,15 @@ function render() {
 function goPage(p) { currentPage = p; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
 var CAT_COLORS = {
-  'News production':       '#c44b28',
-  'Newsgathering':         '#e07b4a',
-  'Audience Engagement':   '#2a8d46',
-  'AI Strategy':           '#1a6dd4',
-  'News distribution':     '#8b5cf6',
-  'Generative AI':         '#cc7722',
-  'Investigations':        '#d42020',
-  'Fact-checking':         '#0891b2',
-  'Research & Innovation': '#756f69',
-  'Synthetic Media':       '#be185d'
+  'Industry':  '#c44b28',
+  'Database':  '#2a8d46',
+  'Academic':  '#1a6dd4',
+  'Curated':   '#8b5cf6',
 };
 
 function buildCharts() {
   buildTimeline();
-  buildBarChart('catChart', STATS.top_categories || [], 10);
+  buildBarChart('catChart', STATS.top_sources || [], 15);
   buildBarChart('countryChart', STATS.top_countries || [], 10);
   var yr = document.getElementById('insightsTotalYears');
   if (yr && STATS.by_year) yr.textContent = STATS.by_year.length;
