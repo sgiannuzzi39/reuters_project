@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-30 16:48 UTC",
+  "generated_at": "2026-06-03 07:37 UTC",
   "records": [
     {
       "id": 723,
@@ -211,17 +211,6 @@
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/news-media-publishers-are-extracting-value-from-chat-products"
     },
     {
-      "id": 598,
-      "title": "Hearst Newspapers leverages AI to build local content, reader loyalty",
-      "organisation": null,
-      "country": null,
-      "date_published": "2026-05-11",
-      "source_name": "INMA",
-      "source_category": "Industry",
-      "summary": "At Hearst Newspapers, the emphasis is on creating innovative, high-impact, high-value content that can’t be found elsewhere. During the recent INMA WebinarFuture-proofing news in the GenAI era, members heard how the company uses AI innovation to build loyalty.",
-      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/hearst-newspapers-leverages-ai-to-build-local-content-reader-loyalty"
-    },
-    {
       "id": 596,
       "title": "Ippen Digital, Mediafin share how they created customer-facing GenAI products",
       "organisation": null,
@@ -231,237 +220,6 @@
       "source_category": "Industry",
       "summary": "With generative AI becoming so prevalent, news publishers are either looking at how to use the technology to improve the customer experience while also integrating it into internal workflows.",
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ippen-digital-medifin-share-how-they-created-customer-facing-genai-products"
-    },
-    {
-      "id": 595,
-      "title": "Rede Gazeta experiments with GenAI to create its own news assistant",
-      "organisation": null,
-      "country": null,
-      "date_published": "2026-05-11",
-      "source_name": "INMA",
-      "source_category": "Industry",
-      "summary": "Rede Gazetain Brazil has faced digital transformation challenges familiar to many legacy media companies, completing its move to digital-only in early 2020.",
-      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/rede-gazeta-experiments-with-genai-to-create-its-own-news-assistant"
-    },
-    {
-      "id": 20,
-      "title": "Patch2Vuln: Agentic Reconstruction of Vulnerabilities from Linux Distribution Binary Patches",
-      "organisation": "Isaac David",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Security updates create a short but important window in which defenders and attackers can compare vulnerable and patched software. Yet in many operational settings, the most accessible artifacts are binary packages rather than source patches or advisory text. This paper asks whether a language-model agent, restricted to local binary-derived evidence, can reconstruct the security meaning of Linux distribution updates. Patch2Vuln is a local, resumable pipeline that extracts old/new ELF pairs, diffs them with Ghidra and Ghidriff, ranks changed functions, builds candidate dossiers, and asks an offline agent to produce a preliminary audit, bounded validation plan, and final audit.   We evaluate Patch2Vuln on 25 Ubuntu `.deb` package pairs: 20 security-update pairs and five negative controls, all manually adjudicated against private source-patch and binary-function ground truth. The agent localizes a verified security-relevant patch function in 10 of 20 security pairs and assigns an accepted",
-      "url": "http://arxiv.org/abs/2605.06601v1"
-    },
-    {
-      "id": 19,
-      "title": "AI CFD Scientist: Toward Open-Ended Computational Fluid Dynamics Discovery with Physics-Aware AI Agents",
-      "organisation": "Nithin Somasekharan",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Recent LLM-based agents have closed substantial portions of the scientific discovery loop in software-only machine-learning research, in chemistry, and in biology. Extending the same loop to high-fidelity physical simulators is harder, because solver completion does not imply physical validity and many failure modes appear only in field-level imagery rather than in solver logs. We present AI CFD Scientist, an open-source AI scientist for computational fluid dynamics (CFD) that, to our knowledge, is the first to span literature-grounded ideation, validated execution, vision-based physics verification, source-code modification, and figure-grounded writing within a single inspectable workflow. Three coupled pathways cover parameter sweeps within a fixed solver, case-local C++ library compilation for new physical models, and open-ended hypothesis search against a reference comparator, all running on OpenFOAM through Foam-Agent. At the center of the framework is a vision-language physics-ve",
-      "url": "http://arxiv.org/abs/2605.06607v1"
-    },
-    {
-      "id": 18,
-      "title": "The Structural Origin of Attention Sink: Variance Discrepancy, Super Neurons, and Dimension Disparity",
-      "organisation": "Siquan Li",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Despite the prevalence of the attention sink phenomenon in Large Language Models (LLMs), where initial tokens disproportionately monopolize attention scores, its structural origins remain elusive. This work provides a \\textit{mechanistic explanation} for this phenomenon. First, we trace its root to the value aggregation process inherent in self-attention, which induces a systematic variance discrepancy. We further demonstrate that this discrepancy is drastically amplified by the activation of super neurons within Feed-Forward Network (FFN) layers. Specifically, the channel-sparse down-projections trigger a dimension disparity of the first-token representation, necessitating the formation of attention sinks as a structural anchor. Then, we validate this causal chain through two controlled interventions: (i) isolating the aggregation effect via attention mask modifications and (ii) amplifying the variance of targeted token representations. Both interventions can replicate attention sinks",
-      "url": "http://arxiv.org/abs/2605.06611v1"
-    },
-    {
-      "id": 17,
-      "title": "SkillOS: Learning Skill Curation for Self-Evolving Agents",
-      "organisation": "Siru Ouyang",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "LLM-based agents are increasingly deployed to handle streaming tasks, yet they often remain one-off problem solvers that fail to learn from past interactions. Reusable skills distilled from experience provide a natural substrate for self-evolution, where high-quality skill curation serves as the key bottleneck. Existing approaches either rely on manual skill curation, prescribe heuristic skill operations, or train for short-horizon skill operations. However, they still struggle to learn complex long-term curation policies from indirect and delayed feedback. To tackle this challenge, we propose SkillOS, an experience-driven RL training recipe for learning skill curation in self-evolving agents. SkillOS pairs a frozen agent executor that retrieves and applies skills with a trainable skill curator that updates an external SkillRepo from accumulated experience. To provide learning signals for curation, we design composite rewards and train on grouped task streams based on skill-relevant ta",
-      "url": "http://arxiv.org/abs/2605.06614v1"
-    },
-    {
-      "id": 16,
-      "title": "When and Why SignSGD Outperforms SGD: A Theoretical Study Based on $\\ell_1$-norm Lower Bounds",
-      "organisation": "Hongyi Tao",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Sign-based optimization algorithms, such as SignSGD and Muon, have garnered significant attention for their remarkable performance in training large foundation models. Despite this empirical success, we still lack a theoretical understanding of when and why these sign-based methods outperform vanilla SGD. The core obstacle is that under standard smoothness and finite variance conditions, SGD is known to be minimax optimal for finding stationary points measured by $\\ell_2$-norms, thereby fundamentally precluding any complexity gains for sign-based methods in standard settings. To overcome this barrier, we analyze sign-based optimizers leveraging $\\ell_1$-norm stationarity, $\\ell_\\infty$-smoothness, and a separable noise model, which can better capture the coordinate-wise nature of signed updates. Under this distinct problem geometry, we derive matched upper and lower bounds for SignSGD and explicitly characterize the problem class in which SignSGD provably dominates SGD. Specifically, w",
-      "url": "http://arxiv.org/abs/2605.06615v1"
-    },
-    {
-      "id": 15,
-      "title": "MASPO: Joint Prompt Optimization for LLM-based Multi-Agent Systems",
-      "organisation": "Zhexuan Wang",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Large language model (LLM)-based Multi-agent systems (MAS) have shown promise in tackling complex collaborative tasks, where agents are typically orchestrated via role-specific prompts. While the quality of these prompts is pivotal, jointly optimizing them across interacting agents remains a non-trivial challenge, primarily due to the misalignment between local agent objectives and holistic system goals. To address this, we introduce MASPO, a novel framework designed to automatically and iteratively refine prompts across the entire system. A core innovation of MASPO is its joint evaluation mechanism, which assesses prompts not merely by their local validity, but by their capacity to facilitate downstream success for successor agents. This effectively bridges the gap between local interactions and global outcomes without relying on ground-truth labels. Furthermore, MASPO employs a data-driven evolutionary beam search to efficiently navigate the high-dimensional prompt space. Extensive e",
-      "url": "http://arxiv.org/abs/2605.06623v1"
-    },
-    {
-      "id": 14,
-      "title": "Can RL Teach Long-Horizon Reasoning to LLMs? Expressiveness Is Key",
-      "organisation": "Tianle Wang",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Reinforcement learning (RL) has been applied to improve large language model (LLM) reasoning, yet the systematic study of how training scales with task difficulty has been hampered by the lack of controlled, scalable environments. We introduce ScaleLogic, a synthetic logical reasoning framework that offers independent control over two axes of difficulty: the depth of the required proof planning (i.e., the horizon) and the expressiveness of the underlying logic. Our proposed framework supports a wide range of logics: from simple implication-only logic (\"if-then\") towards more expressive first-order reasoning with conjunction (\"and\"), disjunction (\"or\"), negation (\"not\"), and universal quantification (\"for all\"). Using this framework, we show that the RL training compute $T$ follows a power law with respect to reasoning depth $D$ ($T \\propto D^γ$, $R^{2} > 0.99$), and that the scaling exponent $γ$ increases monotonically with logical expressiveness, from $1.04$ to $2.60$. On downstream m",
-      "url": "http://arxiv.org/abs/2605.06638v1"
-    },
-    {
-      "id": 13,
-      "title": "Recursive Agent Optimization",
-      "organisation": "Apurva Gandhi",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "We introduce Recursive Agent Optimization (RAO), a reinforcement learning approach for training recursive agents: agents that can spawn and delegate sub-tasks to new instantiations of themselves recursively. Recursive agents implement an inference-time scaling algorithm that naturally allows agents to scale to longer contexts and generalize to more difficult problems via divide-and-conquer. RAO provides a method to train models to best take advantage of such recursive inference, teaching agents when and how to delegate and communicate. We find that recursive agents trained in this way enjoy better training efficiency, can scale to tasks that go beyond the model's context window, generalize to tasks much harder than the ones the agent was trained on, and can enjoy reduced wall-clock time compared to single-agent systems.",
-      "url": "http://arxiv.org/abs/2605.06639v1"
-    },
-    {
-      "id": 12,
-      "title": "GlazyBench: A Benchmark for Ceramic Glaze Property Prediction and Image Generation",
-      "organisation": "Ziyu Zhai",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Developing ceramic glazes is a costly, time-consuming process of trial and error due to complex chemistry, placing a significant burden on independent artists. While recent advances in multimodal AI offer a modern solution, the field lacks the large-scale datasets required to train these models. We propose GlazyBench, the first dataset for AI-assisted glaze design. Comprising 23,148 real glaze formulations, GlazyBench supports two primary tasks: predicting post-firing surface properties, such as color and transparency, from raw materials, and generating accurate visual representations of the glaze based on these properties. We establish comprehensive baselines for property prediction using traditional machine learning and large language models, alongside image generation benchmarks using deep generative and large multimodal models. Our experiments demonstrate promising yet challenging results. GlazyBench pioneers a new research direction in AI-assisted material design, providing a stan",
-      "url": "http://arxiv.org/abs/2605.06641v1"
-    },
-    {
-      "id": 11,
-      "title": "Concept-Based Abductive and Contrastive Explanations for Behaviors of Vision Models",
-      "organisation": "Ronaldo Canizales",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "*Concept-based explanations* offer a promising approach for explaining the predictions of deep neural networks in terms of high-level, human-understandable concepts. However, existing methods either do not establish a causal connection between the concepts and model predictions or are limited in expressivity and only able to infer causal explanations involving single concepts. At the same time, the parallel line of work on *formal abductive and contrastive explanations* computes the minimal set of input features causally relevant for model outcomes but only considers low-level features such as pixels. Merging these two threads, in this work, we propose the notion of *concept-based abductive and contrastive explanations* that capture the minimal sets of high-level concepts causally relevant for model outcomes. We then present a family of algorithms that enumerate all minimal explanations while using *concept erasure* procedures to establish causal relationships. By appropriately aggrega",
-      "url": "http://arxiv.org/abs/2605.06640v1"
-    },
-    {
-      "id": 10,
-      "title": "StraTA: Incentivizing Agentic Reinforcement Learning with Strategic Trajectory Abstraction",
-      "organisation": "Xiangyuan Xue",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Large language models (LLMs) are increasingly used as interactive agents, but optimizing them for long-horizon decision making remains difficult because current methods are largely purely reactive, which weakens both exploration and credit assignment over extended trajectories. In this work, we present Strategic Trajectory Abstraction (StraTA), a simple framework that introduces an explicit trajectory-level strategy into agentic reinforcement learning (RL). StraTA samples a compact strategy from the initial task state, conditions subsequent actions on that strategy, and trains strategy generation and action execution jointly with a hierarchical GRPO-style rollout design, further enhanced by diverse strategy rollout and critical self-judgment. Experiments on ALFWorld, WebShop, and SciWorld show that StraTA consistently improves both sample efficiency and final performance over strong baselines. StraTA reaches success rates of 93.1% on ALFWorld and 84.2% on WebShop. On SciWorld, StraTA a",
-      "url": "http://arxiv.org/abs/2605.06642v1"
-    },
-    {
-      "id": 9,
-      "title": "Are We Making Progress in Multimodal Domain Generalization? A Comprehensive Benchmark Study",
-      "organisation": "Hao Dong",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Despite the growing popularity of Multimodal Domain Generalization (MMDG) for enhancing model robustness, it remains unclear whether reported performance gains reflect genuine algorithmic progress or are artifacts of inconsistent evaluation protocols. Current research is fragmented, with studies varying significantly across datasets, modality configurations, and experimental settings. Furthermore, existing benchmarks focus predominantly on action recognition, often neglecting critical real-world challenges such as input corruptions, missing modalities, and model trustworthiness. This lack of standardization obscures a reliable assessment of the field's advancement. To address this issue, we introduce MMDG-Bench, the first unified and comprehensive benchmark for MMDG, which standardizes evaluation across six datasets spanning three diverse tasks: action recognition, mechanical fault diagnosis, and sentiment analysis. MMDG-Bench encompasses six modality combinations, nine representative ",
-      "url": "http://arxiv.org/abs/2605.06643v1"
-    },
-    {
-      "id": 8,
-      "title": "Superintelligent Retrieval Agent: The Next Frontier of Information Retrieval",
-      "organisation": "Zeyu Yang",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Retrieval-augmented agents are increasingly the interface to large organizational knowledge bases, yet most still treat retrieval as a black box: they issue exploratory queries, inspect returned snippets, and iteratively reformulate until useful evidence emerges. This approach resembles how a newcomer searches an unfamiliar database rather than how an expert navigates it with strong priors about terminology and likely evidence, and results in unnecessary retrieval rounds, increased latency, and poor recall.   We introduce \\textit{SuperIntelligent Retrieval Agent} (SIRA), which defines \\emph{superintelligence} in retrieval as the ability to compress multi-round exploratory search into a single corpus-discriminative retrieval action. SIRA does not merely ask what terms are relevant to the query; it asks which terms are likely to separate the desired evidence from corpus-level confusers. On the corpus side, an LLM enriches each document offline with missing search vocabulary; on the query",
-      "url": "http://arxiv.org/abs/2605.06647v1"
-    },
-    {
-      "id": 7,
-      "title": "AI Co-Mathematician: Accelerating Mathematicians with Agentic AI",
-      "organisation": "Daniel Zheng",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "We introduce the AI co-mathematician, a workbench for mathematicians to interactively leverage AI agents to pursue open-ended research. The AI co-mathematician is optimized to provide holistic support for the exploratory and iterative reality of mathematical workflows, including ideation, literature search, computational exploration, theorem proving and theory building. By providing an asynchronous, stateful workspace that manages uncertainty, refines user intent, tracks failed hypotheses, and outputs native mathematical artifacts, the system mirrors human collaborative workflows. In early tests, the AI co-mathematician helped researchers solve open problems, identify new research directions, and uncover overlooked literature references. Besides demonstrating a highly interactive paradigm for AI-assisted mathematical discovery, the AI co-mathematician also achieves state of the art results on hard problem-solving benchmarks, including scoring 48% on FrontierMath Tier 4, a new high scor",
-      "url": "http://arxiv.org/abs/2605.06651v1"
-    },
-    {
-      "id": 6,
-      "title": "When No Benchmark Exists: Validating Comparative LLM Safety Scoring Without Ground-Truth Labels",
-      "organisation": "Sushant Gautam",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Many deployments must compare candidate language models for safety before a labeled benchmark exists for the relevant language, sector, or regulatory regime. We formalize this setting as benchmarkless comparative safety scoring and specify the contract under which a scenario-based audit can be interpreted as deployment evidence. Scores are valid only under a fixed scenario pack, rubric, auditor, judge, sampling configuration, and rerun budget. Because no labels are available, we replace ground-truth agreement with an instrumental-validity chain: responsiveness to a controlled safe-versus-abliterated contrast, dominance of target-driven variance over auditor and judge artifacts, and stability across reruns.   We instantiate the chain in SimpleAudit, a local-first scoring instrument, and validate it on a Norwegian safety pack. Safe and abliterated targets separate with AUROC values between 0.89 and 1.00, target identity is the dominant variance component ($η^2 \\approx 0.52$), and severit",
-      "url": "http://arxiv.org/abs/2605.06652v1"
-    },
-    {
-      "id": 5,
-      "title": "Optimizer-Model Consistency: Full Finetuning with the Same Optimizer as Pretraining Forgets Less",
-      "organisation": "Yuxing Liu",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Optimizers play an important role in both pretraining and finetuning stages when training large language models (LLMs). In this paper, we present an observation that full finetuning with the same optimizer as in pretraining achieves a better learning-forgetting tradeoff, i.e., forgetting less while achieving the same or better performance on the new task, than other optimizers and, possibly surprisingly, LoRA, during the supervised finetuning (SFT) stage. We term this phenomenon optimizer-model consistency. To better understand it, through controlled experiments and theoretical analysis, we show that: 1) optimizers can shape the models by having regularization effects on the activations, leading to different landscapes around the pretrained checkpoints; 2) in response to this regularization effect, the weight update in SFT should follow some specific structures to lower forgetting of the knowledge learned in pretraining, which can be obtained by using the same optimizer. Moreover, we s",
-      "url": "http://arxiv.org/abs/2605.06654v1"
-    },
-    {
-      "id": 4,
-      "title": "Verifier-Backed Hard Problem Generation for Mathematical Reasoning",
-      "organisation": "Yuhang Lai",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Large Language Models (LLMs) demonstrate strong capabilities for solving scientific and mathematical problems, yet they struggle to produce valid, challenging, and novel problems - an essential component for advancing LLM training and enabling autonomous scientific research. Existing problem generation approaches either depend on expensive human expert involvement or adopt naive self-play paradigms, which frequently yield invalid problems due to reward hacking. This work introduces VHG, a verifier-enhanced hard problem generation framework built upon three-party self-play. By integrating an independent verifier into the conventional setter-solver duality, our design constrains the setter's reward to be jointly determined by problem validity (evaluated by the verifier) and difficulty (assessed by the solver). We instantiate two verifier variants: a Hard symbolic verifier and a Soft LLM-based verifier, with evaluations conducted on indefinite integral tasks and general mathematical reaso",
-      "url": "http://arxiv.org/abs/2605.06660v1"
-    },
-    {
-      "id": 3,
-      "title": "BAMI: Training-Free Bias Mitigation in GUI Grounding",
-      "organisation": "Borui Zhang",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "GUI grounding is a critical capability for enabling GUI agents to execute tasks such as clicking and dragging. However, in complex scenarios like the ScreenSpot-Pro benchmark, existing models often suffer from suboptimal performance. Utilizing the proposed \\textbf{Masked Prediction Distribution (MPD)} attribution method, we identify that the primary sources of errors are twofold: high image resolution (leading to precision bias) and intricate interface elements (resulting in ambiguity bias). To address these challenges, we introduce \\textbf{Bias-Aware Manipulation Inference (BAMI)}, which incorporates two key manipulations, coarse-to-fine focus and candidate selection, to effectively mitigate these biases. Our extensive experimental results demonstrate that BAMI significantly enhances the accuracy of various GUI grounding models in a training-free setting. For instance, applying our method to the TianXi-Action-7B model boosts its accuracy on the ScreenSpot-Pro benchmark from 51.9\\% to ",
-      "url": "http://arxiv.org/abs/2605.06664v1"
-    },
-    {
-      "id": 2,
-      "title": "UniPool: A Globally Shared Expert Pool for Mixture-of-Experts",
-      "organisation": "Minbin Huang",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Modern Mixture-of-Experts (MoE) architectures allocate expert capacity through a rigid per-layer rule: each transformer layer owns a separate expert set. This convention couples depth scaling with linear expert-parameter growth and assumes that every layer needs isolated expert capacity. However, recent analyses and our routing probe challenge this allocation rule: replacing a deeper layer's learned top-k router with uniform random routing drops downstream accuracy by only 1.0-1.6 points across multiple production MoE models. Motivated by this redundancy, we propose UniPool, an MoE architecture that treats expert capacity as a global architectural budget by replacing per-layer expert ownership with a single shared pool accessed by independent per-layer routers. To enable stable and balanced training under sharing, we introduce a pool-level auxiliary loss that balances expert utilization across the entire pool, and adopt NormRouter to provide sparse and scale-stable routing into the sha",
-      "url": "http://arxiv.org/abs/2605.06665v1"
-    },
-    {
-      "id": 1,
-      "title": "ActCam: Zero-Shot Joint Camera and 3D Motion Control for Video Generation",
-      "organisation": "Omar El Khalifi",
-      "country": null,
-      "date_published": "2026-05-07",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "For artistic applications, video generation requires fine-grained control over both performance and cinematography, i.e., the actor's motion and the camera trajectory. We present ActCam, a zero-shot method for video generation that jointly transfers character motion from a driving video into a new scene and enables per-frame control of intrinsic and extrinsic camera parameters. ActCam builds on any pretrained image-to-video diffusion model that accepts conditioning in terms of scene depth and character pose. Given a source video with a moving character and a target camera motion, ActCam generates pose and depth conditions that remain geometrically consistent across frames. We then run a single sampling process with a two-phase conditioning schedule: early denoising steps condition on both pose and sparse depth to enforce scene structure, after which depth is dropped and pose-only guidance refines high-frequency details without over-constraining the generation. We evaluate ActCam on mul",
-      "url": "http://arxiv.org/abs/2605.06667v1"
     },
     {
       "id": 690,
@@ -693,17 +451,6 @@
       "source_category": "Industry",
       "summary": "Adaptive memory system for AI-powered local newsrooms. Learns publisher voice, source preferences, and institutional knowledge from human feedback using AUDN reconciliation, quality gates, and effectiveness tracking.",
       "url": "https://github.com/alecmeeeker/local-news-ai-memory"
-    },
-    {
-      "id": 493,
-      "title": "How dmg media is building an AI ‘foundational layer’ for the newsroom",
-      "organisation": "Daily Mail",
-      "country": null,
-      "date_published": "2026-04-08",
-      "source_name": "WAN-IFRA",
-      "source_category": "Industry",
-      "summary": "The publisher of Daily Mail has developed a comprehensive suite of AI tools, collectively titled Mail iQ, that assist journalists with copy editing, filling in metadata and creating social media assets. The goal is to transition AI from experimental proof-of-concepts into a scalable infrastructure that automates the editorial team’s administrative tasks.",
-      "url": "https://wan-ifra.org/2026/04/how-dmg-media-is-building-an-ai-foundational-layer-for-the-newsroom/"
     },
     {
       "id": 23,
@@ -1168,17 +915,6 @@
       "url": "https://github.com/hS7RbYp/newzroom"
     },
     {
-      "id": 356,
-      "title": "How The New York Times uses a custom AI tool to track the “manosphere”",
-      "organisation": "Andrew Deck",
-      "country": null,
-      "date_published": "2026-02-11",
-      "source_name": "Nieman Lab",
-      "source_category": "Industry",
-      "summary": "The daily podcast round-up is just one way the Times is adopting in-house AI transcription and summarization tools.",
-      "url": "https://www.niemanlab.org/2026/02/how-the-new-york-times-uses-a-custom-ai-tool-to-track-the-manosphere/"
-    },
-    {
       "id": 31,
       "title": "How The New York Times uses a custom AI tool to track the “manosphere”",
       "organisation": "New York Times",
@@ -1342,17 +1078,6 @@
       "source_category": "Database",
       "summary": "Revenue",
       "url": "https://newsinitiative.withgoogle.com/en-gb/resources/stories/how-dennik-n-tool-continues-to-power-publisher-revenue/"
-    },
-    {
-      "id": 617,
-      "title": "Inside Público’s GenAI-Powered Voting Game",
-      "organisation": "Clare Spencer",
-      "country": null,
-      "date_published": "2026-01-12",
-      "source_name": "Generative AI Newsroom",
-      "source_category": "Academic",
-      "summary": "Transforming boring political documents into a game to engage voters.",
-      "url": "https://generative-ai-newsroom.com/inside-p%C3%BAblicos-genai-powered-voting-game-c3e937c8a978"
     },
     {
       "id": 34,
@@ -2521,17 +2246,6 @@
       "url": "https://www.inma.org/blogs/Content-Strategies/post.cfm/onet-czat-with-ai-creates-simplified-experience-for-ringier-axel-springer-polska-readers"
     },
     {
-      "id": 563,
-      "title": "Hearst Newspapers leverages AI for a human-centred strategy",
-      "organisation": "Paula Felps",
-      "country": null,
-      "date_published": "2025-08-10",
-      "source_name": "INMA",
-      "source_category": "Industry",
-      "summary": "As AI began entering newsrooms, Hearst Newspapers created a distinct plan for integrating into its network of local publications.",
-      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/hearst-newspapers-leverages-ai-for-a-human-centred-strategy"
-    },
-    {
       "id": 498,
       "title": "Inside Reuters’ approach to Gen AI in the newsroom",
       "organisation": "Gen AI",
@@ -2816,17 +2530,6 @@
       "source_category": "Industry",
       "summary": "BBC News Polska has a small team adapting and translating the corporation’s wider news content.",
       "url": "https://pressgazette.co.uk/publishers/digital-journalism/bbc-ai-translation-poland/"
-    },
-    {
-      "id": 627,
-      "title": "Can AI Triage a Pitch? A Case Study in Editorial Evaluation from Minority Africa",
-      "organisation": "Caleb Okereke",
-      "country": null,
-      "date_published": "2025-06-18",
-      "source_name": "Generative AI Newsroom",
-      "source_category": "Academic",
-      "summary": "With too many pitches and too few editors, we built an AI model to help us “decide” what stories to tell. Here’s what we learned and how we’re evaluating it.",
-      "url": "https://generative-ai-newsroom.com/can-ai-triage-a-pitch-a-case-study-in-editorial-evaluation-from-minority-africa-beb864444f9e"
     },
     {
       "id": 338,
@@ -3126,17 +2829,6 @@
       "url": "https://newsinitiative.withgoogle.com/en-gb/resources/stories/gruner-jahr-drives-a-cultural-shift-toward-ai-1/"
     },
     {
-      "id": 538,
-      "title": "What Nikkei learnt from building its own Japanese AI chatbot",
-      "organisation": "Gretel Kahn",
-      "country": null,
-      "date_published": "2025-05-20",
-      "source_name": "Reuters Institute",
-      "source_category": "Academic",
-      "summary": "The new tool, which Nikkei created by building its own model, is embedded in articles and suggests questions to spark conversations with readers",
-      "url": "https://reutersinstitute.politics.ox.ac.uk/news/what-nikkei-learnt-building-its-own-japanese-ai-chatbot"
-    },
-    {
       "id": 79,
       "title": "What Nikkei learnt from building its own Japanese AI chatbot",
       "organisation": "Nikkei",
@@ -3355,17 +3047,6 @@
       "source_category": "Curated",
       "summary": "News production,Audience Engagement,Generative AI",
       "url": "https://womeninnews.org/wp-content/uploads/2025/05/The-Age-of-AI-in-the-newsroom-Report_EN.pdf"
-    },
-    {
-      "id": 570,
-      "title": "Wall Street Journal taxbot answers questions (while readers try to break it)",
-      "organisation": "Sonali Verma",
-      "country": null,
-      "date_published": "2025-04-29",
-      "source_name": "INMA",
-      "source_category": "Industry",
-      "summary": "The Wall Street Journal built a chat product,Lars, the AI taxbot, to answer readers’ questions on filing U.S. taxes.",
-      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/wall-street-journal-taxbot-answers-questions-while-readers-try-to-break-it"
     },
     {
       "id": 83,
@@ -3588,17 +3269,6 @@
       "url": "https://www.niemanlab.org/2025/03/local-newsrooms-are-using-ai-to-listen-in-on-public-meetings/"
     },
     {
-      "id": 632,
-      "title": "EarthCheckr: Leveraging Generative AI for Environmental Journalism Fact-Checking",
-      "organisation": "Sam Schramski",
-      "country": null,
-      "date_published": "2025-03-12",
-      "source_name": "Generative AI Newsroom",
-      "source_category": "Academic",
-      "summary": "How the Earth Journalism Network developed a tool to support the fact-checking process",
-      "url": "https://generative-ai-newsroom.com/earthcheckr-leveraging-generative-ai-for-environmental-journalism-fact-checking-00a7f82fb0a3"
-    },
-    {
       "id": 85,
       "title": "EarthCheckr: Leveraging Generative AI for Environmental Journalism Fact-Checking",
       "organisation": "EarthCheckr",
@@ -3808,17 +3478,6 @@
       "url": "https://github.com/mirayanali5/Fake-News-Detection-using-naive-bayes"
     },
     {
-      "id": 539,
-      "title": "How a small Nigerian newsroom used AI for a flooding investigation",
-      "organisation": "Laura Oliver",
-      "country": null,
-      "date_published": "2025-02-17",
-      "source_name": "Reuters Institute",
-      "source_category": "Academic",
-      "summary": "The Colonist Report used AI to analyse 3,000 pages of documents on government support. Founder Elfredah Kevin-Alerechi explains how",
-      "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-small-nigerian-newsroom-used-ai-flooding-investigation"
-    },
-    {
       "id": 95,
       "title": "How a small Nigerian newsroom used AI for a flooding investigation",
       "organisation": "The Colonist Report",
@@ -3938,17 +3597,6 @@
       "source_category": "Industry",
       "summary": "There are some really cool AI projects under way right now, at large news organisations and at small ones, from which we can all draw some inspiration.",
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/15-news-brands-experiment-with-ai-in-unique-ways"
-    },
-    {
-      "id": 661,
-      "title": "Ringier Slovakia builds out AI to diversify",
-      "organisation": "Ringier",
-      "country": null,
-      "date_published": "2025-02",
-      "source_name": "Google News Initiative",
-      "source_category": "Industry",
-      "summary": "Home to some of Slovakia’s most-visited news and entertainment portals, Ringier Slovakia is one of the nation’s leading multimedia publishers. To maintain their edge and capture an even larger chunk of the market, they wanted to diversify their offerings, so they looked toward content-based services to enrich their portfolio.",
-      "url": "https://newsinitiative.withgoogle.com/resources/stories/ringier-slovakia-builds-out-ai-to-diversify/"
     },
     {
       "id": 659,
@@ -4158,17 +3806,6 @@
       "source_category": "Academic",
       "summary": "This article considers the rhetorical risks of using generative AI to compose organizational communication during crises or in the aftermath of tragedies. It focuses on a case study in which representatives of Vanderbilt University’s Peabody College of Education and Human Development disclosed their use of ChatGPT to write a response to a school shooting at another university. The author argues that although generative AI can often be useful in technical and professional communication, it can al",
       "url": "https://doi.org/10.1177/10506519241280594"
-    },
-    {
-      "id": 657,
-      "title": "Bonnier News launches GenAI tool in record time",
-      "organisation": "Bonnier News",
-      "country": null,
-      "date_published": "2025-01",
-      "source_name": "Google News Initiative",
-      "source_category": "Industry",
-      "summary": "Enhancing native content efficiency, while aligning with business needs and standards",
-      "url": "https://newsinitiative.withgoogle.com/resources/stories/bonnier-news-launches-genai-tool-in-record-time/"
     },
     {
       "id": 541,
@@ -4820,17 +4457,6 @@
       "url": "https://journalists.org/resources/case-study-enhancing-fact-checking-with-ai-at-der-spiegel/"
     },
     {
-      "id": 584,
-      "title": "News companies are using GenAI in these 4 interesting ways",
-      "organisation": "Sonali Verma",
-      "country": null,
-      "date_published": "2024-09-02",
-      "source_name": "INMA",
-      "source_category": "Industry",
-      "summary": "The New York Timesis pleased with the performance of itsGenAI ad-targeting experimentBrandMatch. After runninga beta testwith six brands across tech, finance, luxury, and other categories, the news publication is now inviting other advertisers to try BrandMatch as well.",
-      "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/news-companies-are-using-genai-in-these-4-interesting-ways"
-    },
-    {
       "id": 130,
       "title": "At Times of India Group, AI offers real-time employee feedback, but human touch is essential",
       "organisation": "The Times of India",
@@ -4950,17 +4576,6 @@
       "source_category": "Industry",
       "summary": "Audio is becoming increasingly important to audiences, and according to Sonali Verma, lead of the INMA Generative AI Initiative, it is one of the most prevalent ways news media companies are experimenting with generative AI.",
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/svenska-dagbladet-embraces-audio-to-increase-engagement"
-    },
-    {
-      "id": 543,
-      "title": "Meet NAT, the AI-generated presenter offering soft news to Mexican audiences",
-      "organisation": "Gretel Kahn",
-      "country": null,
-      "date_published": "2024-08-09",
-      "source_name": "Reuters Institute",
-      "source_category": "Academic",
-      "summary": "“The stories she presents are focused towards young people who don’t connect with old-style newscasts,” says Oswaldo Aguilar from Grupo Fórmula",
-      "url": "https://reutersinstitute.politics.ox.ac.uk/news/meet-nat-ai-generated-presenter-offering-soft-news-mexican-audiences"
     },
     {
       "id": 512,
@@ -5183,17 +4798,6 @@
       "url": "https://newsinitiative.withgoogle.com/resources/stories/how-eenadu-increased-ad-fill-rate-and-revenue-by-15/"
     },
     {
-      "id": 664,
-      "title": "Gruner + Jahr drives a cultural shift toward AI",
-      "organisation": "RTL Deutschĺand / G+J",
-      "country": null,
-      "date_published": "2024-07",
-      "source_name": "Google News Initiative",
-      "source_category": "Industry",
-      "summary": "Foster an Internal AI Community: Driving Agility and Innovation",
-      "url": "https://newsinitiative.withgoogle.com/resources/stories/gruner--jahr-drives-a-cultural-shift-toward-ai-1/"
-    },
-    {
       "id": 137,
       "title": "Aftonbladet shares 3 lessons learned from its new AI hub",
       "organisation": "Aftonbladet - Schibsted",
@@ -5260,17 +4864,6 @@
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/india-today-features-genai-powered-tv-anchor"
     },
     {
-      "id": 519,
-      "title": "Spain’s Relevo boosts homepage engagement by a third with AI-driven coding",
-      "organisation": "AI tools",
-      "country": null,
-      "date_published": "2024-06-05",
-      "source_name": "WAN-IFRA",
-      "source_category": "Industry",
-      "summary": "2024-06-05. Relevo, a Spanish sports news site targeting Gen Z and Millennials, developed the “slick” metric (swipes + clicks) to measure engagement, using AI to create tools for analysing headline lengths, which boosted engagement significantly.",
-      "url": "https://wan-ifra.org/2024/06/spains-relevo-boosts-homepage-engagement-by-a-third-with-ai-driven-coding/"
-    },
-    {
       "id": 139,
       "title": "Spain’s Relevo boosts homepage engagement by a third with AI-driven coding",
       "organisation": "Relevo",
@@ -5280,17 +4873,6 @@
       "source_category": "Database",
       "summary": "Analytics,Audience Engagement",
       "url": "https://wan-ifra.org/2024/06/spains-relevo-boosts-homepage-engagement-by-a-third-with-ai-driven-coding/"
-    },
-    {
-      "id": 547,
-      "title": "How Norway’s public broadcaster uses AI-generated summaries to reach younger audiences",
-      "organisation": "Marina Adami",
-      "country": null,
-      "date_published": "2024-06-04",
-      "source_name": "Reuters Institute",
-      "source_category": "Academic",
-      "summary": "Preliminary data suggests younger audiences are more likely to click on these summaries and readers who click on them spend more time with a piece",
-      "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-norways-public-broadcaster-uses-ai-generated-summaries-reach-younger-audiences"
     },
     {
       "id": 431,
@@ -5557,17 +5139,6 @@
       "url": "https://github.com/emanalytic/MLOps-Pipeline-Template-FakeNewsDetection"
     },
     {
-      "id": 550,
-      "title": "How a Spanish media group created an AI tool to detect audio deepfakes to help journalists in a big election year",
-      "organisation": "Olalla Novoa",
-      "country": null,
-      "date_published": "2024-04-08",
-      "source_name": "Reuters Institute",
-      "source_category": "Academic",
-      "summary": "\"These are the problems we wanted to tackle and we wanted to tackle them fast,\" writes product manager Olalla Novoa, who led on this new initiative",
-      "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-spanish-media-group-created-ai-tool-detect-audio-deepfakes-help-journalists-big-election"
-    },
-    {
       "id": 145,
       "title": "How a Spanish media group created an AI tool to detect audio deepfakes to help journalists in a big election year",
       "organisation": "PRISA",
@@ -5777,17 +5348,6 @@
       "url": "https://github.com/yyy-jw/BREAK"
     },
     {
-      "id": 524,
-      "title": "Argentina’s Clarín introduces AI assistant UalterAI to help boost engagement",
-      "organisation": "AI article summaries",
-      "country": null,
-      "date_published": "2024-01-11",
-      "source_name": "WAN-IFRA",
-      "source_category": "Industry",
-      "summary": "2024-01-11. Argentina’s Clarín has added an AI tool to its website to enhance reader engagement. On each published story, readers can now choose AI written summaries, select alternative formats and find additional context for the original news item.",
-      "url": "https://wan-ifra.org/2024/01/clarin-introduces-ai-assistant-ualterai-to-increase-engagement-on-its-news-site/"
-    },
-    {
       "id": 155,
       "title": "This Brazilian fact-checking org uses a ChatGPT-esque bot to answer reader questions",
       "organisation": "Aos Fatos",
@@ -5874,17 +5434,6 @@
       "source_category": "Database",
       "summary": "Audience Engagement",
       "url": "https://wan-ifra.org/2024/01/clarin-introduces-ai-assistant-ualterai-to-increase-engagement-on-its-news-site/"
-    },
-    {
-      "id": 436,
-      "title": "How Newsquest and its seven AI-assisted reporters are using ChatGPT",
-      "organisation": "Bron Maher",
-      "country": null,
-      "date_published": "2023-12-15",
-      "source_name": "Press Gazette",
-      "source_category": "Industry",
-      "summary": "The company’s head of editorial AI said it had published “thousands” of AI-assisted articles.",
-      "url": "https://pressgazette.co.uk/publishers/regional-newspapers/newsquest-ai-assisted-reporters/"
     },
     {
       "id": 161,
@@ -6162,17 +5711,6 @@
       "url": "https://newsinitiative.withgoogle.com/resources/stories/nzme-enhances-data-maturity-and-audience-targeting/"
     },
     {
-      "id": 457,
-      "title": "How publishers like The Marshall Project and The Markup are testing generative AI in their newsrooms",
-      "organisation": "Sara Guaglione",
-      "country": null,
-      "date_published": "2023-08-29",
-      "source_name": "Digiday",
-      "source_category": "Industry",
-      "summary": "Publishers including The Marshall Project and The Markup shared how reporters are using generative artificial intelligence in their newsrooms in their reporting processes — after some failed tests.",
-      "url": "https://digiday.com/media/how-publishers-like-the-marshall-project-and-the-markup-are-testing-generative-ai-in-their-newsrooms/"
-    },
-    {
       "id": 362,
       "title": "How publishers like The Marshall Project and The Markup are testing generative AI in their newsrooms",
       "organisation": "Digiday",
@@ -6281,17 +5819,6 @@
       "source_category": "Database",
       "summary": "Investigations",
       "url": "https://www.wsj.com/articles/lead-cables-investigation-att-methodology-1703dbb0"
-    },
-    {
-      "id": 613,
-      "title": "Decoding Bureaucracy",
-      "organisation": "Andrew Rodriguez Calderón",
-      "country": null,
-      "date_published": "2023-07-06",
-      "source_name": "Generative AI Newsroom",
-      "source_category": "Academic",
-      "summary": "Generative AI for Accessible Government Policies",
-      "url": "https://generative-ai-newsroom.com/decoding-bureaucracy-5b0c1411171"
     },
     {
       "id": 172,
@@ -6424,17 +5951,6 @@
       "source_category": "Industry",
       "summary": "Thai publisher’s data-driven strategy to build a more engaged and loyal subscriber base",
       "url": "https://newsinitiative.withgoogle.com/resources/stories/thai-publishers-data-driven-strategy/"
-    },
-    {
-      "id": 687,
-      "title": "AI is boosting Forbes’ publishing capabilities",
-      "organisation": "Forbes",
-      "country": null,
-      "date_published": "2023-06",
-      "source_name": "Google News Initiative",
-      "source_category": "Industry",
-      "summary": "Forbes.CZ uses AI to grab reader attention in a noisy media landscape — without overburdening the editorial team",
-      "url": "https://newsinitiative.withgoogle.com/resources/stories/ai-is-boosting-forbes-publishing-capabilities/"
     },
     {
       "id": 686,
@@ -7018,17 +6534,6 @@
       "source_category": "Industry",
       "summary": null,
       "url": "https://github.com/shiivangii/Leveraging-Intra-and-Inter-Modality-Relationship-for-Multimodal-Fake-News-Detection"
-    },
-    {
-      "id": 636,
-      "title": "Promoting Ethical Awareness in Communication Analysis: Investigating Potentials and Limits of Visual Analytics for Intelligence Applications",
-      "organisation": "Maximilian T. Fischer, Simon David Hirsbrunner, Wolfgang Jentner, Matthias Miller, Daniel A. Keim et al.",
-      "country": null,
-      "date_published": "2022-03-18",
-      "source_name": "arXiv",
-      "source_category": "Academic",
-      "summary": "Digital systems for analyzing human communication data have become prevalent in recent years. Intelligence analysis of communications data in investigative journalism, criminal intelligence, and law present particularly interesting cases, as they must take into account the often highly sensitive properties of the underlying operations and data. At the same time, these are areas where increasingly automated, sophisticated approaches systems can be particularly relevant, especially in terms of Big",
-      "url": "https://arxiv.org/abs/2203.09859v2"
     },
     {
       "id": 884,
@@ -7999,17 +7504,6 @@
       "url": "https://github.com/heruberuto/fact-checking"
     },
     {
-      "id": 401,
-      "title": "Swedish Aftonbladet uses automation to outpace competitors with its covid-19 news coverage",
-      "organisation": null,
-      "country": null,
-      "date_published": "2020-03-17",
-      "source_name": "Journalism.co.uk",
-      "source_category": "Industry",
-      "summary": "With a growing number of coronavirus cases, the publisher calls on robots to break news first and drive reader engagement with exclusive coverage",
-      "url": "https://www.journalism.co.uk/swedish-aftonbladet-uses-automation-to-outpace-competitors-with-its-covid-19-news-coverage/"
-    },
-    {
       "id": 217,
       "title": "Swedish Aftonbladet uses automation to outpace competitors with its Covid-19 news coverage",
       "organisation": "Aftonbladet",
@@ -8494,17 +7988,6 @@
       "url": "https://www.axios.com/ai-learns-write-headlines-e578a9ba-1e29-4b15-a809-22437e9691ea.html"
     },
     {
-      "id": 396,
-      "title": "Facial recognition, subtitling automation and datasets: how Sky News uses AI to unburden journalists",
-      "organisation": null,
-      "country": null,
-      "date_published": "2019-05-14",
-      "source_name": "Journalism.co.uk",
-      "source_category": "Industry",
-      "summary": "Automated tools can help reporters with mind-numbing tasks and create value from producing more content which can offset initial costs",
-      "url": "https://www.journalism.co.uk/sky-news-embraces-ai-tools/"
-    },
-    {
       "id": 247,
       "title": "Facial recognition, subtitling automation and datasets: How Sky News uses AI to unburden journalists",
       "organisation": "Sky News",
@@ -8712,17 +8195,6 @@
       "source_category": "Industry",
       "summary": "Thesis: Measure The Speed Of News Spread in Social Networks For Real-Time Fake News Detection",
       "url": "https://github.com/polyzos/thesis"
-    },
-    {
-      "id": 393,
-      "title": "Quartz AI Studio launches an open-source platform to help journalists use machine learning",
-      "organisation": null,
-      "country": null,
-      "date_published": "2019-01-08",
-      "source_name": "Journalism.co.uk",
-      "source_category": "Industry",
-      "summary": "The US publisher offers reporters with no coding skills a set of free tools to help them write better data-driven stories",
-      "url": "https://www.journalism.co.uk/quartz-ai-studio-launches-an-open-source-platform-to-help-journalists-use-machine-learning/"
     },
     {
       "id": 260,
@@ -9440,17 +8912,6 @@
       "url": "https://pressgazette.co.uk/publishing-services-content/how-newsroom-automation-empowers-publishers-local-business-reporting/"
     },
     {
-      "id": 445,
-      "title": "How Mediahuis is easing generative AI into its newsrooms",
-      "organisation": "Aisha Majid",
-      "country": null,
-      "date_published": null,
-      "source_name": "Press Gazette",
-      "source_category": "Industry",
-      "summary": "The European publisher explains how it uses AI in its newsroom.",
-      "url": "https://pressgazette.co.uk/publishers/digital-journalism/how-mediahuis-is-easing-ai-into-its-newsrooms/"
-    },
-    {
       "id": 442,
       "title": "Editorial ‘co-pilots’ and monetising archives: Generative AI in action at ITN, Future, Bauer, AP and others",
       "organisation": "Bron Maher",
@@ -9504,28 +8965,6 @@
       "source_category": "Industry",
       "summary": "Politico product and design chief Max Leroy explains thinking behind new website design.",
       "url": "https://pressgazette.co.uk/platforms/politico-relaunches-european-sites-first-party-data-ai-crawler-readability/"
-    },
-    {
-      "id": 433,
-      "title": "Semafor executive editor Gina Chua explains its Microsoft-sponsored ‘Signals’ format",
-      "organisation": "Bron Maher",
-      "country": null,
-      "date_published": null,
-      "source_name": "Press Gazette",
-      "source_category": "Industry",
-      "summary": "Semafor’s Gina Chua tells Press Gazette how its soup-themed news bot works.",
-      "url": "https://pressgazette.co.uk/publishers/digital-journalism/semafor-microsoft-signals-ai/"
-    },
-    {
-      "id": 432,
-      "title": "Reach using AI to speed up ‘ripping’ and use same article on multiple sites",
-      "organisation": "Bron Maher",
-      "country": null,
-      "date_published": null,
-      "source_name": "Press Gazette",
-      "source_category": "Industry",
-      "summary": "Gutenbot has also been used to rewrite police press releases and agency copy.",
-      "url": "https://pressgazette.co.uk/publishers/nationals/reach-ai-guten/"
     },
     {
       "id": 429,
@@ -9583,17 +9022,6 @@
       "url": "https://pressgazette.co.uk/north-america/news-corp-ai-meta-deal-robert-thomson/"
     },
     {
-      "id": 300,
-      "title": "How The Times of India Brings Real-Time Personalization to 1,500+ Daily News Stories",
-      "organisation": "Times of India",
-      "country": "India",
-      "date_published": null,
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
       "id": 299,
       "title": "Using AI to Analyze Open-Source Intelligence in Ukraine War Reporting",
       "organisation": "BBC World Service",
@@ -9627,17 +9055,6 @@
       "url": null
     },
     {
-      "id": 296,
-      "title": "How Bayerischer Rundfunk Used Modular Journalism to Personalize Radio News Based on Location",
-      "organisation": "Bayerischer Rundfunk",
-      "country": "Germany",
-      "date_published": null,
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
       "id": 295,
       "title": "Building AI Literacy at Canada's National Public Broadcaster Radio-Canada",
       "organisation": "Radio-Canada",
@@ -9649,43 +9066,10 @@
       "url": null
     },
     {
-      "id": 294,
-      "title": "Transforming Workflows with AI at Zamaneh Media",
-      "organisation": "Zamaneh Media",
-      "country": "Netherlands",
-      "date_published": null,
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
       "id": 293,
       "title": "Enhancing Fact-Checking with AI at Der Spiegel",
       "organisation": "Der Spiegel",
       "country": "Germany",
-      "date_published": null,
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
-      "id": 292,
-      "title": "How Hearst Newspapers built an AI-powered, Slack-based Tool to Help with Digital Content Production",
-      "organisation": "Hearst Newspapers",
-      "country": "United States",
-      "date_published": null,
-      "source_name": "ONA AI in the Newsroom",
-      "source_category": "Database",
-      "summary": null,
-      "url": null
-    },
-    {
-      "id": 291,
-      "title": "Djinn, an AI-powered Data Journalism Interface",
-      "organisation": "iTromsø / Polaris Media",
-      "country": "Norway",
       "date_published": null,
       "source_name": "ONA AI in the Newsroom",
       "source_category": "Database",
@@ -9716,7 +9100,7 @@
     }
   ],
   "stats": {
-    "total": 883,
+    "total": 827,
     "by_year": [
       [
         "2011",
@@ -9744,11 +9128,11 @@
       ],
       [
         "2019",
-        56
+        54
       ],
       [
         "2020",
-        51
+        50
       ],
       [
         "2021",
@@ -9756,37 +9140,33 @@
       ],
       [
         "2022",
-        35
+        34
       ],
       [
         "2023",
-        81
+        77
       ],
       [
         "2024",
-        151
+        144
       ],
       [
         "2025",
-        252
+        244
       ],
       [
         "2026",
-        127
+        102
       ]
     ],
     "top_countries": [
       [
         "United States",
-        79
+        78
       ],
       [
         "United Kingdom",
         42
-      ],
-      [
-        "Germany",
-        12
       ],
       [
         "Sweden",
@@ -9801,12 +9181,16 @@
         11
       ],
       [
+        "Germany",
+        11
+      ],
+      [
         "Norway",
-        10
+        9
       ],
       [
         "India",
-        8
+        7
       ],
       [
         "Nigeria",
@@ -9840,15 +9224,15 @@
     "top_categories": [
       [
         "Industry",
-        500
+        479
       ],
       [
         "Database",
-        280
+        275
       ],
       [
         "Academic",
-        80
+        50
       ],
       [
         "Curated",
@@ -9866,47 +9250,39 @@
       ],
       [
         "Google News Initiative",
-        52
+        48
       ],
       [
         "Press Gazette",
-        51
+        47
       ],
       [
         "WAN-IFRA",
-        49
+        46
       ],
       [
         "INMA",
-        49
+        44
       ],
       [
         "Nieman Lab",
-        28
-      ],
-      [
-        "arXiv",
         27
-      ],
-      [
-        "Generative AI Newsroom",
-        25
       ],
       [
         "HuggingFace (JournalistsonHF)",
         22
       ],
       [
-        "Journalism.co.uk",
+        "Generative AI Newsroom",
         21
       ],
       [
         "Digiday",
-        20
+        19
       ],
       [
-        "Reuters Institute",
-        17
+        "Journalism.co.uk",
+        18
       ],
       [
         "Reuters Institute Digital News Report 2025",
@@ -9915,6 +9291,14 @@
       [
         "Poynter",
         13
+      ],
+      [
+        "Reuters Institute",
+        12
+      ],
+      [
+        "Editor & Publisher",
+        11
       ]
     ],
     "source_names": [
@@ -9957,14 +9341,14 @@
         "Industry": [
           5,
           6,
-          21,
-          20,
+          19,
+          19,
           23,
           26,
-          56,
-          82,
-          139,
-          86
+          53,
+          78,
+          135,
+          82
         ],
         "Database": [
           4,
@@ -9984,11 +9368,11 @@
           1,
           0,
           1,
-          4,
-          8,
-          18,
-          19,
-          28
+          3,
+          7,
+          15,
+          15,
+          7
         ],
         "Curated": [
           0,
