@@ -2,19 +2,11 @@
 requests>=2.31.0
 beautifulsoup4>=4.12.0
 lxml>=5.0.0
-playwright>=1.40.0       # for JS-rendered pages (run: playwright install chromium)
 
-# PDF extraction
-pdfplumber>=0.10.0
-pypdf>=4.0.0
+# Date parsing
+python-dateutil>=2.8.0
 
-# Deduplication
-rapidfuzz>=3.5.0
-
-# LLM filtering
-openai>=1.30.0           # relevance classification during scraping (set OPENAI_API_KEY)
-
-# Data / export (Phase 3+)
-pandas>=2.0.0            # optional, useful for analysis
+# LLM relevance filter (set OPENAI_API_KEY before running any scraper)
+openai>=1.30.0
 
 # Note: SQLite is in Python's standard library — no install needed

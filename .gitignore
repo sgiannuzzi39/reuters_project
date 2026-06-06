@@ -1,0 +1,23 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+
+# Database (keep only the FINAL db and its SQL dump)
+data/usecases.db
+data/use_cases.db
+data/*.db-shm
+data/*.db-wal
+
+# Runtime logs
+logs/
+
+# Generated dashboard output (regenerate with: python generate_dashboard.py)
+index.html
+spreadsheet.html
+data.json
+
+# macOS
+.DS_Store
