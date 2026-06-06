@@ -3,7 +3,7 @@ import_women_in_news_2025.py
 ---------------------------
 imports case studies from the wan-ifra "age of ai in the newsroom" report
 (lyndsey jones, 2025) — 8 organisations across moldova, azerbaijan, ukraine,
-lebanon, kenya, jordan, zimbabwe, and the philippines.
+lebanon, kenya, jordan, zimbabwe, and the philippines
 
     python import_women_in_news_2025.py
     python import_women_in_news_2025.py --dry-run
