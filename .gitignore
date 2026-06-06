@@ -15,8 +15,6 @@ data/*.db-wal
 logs/
 
 # Generated dashboard output (regenerate with: python generate_dashboard.py)
-index.html
-spreadsheet.html
 data.json
 
 # macOS
