@@ -1,20 +1,11 @@
 """
 scraper_digiday.py
 ------------------
-Scrapes Digiday (digiday.com) for articles about AI in journalism/media.
+scrapes digiday.com via wordpress sitemaps (topic/search pages are js-rendered).
 
-Digiday's topic and search pages are JavaScript-rendered — plain requests
-returns no article cards. Instead this scraper uses the same sitemap approach
-as scraper_cjr.py / scraper_poynter.py:
-  1. Read all 30 WordPress post sitemaps to collect every article URL.
-  2. Filter to URLs whose slug contains AI-related keywords (~456 matches).
-  3. Fetch each matched article page (statically rendered).
-  4. Run the OpenAI relevance filter before inserting into the DB.
-
-Usage:
     python scraper_digiday.py
-    python scraper_digiday.py --dry-run   # list matched URLs without inserting
-    python scraper_digiday.py --start 20  # start from sitemap N (skip older ones)
+    python scraper_digiday.py --dry-run
+    python scraper_digiday.py --start 20  # skip to sitemap N
 """
 
 import argparse
@@ -37,7 +28,7 @@ logger = logging.getLogger("digiday")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── Config ─────────────────────────────────────────────────────────────────────
+# ── config ─────────────────────────────────────────────────────────────────────
 BASE_URL    = "https://digiday.com"
 SOURCE_NAME = "Digiday"
 SOURCE_CAT  = "Industry"
@@ -88,7 +79,7 @@ AI_SLUG_KEYWORDS = [
 ]
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ── helpers ────────────────────────────────────────────────────────────────────
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -102,7 +93,7 @@ def get(url: str) -> requests.Response | None:
 
 
 def fetch_ai_urls_from_sitemaps(start: int = 1) -> list[tuple[str, str | None]]:
-    """Return (url, lastmod) pairs for Digiday articles with AI-related slugs."""
+    """return (url, lastmod) pairs for digiday articles with ai-related slugs."""
     results = []
     for i in range(start, N_SITEMAPS + 1):
         sitemap_url = f"{BASE_URL}/wp-sitemap-posts-post-{i}.xml"
@@ -135,7 +126,7 @@ def _parse_date(text: str) -> str | None:
 
 
 def parse_article_page(url: str, lastmod: str | None = None) -> dict:
-    """Fetch a Digiday article and extract metadata + body text."""
+    """fetch a digiday article and extract metadata + body text."""
     resp = get(url)
     if not resp:
         return {}
@@ -145,7 +136,7 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
     title_tag = soup.select_one("h1")
     title = title_tag.get_text(strip=True) if title_tag else None
 
-    # First span.date on the page is the article's own publish date
+    # first span.date is the article's publish date
     date_tag = soup.select_one("span.date")
     date_pub = _parse_date(date_tag.get_text(strip=True)) if date_tag else None
     if not date_pub and lastmod:
@@ -158,12 +149,12 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
         raw = author_tag.get_text(strip=True)
         author = raw.removeprefix("By").strip() or None
 
-    # Body: extract substantive paragraphs from the content column
+    # extract substantive paragraphs from the content column
     body_div = soup.select_one(".content-column")
     raw_text = ""
     summary  = ""
     if body_div:
-        # Remove paywall gate / newsletter / ad elements
+        # strip paywall / newsletter / ad elements
         for el in body_div.select(".digiday-content-gate, .paywall, .sub-prompt, "
                                    ".ad, .newsletter-signup, script, style"):
             el.decompose()
@@ -181,7 +172,7 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
     }
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+# ── main ───────────────────────────────────────────────────────────────────────
 def scrape(dry_run: bool = False, start: int = 1) -> None:
     logger.info("Scanning Digiday sitemaps %d–%d for AI-related article URLs…",
                 start, N_SITEMAPS)

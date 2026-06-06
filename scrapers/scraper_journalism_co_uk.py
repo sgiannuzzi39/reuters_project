@@ -1,17 +1,11 @@
 """
 scraper_journalism_co_uk.py
 ---------------------------
-Scrapes Journalism.co.uk for articles about AI use cases in journalism.
+scrapes journalism.co.uk via xml sitemap (ghost cms pagination is js-rendered).
+filters slugs by ai keywords for full archive coverage.
 
-The site runs on Ghost CMS. Its "Load More" button and category pages are
-JavaScript-rendered and cannot be paginated with plain requests. Instead
-this scraper reads the site's XML sitemap (which lists all 9,900+ posts)
-and filters to slugs containing AI-related keywords — giving complete
-archive coverage without needing a browser.
-
-Usage:
     python scraper_journalism_co_uk.py
-    python scraper_journalism_co_uk.py --dry-run   # list URLs without inserting
+    python scraper_journalism_co_uk.py --dry-run
 """
 
 import argparse
@@ -34,7 +28,7 @@ logger = logging.getLogger("journalism_co_uk")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── Config ─────────────────────────────────────────────────────────────────────
+# ── config ─────────────────────────────────────────────────────────────────────
 BASE_URL    = "https://www.journalism.co.uk"
 SITEMAP_URL = "https://www.journalism.co.uk/sitemap-posts.xml"
 SOURCE_NAME = "Journalism.co.uk"
@@ -74,11 +68,11 @@ AI_SLUG_KEYWORDS = [
     "robo-report",
 ]
 
-# Newsletter / subscription noise to strip from body text
+# newsletter / subscription noise to strip from body text
 _NOISE = {"unsubscribe", "sign up", "subscribe", "no spam", "email sent"}
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ── helpers ────────────────────────────────────────────────────────────────────
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -92,7 +86,7 @@ def get(url: str) -> requests.Response | None:
 
 
 def fetch_ai_urls_from_sitemap() -> list[tuple[str, str | None]]:
-    """Return (url, lastmod) pairs for posts with AI-related slugs."""
+    """return (url, lastmod) pairs for posts with ai-related slugs."""
     logger.info("Fetching sitemap from %s …", SITEMAP_URL)
     resp = get(SITEMAP_URL)
     if not resp:
@@ -125,7 +119,7 @@ def _parse_date(text: str) -> str | None:
 
 
 def parse_article_page(url: str, lastmod: str | None = None) -> dict:
-    """Fetch a Journalism.co.uk article and extract metadata + body text."""
+    """fetch a journalism.co.uk article and extract metadata + body text."""
     resp = get(url)
     if not resp:
         return {}
@@ -135,7 +129,7 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
     title_tag = soup.select_one("h1")
     title = title_tag.get_text(strip=True) if title_tag else None
 
-    # Ghost stores the ISO date in <time datetime="YYYY-MM-DD">
+    # ghost stores the date in <time datetime="YYYY-MM-DD">
     time_tag = soup.find("time")
     date_pub  = time_tag.get("datetime", "")[:10] if time_tag else None
     if not date_pub:
@@ -164,7 +158,7 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
     }
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+# ── main ───────────────────────────────────────────────────────────────────────
 def scrape(dry_run: bool = False) -> None:
     ai_urls = fetch_ai_urls_from_sitemap()
 

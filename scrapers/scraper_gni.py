@@ -1,21 +1,9 @@
 """
 scraper_gni.py
 --------------
-Scrapes the Google News Initiative case studies page
-(newsinitiative.withgoogle.com/resources/stories/) for AI use cases in
-news organisations.
+scrapes the google news initiative case studies page.
+all story slugs are in the initial html — no js rendering needed.
 
-Strategy:
-  1. Fetch the listing page once — all ~200 story slugs are embedded in the
-     initial HTML (the "Load More" button is client-side show/hide only).
-  2. For each unique slug, fetch the story page and parse:
-       - Title from <meta property="og:title">
-       - Organisation + date from the body text breadcrumb pattern:
-         "All Case Studies | Month YYYY | Organisation | Title | ..."
-       - Body text from <main> for the LLM relevance filter.
-  3. Run the standard LLM relevance filter and insert into the DB.
-
-Usage:
     python scraper_gni.py
     python scraper_gni.py --dry-run
 """
@@ -38,7 +26,7 @@ logger = logging.getLogger("gni")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── Config ─────────────────────────────────────────────────────────────────────
+# ── config ─────────────────────────────────────────────────────────────────────
 BASE_URL     = "https://newsinitiative.withgoogle.com"
 LISTING_URL  = BASE_URL + "/resources/stories/"
 SOURCE_NAME  = "Google News Initiative"
@@ -58,7 +46,7 @@ _MONTH_YEAR = re.compile(
 )
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ── helpers ────────────────────────────────────────────────────────────────────
 def get(url: str) -> requests.Response | None:
     for attempt in range(3):
         try:
@@ -83,12 +71,9 @@ def _parse_date(text: str) -> str | None:
         return None
 
 
-# ── Listing page ───────────────────────────────────────────────────────────────
+# ── listing page ───────────────────────────────────────────────────────────────
 def fetch_story_slugs() -> list[str]:
-    """
-    Return unique story slugs from the listing page.
-    All slugs are present in the initial HTML — no JS rendering needed.
-    """
+    """return unique story slugs from the listing page."""
     resp = get(LISTING_URL)
     if not resp:
         logger.error("Could not fetch GNI listing page")
@@ -108,16 +93,9 @@ def fetch_story_slugs() -> list[str]:
     return slugs
 
 
-# ── Story page ─────────────────────────────────────────────────────────────────
+# ── story page ─────────────────────────────────────────────────────────────────
 def parse_story(slug_path: str) -> dict:
-    """
-    Fetch a GNI story page and return a record dict.
-
-    Page structure (server-side rendered):
-      og:title            → "{Title} - Google News Initiative"
-      body text breadcrumb→ "All Case Studies | Month YYYY | Organisation | Title | ..."
-      <main> paragraphs   → body text for LLM filter
-    """
+    """fetch a gni story page and return a record dict."""
     url = BASE_URL + slug_path
     resp = get(url)
     if not resp:
@@ -125,16 +103,15 @@ def parse_story(slug_path: str) -> dict:
 
     soup = BeautifulSoup(resp.text, "lxml")
 
-    # Title — strip the " - Google News Initiative" suffix
+    # strip " - Google News Initiative" suffix from og:title
     og_title_el = soup.find("meta", property="og:title")
     og_title = (og_title_el.get("content", "") if og_title_el else "").strip()
     title = re.sub(r'\s*-\s*Google News Initiative\s*$', '', og_title) or None
 
-    # Full visible text (separator helps parse the breadcrumb reliably)
+    # separator helps parse the breadcrumb: "All Case Studies | Month YYYY | Org | ..."
     full_text = soup.get_text(separator=" | ", strip=True)
 
-    # Organisation and date from breadcrumb pattern:
-    # "All Case Studies | Month YYYY | Org Name | Title | ..."
+    # org + date from breadcrumb
     organisation = None
     date_published = _parse_date(full_text)
 
@@ -147,7 +124,7 @@ def parse_story(slug_path: str) -> dict:
     if m:
         organisation = m.group(3).strip() or None   # group 3 = org (after month + year groups)
 
-    # Body text from <main> — collect meaningful paragraphs
+    # body text from <main>
     main = soup.find("main") or soup.find("article") or soup.body
     paras = []
     if main:
@@ -169,7 +146,7 @@ def parse_story(slug_path: str) -> dict:
     }
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+# ── main ───────────────────────────────────────────────────────────────────────
 def scrape(dry_run: bool = False) -> None:
     slugs = fetch_story_slugs()
     if not slugs:

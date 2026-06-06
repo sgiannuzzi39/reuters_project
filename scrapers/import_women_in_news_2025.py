@@ -1,14 +1,10 @@
 """
 import_women_in_news_2025.py
 ---------------------------
-Imports case studies from the WAN-IFRA / Women in News report:
-"The Age of AI in the Newsroom: Case studies from 8 media organisations"
-Written by Lyndsey Jones, published 2025.
+imports case studies from the wan-ifra "age of ai in the newsroom" report
+(lyndsey jones, 2025) — 8 organisations across moldova, azerbaijan, ukraine,
+lebanon, kenya, jordan, zimbabwe, and the philippines.
 
-8 case studies covering organisations in Moldova, Azerbaijan, Ukraine,
-Lebanon, Kenya, Jordan, Zimbabwe, and the Philippines.
-
-Usage:
     python import_women_in_news_2025.py
     python import_women_in_news_2025.py --dry-run
 """

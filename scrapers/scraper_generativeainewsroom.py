@@ -1,18 +1,9 @@
 """
 scraper_generativeainewsroom.py
 --------------------------------
-Scrapes "Generative AI in the Newsroom" (generative-ai-newsroom.com),
-a Medium-hosted publication, for AI use-case articles.
+scrapes generative-ai-newsroom.com (medium-hosted) via rss tag feeds
+— the main pages are cloudflare-protected so direct scraping doesn't work.
 
-The site's listing and article pages are Cloudflare-protected, so we use
-RSS feeds instead:
-  1. Parse the sitemap (sitemap/sitemap.xml) to discover all /tagged/TAG slugs.
-  2. Fetch /feed/tagged/TAG for every tag — each returns up to 10 items with
-     full article HTML in <content:encoded>.
-  3. Dedup by article URL across all tag feeds.
-  4. Run the standard LLM relevance filter and insert into the DB.
-
-Usage:
     python scraper_generativeainewsroom.py
     python scraper_generativeainewsroom.py --dry-run
 """
@@ -36,7 +27,7 @@ logger = logging.getLogger("generativeainewsroom")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── Config ─────────────────────────────────────────────────────────────────────
+# ── config ─────────────────────────────────────────────────────────────────────
 BASE_URL    = "https://generative-ai-newsroom.com"
 SITEMAP_URL = BASE_URL + "/sitemap/sitemap.xml"
 FEED_URL    = BASE_URL + "/feed/tagged/{tag}"
@@ -51,7 +42,7 @@ HEADERS = {
 }
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ── helpers ────────────────────────────────────────────────────────────────────
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -65,7 +56,7 @@ def get(url: str) -> requests.Response | None:
 
 
 def _canonical_url(url: str) -> str:
-    """Strip the ?source=rss-… query parameter Medium appends to RSS links."""
+    """strip the ?source=rss-… query param medium appends to rss links."""
     parts = urlsplit(url)
     return urlunsplit(parts._replace(query=""))
 
@@ -78,11 +69,7 @@ def _parse_date(text: str) -> str | None:
 
 
 def _body_from_encoded(html: str) -> tuple[str, str]:
-    """
-    Parse the HTML in <content:encoded> and return (summary, raw_text).
-    Medium wraps content in <p>, <h3>, <figure> etc.  We collect all
-    paragraphs and headings with meaningful length.
-    """
+    """parse <content:encoded> html and return (summary, raw_text)."""
     soup = BeautifulSoup(html, "html.parser")
     paras = []
     for tag in soup.find_all(["p", "h2", "h3", "h4", "li"]):
@@ -95,12 +82,9 @@ def _body_from_encoded(html: str) -> tuple[str, str]:
     return summary, raw_text[:5000]
 
 
-# ── Sitemap ────────────────────────────────────────────────────────────────────
+# ── sitemap ────────────────────────────────────────────────────────────────────
 def fetch_tag_slugs() -> list[str]:
-    """
-    Parse the sitemap and return the slug for every /tagged/TAG URL.
-    The sitemap mixes article URLs and tag URLs; tag URLs match /tagged/*.
-    """
+    """return tag slugs from the sitemap (/tagged/* urls)."""
     resp = get(SITEMAP_URL)
     if not resp:
         logger.error("Could not fetch sitemap")
@@ -118,19 +102,9 @@ def fetch_tag_slugs() -> list[str]:
     return slugs
 
 
-# ── RSS feeds ──────────────────────────────────────────────────────────────────
+# ── rSS feeds ──────────────────────────────────────────────────────────────────
 def fetch_tag_feed(tag: str) -> list[dict]:
-    """
-    Fetch /feed/tagged/TAG and return a list of article dicts.
-
-    RSS item fields used:
-      <title>            → title
-      <link>             → article URL
-      <dc:creator>       → author
-      <pubDate>          → publication date
-      <category>         → tags (multiple)
-      <content:encoded>  → full article HTML body
-    """
+    """fetch /feed/tagged/TAG and return article dicts."""
     url = FEED_URL.format(tag=tag)
     resp = get(url)
     if not resp:
@@ -141,16 +115,14 @@ def fetch_tag_feed(tag: str) -> list[dict]:
 
     for item in soup.find_all("item"):
         link_el = item.find("link")
-        # In RSS 2.0 <link> is a text node that may be preceded by an empty element;
-        # prefer the next_sibling string if the element itself is empty.
+        # rss 2.0 <link> may be empty — fall back to next_sibling text
         raw_url = (link_el.get_text(strip=True)
                    if link_el and link_el.get_text(strip=True)
                    else (link_el.next_sibling or "").strip()
                    if link_el else "")
         if not raw_url:
             continue
-        # Medium appends ?source=rss-…-TAG to every link; strip it so the same
-        # article discovered via different tag feeds gets a stable canonical URL.
+        # strip medium's ?source=rss-… suffix for a stable canonical url
         article_url = _canonical_url(raw_url)
 
         title_el = item.find("title")
@@ -181,14 +153,14 @@ def fetch_tag_feed(tag: str) -> list[dict]:
     return records
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+# ── main ───────────────────────────────────────────────────────────────────────
 def scrape(dry_run: bool = False) -> None:
     tag_slugs = fetch_tag_slugs()
     if not tag_slugs:
         logger.error("No tags found — aborting")
         return
 
-    # Collect unique articles across all tag feeds
+    # collect unique articles across all tag feeds
     seen_urls: set[str] = set()
     all_records: list[dict] = []
 

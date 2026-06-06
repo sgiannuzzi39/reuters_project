@@ -1,17 +1,12 @@
 """
 generate_dashboard.py
 ---------------------
-Generates two files for GitHub Pages:
-  - index.html      (the main dashboard UI)
-  - spreadsheet.html (full scrollable table view)
-  - data.json        (the data, fetched by both pages at runtime)
+reads the db and writes index.html, spreadsheet.html, and data.json
+(run after adding new records)
 
-Run this any time after adding new scraped data, then commit and push.
-
-Usage:
     python generate_dashboard.py
     python generate_dashboard.py --out-dir docs/
-    python generate_dashboard.py --db data/usecases.db --out-dir .
+    python generate_dashboard.py --db data/usecases.db --out-dir 
 """
 
 import argparse
@@ -26,14 +21,15 @@ from scraper_base import get_db, DB_PATH
 ROOT_DIR = Path(__file__).resolve().parent
 
 
-# ── Data extraction ────────────────────────────────────────────────────────────
+# ── data ───────────────────────────────────────────────────────────────────────
 
 def load_data(db_path):
     conn = get_db(db_path)
     conn.execute("PRAGMA query_only = ON;")
     records = conn.execute("""
         SELECT id, title, organisation, country, date_published,
-               source_name, source_category, summary, url
+               source_name, source_category, summary, url,
+               task_type, effect_type
         FROM use_cases
         WHERE source_name != 'Test'
         ORDER BY date_published DESC
@@ -44,17 +40,19 @@ def load_data(db_path):
         "USA": "United States", "U.S.": "United States", "US": "United States",
         "UK":  "United Kingdom", "U.K.": "United Kingdom",
     }
+    EXCLUDE_REGIONS = {"Global", "Africa", "Europe", "Asia", "Latin America", "Middle East"}
 
-    by_year     = {}
-    by_country  = {}
-    by_category = {}
-    by_source   = {}
+    by_year        = {}
+    by_country     = {}
+    by_category    = {}
+    by_source      = {}
+    by_task_type   = {}
+    by_effect_type = {}
 
     for r in data:
         yr = (r["date_published"] or "")[:4]
         if yr and yr.isdigit() and 2010 <= int(yr) <= 2030:
             by_year[yr] = by_year.get(yr, 0) + 1
-        EXCLUDE_REGIONS = {"Global", "Africa", "Europe", "Asia", "Latin America", "Middle East"}
         for c in (r["country"] or "").split(","):
             c = COUNTRY_NORM.get(c.strip(), c.strip())
             if c and c not in EXCLUDE_REGIONS:
@@ -65,27 +63,33 @@ def load_data(db_path):
         src = (r["source_name"] or "").strip()
         if src:
             by_source[src] = by_source.get(src, 0) + 1
+        tt = (r["task_type"] or "").strip()
+        if tt:
+            by_task_type[tt] = by_task_type.get(tt, 0) + 1
+        et = (r["effect_type"] or "").strip()
+        if et:
+            by_effect_type[et] = by_effect_type.get(et, 0) + 1
 
-    top_cat_names = [c for c, _ in sorted(by_category.items(), key=lambda x: -x[1])[:10]]
-    year_cat = {}
-    for r in data:
-        yr = (r["date_published"] or "")[:4]
-        if not yr or not yr.isdigit() or int(yr) < 2017 or int(yr) > 2026:
-            continue
-        if yr not in year_cat:
-            year_cat[yr] = {}
-        cat = (r["source_category"] or "").strip()
-        if cat in top_cat_names:
-            year_cat[yr][cat] = year_cat[yr].get(cat, 0) + 1
-
-    timeline_years = sorted(year_cat.keys())
-    cat_by_year = {
-        "years":      timeline_years,
-        "categories": {
-            cat: [year_cat.get(yr, {}).get(cat, 0) for yr in timeline_years]
-            for cat in top_cat_names
+    def _build_timeline(data, field, names):
+        year_buckets = {}
+        for r in data:
+            yr = (r["date_published"] or "")[:4]
+            if not yr or not yr.isdigit() or int(yr) < 2014 or int(yr) > 2026:
+                continue
+            val = (r.get(field) or "").strip()
+            if not val:
+                continue
+            if yr not in year_buckets:
+                year_buckets[yr] = {}
+            year_buckets[yr][val] = year_buckets[yr].get(val, 0) + 1
+        years = sorted(year_buckets.keys())
+        return {
+            "years":      years,
+            "categories": {n: [year_buckets.get(yr, {}).get(n, 0) for yr in years] for n in names},
         }
-    }
+
+    task_names   = [t for t, _ in sorted(by_task_type.items(),   key=lambda x: -x[1])]
+    effect_names = [e for e, _ in sorted(by_effect_type.items(), key=lambda x: -x[1])]
 
     stats = {
         "total":          len(data),
@@ -94,7 +98,8 @@ def load_data(db_path):
         "top_categories": sorted(by_category.items(), key=lambda x: -x[1])[:12],
         "top_sources":    sorted(by_source.items(),   key=lambda x: -x[1])[:15],
         "source_names":   sorted(by_source.keys()),
-        "cat_by_year":    cat_by_year,
+        "task_by_year":   _build_timeline(data, "task_type",   task_names),
+        "effect_by_year": _build_timeline(data, "effect_type", effect_names),
     }
     conn.close()
     return data, stats
@@ -116,8 +121,8 @@ HTML = """\
 :root {
   --paper:   #f7f5f0;
   --ink:     #2c2825;
-  --rust:    #c44b28;
-  --rust-lt: rgba(196,75,40,0.08);
+  --rust:    #b65536;
+  --rust-lt: rgba(182,85,54,0.08);
   --ash:     #756f69;
   --rule:    #e4dfd8;
   --card:    #faf8f5;
@@ -358,7 +363,7 @@ nav {
   content: ''; position: absolute; top: 0; left: 0;
   width: 3px; height: 100%; background: transparent; transition: background 0.2s;
 }
-.card:hover { border-color: var(--rust); box-shadow: 0 4px 20px rgba(196,75,40,0.08); transform: translateX(2px); }
+.card:hover { border-color: var(--rust); box-shadow: 0 4px 20px rgba(182,85,54,0.08); transform: translateX(2px); }
 .card:hover::before { background: var(--rust); }
 .card-title { font-family: var(--serif); font-size: 16px; font-weight: 400; line-height: 1.4; color: var(--ink); }
 .card-title a { color: inherit; text-decoration: none; transition: color 0.2s; }
@@ -374,7 +379,12 @@ nav {
 }
 .tag.country { background: #f0f7ff; border-color: #cce0ff; color: #1a5db0; }
 .tag.source  { background: #f0f9f2; border-color: #bbe5c3; color: #236634; }
-.tag.cat     { background: var(--rust-lt); border-color: rgba(196,75,40,0.2); color: var(--rust); }
+.tag.cat     { background: var(--rust-lt); border-color: rgba(182,85,54,0.2); color: var(--rust); }
+.tag.task    { background: #f0eef8; border-color: #c5bcec; color: #5b3ea6; }
+.tag.effect  { background: #f0f4ff; border-color: #c5d4f0; color: #1a4b9a; }
+.tag.effect-efficiency                { background: rgba(182,85,54,0.08); border-color: rgba(182,85,54,0.25); color: #b65536; }
+.tag.effect-effectiveness_and_scaling { background: #eef2fb; border-color: #c5d4f0; color: #1a4b9a; }
+.tag.effect-optimisation              { background: #eaf5ed; border-color: #c3e0cb; color: #236634; }
 
 .state-msg { padding: 80px 24px; text-align: center; color: var(--ash); }
 .state-msg p:first-child { font-family: var(--serif); font-size: 28px; color: var(--ink); margin-bottom: 10px; font-style: italic; }
@@ -395,6 +405,13 @@ nav {
 .insights-header { margin-bottom: 48px; }
 .insights-title { font-family: var(--serif); font-size: clamp(28px, 3vw, 42px); font-weight: 400; line-height: 1.1; margin-bottom: 14px; margin-top: 12px; }
 .insights-sub { font-size: 14px; color: var(--ash); max-width: 600px; line-height: 1.6; }
+
+.timeline-block { margin-bottom: 52px; }
+.timeline-block:last-of-type { margin-bottom: 0; }
+.timeline-block-label {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--ash); margin-bottom: 20px;
+}
 
 .timeline-chart {
   background: white; border: 1px solid var(--rule); border-radius: var(--radius);
@@ -427,7 +444,7 @@ nav {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .annotation-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--rust); opacity: 0.5; }
-.annotation-card:hover { border-color: var(--rust); box-shadow: 0 4px 16px rgba(196,75,40,0.08); }
+.annotation-card:hover { border-color: var(--rust); box-shadow: 0 4px 16px rgba(182,85,54,0.08); }
 .annotation-year { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); margin-bottom: 6px; }
 .annotation-label { font-family: var(--serif); font-size: 16px; font-style: italic; color: var(--ink); margin-bottom: 10px; }
 .annotation-text { font-size: 12px; color: var(--ash); line-height: 1.6; }
@@ -560,13 +577,25 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
     <div class="insights-header fade-up">
       <div class="hero-eyebrow">Insights</div>
       <h2 class="insights-title">How AI adoption has evolved</h2>
-      <p class="insights-sub">Source type distribution across <span id="insightsTotalYears"></span> years of documented use cases, showing how industry coverage, academic research, curated reports, and structured databases have each contributed to the recorded picture of AI adoption in journalism.</p>
+      <p class="insights-sub">Distribution of AI use cases across <span id="insightsTotalYears"></span> years of documented cases, broken down by functional task type and primary effect delivered.</p>
     </div>
 
-    <div class="timeline-chart fade-up" id="timelineChart">
-      <div class="timeline-years" id="timelineYears"></div>
-      <div class="timeline-bars" id="timelineBars"></div>
-      <div class="timeline-legend" id="timelineLegend"></div>
+    <div class="timeline-block fade-up">
+      <div class="timeline-block-label">What AI is doing — by task type</div>
+      <div class="timeline-chart" id="taskTimeline">
+        <div class="timeline-years" id="taskTimelineYears"></div>
+        <div class="timeline-bars" id="taskTimelineBars"></div>
+        <div class="timeline-legend" id="taskTimelineLegend"></div>
+      </div>
+    </div>
+
+    <div class="timeline-block fade-up">
+      <div class="timeline-block-label">What AI is delivering — by effect type</div>
+      <div class="timeline-chart" id="effectTimeline">
+        <div class="timeline-years" id="effectTimelineYears"></div>
+        <div class="timeline-bars" id="effectTimelineBars"></div>
+        <div class="timeline-legend" id="effectTimelineLegend"></div>
+      </div>
     </div>
 
     <div class="chart-grid fade-up">
@@ -786,8 +815,8 @@ function render() {
       : esc(r.title || 'Untitled');
     var tagsHtml = '';
     if (country1) tagsHtml += '<span class="tag country">' + esc(country1) + '</span>';
-    tagsHtml += '<span class="tag source">' + esc(r.source_name) + '</span>';
-    if (r.source_category) tagsHtml += '<span class="tag cat">' + esc(r.source_category) + '</span>';
+    if (r.task_type)   tagsHtml += '<span class="tag task">'   + esc(fmtLabel(r.task_type))   + '</span>';
+    if (r.effect_type) tagsHtml += '<span class="tag effect effect-' + esc(r.effect_type) + '">' + esc(fmtLabel(r.effect_type)) + '</span>';
     html += '<div class="card">' +
       '<div class="card-title">' + titleInner + '</div>' +
       '<div class="card-date">' + esc(date) + '</div>' +
@@ -822,27 +851,45 @@ function render() {
 
 function goPage(p) { currentPage = p; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-var CAT_COLORS = {
-  'Industry':  '#c44b28',
-  'Database':  '#2a8d46',
-  'Academic':  '#1a6dd4',
-  'Curated':   '#8b5cf6',
+var TASK_COLORS = {
+  'content_generation':                     '#b65536',
+  'content_transformation':                 '#d4723c',
+  'editing_and_optimisation':               '#d4a843',
+  'discovery_and_monitoring':               '#5BB56A',
+  'data_extraction_and_analysis':           '#3AADA8',
+  'search_and_retrieval':                   '#4A8FCC',
+  'transcription_and_translation':          '#6C6CC8',
+  'verification_and_validation':            '#A66CC8',
+  'audience_targeting_and_personalisation': '#D46AAE',
+  'commercial_optimisation':                '#C85070',
+  'moderation_and_interaction':             '#7CB87C',
 };
 
+var EFFECT_COLORS = {
+  'efficiency':                '#b65536',
+  'effectiveness_and_scaling': '#4A8FCC',
+  'optimisation':              '#5BB56A',
+};
+
+function fmtLabel(s) {
+  var r = s.replace(/_/g, ' ');
+  return r.charAt(0).toUpperCase() + r.slice(1);
+}
+
 function buildCharts() {
-  buildTimeline();
+  buildTimeline('taskTimeline',   'taskTimelineYears',   'taskTimelineBars',   'taskTimelineLegend',   STATS.task_by_year,   TASK_COLORS);
+  buildTimeline('effectTimeline', 'effectTimelineYears', 'effectTimelineBars', 'effectTimelineLegend', STATS.effect_by_year, EFFECT_COLORS);
   buildBarChart('catChart', STATS.top_sources || [], 20);
   buildBarChart('countryChart', STATS.top_countries || [], 999);
   var yr = document.getElementById('insightsTotalYears');
   if (yr && STATS.by_year) yr.textContent = STATS.by_year.length;
 }
 
-function buildTimeline() {
-  var data = STATS.cat_by_year;
-  if (!data) return;
+function buildTimeline(containerId, yearsId, barsId, legendId, data, colorMap) {
+  if (!data || !data.years || !data.years.length) return;
   var years = data.years;
   var cats = Object.keys(data.categories);
-  var colors = cats.map(function(c) { return CAT_COLORS[c] || '#c8bfad'; });
+  var colors = cats.map(function(c) { return colorMap[c] || '#c8bfad'; });
   var chartH = 220;
 
   var totals = years.map(function(_, yi) {
@@ -850,7 +897,7 @@ function buildTimeline() {
   });
   var maxTotal = Math.max.apply(null, totals);
 
-  document.getElementById('timelineYears').innerHTML = years.map(function(yr) {
+  document.getElementById(yearsId).innerHTML = years.map(function(yr) {
     return '<div class="timeline-year-label">' + yr + '</div>';
   }).join('');
 
@@ -866,12 +913,12 @@ function buildTimeline() {
         '" style="height:0;background:' + colors[ci] + '"></div>';
     });
     var tipContent = yr + '|' + total + '|' + cats.map(function(c, ci) {
-      return (data.categories[c][yi] || 0) + '|' + c + '|' + colors[ci];
+      return (data.categories[c][yi] || 0) + '|' + fmtLabel(c) + '|' + colors[ci];
     }).join('~');
     barsHtml += '<div class="timeline-bar-group" data-tip="' + tipContent + '">' + segments + '</div>';
   });
 
-  var barsEl = document.getElementById('timelineBars');
+  var barsEl = document.getElementById(barsId);
   barsEl.innerHTML = barsHtml;
 
   var sharedTip = document.getElementById('sharedBarTooltip');
@@ -898,18 +945,19 @@ function buildTimeline() {
     });
     group.addEventListener('mouseleave', function() { sharedTip.style.display = 'none'; });
     group.addEventListener('mousemove', function(e) {
-      var tipW = 190, tipH = sharedTip.offsetHeight, vw = window.innerWidth;
+      var tipW = 210, tipH = sharedTip.offsetHeight, vw = window.innerWidth;
       var left = (e.clientX + tipW + 16 > vw) ? e.clientX - tipW - 8 : e.clientX + 14;
       sharedTip.style.left = left + 'px';
       sharedTip.style.top  = Math.max(8, e.clientY - tipH - 8) + 'px';
     });
   });
 
-  document.getElementById('timelineLegend').innerHTML = cats.map(function(c, ci) {
-    return '<div class="legend-item"><div class="legend-dot" style="background:' + colors[ci] + '"></div>' + c + '</div>';
+  document.getElementById(legendId).innerHTML = cats.map(function(c, ci) {
+    return '<div class="legend-item"><div class="legend-dot" style="background:' + colors[ci] + '"></div>' + fmtLabel(c) + '</div>';
   }).join('');
 
   var animated = false;
+  var container = document.getElementById(containerId);
   function animateBars() {
     if (animated) return; animated = true;
     barsEl.querySelectorAll('.timeline-bar-group').forEach(function(group, gi) {
@@ -927,9 +975,8 @@ function buildTimeline() {
   var tlObs = new IntersectionObserver(function(entries) {
     if (entries[0].isIntersecting) { animateBars(); tlObs.disconnect(); }
   }, { threshold: 0.15 });
-  tlObs.observe(document.getElementById('timelineChart'));
-  var rect = document.getElementById('timelineChart').getBoundingClientRect();
-  if (rect.top < window.innerHeight) animateBars();
+  tlObs.observe(container);
+  if (container.getBoundingClientRect().top < window.innerHeight) animateBars();
 }
 
 function buildBarChart(id, items, limit) {
@@ -990,8 +1037,8 @@ SPREADSHEET_HTML = """\
 :root {
   --paper:   #f7f5f0;
   --ink:     #2c2825;
-  --rust:    #c44b28;
-  --rust-lt: rgba(196,75,40,0.07);
+  --rust:    #b65536;
+  --rust-lt: rgba(182,85,54,0.08);
   --ash:     #756f69;
   --rule:    #e4dfd8;
   --card:    #faf8f5;
@@ -1011,8 +1058,12 @@ nav {
   height: var(--nav-h); flex-shrink: 0;
   background: rgba(247,245,240,0.96); backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--rule);
-  display: flex; align-items: center; justify-content: space-between;
   padding: 0 32px; z-index: 20;
+}
+.nav-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: var(--nav-h);
 }
 .nav-brand {
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
@@ -1079,7 +1130,7 @@ nav {
 .toolbar { flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; background: white; border-bottom: 1px solid var(--rule); gap: 12px; }
 .result-count { font-family: var(--mono); font-size: 11px; color: var(--ash); white-space: nowrap; }
 .result-count strong { color: var(--ink); font-size: 13px; }
-.active-filter-tag { display: none; align-items: center; gap: 6px; background: var(--rust-lt); border: 1px solid rgba(196,75,40,0.2); border-radius: 20px; padding: 3px 10px; font-family: var(--mono); font-size: 9px; color: var(--rust); letter-spacing: 0.04em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.active-filter-tag { display: none; align-items: center; gap: 6px; background: var(--rust-lt); border: 1px solid rgba(182,85,54,0.2); border-radius: 20px; padding: 3px 10px; font-family: var(--mono); font-size: 9px; color: var(--rust); letter-spacing: 0.04em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 .active-filter-tag.show { display: flex; }
 .filter-clear { background: none; border: none; color: var(--rust); cursor: pointer; font-size: 13px; line-height: 1; padding: 0 0 0 2px; flex-shrink: 0; }
 
@@ -1109,8 +1160,10 @@ nav {
 .col-title { width: auto; min-width: 200px; }
 .col-org  { width: 155px; }
 .col-ctry { width: 96px; }
-.col-src  { width: 135px; }
-.col-type { width: 80px; }
+.col-src    { width: 130px; }
+.col-type   { width: 80px; }
+.col-task   { width: 160px; }
+.col-effect { width: 120px; }
 
 .data-table tbody tr { border-bottom: 1px solid var(--rule); transition: background 0.08s; }
 .data-table tbody tr:hover { background: var(--rust-lt); }
@@ -1125,14 +1178,21 @@ td.col-title a:hover { color: var(--rust); text-decoration: underline; }
 td.col-title span { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 td.col-org { font-size: 12px; color: var(--ash); }
 td.col-ctry { font-family: var(--mono); font-size: 10px; }
+td.col-task, td.col-effect { white-space: normal; overflow: visible; }
+td.col-type { overflow: visible; }
 
 .src-badge { display: inline-block; padding: 2px 7px; border-radius: 2px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.03em; background: #e8f4ec; color: #236634; border: 1px solid #c3e0cb; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
 .type-badge { display: inline-block; padding: 2px 7px; border-radius: 2px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.03em; white-space: nowrap; }
 .type-academic { background: #eef2fb; color: #1a4b9a; border: 1px solid #c5d4f0; }
 .type-industry { background: #fdf3e8; color: #8a4a0a; border: 1px solid #f0d5b0; }
 .type-curated  { background: #f2ebfb; color: #5b1fa8; border: 1px solid #d8c4f2; }
-.type-database { background: var(--rust-lt); color: var(--rust); border: 1px solid rgba(196,75,40,0.2); }
+.type-database { background: var(--rust-lt); color: var(--rust); border: 1px solid rgba(182,85,54,0.2); }
 .type-other    { background: var(--card); color: var(--ash); border: 1px solid var(--rule); }
+.task-badge    { background: #f0eef8; color: #5b3ea6; border: 1px solid #c5bcec; white-space: normal; line-height: 1.3; }
+.effect-badge             { background: #f0f4ff; color: #1a4b9a; border: 1px solid #c5d4f0; }
+.effect-efficiency        { background: rgba(182,85,54,0.08); color: #b65536; border: 1px solid rgba(182,85,54,0.25); }
+.effect-effectiveness     { background: #eef2fb; color: #1a4b9a; border: 1px solid #c5d4f0; }
+.effect-optimisation      { background: #eaf5ed; color: #236634; border: 1px solid #c3e0cb; }
 
 .empty-state { padding: 80px 24px; text-align: center; color: var(--ash); }
 .empty-state p:first-child { font-family: var(--serif); font-size: 24px; color: var(--ink); font-style: italic; margin-bottom: 8px; }
@@ -1148,14 +1208,16 @@ td.col-ctry { font-family: var(--mono); font-size: 10px; }
 <body>
 
 <nav>
-  <a class="nav-brand" href="index.html">
-    <span class="brand-dot"></span>
-    AI in the Newsroom
-  </a>
-  <div class="nav-links">
-    <a class="nav-link" href="index.html">Overview</a>
-    <a class="nav-link active" href="spreadsheet.html">Spreadsheet</a>
-    <span class="nav-meta" id="generatedAt"></span>
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <span class="brand-dot"></span>
+      AI in the Newsroom
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Overview</a>
+      <a class="nav-link active" href="spreadsheet.html">Spreadsheet</a>
+      <span class="nav-meta" id="generatedAt"></span>
+    </div>
   </div>
 </nav>
 
@@ -1213,10 +1275,12 @@ td.col-ctry { font-family: var(--mono); font-size: 10px; }
             <th class="col-ctry" data-col="country">Country <span class="sort-arrow">↕</span></th>
             <th class="col-src" data-col="source">Source <span class="sort-arrow">↕</span></th>
             <th class="col-type" data-col="type">Type <span class="sort-arrow">↕</span></th>
+            <th class="col-task" data-col="task">Task <span class="sort-arrow">↕</span></th>
+            <th class="col-effect" data-col="effect">Effect <span class="sort-arrow">↕</span></th>
           </tr>
         </thead>
         <tbody id="tableBody">
-          <tr><td colspan="7"><div class="empty-state"><p>Loading…</p><p>Fetching use cases</p></div></td></tr>
+          <tr><td colspan="9"><div class="empty-state"><p>Loading…</p><p>Fetching use cases</p></div></td></tr>
         </tbody>
       </table>
     </div>
@@ -1229,6 +1293,7 @@ var activeYear = null, activeSources = new Set(), activeCountries = new Set(), a
 var searchQuery = '', sortCol = 'date', sortDir = -1;
 
 function esc(s) { var el = document.createElement('div'); el.textContent = String(s||''); return el.innerHTML; }
+function fmtLabel(s) { var r=(s||'').replace(/_/g,' '); return r.charAt(0).toUpperCase()+r.slice(1); }
 
 function init() {
   (function() {
@@ -1352,6 +1417,8 @@ function sortData(arr) {
     else if(sortCol==='country'){va=(a.country||'').toLowerCase();vb=(b.country||'').toLowerCase();}
     else if(sortCol==='source'){va=(a.source_name||'').toLowerCase();vb=(b.source_name||'').toLowerCase();}
     else if(sortCol==='type'){va=(a.source_category||'').toLowerCase();vb=(b.source_category||'').toLowerCase();}
+    else if(sortCol==='task'){va=(a.task_type||'').toLowerCase();vb=(b.task_type||'').toLowerCase();}
+    else if(sortCol==='effect'){va=(a.effect_type||'').toLowerCase();vb=(b.effect_type||'').toLowerCase();}
     if(va<vb)return -sortDir; if(va>vb)return sortDir; return 0;
   });
 }
@@ -1371,15 +1438,17 @@ function render() {
   var rows=sortData(filtered);
   document.getElementById('resultCount').innerHTML='Showing <strong>'+rows.length+'</strong> of '+ALL_DATA.length+' use cases';
   if(!rows.length){
-    document.getElementById('tableBody').innerHTML='<tr><td colspan="7"><div class="empty-state"><p>No results</p><p>Try adjusting your filters or search</p></div></td></tr>';
+    document.getElementById('tableBody').innerHTML='<tr><td colspan="9"><div class="empty-state"><p>No results</p><p>Try adjusting your filters or search</p></div></td></tr>';
     return;
   }
   var tc={'Academic':'type-academic','Industry':'type-industry','Curated':'type-curated','Database':'type-database'};
+  var ec={'efficiency':'effect-efficiency','effectiveness_and_scaling':'effect-effectiveness','optimisation':'effect-optimisation'};
   var html='';
   rows.forEach(function(r,i){
     var date=(r.date_published||'—').slice(0,7);
     var country=r.country?r.country.split(',')[0].trim():'—';
     var cls=tc[r.source_category]||'type-other';
+    var ecls=ec[r.effect_type]||'';
     var titleEl=r.url?'<a href="'+esc(r.url)+'" target="_blank" rel="noopener">'+esc(r.title||'Untitled')+'</a>':'<span>'+esc(r.title||'Untitled')+'</span>';
     html+='<tr>'+
       '<td class="col-n">'+(i+1)+'</td>'+
@@ -1389,6 +1458,8 @@ function render() {
       '<td class="col-ctry">'+esc(country)+'</td>'+
       '<td class="col-src"><span class="src-badge">'+esc(r.source_name||'—')+'</span></td>'+
       '<td class="col-type"><span class="type-badge '+cls+'">'+esc(r.source_category||'—')+'</span></td>'+
+      '<td class="col-task">'+(r.task_type?'<span class="type-badge task-badge">'+esc(fmtLabel(r.task_type))+'</span>':'—')+'</td>'+
+      '<td class="col-effect">'+(r.effect_type?'<span class="type-badge effect-badge '+ecls+'">'+esc(fmtLabel(r.effect_type))+'</span>':'—')+'</td>'+
       '</tr>';
   });
   document.getElementById('tableBody').innerHTML=html;
@@ -1412,7 +1483,7 @@ init();
 """
 
 
-# ── Entry point ────────────────────────────────────────────────────────────────
+# ── entry point ────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(
@@ -1439,17 +1510,17 @@ def main():
     payload = {"generated_at": generated_at, "records": data, "stats": stats}
     inline_json = json.dumps(payload, ensure_ascii=False)
 
-    # Write data.json (kept for GitHub Pages / HTTP serving)
+    # data.json kept for http serving
     data_path = out_dir / "data.json"
     data_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print("Data written:        ", data_path, f"({data_path.stat().st_size // 1024} KB)")
 
-    # Write index.html — inline JSON so it works from file:// without a server
+    # inline json so file:// opens work without a server
     html_path = out_dir / "index.html"
     html_path.write_text(HTML.replace("__INLINE_DATA__", inline_json), encoding="utf-8")
     print("Dashboard written:   ", html_path)
 
-    # Write spreadsheet.html
+    # spreadsheet.html
     sheet_path = out_dir / "spreadsheet.html"
     sheet_path.write_text(SPREADSHEET_HTML.replace("__INLINE_DATA__", inline_json), encoding="utf-8")
     print("Spreadsheet written: ", sheet_path)

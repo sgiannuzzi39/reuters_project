@@ -1,19 +1,10 @@
 """
 scraper_poynter.py
 ------------------
-Scrapes Poynter (poynter.org) for articles about AI use cases in journalism.
+scrapes poynter.org via wordpress sitemaps (category/search pages loop after page 1).
 
-Poynter's AI category page and search results both loop after the first page —
-they are not true paginated archives. Instead this scraper uses the same
-sitemap approach as scraper_cjr.py:
-  1. Read all 44 WordPress post sitemaps to collect every article URL.
-  2. Filter to URLs whose slug contains AI-related keywords (~130 matches).
-  3. Fetch each matched article page (statically rendered).
-  4. Run the OpenAI relevance filter before inserting into the DB.
-
-Usage:
     python scraper_poynter.py
-    python scraper_poynter.py --dry-run   # list matched URLs without inserting
+    python scraper_poynter.py --dry-run
 """
 
 import argparse
@@ -36,7 +27,7 @@ logger = logging.getLogger("poynter")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── Config ─────────────────────────────────────────────────────────────────────
+# ── config ─────────────────────────────────────────────────────────────────────
 BASE_URL    = "https://www.poynter.org"
 SOURCE_NAME = "Poynter"
 SOURCE_CAT  = "Industry"
@@ -74,7 +65,7 @@ AI_SLUG_KEYWORDS = [
 ]
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ── helpers ────────────────────────────────────────────────────────────────────
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -88,7 +79,7 @@ def get(url: str) -> requests.Response | None:
 
 
 def fetch_ai_urls_from_sitemaps() -> list[tuple[str, str]]:
-    """Return (url, lastmod) pairs for Poynter articles with AI-related slugs."""
+    """return (url, lastmod) pairs for poynter articles with ai-related slugs."""
     results = []
     for i in range(1, N_SITEMAPS + 1):
         sitemap_url = f"{BASE_URL}/wp-sitemap-posts-post-{i}.xml"
@@ -120,7 +111,7 @@ def _parse_date(text: str) -> str | None:
 
 
 def parse_article_page(url: str, lastmod: str | None = None) -> dict:
-    """Fetch a Poynter article and extract metadata + body text."""
+    """fetch a poynter article and extract metadata + body text."""
     resp = get(url)
     if not resp:
         return {}
@@ -160,7 +151,7 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
     }
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+# ── main ───────────────────────────────────────────────────────────────────────
 def scrape(dry_run: bool = False) -> None:
     logger.info("Scanning Poynter sitemaps for AI-related article URLs…")
     ai_urls = fetch_ai_urls_from_sitemaps()

@@ -1,16 +1,11 @@
 """
 scraper_pressgazette.py
 -----------------------
-Scrapes Press Gazette's AI subject page for articles about AI in journalism.
-https://pressgazette.co.uk/subject/artificial-intelligence/
+scrapes the press gazette ai subject page — statically rendered, no js needed.
 
-The subject page is a pre-filtered, paginated archive of ~310 AI articles
-across 39 pages. Each page is statically rendered — no JavaScript needed.
-
-Usage:
     python scraper_pressgazette.py
-    python scraper_pressgazette.py --dry-run      # list URLs without inserting
-    python scraper_pressgazette.py --max-pages 10 # limit to N listing pages
+    python scraper_pressgazette.py --dry-run
+    python scraper_pressgazette.py --max-pages 10
 """
 
 import argparse
@@ -30,7 +25,7 @@ logger = logging.getLogger("pressgazette")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── Config ─────────────────────────────────────────────────────────────────────
+# ── config ─────────────────────────────────────────────────────────────────────
 BASE_URL    = "https://pressgazette.co.uk"
 SUBJECT_URL = "https://pressgazette.co.uk/subject/artificial-intelligence/"
 PAGE_URL    = "https://pressgazette.co.uk/subject/artificial-intelligence/page/{page}/"
@@ -46,7 +41,7 @@ HEADERS = {
 }
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ── helpers ────────────────────────────────────────────────────────────────────
 def get_soup(url: str) -> BeautifulSoup | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -67,7 +62,7 @@ def _parse_date(text: str) -> str | None:
 
 
 def parse_listing_page(soup: BeautifulSoup) -> list[dict]:
-    """Extract lightweight card records from a Press Gazette subject listing page."""
+    """extract card records from a press gazette listing page."""
     records = []
     for art in soup.select("article.c-story"):
         title_tag = art.select_one("h3 a, h2 a")
@@ -94,7 +89,7 @@ def parse_listing_page(soup: BeautifulSoup) -> list[dict]:
 
 
 def fetch_article_detail(url: str) -> dict:
-    """Fetch a full Press Gazette article and extract metadata + body text."""
+    """fetch a press gazette article and extract metadata + body text."""
     soup = get_soup(url)
     if not soup:
         return {}
@@ -115,7 +110,7 @@ def fetch_article_detail(url: str) -> dict:
     }
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+# ── main ───────────────────────────────────────────────────────────────────────
 def scrape(max_pages: int = MAX_PAGES, dry_run: bool = False) -> None:
     conn      = get_db()
     attempted = 0
@@ -123,7 +118,7 @@ def scrape(max_pages: int = MAX_PAGES, dry_run: bool = False) -> None:
     skipped   = 0
     all_cards = []
 
-    # Collect all cards first (listing pages are fast, no API calls yet)
+    # collect all cards first — listing pages are fast
     for page in range(1, max_pages + 1):
         url  = SUBJECT_URL if page == 1 else PAGE_URL.format(page=page)
         soup = get_soup(url)
@@ -150,7 +145,7 @@ def scrape(max_pages: int = MAX_PAGES, dry_run: bool = False) -> None:
     for card in all_cards:
         attempted += 1
 
-        # Filter on card text first — avoids fetching article for obvious misses
+        # filter on card text first — avoids fetching obvious misses
         if not is_ai_journalism_relevant(card["title"], card.get("summary", "")):
             skipped += 1
             logger.debug("  ✗ card-filtered: %s", card["title"][:80])

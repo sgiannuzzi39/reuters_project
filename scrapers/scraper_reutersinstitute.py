@@ -1,22 +1,9 @@
 """
 scraper_reutersinstitute.py
 ----------------------------
-Scrapes the Reuters Institute for the Study of Journalism (RISJ) AI &
-Journalism taxonomy page for reports, news articles, and events about
-AI use cases in journalism.
+scrapes the risj ai & journalism taxonomy page (/taxonomy/term/296?page=N).
+all drupal node types share the same field selectors so one parser handles all.
 
-Strategy:
-  1. Page through the taxonomy listing:
-       reutersinstitute.politics.ox.ac.uk/taxonomy/term/296?page=N
-     The page uses a "Load More" pattern; each page returns up to 23 items.
-     Stop when a page returns no <article class="search-result"> elements.
-  2. Collect article URLs + teaser text from listing cards.
-  3. Fetch each article page; the site has several node types
-     (review-article, advanced-research, dnr-page, event, advanced-page)
-     all sharing the same Drupal field names, so one parser handles all.
-  4. Run the LLM relevance filter before inserting into the DB.
-
-Usage:
     python scraper_reutersinstitute.py
     python scraper_reutersinstitute.py --dry-run
 """
@@ -39,7 +26,7 @@ logger = logging.getLogger("reutersinstitute")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── Config ─────────────────────────────────────────────────────────────────────
+# ── config ─────────────────────────────────────────────────────────────────────
 BASE_URL      = "https://reutersinstitute.politics.ox.ac.uk"
 TAXONOMY_URL  = BASE_URL + "/taxonomy/term/296"
 SOURCE_NAME   = "Reuters Institute"
@@ -53,7 +40,7 @@ HEADERS = {
 }
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ── helpers ────────────────────────────────────────────────────────────────────
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -74,16 +61,16 @@ def _parse_date(text: str) -> str | None:
 
 
 def _date_from_url(url: str) -> str | None:
-    """Extract YYYY-MM from a URL like /2026/05/slug."""
+    """extract yyyy-mm from a url like /2026/05/slug."""
     m = re.search(r"/(\d{4})/(\d{2})/", url)
     if m:
         return f"{m.group(1)}-{m.group(2)}"
     return None
 
 
-# ── Listing page ───────────────────────────────────────────────────────────────
+# ── listing page ───────────────────────────────────────────────────────────────
 def fetch_listing_page(page: int) -> list[dict]:
-    """Return partial records from one taxonomy listing page."""
+    """return partial records from one taxonomy listing page."""
     url = TAXONOMY_URL if page == 0 else f"{TAXONOMY_URL}?page={page}"
     resp = get(url)
     if not resp:
@@ -116,25 +103,16 @@ def fetch_listing_page(page: int) -> list[dict]:
     return records
 
 
-# ── Article page ───────────────────────────────────────────────────────────────
+# ── article page ───────────────────────────────────────────────────────────────
 def parse_article(url: str) -> dict:
-    """
-    Fetch a RISJ page and extract metadata.
-
-    Drupal field selectors used (consistent across all node types):
-      .field--name-node-title     → headline
-      .field--name-field-sub-     → subtitle / standfirst (summary)
-      .field--name-field-date     → publication date
-      .field--name-field-authors  → author(s)
-      .main-container p           → body paragraphs
-    """
+    """fetch a risj page and extract metadata."""
     resp = get(url)
     if not resp:
         return {}
 
     soup = BeautifulSoup(resp.text, "lxml")
 
-    # ── Title ─────────────────────────────────────────────────────────────────
+    # ── title ─────────────────────────────────────────────────────────────────
     title = None
     node_title = soup.select_one(".field--name-node-title")
     if node_title:
@@ -146,46 +124,46 @@ def parse_article(url: str) -> dict:
                 title = t
                 break
 
-    # ── Date ──────────────────────────────────────────────────────────────────
+    # ── date ──────────────────────────────────────────────────────────────────
     date_el = soup.select_one(".field--name-field-date") or soup.select_one("time")
     date_published = _parse_date(date_el.get_text(strip=True)) if date_el else None
     if not date_published:
         date_published = _date_from_url(url)
 
-    # ── Author ────────────────────────────────────────────────────────────────
+    # ── author ────────────────────────────────────────────────────────────────
     author_el = soup.select_one(".field--name-field-authors")
     author = author_el.get_text(strip=True) if author_el else None
 
-    # ── Summary ───────────────────────────────────────────────────────────────
+    # ── summary ───────────────────────────────────────────────────────────────
     sub_el = soup.select_one('[class*="field--name-field-sub-"]')
     summary = sub_el.get_text(strip=True)[:500] if sub_el else None
 
-    # ── Body text ─────────────────────────────────────────────────────────────
+    # ── body text ─────────────────────────────────────────────────────────────
     main = soup.select_one(".main-container")
     body_paras = []
     if main:
         for p in main.find_all("p"):
             txt = p.get_text(strip=True)
-            # Skip captions (short lines with REUTERS/ credit)
+            # skip captions (short lines with REUTERS/ credit)
             if len(txt) > 60 and "REUTERS/" not in txt:
                 body_paras.append(txt)
 
     raw_text = "\n\n".join(body_paras)
 
-    # If no structured summary yet, use first body paragraph
+    # fall back to first body paragraph if no standfirst
     if not summary and body_paras:
         summary = body_paras[0][:500]
 
     return {
         "title":          title,
-        "organisation":   author,   # Phase-3 LLM will extract actual news org
+        "organisation":   author,   # phase 3 llm extracts the actual news org
         "date_published": date_published,
         "summary":        summary,
         "raw_text":       raw_text[:5000],
     }
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+# ── main ───────────────────────────────────────────────────────────────────────
 def scrape(dry_run: bool = False) -> None:
     conn      = None if dry_run else get_db()
     attempted = 0
@@ -218,7 +196,7 @@ def scrape(dry_run: bool = False) -> None:
                 time.sleep(0.5)
                 continue
 
-            # Prefer richer summary from article page; fall back to listing teaser
+            # prefer article-page summary; fall back to listing teaser
             if not record.get("summary") and partial.get("summary"):
                 record["summary"] = partial["summary"]
 

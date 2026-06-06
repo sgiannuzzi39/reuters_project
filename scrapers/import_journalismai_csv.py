@@ -1,10 +1,8 @@
 """
 import_journalismai_csv.py
 --------------------------
-Imports the JournalismAI case studies CSV directly into the database.
-Much more reliable than scraping — use this instead of scraper_journalismai.py.
+imports the journalismai case studies csv into the db.
 
-Usage:
     python import_journalismai_csv.py path/to/file.csv
     python import_journalismai_csv.py path/to/file.csv --dry-run
 """
@@ -29,7 +27,7 @@ SOURCE_URL  = "https://www.journalismai.info/resources/case-studies"
 
 
 def parse_date(raw: str) -> str | None:
-    """Convert 'April 16, 2026' → '2026-04-16', or return partial/None."""
+    """convert 'April 16, 2026' → '2026-04-16', or return partial/none."""
     if not raw or not raw.strip():
         return None
     raw = raw.strip()
@@ -63,7 +61,7 @@ def import_csv(csv_path: Path, dry_run: bool = False) -> None:
 
             date_pub = parse_date(date_raw)
 
-            # Build raw_text so the LLM has everything it needs in Phase 3
+            # build raw_text for the llm
             raw_text = (
                 f"Title: {title}\n"
                 f"Organisation: {org}\n"

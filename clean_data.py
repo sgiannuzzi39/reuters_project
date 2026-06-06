@@ -1,17 +1,11 @@
 """
 clean_data.py
 -------------
-Step 1: Remove cross-source duplicates — same title from multiple scrapers.
-        When a use case appears in more than one source, keep the highest-quality
-        record (scored by source priority + metadata completeness) and delete the rest.
+step 1: remove cross-source duplicates (keep highest-quality record by source priority).
+step 2: re-run the llm relevance filter on arxiv records.
 
-Step 2: Re-run the LLM relevance filter on arXiv and Semantic Scholar records.
-        The scraper-level filter passed some papers with no journalism connection;
-        this re-checks every academic record with the same prompt and deletes failures.
-
-Usage:
-    python clean_data.py --dry-run     # preview without touching the DB
-    python clean_data.py               # apply changes
+    python clean_data.py --dry-run     # preview
+    python clean_data.py               # apply
 """
 
 import argparse
@@ -25,7 +19,7 @@ from scraper_base import get_db, is_ai_journalism_relevant, DB_PATH
 logger = logging.getLogger("clean")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] — %(message)s")
 
-# Higher score = prefer to keep this source when deduplicating
+# higher score = prefer this source when deduplicating
 SOURCE_PRIORITY = {
     "JournalismAI":                                10,
     "Reuters Institute":                           8,
@@ -57,7 +51,7 @@ def _score(r: dict) -> int:
     return score
 
 
-# ── Step 1: Cross-source deduplication ───────────────────────────────────────
+# ── step 1: cross-source dedup ───────────────────────────────────────────────
 def dedup_cross_source(conn, dry_run: bool) -> int:
     rows = [dict(r) for r in conn.execute("""
         SELECT id, source_name, title, organisation, country,
@@ -75,7 +69,7 @@ def dedup_cross_source(conn, dry_run: bool) -> int:
     for title_key, group in by_title.items():
         if len(group) < 2:
             continue
-        # Sort best first; keep group[0], delete the rest
+        # sort best first; keep group[0], drop the rest
         group.sort(key=_score, reverse=True)
         keeper = group[0]
         for dup in group[1:]:
@@ -96,7 +90,7 @@ def dedup_cross_source(conn, dry_run: bool) -> int:
     return len(to_delete)
 
 
-# ── Step 2: LLM re-filter arXiv / Semantic Scholar ───────────────────────────
+# ── step 2: llm re-filter for arxiv ─────────────────────────────────────────
 def refilter_academic(conn, dry_run: bool) -> int:
     rows = [dict(r) for r in conn.execute("""
         SELECT id, title, summary, raw_text, source_name
@@ -129,7 +123,7 @@ def refilter_academic(conn, dry_run: bool) -> int:
     return len(to_delete)
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────
+# ── main ──────────────────────────────────────────────────────────────────────
 def main():
     parser = argparse.ArgumentParser(description="Clean the use_cases database")
     parser.add_argument("--dry-run", action="store_true",

@@ -1,18 +1,11 @@
 """
 scraper_cjr.py
 --------------
-Scrapes Columbia Journalism Review (cjr.org) for articles about AI in journalism.
+scrapes cjr.org via wordpress sitemaps (search/tag pages are js-rendered).
+filters slugs by ai keywords, then fetches each matched article.
 
-CJR's search and tag pages are JavaScript-rendered and cannot be scraped with
-requests. Instead, this scraper:
-  1. Reads CJR's WordPress sitemaps to get all article URLs.
-  2. Filters those URLs to ones whose slug contains AI-related keywords.
-  3. Fetches each matched article page (which IS statically rendered).
-  4. Runs the OpenAI relevance filter before inserting into the DB.
-
-Usage:
     python scraper_cjr.py
-    python scraper_cjr.py --dry-run      # list matched URLs without inserting
+    python scraper_cjr.py --dry-run
 """
 
 import argparse
@@ -35,7 +28,7 @@ logger = logging.getLogger("cjr")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── Config ─────────────────────────────────────────────────────────────────────
+# ── config ─────────────────────────────────────────────────────────────────────
 BASE_URL    = "https://www.cjr.org"
 SOURCE_NAME = "Columbia Journalism Review"
 SOURCE_CAT  = "Industry"
@@ -47,13 +40,13 @@ HEADERS = {
     )
 }
 
-# All post sitemaps (12 pages × 2000 articles) plus Tow Center reports
+# post sitemaps (12 pages × 2000 articles) plus tow center reports
 SITEMAPS = (
     [f"{BASE_URL}/wp-sitemap-posts-post-{i}.xml" for i in range(1, 13)]
     + [f"{BASE_URL}/wp-sitemap-posts-tow_center_reports-1.xml"]
 )
 
-# Slug fragments that indicate AI content — checked against the full URL path
+# slug fragments checked against the full url path
 AI_SLUG_KEYWORDS = [
     "artificial-intell",
     "machine-learn",
@@ -79,7 +72,7 @@ AI_SLUG_KEYWORDS = [
 ]
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ── helpers ────────────────────────────────────────────────────────────────────
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -93,10 +86,7 @@ def get(url: str) -> requests.Response | None:
 
 
 def fetch_ai_urls_from_sitemaps() -> list[tuple[str, str]]:
-    """
-    Return (url, lastmod) pairs for all CJR article URLs whose slug contains
-    at least one AI-related keyword.
-    """
+    """return (url, lastmod) pairs for cjr articles with ai-related slugs."""
     results = []
     for sitemap_url in SITEMAPS:
         resp = get(sitemap_url)
@@ -127,7 +117,7 @@ def _parse_date(text: str) -> str | None:
 
 
 def parse_article_page(url: str, lastmod: str | None = None) -> dict:
-    """Fetch a CJR article page and extract metadata + body text."""
+    """fetch a cjr article page and extract metadata + body text."""
     resp = get(url)
     if not resp:
         return {}
@@ -139,7 +129,7 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
 
     date_tag = soup.select_one(".date")
     date_pub = _parse_date(date_tag.get_text(strip=True)) if date_tag else None
-    # Fall back to sitemap lastmod if the page doesn't carry a visible date
+    # fall back to sitemap lastmod if the page has no visible date
     if not date_pub and lastmod:
         date_pub = lastmod
 
@@ -149,7 +139,7 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
     body_div = soup.select_one(".entry-content")
     raw_text = body_div.get_text(separator="\n", strip=True) if body_div else ""
 
-    # First non-empty paragraph as a lightweight summary
+    # first non-empty paragraph as summary
     summary = ""
     if body_div:
         for p in body_div.find_all("p"):
@@ -167,7 +157,7 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
     }
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+# ── main ───────────────────────────────────────────────────────────────────────
 def scrape(dry_run: bool = False) -> None:
     logger.info("Scanning CJR sitemaps for AI-related article URLs…")
     ai_urls = fetch_ai_urls_from_sitemaps()

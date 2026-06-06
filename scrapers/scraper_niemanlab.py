@@ -1,10 +1,8 @@
 """
 scraper_niemanlab.py
 --------------------
-Scrapes Nieman Lab (niemanlab.org) for articles about AI in journalism.
-Uses search-based HTML scraping with requests + BeautifulSoup.
+scrapes niemanlab.org via search pagination.
 
-Usage:
     python scraper_niemanlab.py
     python scraper_niemanlab.py --max-pages 10 --query "artificial intelligence"
 """
@@ -26,9 +24,9 @@ logger = logging.getLogger("niemanlab")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── Config ─────────────────────────────────────────────────────────────────────
+# ── config ─────────────────────────────────────────────────────────────────────
 BASE_URL    = "https://www.niemanlab.org"
-# Real pagination format discovered by inspecting next-page links
+# pagination format discovered by inspecting next-page links
 SEARCH_URL  = "https://www.niemanlab.org/page/{page}/?s={query}"
 SOURCE_NAME = "Nieman Lab"
 SOURCE_CAT  = "Industry"
@@ -49,7 +47,7 @@ DEFAULT_QUERIES = [
 ]
 
 
-# ── Helpers ─────────────────────────────────────────────────────────────────────
+# ── helpers ─────────────────────────────────────────────────────────────────────
 def get_soup(url: str) -> BeautifulSoup | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -63,7 +61,7 @@ def get_soup(url: str) -> BeautifulSoup | None:
 
 
 def _parse_date(text: str) -> str | None:
-    """Parse Nieman Lab date strings like 'Feb.  27, 2023, 12:45 p.m.' → '2023-02-27'."""
+    """parse nieman lab date strings like 'Feb.  27, 2023, 12:45 p.m.' → '2023-02-27'."""
     try:
         return dateutil_parser.parse(text, fuzzy=True).strftime("%Y-%m-%d")
     except Exception:
@@ -71,35 +69,24 @@ def _parse_date(text: str) -> str | None:
 
 
 def parse_article_page(url: str) -> dict:
-    """
-    Fetch a single Nieman Lab page and extract metadata + text.
-
-    Nieman Lab has two article templates:
-      - /reading/slug  — curated external links ("What We're Reading")
-      - /YYYY/MM/slug  — original Nieman Lab articles
-
-    For /reading/ pages the organisation is the external publication (e.g.
-    "Financial Times") and the canonical URL is the external article link,
-    which is more useful for the dissertation database than the Nieman Lab
-    pointer page.
-    """
+    """fetch a nieman lab page and extract metadata + text."""
     soup = get_soup(url)
     if not soup:
         return {}
 
-    # ── "What We're Reading" template (/reading/ URLs) ─────────────────────
+    # ── "what we're reading" template (/reading/ urls) ─────────────────────
     wwr = soup.select_one(".wwr-full-item")
     if wwr:
-        # External article URL
+        # external article url
         ext_link = wwr.select_one(".wwr-full-link")
         ext_url  = ext_link.get("href") if ext_link else url
 
-        # Organisation: flag text is "Publication / Authors / Date"
+        # flag text format: "Publication / Authors / Date"
         flag_tag = wwr.select_one(".wwr-full-flag")
         organisation = None
         date_pub = None
         if flag_tag:
-            # Remove the inner span (contains date) to get just "Pub / Authors"
+            # remove the inner span (contains date) to get just "Pub / Authors"
             flag_span = flag_tag.find("span")
             date_text = flag_span.get_text(strip=True).lstrip("/").strip() if flag_span else ""
             date_pub  = _parse_date(date_text)
@@ -110,7 +97,7 @@ def parse_article_page(url: str) -> dict:
 
         deck_tag = wwr.select_one(".wwr-full-deck")
         summary  = deck_tag.get_text(strip=True) if deck_tag else ""
-        # Strip the "— LO" editor-initials suffix
+        # strip "— LO" editor-initials suffix
         summary  = summary.rsplit("—", 1)[0].strip().strip('"').strip("'")
 
         return {
@@ -121,7 +108,7 @@ def parse_article_page(url: str) -> dict:
             "raw_text":      summary[:5000],
         }
 
-    # ── Original Nieman Lab article template (/YYYY/MM/ URLs) ──────────────
+    # ── original nieman lab article template (/YYYY/MM/ urls) ──────────────
     date_tag = soup.select_one(".simple-bylinedate")
     date_pub = _parse_date(date_tag.get_text(strip=True)) if date_tag else None
 
@@ -138,17 +125,17 @@ def parse_article_page(url: str) -> dict:
 
     return {
         "date_published": date_pub,
-        "organisation":   author,   # Phase 3 LLM will extract the actual news org
+        "organisation":   author,   # phase 3 llm extracts the actual news org
         "summary":        deck[:500] if deck else None,
         "raw_text":       raw_text[:5000],
     }
 
 
 def parse_search_results(soup: BeautifulSoup, query: str) -> list[dict]:
-    """Parse a Nieman Lab search results page and return partial records."""
+    """parse a nieman lab search results page and return partial records."""
     records = []
 
-    # Real card class discovered by inspecting the live page
+    # card class found by inspecting the live page
     cards = soup.select("div.simple-loop-article")
 
     for card in cards:
@@ -165,7 +152,7 @@ def parse_search_results(soup: BeautifulSoup, query: str) -> list[dict]:
 
         title = link_tag.get_text(strip=True)
 
-        # Date visible on the card
+        # date visible on the card
         date_tag = card.select_one(".simple-loop-date")
         card_date = _parse_date(date_tag.get_text(strip=True)) if date_tag else None
 
@@ -182,7 +169,7 @@ def parse_search_results(soup: BeautifulSoup, query: str) -> list[dict]:
     return records
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+# ── main ───────────────────────────────────────────────────────────────────────
 def scrape(queries: list[str] | None = None, max_pages: int = 5) -> None:
     if queries is None:
         queries = DEFAULT_QUERIES
@@ -197,7 +184,7 @@ def scrape(queries: list[str] | None = None, max_pages: int = 5) -> None:
         query_enc = query.replace(" ", "+")
 
         for page in range(1, max_pages + 1):
-            # Page 1 doesn't use /page/1/ — that returns a 404
+            # page 1 doesn't use /page/1/ — that returns a 404
             if page == 1:
                 url = f"{BASE_URL}/?s={query_enc}"
             else:

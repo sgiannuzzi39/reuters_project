@@ -1,18 +1,10 @@
 """
 import_reuters_dnr_2025.py
 --------------------------
-Extracts specific named newsroom AI use cases from the Reuters Institute
-Digital News Report 2025 PDF and imports them into the database.
+manually curated ai use cases from the reuters institute digital news report 2025.
+the dnr is an audience research report, not a case study db — these are specific
+named examples scattered through the narrative, extracted by hand from the pdf.
 
-Important context: The DNR is primarily an audience research report
-(surveys, attitudes, statistics). It is NOT a case study database.
-However, it contains numerous specific named examples of AI adoption
-scattered throughout. This script extracts those examples.
-
-These are manually curated from the PDF since the examples are embedded
-in narrative text and cannot be reliably extracted programmatically.
-
-Usage:
     python import_reuters_dnr_2025.py
     python import_reuters_dnr_2025.py --dry-run
 """
@@ -34,9 +26,8 @@ SOURCE_CAT  = "Curated"
 SOURCE_URL  = "https://www.digitalnewsreport.org/"
 DATE_PUB    = "2025-06"
 
-# ── Curated use cases extracted from the report ────────────────────────────────
-# Each entry is a named, specific AI adoption example cited in the report.
-# Page references included in raw_text for traceability.
+# ── curated use cases ──────────────────────────────────────────────────────────
+# page references included in raw_text for traceability
 
 USE_CASES = [
     {
@@ -147,7 +138,7 @@ USE_CASES = [
 ]
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+# ── main ───────────────────────────────────────────────────────────────────────
 def import_cases(dry_run: bool = False) -> None:
     conn      = get_db()
     attempted = 0

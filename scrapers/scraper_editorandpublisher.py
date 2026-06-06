@@ -1,15 +1,9 @@
 """
 scraper_editorandpublisher.py
 ------------------------------
-Scrapes Editor & Publisher (editorandpublisher.com/casestudies/) for
-sponsored case studies about AI and technology use by news organisations.
+scrapes editorandpublisher.com/casestudies/ for sponsored ai case studies.
+metadata comes from ld+json; organisation from the byline.
 
-The case studies page lists ~50 articles as div.content-item elements,
-each linking to a /stories/ URL.  Each article page embeds LD+JSON with
-structured metadata (headline, description, datePublished) and a byline
-that identifies the sponsoring company.
-
-Usage:
     python scraper_editorandpublisher.py
     python scraper_editorandpublisher.py --dry-run
 """
@@ -33,7 +27,7 @@ logger = logging.getLogger("editorandpublisher")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── Config ─────────────────────────────────────────────────────────────────────
+# ── config ─────────────────────────────────────────────────────────────────────
 BASE_URL       = "https://www.editorandpublisher.com"
 LISTING_URL    = "https://www.editorandpublisher.com/casestudies/"
 SOURCE_NAME    = "Editor & Publisher"
@@ -47,7 +41,7 @@ HEADERS = {
 }
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ── helpers ────────────────────────────────────────────────────────────────────
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -68,7 +62,7 @@ def _parse_date(text: str) -> str | None:
 
 
 def _extract_ld_json(soup: BeautifulSoup) -> dict:
-    """Return parsed LD+JSON NewsArticle block, or empty dict."""
+    """return parsed ld+json block, or empty dict."""
     tag = soup.find("script", attrs={"type": "application/ld+json"})
     if not tag:
         return {}
@@ -79,17 +73,7 @@ def _extract_ld_json(soup: BeautifulSoup) -> dict:
 
 
 def _extract_organisation(soup: BeautifulSoup, body_text: str) -> str | None:
-    """
-    Extract the sponsoring or featured organisation from the article.
-
-    Byline patterns observed on the site:
-      "Sponsored Content from E&P Marketing Partner: BlueLena"
-      "An E&P Sponsored Webinar broadcast on Dec. 4, 2025"
-      ""
-
-    Body text pattern (webinar articles):
-      "Learn More About & Request a Demo, From: NOTA"
-    """
+    """pull the sponsoring org from the byline or body text."""
     byline = soup.select_one(".byline")
     byline_text = byline.get_text(strip=True) if byline else ""
 
@@ -98,7 +82,7 @@ def _extract_organisation(soup: BeautifulSoup, body_text: str) -> str | None:
     if m:
         return m.group(1).strip()
 
-    # Body "From: ORG" pattern (webinar articles)
+    # body "From: ORG" pattern (webinar articles)
     m = re.search(r"From:\s*([A-Z][A-Za-z0-9 &\-\.]+?)(?:\s{2,}|\n|An E&P|In a )", body_text)
     if m:
         return m.group(1).strip()
@@ -106,9 +90,9 @@ def _extract_organisation(soup: BeautifulSoup, body_text: str) -> str | None:
     return None
 
 
-# ── Listing page ───────────────────────────────────────────────────────────────
+# ── listing page ───────────────────────────────────────────────────────────────
 def fetch_case_study_urls() -> list[str]:
-    """Return all article URLs from the case studies listing page."""
+    """return all article urls from the case studies listing page."""
     resp = get(LISTING_URL)
     if not resp:
         logger.error("Could not fetch listing page: %s", LISTING_URL)
@@ -131,9 +115,9 @@ def fetch_case_study_urls() -> list[str]:
     return urls
 
 
-# ── Article page ───────────────────────────────────────────────────────────────
+# ── article page ───────────────────────────────────────────────────────────────
 def parse_article(url: str) -> dict:
-    """Fetch a case study article and return a partial record dict."""
+    """fetch a case study article and return a partial record dict."""
     resp = get(url)
     if not resp:
         return {}
@@ -170,7 +154,7 @@ def parse_article(url: str) -> dict:
     }
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+# ── main ───────────────────────────────────────────────────────────────────────
 def scrape(dry_run: bool = False) -> None:
     urls = fetch_case_study_urls()
     if not urls:

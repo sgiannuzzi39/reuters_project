@@ -1,17 +1,9 @@
 """
 scraper_inma.py
 ---------------
-Scrapes the INMA Generative AI Initiative blog
-(inma.org/blogs/Generative-AI-Initiative/) for AI use-case articles.
+scrapes the inma generative ai initiative blog.
+pagination via index.cfm?start=N (step 32).
 
-All 124 posts are explicitly about GenAI in news media, so the LLM filter
-acts as a safety net rather than a heavy filter here.
-
-Pagination uses an offset parameter: index.cfm?start=N (step 32).
-Listing cards supply title, date, and author.
-Article pages add body text via LD+JSON + div.article-body.
-
-Usage:
     python scraper_inma.py
     python scraper_inma.py --dry-run
 """
@@ -34,7 +26,7 @@ logger = logging.getLogger("inma")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── Config ─────────────────────────────────────────────────────────────────────
+# ── config ─────────────────────────────────────────────────────────────────────
 BASE_URL    = "https://www.inma.org"
 BLOG_URL    = BASE_URL + "/blogs/Generative-AI-Initiative/"
 SOURCE_NAME = "INMA"
@@ -49,7 +41,7 @@ HEADERS = {
 }
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ── helpers ────────────────────────────────────────────────────────────────────
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -80,12 +72,9 @@ def _extract_ld_article(soup: BeautifulSoup) -> dict:
         return {}
 
 
-# ── Listing pages ──────────────────────────────────────────────────────────────
+# ── listing pages ──────────────────────────────────────────────────────────────
 def fetch_all_listing_urls() -> list[dict]:
-    """
-    Walk listing pages (start=0, 32, 64, …) and collect all unique post
-    partial records.  Stops when a page yields no new URLs.
-    """
+    """walk listing pages and collect all post records."""
     seen = set()
     records = []
     start = 0
@@ -99,8 +88,7 @@ def fetch_all_listing_urls() -> list[dict]:
         soup = BeautifulSoup(resp.text, "lxml")
         new_this_page = 0
 
-        # Iterate cards directly so we always have the card context for metadata.
-        # Cards are the column divs that contain a post.cfm link.
+        # iterate cards (column divs containing a post.cfm link)
         for card in soup.find_all("div", class_=lambda c: c and "card-news" in c):
             a = card.find("a", href=lambda h: h and "/post.cfm/" in h)
             if not a:
@@ -137,9 +125,9 @@ def fetch_all_listing_urls() -> list[dict]:
     return records
 
 
-# ── Article page ───────────────────────────────────────────────────────────────
+# ── article page ───────────────────────────────────────────────────────────────
 def parse_article(url: str) -> dict:
-    """Fetch an INMA blog post and extract body text + LD+JSON metadata."""
+    """fetch an inma post and extract body text + metadata."""
     resp = get(url)
     if not resp:
         return {}
@@ -147,7 +135,7 @@ def parse_article(url: str) -> dict:
     soup = BeautifulSoup(resp.text, "lxml")
     ld = _extract_ld_article(soup)
 
-    # Title: prefer LD+JSON name, fall back to first non-empty h1
+    # prefer ld+json name, fall back to first h1
     title = ld.get("name") or None
     if not title:
         for h1 in soup.find_all("h1"):
@@ -161,13 +149,13 @@ def parse_article(url: str) -> dict:
         date_el = soup.select_one(".post-date")
         date_published = _parse_date(date_el.get_text(strip=True)) if date_el else None
 
-    # Author(s) from LD+JSON list
+    # authors from ld+json
     authors_raw = ld.get("author", [])
     if isinstance(authors_raw, dict):
         authors_raw = [authors_raw]
     author = ", ".join(a.get("name", "") for a in authors_raw if a.get("name")) or None
 
-    # Body text
+    # body text
     body_div = soup.select_one(".article-body")
     body_paras = []
     if body_div:
@@ -178,19 +166,19 @@ def parse_article(url: str) -> dict:
 
     raw_text = "\n\n".join(body_paras)
 
-    # Summary: first substantive paragraph
+    # first substantive paragraph as summary
     summary = body_paras[0][:500] if body_paras else None
 
     return {
         "title":          title,
-        "organisation":   author,   # INMA staff author; Phase-3 LLM extracts news org
+        "organisation":   author,   # inma staff author; phase 3 llm extracts news org
         "date_published": date_published,
         "summary":        summary,
         "raw_text":       raw_text[:5000],
     }
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+# ── main ───────────────────────────────────────────────────────────────────────
 def scrape(dry_run: bool = False) -> None:
     logger.info("Collecting all post URLs from listing pages…")
     partial_records = fetch_all_listing_urls()

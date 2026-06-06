@@ -1,8 +1,7 @@
 """
 scraper_base.py
 ---------------
-Shared database schema, connection, and insert logic for all scrapers.
-All scrapers import get_db() and insert_use_case() from here.
+shared db schema, connection helpers, and insert logic used by all scrapers.
 """
 
 import json
@@ -15,7 +14,7 @@ from pathlib import Path
 
 from openai import OpenAI
 
-# ── Paths ──────────────────────────────────────────────────────────────────────
+# ── paths ──────────────────────────────────────────────────────────────────────
 ROOT_DIR  = Path(__file__).resolve().parent.parent
 DATA_DIR  = ROOT_DIR / "data"
 LOG_DIR   = ROOT_DIR / "logs"
@@ -24,7 +23,7 @@ DB_PATH   = DATA_DIR / "usecases_FINAL.db"
 DATA_DIR.mkdir(exist_ok=True)
 LOG_DIR.mkdir(exist_ok=True)
 
-# ── Logging ────────────────────────────────────────────────────────────────────
+# ── logging ────────────────────────────────────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s",
@@ -36,34 +35,33 @@ logging.basicConfig(
 logger = logging.getLogger("base")
 
 
-# ── Schema ─────────────────────────────────────────────────────────────────────
+# ── schema ─────────────────────────────────────────────────────────────────────
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS use_cases (
     id               INTEGER PRIMARY KEY AUTOINCREMENT,
 
-    -- Provenance
+    -- provenance
     source_name      TEXT NOT NULL,   -- e.g. "Nieman Lab"
-    source_category  TEXT NOT NULL,   -- "Curated" | "Database" | "Industry" |
-                                      -- "Academic" | "Conference" | "Tools"
-    source_url       TEXT NOT NULL,   -- the URL that was scraped
-    date_scraped     TEXT NOT NULL,   -- ISO-8601 UTC timestamp
+    source_category  TEXT NOT NULL,   -- "Curated" | "Database" | "Industry" | "Academic"
+    source_url       TEXT NOT NULL,   -- the url that was scraped
+    date_scraped     TEXT NOT NULL,   -- utc timestamp
 
-    -- Content
+    -- content
     title            TEXT,            -- headline / case study title
-    organisation     TEXT,            -- news org mentioned (e.g. "BBC")
+    organisation     TEXT,            -- news org (e.g. "BBC")
     country          TEXT,            -- country of the news org
-    date_published   TEXT,            -- publication date (ISO-8601 or YYYY or YYYY-MM)
-    url              TEXT,            -- canonical link to the article / case
-    summary          TEXT,            -- short description of the AI use case
-    raw_text         TEXT,            -- full extracted text (for LLM categorisation)
+    date_published   TEXT,            -- yyyy, yyyy-mm, or yyyy-mm-dd
+    url              TEXT,            -- canonical link to the article
+    summary          TEXT,            -- short description of the use case
+    raw_text         TEXT,            -- full text (used as llm input)
 
-    -- LLM-assigned fields (populated in Phase 3)
-    llm_category     TEXT,            -- e.g. "Automation", "Content Generation"
-    llm_theme        TEXT,            -- e.g. "Efficiency", "Personalisation"
-    llm_stage        TEXT,            -- "Experiment" | "Pilot" | "Production"
+    -- llm fields (populated by categorise.py)
+    llm_category     TEXT,
+    llm_theme        TEXT,
+    llm_stage        TEXT,
 
-    -- Deduplication
-    dedup_hash       TEXT UNIQUE      -- SHA-256 of (title + organisation + url)
+    -- dedup
+    dedup_hash       TEXT UNIQUE      -- sha-256 of (title + organisation + url)
 );
 
 CREATE INDEX IF NOT EXISTS idx_source_name     ON use_cases (source_name);
@@ -74,9 +72,9 @@ CREATE INDEX IF NOT EXISTS idx_llm_category    ON use_cases (llm_category);
 """
 
 
-# ── Connection ─────────────────────────────────────────────────────────────────
+# ── connection ─────────────────────────────────────────────────────────────────
 def get_db(db_path: Path = DB_PATH) -> sqlite3.Connection:
-    """Return a connection with WAL mode and the schema initialised."""
+    """return a connection in wal mode with schema applied."""
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode=WAL;")   # safe for concurrent writes
@@ -86,13 +84,9 @@ def get_db(db_path: Path = DB_PATH) -> sqlite3.Connection:
     return conn
 
 
-# ── Deduplication ──────────────────────────────────────────────────────────────
+# ── dedup ──────────────────────────────────────────────────────────────────────
 def make_dedup_hash(title: str, organisation: str, url: str) -> str:
-    """
-    SHA-256 of the canonical key fields, lowercased and stripped.
-    Two records with identical title+org+url will have the same hash
-    and the second INSERT will be silently ignored.
-    """
+    """sha-256 of title+org+url (lowercased). duplicate inserts are silently ignored."""
     raw = "|".join([
         (title        or "").strip().lower(),
         (organisation or "").strip().lower(),
@@ -101,18 +95,9 @@ def make_dedup_hash(title: str, organisation: str, url: str) -> str:
     return hashlib.sha256(raw.encode()).hexdigest()
 
 
-# ── Insert ─────────────────────────────────────────────────────────────────────
+# ── insert ─────────────────────────────────────────────────────────────────────
 def insert_use_case(conn: sqlite3.Connection, record: dict) -> bool:
-    """
-    Insert a use-case record.  Returns True if inserted, False if duplicate.
-
-    Required keys in `record`:
-        source_name, source_category, source_url
-
-    Optional (but important) keys:
-        title, organisation, country, date_published, url,
-        summary, raw_text
-    """
+    """insert a record; returns true if new, false if duplicate."""
     dedup_hash = make_dedup_hash(
         record.get("title", ""),
         record.get("organisation", ""),
@@ -160,10 +145,9 @@ def insert_use_case(conn: sqlite3.Connection, record: dict) -> bool:
     return inserted
 
 
-# ── Relevance filter (OpenAI) ──────────────────────────────────────────────────
-# Called before every DB insert. Uses gpt-4o-mini to classify whether the
-# article describes a concrete AI use case inside a news organisation.
-# Set OPENAI_API_KEY in your environment before running any scraper.
+# ── relevance filter ───────────────────────────────────────────────────────────
+# called before every insert — gpt-4o-mini checks whether the article describes
+# a concrete ai use case by a specific news organisation. needs OPENAI_API_KEY.
 
 _openai_client: OpenAI | None = None
 
@@ -201,11 +185,8 @@ def _get_openai_client() -> OpenAI:
 
 def is_ai_journalism_relevant(title: str, summary: str, raw_text: str = "") -> bool:
     """
-    Return True if the article describes a concrete AI use case in a newsroom.
-
-    Sends title + summary + up to 500 chars of body text to gpt-4o-mini.
-    On any API error the article is conservatively allowed through (returns True)
-    so no potentially valid record is silently dropped.
+    returns true if the article looks like a real newsroom ai use case.
+    on any api error, passes through conservatively (returns true).
     """
     excerpt = " ".join([
         title   or "",
@@ -237,7 +218,7 @@ def is_ai_journalism_relevant(title: str, summary: str, raw_text: str = "") -> b
         return True
 
 
-# ── Batch reporting ─────────────────────────────────────────────────────────────
+# ── batch reporting ─────────────────────────────────────────────────────────────
 def log_summary(source_name: str, attempted: int, inserted: int,
                 filtered: int = 0) -> None:
     duplicates = attempted - inserted - filtered
