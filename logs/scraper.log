@@ -22433,3 +22433,308 @@ then: export ELSEVIER_API_KEY=<your-key>
 2026-05-30 18:38:12,387 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-30 18:38:14,037 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-30 18:38:14,247 [INFO] base — [SAGE Journals] Done — 4966 attempted, 2 inserted, 4957 relevance-filtered, 7 duplicates
+2026-06-03 08:31:06,340 [INFO] clean — DRY RUN — no changes will be written
+2026-06-03 08:31:06,351 [INFO] clean — Records before cleaning: 883
+2026-06-03 08:31:06,351 [INFO] clean — ────────────────────────────────────────────────────────────
+2026-06-03 08:31:06,363 [INFO] clean —   DUP  keep=[JournalismAI] drop=[WAN-IFRA] id=493  'How dmg media is building an AI ‘foundational layer’ for the news'
+2026-06-03 08:31:06,363 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Nieman Lab] id=356  'How The New York Times uses a custom AI tool to track the “manosp'
+2026-06-03 08:31:06,363 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Generative AI Newsroom] id=617  'Inside Público’s GenAI-Powered Voting Game'
+2026-06-03 08:31:06,363 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=563  'Hearst Newspapers leverages AI for a human-centred strategy'
+2026-06-03 08:31:06,363 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Generative AI Newsroom] id=627  'Can AI Triage a Pitch? A Case Study in Editorial Evaluation from '
+2026-06-03 08:31:06,363 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Google News Initiative] id=664  'Gruner + Jahr drives a cultural shift toward AI'
+2026-06-03 08:31:06,363 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=538  'What Nikkei learnt from building its own Japanese AI chatbot'
+2026-06-03 08:31:06,363 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=570  'Wall Street Journal taxbot answers questions (while readers try t'
+2026-06-03 08:31:06,363 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Generative AI Newsroom] id=632  'EarthCheckr: Leveraging Generative AI for Environmental Journalis'
+2026-06-03 08:31:06,363 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Google News Initiative] id=661  'Ringier Slovakia builds out AI to diversify'
+2026-06-03 08:31:06,363 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=539  'How a small Nigerian newsroom used AI for a flooding investigatio'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Google News Initiative] id=657  'Bonnier News launches GenAI tool in record time'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=300  'How The Times of India Brings Real-Time Personalization to 1,500+'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=296  'How Bayerischer Rundfunk Used Modular Journalism to Personalize R'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=294  'Transforming Workflows with AI at Zamaneh Media'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=584  'News companies are using GenAI in these 4 interesting ways'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=292  'How Hearst Newspapers built an AI-powered, Slack-based Tool to He'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=291  'Djinn, an AI-powered Data Journalism Interface'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=543  'Meet NAT, the AI-generated presenter offering soft news to Mexica'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[WAN-IFRA] id=519  'Spain’s Relevo boosts homepage engagement by a third with AI-driv'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=547  'How Norway’s public broadcaster uses AI-generated summaries to re'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Google News Initiative] id=687  'AI is boosting Forbes’ publishing capabilities'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=595  'Rede Gazeta experiments with GenAI to create its own news assista'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=550  'How a Spanish media group created an AI tool to detect audio deep'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=598  'Hearst Newspapers leverages AI to build local content, reader loy'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Press Gazette] id=432  'Reach using AI to speed up ‘ripping’ and use same article on mult'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Press Gazette] id=433  'Semafor executive editor Gina Chua explains its Microsoft-sponsor'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[WAN-IFRA] id=524  'Argentina’s Clarín introduces AI assistant UalterAI to help boost'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Press Gazette] id=436  'How Newsquest and its seven AI-assisted reporters are using ChatG'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Generative AI Newsroom] id=613  'Decoding Bureaucracy'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Journalism.co.uk] id=401  'Swedish Aftonbladet uses automation to outpace competitors with i'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Journalism.co.uk] id=396  'Facial recognition, subtitling automation and datasets: How Sky N'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Journalism.co.uk] id=393  'Quartz AI Studio launches an open-source platform to help journal'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[Nieman Lab] drop=[Digiday] id=457  'How publishers like The Marshall Project and The Markup are testi'
+2026-06-03 08:31:06,364 [INFO] clean —   DUP  keep=[Nieman Lab] drop=[Press Gazette] id=445  'How Mediahuis is easing generative AI into its newsrooms'
+2026-06-03 08:31:06,364 [INFO] clean — Step 1: 35 duplicate records to remove
+2026-06-03 08:31:06,364 [INFO] clean — ────────────────────────────────────────────────────────────
+2026-06-03 08:31:06,364 [INFO] clean — Step 2: re-checking 28 arXiv/Semantic Scholar records with LLM
+2026-06-03 08:31:06,364 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,364 [INFO] clean —   [1/28] KEEP  ActCam: Zero-Shot Joint Camera and 3D Motion Control for Video Generation
+2026-06-03 08:31:06,364 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,364 [INFO] clean —   [2/28] KEEP  UniPool: A Globally Shared Expert Pool for Mixture-of-Experts
+2026-06-03 08:31:06,364 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,364 [INFO] clean —   [3/28] KEEP  BAMI: Training-Free Bias Mitigation in GUI Grounding
+2026-06-03 08:31:06,364 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,364 [INFO] clean —   [4/28] KEEP  Verifier-Backed Hard Problem Generation for Mathematical Reasoning
+2026-06-03 08:31:06,364 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,364 [INFO] clean —   [5/28] KEEP  Optimizer-Model Consistency: Full Finetuning with the Same Optimizer as Pre
+2026-06-03 08:31:06,364 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,364 [INFO] clean —   [6/28] KEEP  When No Benchmark Exists: Validating Comparative LLM Safety Scoring Without
+2026-06-03 08:31:06,364 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,364 [INFO] clean —   [7/28] KEEP  AI Co-Mathematician: Accelerating Mathematicians with Agentic AI
+2026-06-03 08:31:06,364 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,364 [INFO] clean —   [8/28] KEEP  Superintelligent Retrieval Agent: The Next Frontier of Information Retrieva
+2026-06-03 08:31:06,364 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,364 [INFO] clean —   [9/28] KEEP  Are We Making Progress in Multimodal Domain Generalization? A Comprehensive
+2026-06-03 08:31:06,364 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,364 [INFO] clean —   [10/28] KEEP  StraTA: Incentivizing Agentic Reinforcement Learning with Strategic Traject
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [11/28] KEEP  Concept-Based Abductive and Contrastive Explanations for Behaviors of Visio
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [12/28] KEEP  GlazyBench: A Benchmark for Ceramic Glaze Property Prediction and Image Gen
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [13/28] KEEP  Recursive Agent Optimization
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [14/28] KEEP  Can RL Teach Long-Horizon Reasoning to LLMs? Expressiveness Is Key
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [15/28] KEEP  MASPO: Joint Prompt Optimization for LLM-based Multi-Agent Systems
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [16/28] KEEP  When and Why SignSGD Outperforms SGD: A Theoretical Study Based on $\ell_1$
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [17/28] KEEP  SkillOS: Learning Skill Curation for Self-Evolving Agents
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [18/28] KEEP  The Structural Origin of Attention Sink: Variance Discrepancy, Super Neuron
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [19/28] KEEP  AI CFD Scientist: Toward Open-Ended Computational Fluid Dynamics Discovery 
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [20/28] KEEP  Patch2Vuln: Agentic Reconstruction of Vulnerabilities from Linux Distributi
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [21/28] KEEP  Enthusiasm and Alienation: How Implementing Automated Journalism Affects th
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [22/28] KEEP  Towards Hybrid Intelligence in Journalism: Findings and Lessons Learnt from
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [23/28] KEEP  Promoting Ethical Awareness in Communication Analysis: Investigating Potent
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [24/28] KEEP  IDEIA: A Generative AI-Based System for Real-Time Editorial Ideation in Dig
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [25/28] KEEP  Solving cold start in news recommendations: a RippleNet-based system for la
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [26/28] KEEP  Enhancing Prediction Models with Reinforcement Learning
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [27/28] KEEP  EB-NeRD: A Large-Scale Dataset for News Recommendation
+2026-06-03 08:31:06,365 [WARNING] base — LLM relevance check failed (OPENAI_API_KEY is not set. Export it before running a scraper.) — allowing article through
+2026-06-03 08:31:06,365 [INFO] clean —   [28/28] KEEP  Computational Assessment of Hyperpartisanship in News Titles
+2026-06-03 08:31:06,365 [INFO] clean — Step 2: 0 false-positive records to remove
+2026-06-03 08:31:06,365 [INFO] clean — ────────────────────────────────────────────────────────────
+2026-06-03 08:31:06,365 [INFO] clean — Cross-source duplicates removed : 35
+2026-06-03 08:31:06,365 [INFO] clean — Academic false positives removed: 0
+2026-06-03 08:31:06,365 [INFO] clean — Records after cleaning : 883  (was 883)
+2026-06-03 08:36:03,547 [INFO] clean — DRY RUN — no changes will be written
+2026-06-03 08:36:03,550 [INFO] clean — Records before cleaning: 883
+2026-06-03 08:36:03,550 [INFO] clean — ────────────────────────────────────────────────────────────
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[WAN-IFRA] id=493  'How dmg media is building an AI ‘foundational layer’ for the news'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Nieman Lab] id=356  'How The New York Times uses a custom AI tool to track the “manosp'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Generative AI Newsroom] id=617  'Inside Público’s GenAI-Powered Voting Game'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=563  'Hearst Newspapers leverages AI for a human-centred strategy'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Generative AI Newsroom] id=627  'Can AI Triage a Pitch? A Case Study in Editorial Evaluation from '
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Google News Initiative] id=664  'Gruner + Jahr drives a cultural shift toward AI'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=538  'What Nikkei learnt from building its own Japanese AI chatbot'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=570  'Wall Street Journal taxbot answers questions (while readers try t'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Generative AI Newsroom] id=632  'EarthCheckr: Leveraging Generative AI for Environmental Journalis'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Google News Initiative] id=661  'Ringier Slovakia builds out AI to diversify'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=539  'How a small Nigerian newsroom used AI for a flooding investigatio'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Google News Initiative] id=657  'Bonnier News launches GenAI tool in record time'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=300  'How The Times of India Brings Real-Time Personalization to 1,500+'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=296  'How Bayerischer Rundfunk Used Modular Journalism to Personalize R'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=294  'Transforming Workflows with AI at Zamaneh Media'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=584  'News companies are using GenAI in these 4 interesting ways'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=292  'How Hearst Newspapers built an AI-powered, Slack-based Tool to He'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=291  'Djinn, an AI-powered Data Journalism Interface'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=543  'Meet NAT, the AI-generated presenter offering soft news to Mexica'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[WAN-IFRA] id=519  'Spain’s Relevo boosts homepage engagement by a third with AI-driv'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=547  'How Norway’s public broadcaster uses AI-generated summaries to re'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Google News Initiative] id=687  'AI is boosting Forbes’ publishing capabilities'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=595  'Rede Gazeta experiments with GenAI to create its own news assista'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=550  'How a Spanish media group created an AI tool to detect audio deep'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=598  'Hearst Newspapers leverages AI to build local content, reader loy'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Press Gazette] id=432  'Reach using AI to speed up ‘ripping’ and use same article on mult'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Press Gazette] id=433  'Semafor executive editor Gina Chua explains its Microsoft-sponsor'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[WAN-IFRA] id=524  'Argentina’s Clarín introduces AI assistant UalterAI to help boost'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Press Gazette] id=436  'How Newsquest and its seven AI-assisted reporters are using ChatG'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Generative AI Newsroom] id=613  'Decoding Bureaucracy'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Journalism.co.uk] id=401  'Swedish Aftonbladet uses automation to outpace competitors with i'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Journalism.co.uk] id=396  'Facial recognition, subtitling automation and datasets: How Sky N'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Journalism.co.uk] id=393  'Quartz AI Studio launches an open-source platform to help journal'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[Nieman Lab] drop=[Digiday] id=457  'How publishers like The Marshall Project and The Markup are testi'
+2026-06-03 08:36:03,563 [INFO] clean —   DUP  keep=[Nieman Lab] drop=[Press Gazette] id=445  'How Mediahuis is easing generative AI into its newsrooms'
+2026-06-03 08:36:03,563 [INFO] clean — Step 1: 35 duplicate records to remove
+2026-06-03 08:36:03,563 [INFO] clean — ────────────────────────────────────────────────────────────
+2026-06-03 08:36:03,564 [INFO] clean — Step 2: re-checking 28 arXiv/Semantic Scholar records with LLM
+2026-06-03 08:36:05,978 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:05,988 [INFO] clean —   [1/28] DROP  ActCam: Zero-Shot Joint Camera and 3D Motion Control for Video Generation
+2026-06-03 08:36:07,020 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:07,038 [INFO] clean —   [2/28] DROP  UniPool: A Globally Shared Expert Pool for Mixture-of-Experts
+2026-06-03 08:36:08,611 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:08,620 [INFO] clean —   [3/28] DROP  BAMI: Training-Free Bias Mitigation in GUI Grounding
+2026-06-03 08:36:10,055 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:10,056 [INFO] clean —   [4/28] DROP  Verifier-Backed Hard Problem Generation for Mathematical Reasoning
+2026-06-03 08:36:11,605 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:11,606 [INFO] clean —   [5/28] DROP  Optimizer-Model Consistency: Full Finetuning with the Same Optimizer as Pre
+2026-06-03 08:36:12,939 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:12,947 [INFO] clean —   [6/28] DROP  When No Benchmark Exists: Validating Comparative LLM Safety Scoring Without
+2026-06-03 08:36:13,837 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:13,838 [INFO] clean —   [7/28] DROP  AI Co-Mathematician: Accelerating Mathematicians with Agentic AI
+2026-06-03 08:36:15,074 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:15,076 [INFO] clean —   [8/28] DROP  Superintelligent Retrieval Agent: The Next Frontier of Information Retrieva
+2026-06-03 08:36:16,302 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:16,304 [INFO] clean —   [9/28] DROP  Are We Making Progress in Multimodal Domain Generalization? A Comprehensive
+2026-06-03 08:36:17,941 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:17,942 [INFO] clean —   [10/28] DROP  StraTA: Incentivizing Agentic Reinforcement Learning with Strategic Traject
+2026-06-03 08:36:18,844 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:18,855 [INFO] clean —   [11/28] DROP  Concept-Based Abductive and Contrastive Explanations for Behaviors of Visio
+2026-06-03 08:36:20,132 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:20,133 [INFO] clean —   [12/28] DROP  GlazyBench: A Benchmark for Ceramic Glaze Property Prediction and Image Gen
+2026-06-03 08:36:21,179 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:21,181 [INFO] clean —   [13/28] DROP  Recursive Agent Optimization
+2026-06-03 08:36:22,242 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:22,243 [INFO] clean —   [14/28] DROP  Can RL Teach Long-Horizon Reasoning to LLMs? Expressiveness Is Key
+2026-06-03 08:36:23,470 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:23,472 [INFO] clean —   [15/28] DROP  MASPO: Joint Prompt Optimization for LLM-based Multi-Agent Systems
+2026-06-03 08:36:24,322 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:24,323 [INFO] clean —   [16/28] DROP  When and Why SignSGD Outperforms SGD: A Theoretical Study Based on $\ell_1$
+2026-06-03 08:36:25,518 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:25,520 [INFO] clean —   [17/28] DROP  SkillOS: Learning Skill Curation for Self-Evolving Agents
+2026-06-03 08:36:26,709 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:26,715 [INFO] clean —   [18/28] DROP  The Structural Origin of Attention Sink: Variance Discrepancy, Super Neuron
+2026-06-03 08:36:27,772 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:27,773 [INFO] clean —   [19/28] DROP  AI CFD Scientist: Toward Open-Ended Computational Fluid Dynamics Discovery 
+2026-06-03 08:36:29,103 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:29,105 [INFO] clean —   [20/28] DROP  Patch2Vuln: Agentic Reconstruction of Vulnerabilities from Linux Distributi
+2026-06-03 08:36:29,920 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:29,922 [INFO] clean —   [21/28] KEEP  Enthusiasm and Alienation: How Implementing Automated Journalism Affects th
+2026-06-03 08:36:30,955 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:30,959 [INFO] clean —   [22/28] KEEP  Towards Hybrid Intelligence in Journalism: Findings and Lessons Learnt from
+2026-06-03 08:36:32,028 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:32,032 [INFO] clean —   [23/28] DROP  Promoting Ethical Awareness in Communication Analysis: Investigating Potent
+2026-06-03 08:36:33,506 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:33,508 [INFO] clean —   [24/28] KEEP  IDEIA: A Generative AI-Based System for Real-Time Editorial Ideation in Dig
+2026-06-03 08:36:34,902 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:34,911 [INFO] clean —   [25/28] KEEP  Solving cold start in news recommendations: a RippleNet-based system for la
+2026-06-03 08:36:35,926 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:35,934 [INFO] clean —   [26/28] KEEP  Enhancing Prediction Models with Reinforcement Learning
+2026-06-03 08:36:36,781 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:36,783 [INFO] clean —   [27/28] KEEP  EB-NeRD: A Large-Scale Dataset for News Recommendation
+2026-06-03 08:36:37,755 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:37,763 [INFO] clean —   [28/28] KEEP  Computational Assessment of Hyperpartisanship in News Titles
+2026-06-03 08:36:37,763 [INFO] clean — Step 2: 21 false-positive records to remove
+2026-06-03 08:36:37,764 [INFO] clean — ────────────────────────────────────────────────────────────
+2026-06-03 08:36:37,764 [INFO] clean — Cross-source duplicates removed : 35
+2026-06-03 08:36:37,764 [INFO] clean — Academic false positives removed: 21
+2026-06-03 08:36:37,764 [INFO] clean — Records after cleaning : 883  (was 883)
+2026-06-03 08:36:43,528 [INFO] clean — Records before cleaning: 883
+2026-06-03 08:36:43,529 [INFO] clean — ────────────────────────────────────────────────────────────
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[WAN-IFRA] id=493  'How dmg media is building an AI ‘foundational layer’ for the news'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Nieman Lab] id=356  'How The New York Times uses a custom AI tool to track the “manosp'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Generative AI Newsroom] id=617  'Inside Público’s GenAI-Powered Voting Game'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=563  'Hearst Newspapers leverages AI for a human-centred strategy'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Generative AI Newsroom] id=627  'Can AI Triage a Pitch? A Case Study in Editorial Evaluation from '
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Google News Initiative] id=664  'Gruner + Jahr drives a cultural shift toward AI'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=538  'What Nikkei learnt from building its own Japanese AI chatbot'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=570  'Wall Street Journal taxbot answers questions (while readers try t'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Generative AI Newsroom] id=632  'EarthCheckr: Leveraging Generative AI for Environmental Journalis'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Google News Initiative] id=661  'Ringier Slovakia builds out AI to diversify'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=539  'How a small Nigerian newsroom used AI for a flooding investigatio'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Google News Initiative] id=657  'Bonnier News launches GenAI tool in record time'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=300  'How The Times of India Brings Real-Time Personalization to 1,500+'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=296  'How Bayerischer Rundfunk Used Modular Journalism to Personalize R'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=294  'Transforming Workflows with AI at Zamaneh Media'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=584  'News companies are using GenAI in these 4 interesting ways'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=292  'How Hearst Newspapers built an AI-powered, Slack-based Tool to He'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[ONA AI in the Newsroom] id=291  'Djinn, an AI-powered Data Journalism Interface'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=543  'Meet NAT, the AI-generated presenter offering soft news to Mexica'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[WAN-IFRA] id=519  'Spain’s Relevo boosts homepage engagement by a third with AI-driv'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=547  'How Norway’s public broadcaster uses AI-generated summaries to re'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Google News Initiative] id=687  'AI is boosting Forbes’ publishing capabilities'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=595  'Rede Gazeta experiments with GenAI to create its own news assista'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Reuters Institute] id=550  'How a Spanish media group created an AI tool to detect audio deep'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[INMA] id=598  'Hearst Newspapers leverages AI to build local content, reader loy'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Press Gazette] id=432  'Reach using AI to speed up ‘ripping’ and use same article on mult'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Press Gazette] id=433  'Semafor executive editor Gina Chua explains its Microsoft-sponsor'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[WAN-IFRA] id=524  'Argentina’s Clarín introduces AI assistant UalterAI to help boost'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Press Gazette] id=436  'How Newsquest and its seven AI-assisted reporters are using ChatG'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Generative AI Newsroom] id=613  'Decoding Bureaucracy'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Journalism.co.uk] id=401  'Swedish Aftonbladet uses automation to outpace competitors with i'
+2026-06-03 08:36:43,540 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Journalism.co.uk] id=396  'Facial recognition, subtitling automation and datasets: How Sky N'
+2026-06-03 08:36:43,541 [INFO] clean —   DUP  keep=[JournalismAI] drop=[Journalism.co.uk] id=393  'Quartz AI Studio launches an open-source platform to help journal'
+2026-06-03 08:36:43,541 [INFO] clean —   DUP  keep=[Nieman Lab] drop=[Digiday] id=457  'How publishers like The Marshall Project and The Markup are testi'
+2026-06-03 08:36:43,541 [INFO] clean —   DUP  keep=[Nieman Lab] drop=[Press Gazette] id=445  'How Mediahuis is easing generative AI into its newsrooms'
+2026-06-03 08:36:43,541 [INFO] clean — Step 1: 35 duplicate records to remove
+2026-06-03 08:36:43,542 [INFO] clean — ────────────────────────────────────────────────────────────
+2026-06-03 08:36:43,542 [INFO] clean — Step 2: re-checking 28 arXiv/Semantic Scholar records with LLM
+2026-06-03 08:36:44,644 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:44,655 [INFO] clean —   [1/28] DROP  ActCam: Zero-Shot Joint Camera and 3D Motion Control for Video Generation
+2026-06-03 08:36:45,819 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:45,821 [INFO] clean —   [2/28] DROP  UniPool: A Globally Shared Expert Pool for Mixture-of-Experts
+2026-06-03 08:36:46,867 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:46,868 [INFO] clean —   [3/28] DROP  BAMI: Training-Free Bias Mitigation in GUI Grounding
+2026-06-03 08:36:47,944 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:47,946 [INFO] clean —   [4/28] DROP  Verifier-Backed Hard Problem Generation for Mathematical Reasoning
+2026-06-03 08:36:48,989 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:48,990 [INFO] clean —   [5/28] DROP  Optimizer-Model Consistency: Full Finetuning with the Same Optimizer as Pre
+2026-06-03 08:36:49,869 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:49,874 [INFO] clean —   [6/28] DROP  When No Benchmark Exists: Validating Comparative LLM Safety Scoring Without
+2026-06-03 08:36:50,811 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:50,813 [INFO] clean —   [7/28] DROP  AI Co-Mathematician: Accelerating Mathematicians with Agentic AI
+2026-06-03 08:36:52,245 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:52,247 [INFO] clean —   [8/28] DROP  Superintelligent Retrieval Agent: The Next Frontier of Information Retrieva
+2026-06-03 08:36:53,027 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:53,029 [INFO] clean —   [9/28] DROP  Are We Making Progress in Multimodal Domain Generalization? A Comprehensive
+2026-06-03 08:36:53,884 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:53,886 [INFO] clean —   [10/28] DROP  StraTA: Incentivizing Agentic Reinforcement Learning with Strategic Traject
+2026-06-03 08:36:54,805 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:54,807 [INFO] clean —   [11/28] DROP  Concept-Based Abductive and Contrastive Explanations for Behaviors of Visio
+2026-06-03 08:36:55,623 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:55,625 [INFO] clean —   [12/28] DROP  GlazyBench: A Benchmark for Ceramic Glaze Property Prediction and Image Gen
+2026-06-03 08:36:56,444 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:56,445 [INFO] clean —   [13/28] DROP  Recursive Agent Optimization
+2026-06-03 08:36:57,570 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:57,572 [INFO] clean —   [14/28] DROP  Can RL Teach Long-Horizon Reasoning to LLMs? Expressiveness Is Key
+2026-06-03 08:36:58,492 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:58,493 [INFO] clean —   [15/28] DROP  MASPO: Joint Prompt Optimization for LLM-based Multi-Agent Systems
+2026-06-03 08:36:59,618 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:36:59,619 [INFO] clean —   [16/28] DROP  When and Why SignSGD Outperforms SGD: A Theoretical Study Based on $\ell_1$
+2026-06-03 08:37:00,540 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:37:00,542 [INFO] clean —   [17/28] DROP  SkillOS: Learning Skill Curation for Self-Evolving Agents
+2026-06-03 08:37:01,561 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:37:01,563 [INFO] clean —   [18/28] DROP  The Structural Origin of Attention Sink: Variance Discrepancy, Super Neuron
+2026-06-03 08:37:03,156 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:37:03,158 [INFO] clean —   [19/28] DROP  AI CFD Scientist: Toward Open-Ended Computational Fluid Dynamics Discovery 
+2026-06-03 08:37:04,174 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:37:04,176 [INFO] clean —   [20/28] DROP  Patch2Vuln: Agentic Reconstruction of Vulnerabilities from Linux Distributi
+2026-06-03 08:37:05,220 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:37:05,221 [INFO] clean —   [21/28] KEEP  Enthusiasm and Alienation: How Implementing Automated Journalism Affects th
+2026-06-03 08:37:06,172 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:37:06,174 [INFO] clean —   [22/28] KEEP  Towards Hybrid Intelligence in Journalism: Findings and Lessons Learnt from
+2026-06-03 08:37:07,544 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:37:07,554 [INFO] clean —   [23/28] DROP  Promoting Ethical Awareness in Communication Analysis: Investigating Potent
+2026-06-03 08:37:08,890 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:37:08,890 [INFO] clean —   [24/28] KEEP  IDEIA: A Generative AI-Based System for Real-Time Editorial Ideation in Dig
+2026-06-03 08:37:10,062 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:37:10,063 [INFO] clean —   [25/28] KEEP  Solving cold start in news recommendations: a RippleNet-based system for la
+2026-06-03 08:37:10,830 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:37:10,836 [INFO] clean —   [26/28] KEEP  Enhancing Prediction Models with Reinforcement Learning
+2026-06-03 08:37:11,831 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:37:11,840 [INFO] clean —   [27/28] KEEP  EB-NeRD: A Large-Scale Dataset for News Recommendation
+2026-06-03 08:37:12,865 [INFO] httpx — HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 08:37:12,869 [INFO] clean —   [28/28] KEEP  Computational Assessment of Hyperpartisanship in News Titles
+2026-06-03 08:37:12,869 [INFO] clean — Step 2: 21 false-positive records to remove
+2026-06-03 08:37:12,872 [INFO] clean — ────────────────────────────────────────────────────────────
+2026-06-03 08:37:12,872 [INFO] clean — Cross-source duplicates removed : 35
+2026-06-03 08:37:12,872 [INFO] clean — Academic false positives removed: 21
+2026-06-03 08:37:12,872 [INFO] clean — Records after cleaning : 827  (was 883)

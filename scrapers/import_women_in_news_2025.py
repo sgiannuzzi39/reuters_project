@@ -25,7 +25,7 @@ logger = logging.getLogger("women_in_news")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s - %(message)s")
 
-SOURCE_NAME = "WAN-IFRA / Women in News: Age of AI in the Newsroom"
+SOURCE_NAME = "WAN-IFRA Age of AI in the Newsroom"
 SOURCE_CAT  = "Curated"
 SOURCE_URL  = "https://womeninnews.org/wp-content/uploads/2025/05/The-Age-of-AI-in-the-newsroom-Report_EN.pdf"
 DATE_PUB    = "2025-05"

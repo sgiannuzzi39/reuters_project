@@ -19,7 +19,7 @@ from openai import OpenAI
 ROOT_DIR  = Path(__file__).resolve().parent.parent
 DATA_DIR  = ROOT_DIR / "data"
 LOG_DIR   = ROOT_DIR / "logs"
-DB_PATH   = DATA_DIR / "usecases.db"
+DB_PATH   = DATA_DIR / "usecases_FINAL.db"
 
 DATA_DIR.mkdir(exist_ok=True)
 LOG_DIR.mkdir(exist_ok=True)

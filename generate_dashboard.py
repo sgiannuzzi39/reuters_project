@@ -54,9 +54,10 @@ def load_data(db_path):
         yr = (r["date_published"] or "")[:4]
         if yr and yr.isdigit() and 2010 <= int(yr) <= 2030:
             by_year[yr] = by_year.get(yr, 0) + 1
+        EXCLUDE_REGIONS = {"Global", "Africa", "Europe", "Asia", "Latin America", "Middle East"}
         for c in (r["country"] or "").split(","):
             c = COUNTRY_NORM.get(c.strip(), c.strip())
-            if c and c != "Global":
+            if c and c not in EXCLUDE_REGIONS:
                 by_country[c] = by_country.get(c, 0) + 1
         cat = (r["source_category"] or "").strip()
         if cat:
@@ -89,7 +90,7 @@ def load_data(db_path):
     stats = {
         "total":          len(data),
         "by_year":        sorted(by_year.items()),
-        "top_countries":  sorted(by_country.items(),  key=lambda x: -x[1])[:15],
+        "top_countries":  sorted(by_country.items(),  key=lambda x: -x[1]),
         "top_categories": sorted(by_category.items(), key=lambda x: -x[1])[:12],
         "top_sources":    sorted(by_source.items(),   key=lambda x: -x[1])[:15],
         "source_names":   sorted(by_source.keys()),
@@ -151,6 +152,13 @@ body {
   transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
 }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+.inst-attr {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em;
+  color: var(--ash); margin-top: 20px;
+}
+.inst-attr a { color: var(--ash); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.inst-attr a:hover { color: var(--rust); border-bottom-color: var(--rust); }
 
 nav {
   position: sticky; top: 0; z-index: 100;
@@ -424,15 +432,18 @@ nav {
 .annotation-label { font-family: var(--serif); font-size: 16px; font-style: italic; color: var(--ink); margin-bottom: 10px; }
 .annotation-text { font-size: 12px; color: var(--ash); line-height: 1.6; }
 
-.chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
 .chart-panel { background: white; border: 1px solid var(--rule); border-radius: var(--radius); padding: 24px; }
 .chart-panel-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); margin-bottom: 20px; }
+.chart-panel-scroll { max-height: 520px; overflow-y: auto; padding-right: 4px; }
+.chart-panel-scroll::-webkit-scrollbar { width: 3px; }
+.chart-panel-scroll::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 2px; }
 .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.bar-label { font-size: 12px; color: var(--ink); min-width: 130px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.bar-track { flex: 1; height: 18px; background: var(--rule); border-radius: 2px; overflow: hidden; }
+.bar-label { font-size: 11px; color: var(--ink); width: 190px; min-width: 190px; max-width: 190px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { flex: 1; height: 16px; background: var(--rule); border-radius: 2px; overflow: hidden; min-width: 60px; }
 .bar-fill { height: 100%; border-radius: 2px; background: var(--rust); transform-origin: left; transform: scaleX(0); transition: transform 1s cubic-bezier(0.22,1,0.36,1); }
 .bar-fill.animated { transform: scaleX(1); }
-.bar-count { font-family: var(--mono); font-size: 10px; color: var(--ash); min-width: 26px; text-align: right; }
+.bar-count { font-family: var(--mono); font-size: 10px; color: var(--ash); min-width: 30px; text-align: right; }
 
 footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mono); font-size: 10px; color: var(--ash); text-align: center; letter-spacing: 0.05em; }
 .footer-inner { max-width: 1280px; margin: 0 auto; }
@@ -473,7 +484,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
 </nav>
 
 <section class="hero fade-up">
-  <div class="hero-eyebrow">Oxford Dissertation Research</div>
+  <p class="inst-attr"><a href="https://reutersinstitute.politics.ox.ac.uk" target="_blank" rel="noopener">Reuters Institute for the Study of Journalism</a> · University of Oxford</p>
   <h1>AI Adoption in<br><em>News Organisations</em></h1>
   <p class="hero-sub">A systematic dataset of publicly documented AI use cases in newsrooms worldwide, aggregated from leading industry databases and research reports.</p>
   <div class="hero-sources" id="heroSources"></div>
@@ -558,37 +569,14 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
       <div class="timeline-legend" id="timelineLegend"></div>
     </div>
 
-    <div class="annotation-grid fade-up">
-      <div class="annotation-card">
-        <div class="annotation-year">2017 – 2020</div>
-        <div class="annotation-label">Foundation era</div>
-        <p class="annotation-text">Early adoption concentrated in core production tasks — automation, newsgathering tools, and subscription optimisation. Research labs at major outlets (NYT, BBC, Reuters) dominate.</p>
-      </div>
-      <div class="annotation-card">
-        <div class="annotation-year">2021 – 2022</div>
-        <div class="annotation-label">Consolidation</div>
-        <p class="annotation-text">A quieter period of embedding earlier experiments into workflows. Investigations and synthetic media grow. Fewer splashy launches, more operational integration.</p>
-      </div>
-      <div class="annotation-card">
-        <div class="annotation-year">2023 – 2024</div>
-        <div class="annotation-label">Generative AI wave</div>
-        <p class="annotation-text">ChatGPT's launch reshapes the landscape. Generative AI and News distribution surge. Audience Engagement tools proliferate. The mix of who is experimenting broadens dramatically.</p>
-      </div>
-      <div class="annotation-card">
-        <div class="annotation-year">2025</div>
-        <div class="annotation-label">Scaling &amp; strategy</div>
-        <p class="annotation-text">News production and distribution reach peak documented volume. AI Strategy cases suggest newsrooms moving from experiments to institutional policy. A more mature, if uneven, adoption landscape.</p>
-      </div>
-    </div>
-
     <div class="chart-grid fade-up">
       <div class="chart-panel">
         <div class="chart-panel-label">Records by source</div>
         <div id="catChart"></div>
       </div>
       <div class="chart-panel">
-        <div class="chart-panel-label">Top countries</div>
-        <div id="countryChart"></div>
+        <div class="chart-panel-label">All countries</div>
+        <div class="chart-panel-scroll"><div id="countryChart"></div></div>
       </div>
     </div>
   </div>
@@ -596,7 +584,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
 
 <footer>
   <div class="footer-inner">
-    Oxford University Dissertation · AI in Journalism · Data collected from publicly available sources
+    Reuters Institute for the Study of Journalism at Oxford University · AI in Journalism · Data collected from publicly available sources
   </div>
 </footer>
 
@@ -626,32 +614,27 @@ var observer = new IntersectionObserver(function(entries) {
 document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
 
 function init() {
-  fetch('data.json')
-    .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then(function(payload) {
-      ALL_DATA = payload.records;
-      STATS = payload.stats;
-      var g = document.getElementById('generatedAt');
-      if (g) g.textContent = 'Updated ' + payload.generated_at;
-      filtered = ALL_DATA.slice();
-      buildStats();
-      var hs = document.getElementById('heroSources');
-      if (hs && STATS.source_names) {
-        hs.innerHTML = STATS.source_names.map(function(s) {
-          return '<span class="source-pill">' + esc(s) + '</span>';
-        }).join('');
-      }
-      buildYearChart();
-      buildFilters('categoryFilters', 'categories', activeCategories, toggleCategory);
-      buildFilters('sourceFilters', 'sources', activeSources, toggleSource);
-      buildFilters('countryFilters', 'countries', activeCountries, toggleCountry);
-      buildCharts();
-      applyFilters();
-    })
-    .catch(function(err) {
-      document.getElementById('cards').innerHTML =
-        '<div class="state-msg"><p>Could not load data</p><p>' + err.message + '</p></div>';
-    });
+  (function() {
+    var payload = __INLINE_DATA__;
+    ALL_DATA = payload.records;
+    STATS = payload.stats;
+    var g = document.getElementById('generatedAt');
+    if (g) g.textContent = 'Updated ' + payload.generated_at;
+    filtered = ALL_DATA.slice();
+    buildStats();
+    var hs = document.getElementById('heroSources');
+    if (hs && STATS.source_names) {
+      hs.innerHTML = STATS.source_names.map(function(s) {
+        return '<span class="source-pill">' + esc(s) + '</span>';
+      }).join('');
+    }
+    buildYearChart();
+    buildFilters('categoryFilters', 'categories', activeCategories, toggleCategory);
+    buildFilters('sourceFilters', 'sources', activeSources, toggleSource);
+    buildFilters('countryFilters', 'countries', activeCountries, toggleCountry);
+    buildCharts();
+    applyFilters();
+  })();
 
   document.getElementById('searchInput').addEventListener('input', function(e) {
     searchQuery = e.target.value.toLowerCase();
@@ -848,8 +831,8 @@ var CAT_COLORS = {
 
 function buildCharts() {
   buildTimeline();
-  buildBarChart('catChart', STATS.top_sources || [], 15);
-  buildBarChart('countryChart', STATS.top_countries || [], 10);
+  buildBarChart('catChart', STATS.top_sources || [], 20);
+  buildBarChart('countryChart', STATS.top_countries || [], 999);
   var yr = document.getElementById('insightsTotalYears');
   if (yr && STATS.by_year) yr.textContent = STATS.by_year.length;
 }
@@ -1248,24 +1231,19 @@ var searchQuery = '', sortCol = 'date', sortDir = -1;
 function esc(s) { var el = document.createElement('div'); el.textContent = String(s||''); return el.innerHTML; }
 
 function init() {
-  fetch('data.json')
-    .then(function(r) { if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-    .then(function(p) {
-      ALL_DATA = p.records; STATS = p.stats;
-      var g = document.getElementById('generatedAt');
-      if (g) g.textContent = 'Updated ' + p.generated_at;
-      filtered = ALL_DATA.slice();
-      buildStats();
-      buildYearChart();
-      buildFilters('sourceFilters',  'source',  activeSources,  toggleSource);
-      buildFilters('countryFilters', 'country', activeCountries, toggleCountry);
-      buildFilters('typeFilters',    'type',    activeTypes,     toggleType);
-      applyFilters();
-    })
-    .catch(function(err) {
-      document.getElementById('tableBody').innerHTML =
-        '<tr><td colspan="7"><div class="empty-state"><p>Could not load data</p><p>'+err.message+'</p></div></td></tr>';
-    });
+  (function() {
+    var p = __INLINE_DATA__;
+    ALL_DATA = p.records; STATS = p.stats;
+    var g = document.getElementById('generatedAt');
+    if (g) g.textContent = 'Updated ' + p.generated_at;
+    filtered = ALL_DATA.slice();
+    buildStats();
+    buildYearChart();
+    buildFilters('sourceFilters',  'source',  activeSources,  toggleSource);
+    buildFilters('countryFilters', 'country', activeCountries, toggleCountry);
+    buildFilters('typeFilters',    'type',    activeTypes,     toggleType);
+    applyFilters();
+  })();
   document.getElementById('searchInput').addEventListener('input', function(e) { searchQuery = e.target.value.toLowerCase(); applyFilters(); });
   document.getElementById('resetBtn').addEventListener('click', resetAll);
   document.getElementById('filterClear').addEventListener('click', resetAll);
@@ -1458,20 +1436,22 @@ def main():
 
     generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
-    # Write data.json
-    data_path = out_dir / "data.json"
     payload = {"generated_at": generated_at, "records": data, "stats": stats}
+    inline_json = json.dumps(payload, ensure_ascii=False)
+
+    # Write data.json (kept for GitHub Pages / HTTP serving)
+    data_path = out_dir / "data.json"
     data_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print("Data written:        ", data_path, f"({data_path.stat().st_size // 1024} KB)")
 
-    # Write index.html
+    # Write index.html — inline JSON so it works from file:// without a server
     html_path = out_dir / "index.html"
-    html_path.write_text(HTML, encoding="utf-8")
+    html_path.write_text(HTML.replace("__INLINE_DATA__", inline_json), encoding="utf-8")
     print("Dashboard written:   ", html_path)
 
     # Write spreadsheet.html
     sheet_path = out_dir / "spreadsheet.html"
-    sheet_path.write_text(SPREADSHEET_HTML, encoding="utf-8")
+    sheet_path.write_text(SPREADSHEET_HTML.replace("__INLINE_DATA__", inline_json), encoding="utf-8")
     print("Spreadsheet written: ", sheet_path)
 
     print()
