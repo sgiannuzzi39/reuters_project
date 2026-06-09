@@ -48,6 +48,7 @@ def load_data(db_path):
     by_source      = {}
     by_task_type   = {}
     by_effect_type = {}
+    source_detail  = {}
 
     for r in data:
         yr = (r["date_published"] or "")[:4]
@@ -61,8 +62,12 @@ def load_data(db_path):
         if cat:
             by_category[cat] = by_category.get(cat, 0) + 1
         src = (r["source_name"] or "").strip()
+        cat = (r["source_category"] or "").strip()
         if src:
             by_source[src] = by_source.get(src, 0) + 1
+            if src not in source_detail:
+                source_detail[src] = {"category": cat, "count": 0}
+            source_detail[src]["count"] += 1
         tt = (r["task_type"] or "").strip()
         if tt:
             by_task_type[tt] = by_task_type.get(tt, 0) + 1
@@ -98,6 +103,11 @@ def load_data(db_path):
         "top_categories": sorted(by_category.items(), key=lambda x: -x[1])[:12],
         "top_sources":    sorted(by_source.items(),   key=lambda x: -x[1])[:15],
         "source_names":   sorted(by_source.keys()),
+        "sources_list":   sorted(
+            [{"name": k, "category": v["category"], "count": v["count"]}
+             for k, v in source_detail.items()],
+            key=lambda x: -x["count"]
+        ),
         "task_by_year":   _build_timeline(data, "task_type",   task_names),
         "effect_by_year": _build_timeline(data, "effect_type", effect_names),
     }
@@ -113,24 +123,24 @@ HTML = """\
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI in the Newsroom — Dataset Explorer</title>
+<title>AI Use Cases in News Organisations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --paper:   #f7f5f0;
-  --ink:     #2c2825;
+  --ink:     #002147;
   --rust:    #b65536;
   --rust-lt: rgba(182,85,54,0.08);
-  --ash:     #756f69;
-  --rule:    #e4dfd8;
-  --card:    #faf8f5;
+  --ash:     #5c6577;
+  --rule:    #dce2ea;
+  --card:    #faf9f6;
   --mono:    'JetBrains Mono', monospace;
-  --sans:    'DM Sans', sans-serif;
-  --serif:   'DM Serif Display', serif;
+  --sans:    'Source Sans 3', sans-serif;
+  --serif:   'Playfair Display', serif;
   --green:   #2a8d46;
-  --blue:    #1a6dd4;
+  --blue:    #002147;
   --amber:   #cc7722;
   --radius:  2px;
 }
@@ -167,9 +177,8 @@ body {
 
 nav {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(247,245,240,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--rule);
+  background: #002147;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
   padding: 0 32px;
 }
 .nav-inner {
@@ -179,7 +188,7 @@ nav {
 }
 .nav-brand {
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--ink); text-decoration: none;
+  text-transform: uppercase; color: white; text-decoration: none;
   display: flex; align-items: center; gap: 10px;
 }
 .brand-dot {
@@ -187,15 +196,15 @@ nav {
   animation: pulse 3s ease-in-out infinite;
 }
 @keyframes pulse { 0%,100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
-.nav-meta { font-family: var(--mono); font-size: 10px; color: var(--ash); letter-spacing: 0.05em; }
+.nav-meta { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.45); letter-spacing: 0.05em; }
 .nav-links { display: flex; align-items: center; gap: 20px; }
 .nav-link {
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--ash); text-decoration: none;
+  text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none;
   transition: color 0.15s;
 }
-.nav-link:hover { color: var(--rust); }
-.nav-link.active { color: var(--rust); }
+.nav-link:hover { color: white; }
+.nav-link.active { color: white; }
 
 .hero {
   max-width: 1280px; margin: 0 auto;
@@ -220,13 +229,32 @@ nav {
   font-size: 15px; color: var(--ash); line-height: 1.6; max-width: 560px;
   margin-bottom: 32px;
 }
-.hero-sources { display: flex; flex-wrap: wrap; gap: 8px; }
-.source-pill {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em;
-  text-transform: uppercase; color: var(--ash);
-  border: 1px solid var(--rule); border-radius: 20px;
-  padding: 4px 12px; background: var(--card);
+.figure-note {
+  margin-top: 16px; padding: 12px 16px;
+  background: var(--card); border-left: 3px solid var(--rule);
+  font-size: 12.5px; color: var(--ash); line-height: 1.65;
 }
+.figure-note strong { color: var(--ink); font-weight: 600; }
+
+.methods-section { border-top: 1px solid var(--rule); padding: 64px 32px 80px; }
+.methods-inner { max-width: 1280px; margin: 0 auto; }
+.methods-body { max-width: 780px; margin-top: 24px; }
+.methods-body p { font-size: 14.5px; color: var(--ash); line-height: 1.8; margin-bottom: 16px; }
+.methods-body p:last-child { margin-bottom: 0; }
+.methods-body strong { color: var(--ink); font-weight: 600; }
+
+.sources-section { border-top: 1px solid var(--rule); padding: 64px 32px 80px; background: var(--card); }
+.sources-inner { max-width: 1280px; margin: 0 auto; }
+.sources-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+.sources-table th { text-align: left; padding: 8px 16px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ash); border-bottom: 2px solid var(--rule); }
+.sources-table td { padding: 10px 16px; font-size: 13px; color: var(--ink); border-bottom: 1px solid var(--rule); vertical-align: middle; }
+.sources-table tr:last-child td { border-bottom: none; }
+.src-count-cell { font-family: var(--mono); font-size: 11px; color: var(--ash); text-align: right; }
+.src-cat { display: inline-block; padding: 2px 8px; border-radius: 2px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em; }
+.src-cat-academic { background: #eef2fb; color: #1a4b9a; border: 1px solid #c5d4f0; }
+.src-cat-industry  { background: #fdf3e8; color: #8a4a0a; border: 1px solid #f0d5b0; }
+.src-cat-curated   { background: #f2ebfb; color: #5b1fa8; border: 1px solid #d8c4f2; }
+.src-cat-database  { background: var(--rust-lt); color: var(--rust); border: 1px solid rgba(182,85,54,0.2); }
 
 .stats-band { border-bottom: 1px solid var(--rule); background: var(--card); }
 .stats-inner {
@@ -256,7 +284,7 @@ nav {
   padding: 32px 0 32px;
   position: sticky; top: 48px;
   max-height: calc(100vh - 48px);
-  overflow-y: auto;
+  overflow-y: auto; overflow-x: hidden;
   border-right: 1px solid var(--rule);
   padding-right: 32px;
 }
@@ -298,11 +326,11 @@ nav {
   border: 1px solid var(--rule); background: var(--card);
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.03em;
   color: var(--ash); cursor: pointer; transition: all 0.15s;
-  margin: 2px; white-space: nowrap;
+  margin: 2px; word-break: break-word;
 }
 .filter-pill:hover { border-color: var(--rust); color: var(--rust); background: var(--rust-lt); }
 .filter-pill.active { background: var(--rust); border-color: var(--rust); color: white; }
-.filter-pill .pill-count { font-size: 9px; opacity: 0.7; background: rgba(0,0,0,0.1); border-radius: 10px; padding: 0 5px; }
+.filter-pill .pill-count { font-size: 9px; opacity: 0.7; background: rgba(0,0,0,0.1); border-radius: 10px; padding: 0 5px; flex-shrink: 0; }
 .filter-pill.active .pill-count { background: rgba(255,255,255,0.25); opacity: 1; }
 .pill-group { display: flex; flex-wrap: wrap; gap: 2px; }
 
@@ -409,8 +437,8 @@ nav {
 .timeline-block { margin-bottom: 52px; }
 .timeline-block:last-of-type { margin-bottom: 0; }
 .timeline-block-label {
-  font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--ash); margin-bottom: 20px;
+  font-family: var(--sans); font-size: 16px; font-weight: 600;
+  color: var(--ink); margin-bottom: 20px;
 }
 
 .timeline-chart {
@@ -451,7 +479,7 @@ nav {
 
 .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
 .chart-panel { background: white; border: 1px solid var(--rule); border-radius: var(--radius); padding: 24px; }
-.chart-panel-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); margin-bottom: 20px; }
+.chart-panel-label { font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 20px; }
 .chart-panel-scroll { max-height: 520px; overflow-y: auto; padding-right: 4px; }
 .chart-panel-scroll::-webkit-scrollbar { width: 3px; }
 .chart-panel-scroll::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 2px; }
@@ -490,7 +518,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
   <div class="nav-inner">
     <a class="nav-brand" href="#">
       <span class="brand-dot"></span>
-      AI in the Newsroom
+      AI in News Organisations
     </a>
     <div class="nav-links">
       <a class="nav-link active" href="index.html">Overview</a>
@@ -502,9 +530,8 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
 
 <section class="hero fade-up">
   <p class="inst-attr"><a href="https://reutersinstitute.politics.ox.ac.uk" target="_blank" rel="noopener">Reuters Institute for the Study of Journalism</a> · University of Oxford</p>
-  <h1>AI Adoption in<br><em>News Organisations</em></h1>
-  <p class="hero-sub">A systematic dataset of publicly documented AI use cases in newsrooms worldwide, aggregated from leading industry databases and research reports.</p>
-  <div class="hero-sources" id="heroSources"></div>
+  <h1>AI Use Cases in<br><em>News Organisations</em></h1>
+  <p class="hero-sub">A dataset of publicly documented AI use cases in news organisations worldwide, drawn from industry publications, research databases, and curated reports.</p>
 </section>
 
 <div class="stats-band">
@@ -596,6 +623,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
         <div class="timeline-bars" id="effectTimelineBars"></div>
         <div class="timeline-legend" id="effectTimelineLegend"></div>
       </div>
+      <div class="figure-note"><strong>Efficiency</strong> — AI reduces time, cost, or effort for tasks that were previously done manually. <strong>Effectiveness &amp; scaling</strong> — AI enables tasks or volumes not previously possible, or dramatically expands what a team can produce. <strong>Optimisation</strong> — AI improves quality, targeting, personalisation, or distribution without fundamentally changing the underlying task.</div>
     </div>
 
     <div class="chart-grid fade-up">
@@ -611,9 +639,45 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--mo
   </div>
 </section>
 
+<section class="methods-section">
+  <div class="methods-inner">
+    <div class="fade-up">
+      <div class="hero-eyebrow">Methodology</div>
+      <h2 class="insights-title">How this dataset was built</h2>
+    </div>
+    <div class="methods-body fade-up">
+      <p>This dataset was compiled by systematically scraping and analysing publicly available reporting on AI adoption in news organisations from 16 industry, research, and curated sources. Each record represents a documented AI use case — a specific deployment or application of AI technology by an identifiable news organisation, as reported in trade publications, research databases, industry reports, or academic outlets.</p>
+      <p>Use cases were identified through automated scraping of source websites, then filtered using a language model (GPT-4o-mini) to exclude articles that did not describe a concrete AI application by a news organisation. Cases were then automatically classified by functional task type (what the AI does) and primary effect type (what benefit it delivers), with uncertain classifications flagged for low confidence.</p>
+      <p><strong>Important limitations.</strong> This dataset captures only what has been publicly documented, in English, across a specific set of monitored sources. Many deployments go unreported, while high-profile organisations attract disproportionate coverage. Documentation standards and terminology vary significantly across outlets, regions, and time periods. The dataset should be read as a partial and illustrative snapshot of documented AI adoption — not a definitive map of the field.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sources-section">
+  <div class="sources-inner">
+    <div class="fade-up">
+      <div class="hero-eyebrow">Sources</div>
+      <h2 class="insights-title">Data sources</h2>
+      <p class="insights-sub">The <span id="sourcesTotal"></span> sources below span industry reporting, curated databases, and academic and practitioner research.</p>
+    </div>
+    <div class="fade-up">
+      <table class="sources-table">
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Category</th>
+            <th style="text-align:right">Records</th>
+          </tr>
+        </thead>
+        <tbody id="sourcesTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-inner">
-    Reuters Institute for the Study of Journalism at Oxford University · AI in Journalism · Data collected from publicly available sources
+    Reuters Institute for the Study of Journalism · University of Oxford · AI use cases in news organisations
   </div>
 </footer>
 
@@ -651,12 +715,6 @@ function init() {
     if (g) g.textContent = 'Updated ' + payload.generated_at;
     filtered = ALL_DATA.slice();
     buildStats();
-    var hs = document.getElementById('heroSources');
-    if (hs && STATS.source_names) {
-      hs.innerHTML = STATS.source_names.map(function(s) {
-        return '<span class="source-pill">' + esc(s) + '</span>';
-      }).join('');
-    }
     buildYearChart();
     buildFilters('categoryFilters', 'categories', activeCategories, toggleCategory);
     buildFilters('sourceFilters', 'sources', activeSources, toggleSource);
@@ -881,8 +939,24 @@ function buildCharts() {
   buildTimeline('effectTimeline', 'effectTimelineYears', 'effectTimelineBars', 'effectTimelineLegend', STATS.effect_by_year, EFFECT_COLORS);
   buildBarChart('catChart', STATS.top_sources || [], 20);
   buildBarChart('countryChart', STATS.top_countries || [], 999);
+  buildSourcesList();
   var yr = document.getElementById('insightsTotalYears');
   if (yr && STATS.by_year) yr.textContent = STATS.by_year.length;
+}
+
+function buildSourcesList() {
+  var body = document.getElementById('sourcesTableBody');
+  if (!body || !STATS.sources_list) return;
+  var catCls = {'Academic':'src-cat-academic','Industry':'src-cat-industry','Curated':'src-cat-curated','Database':'src-cat-database'};
+  body.innerHTML = STATS.sources_list.map(function(s) {
+    return '<tr>' +
+      '<td>' + esc(s.name) + '</td>' +
+      '<td><span class="src-cat ' + (catCls[s.category] || '') + '">' + esc(s.category) + '</span></td>' +
+      '<td class="src-count-cell">' + s.count + '</td>' +
+      '</tr>';
+  }).join('');
+  var tot = document.getElementById('sourcesTotal');
+  if (tot) tot.textContent = STATS.sources_list.length;
 }
 
 function buildTimeline(containerId, yearsId, barsId, legendId, data, colorMap) {
@@ -1029,22 +1103,22 @@ SPREADSHEET_HTML = """\
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI in the Newsroom — Spreadsheet</title>
+<title>AI Use Cases in News Organisations — Spreadsheet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --paper:   #f7f5f0;
-  --ink:     #2c2825;
+  --ink:     #002147;
   --rust:    #b65536;
   --rust-lt: rgba(182,85,54,0.08);
-  --ash:     #756f69;
-  --rule:    #e4dfd8;
-  --card:    #faf8f5;
+  --ash:     #5c6577;
+  --rule:    #dce2ea;
+  --card:    #faf9f6;
   --mono:    'JetBrains Mono', monospace;
-  --sans:    'DM Sans', sans-serif;
-  --serif:   'DM Serif Display', serif;
+  --sans:    'Source Sans 3', sans-serif;
+  --serif:   'Playfair Display', serif;
   --nav-h:   48px;
   --strip-h: 56px;
 }
@@ -1056,8 +1130,8 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); -w
 /* Nav */
 nav {
   height: var(--nav-h); flex-shrink: 0;
-  background: rgba(247,245,240,0.96); backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--rule);
+  background: #002147;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
   padding: 0 32px; z-index: 20;
 }
 .nav-inner {
@@ -1067,16 +1141,16 @@ nav {
 }
 .nav-brand {
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--ink); text-decoration: none;
+  text-transform: uppercase; color: white; text-decoration: none;
   display: flex; align-items: center; gap: 10px;
 }
 .brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rust); animation: pulse 3s ease-in-out infinite; }
 @keyframes pulse { 0%,100% { opacity:0.6; transform:scale(1); } 50% { opacity:1; transform:scale(1.2); } }
 .nav-links { display: flex; align-items: center; gap: 20px; }
-.nav-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ash); text-decoration: none; transition: color 0.15s; }
-.nav-link:hover { color: var(--rust); }
-.nav-link.active { color: var(--rust); }
-.nav-meta { font-family: var(--mono); font-size: 10px; color: var(--ash); letter-spacing: 0.05em; }
+.nav-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.15s; }
+.nav-link:hover { color: white; }
+.nav-link.active { color: white; }
+.nav-meta { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.45); letter-spacing: 0.05em; }
 
 /* Stats strip */
 .stats-strip {
@@ -1095,7 +1169,7 @@ nav {
 /* Sidebar */
 .sidebar {
   background: var(--card); border-right: 1px solid var(--rule);
-  overflow-y: auto; padding: 16px;
+  overflow-y: auto; overflow-x: hidden; padding: 16px;
   display: flex; flex-direction: column; gap: 18px;
 }
 .sidebar::-webkit-scrollbar { width: 3px; }
@@ -1115,7 +1189,7 @@ nav {
 .year-bar-wrap.active .year-label, .year-bar-wrap:hover .year-label { color: var(--rust); }
 
 .pill-group { display: flex; flex-wrap: wrap; gap: 3px; }
-.filter-pill { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 20px; border: 1px solid var(--rule); background: white; font-family: var(--mono); font-size: 9px; letter-spacing: 0.03em; color: var(--ash); cursor: pointer; transition: all 0.12s; white-space: nowrap; }
+.filter-pill { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 20px; border: 1px solid var(--rule); background: white; font-family: var(--mono); font-size: 9px; letter-spacing: 0.03em; color: var(--ash); cursor: pointer; transition: all 0.12s; word-break: break-word; }
 .filter-pill:hover { border-color: var(--rust); color: var(--rust); background: var(--rust-lt); }
 .filter-pill.active { background: var(--rust); border-color: var(--rust); color: white; }
 .filter-pill .cnt { opacity: 0.6; font-size: 8px; }
@@ -1211,7 +1285,7 @@ td.col-type { overflow: visible; }
   <div class="nav-inner">
     <a class="nav-brand" href="index.html">
       <span class="brand-dot"></span>
-      AI in the Newsroom
+      AI in News Organisations
     </a>
     <div class="nav-links">
       <a class="nav-link" href="index.html">Overview</a>
