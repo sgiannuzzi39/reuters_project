@@ -53,7 +53,7 @@ def load_data(db_path):
 
     for r in data:
         yr = (r["date_published"] or "")[:4]
-        if yr and yr.isdigit() and 2010 <= int(yr) <= 2030:
+        if yr and yr.isdigit() and 2008 <= int(yr) <= 2030:
             by_year[yr] = by_year.get(yr, 0) + 1
         for c in (r["country"] or "").split(","):
             c = COUNTRY_NORM.get(c.strip(), c.strip())
@@ -83,7 +83,7 @@ def load_data(db_path):
         year_buckets = {}
         for r in data:
             yr = (r["date_published"] or "")[:4]
-            if not yr or not yr.isdigit() or int(yr) < 2014 or int(yr) > 2026:
+            if not yr or not yr.isdigit() or int(yr) < 2008 or int(yr) > 2026:
                 continue
             val = (r.get(field) or "").strip()
             if not val:
@@ -97,6 +97,25 @@ def load_data(db_path):
             "categories": {n: [year_buckets.get(yr, {}).get(n, 0) for yr in years] for n in names},
         }
 
+    SOURCE_URLS = {
+        "arXiv":                                "https://arxiv.org/search/",
+        "Columbia Journalism Review":           "https://www.cjr.org",
+        "Digiday":                              "https://digiday.com",
+        "Editor & Publisher":                   "https://www.editorandpublisher.com",
+        "Generative AI Newsroom":               "https://generative-ai-newsroom.com",
+        "Google News Initiative":               "https://newsinitiative.withgoogle.com/resources/stories/",
+        "INMA":                                 "https://www.inma.org",
+        "Journalism.co.uk":                     "https://www.journalism.co.uk",
+        "JournalismAI":                         "https://www.journalismai.info/resources/case-studies",
+        "Nieman Lab":                           "https://www.niemanlab.org",
+        "Poynter":                              "https://www.poynter.org",
+        "Press Gazette":                        "https://pressgazette.co.uk",
+        "Reuters Institute":                    "https://reutersinstitute.politics.ox.ac.uk",
+        "Reuters Institute Digital News Report 2025": "https://www.digitalnewsreport.org/",
+        "WAN-IFRA":                             "https://wan-ifra.org",
+        "WAN-IFRA Age of AI in the Newsroom":   "https://womeninnews.org/wp-content/uploads/2025/05/The-Age-of-AI-in-the-newsroom-Report_EN.pdf",
+    }
+
     task_names   = [t for t, _ in sorted(by_task_type.items(),   key=lambda x: -x[1])]
     effect_names = [e for e, _ in sorted(by_effect_type.items(), key=lambda x: -x[1])]
     gate_names   = [g for g, _ in sorted(by_gate_stage.items(),  key=lambda x: -x[1])]
@@ -109,7 +128,8 @@ def load_data(db_path):
         "top_sources":    sorted(by_source.items(),   key=lambda x: -x[1])[:15],
         "source_names":   sorted(by_source.keys()),
         "sources_list":   sorted(
-            [{"name": k, "category": v["category"], "count": v["count"]}
+            [{"name": k, "category": v["category"], "count": v["count"],
+              "url": SOURCE_URLS.get(k, "")}
              for k, v in source_detail.items()],
             key=lambda x: -x["count"]
         ),
@@ -132,7 +152,7 @@ HTML = """\
 <title>AI Use Cases in News Organisations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <style>
 :root {
   --paper:   #f7f8fa;
@@ -143,7 +163,7 @@ HTML = """\
   --ash:     #676f7a;
   --rule:    #e5e5e5;
   --card:    #ffffff;
-  --sans:    'Space Grotesk', sans-serif;
+  --sans:    'Playfair Display', sans-serif;
   --green:   #2a8d46;
   --blue:    #0074bd;
   --amber:   #b07a00;
@@ -210,10 +230,10 @@ nav {
 }
 .hero h1 {
   font-family: var(--sans); font-size: clamp(40px, 6vw, 72px);
-  font-weight: 300; line-height: 1.08; letter-spacing: -0.02em;
+  font-weight: 500; line-height: 1.08; letter-spacing: -0.02em;
   color: var(--ink); margin-bottom: 20px;
 }
-.hero h1 em { font-style: italic; color: var(--rust); }
+.hero h1 em { font-style: normal; color: var(--rust); }
 .hero-sub {
   font-size: 18px; color: var(--ash);
   line-height: 1.72; max-width: 540px; margin-bottom: 32px; font-weight: 300;
@@ -268,7 +288,7 @@ nav {
 .insights-section { border-top: 1px solid var(--rule); background: var(--card); padding: 64px 32px 80px; }
 .insights-inner { max-width: 1280px; margin: 0 auto; }
 .insights-header { margin-bottom: 48px; }
-.insights-title { font-family: var(--sans); font-size: clamp(26px, 3vw, 38px); font-weight: 300; line-height: 1.1; margin-bottom: 14px; margin-top: 12px; letter-spacing: -0.01em; }
+.insights-title { font-family: var(--sans); font-size: clamp(26px, 3vw, 38px); font-weight: 500; line-height: 1.1; margin-bottom: 14px; margin-top: 12px; letter-spacing: -0.01em; }
 .insights-sub { font-size: 17px; color: var(--ash); max-width: 600px; line-height: 1.68; }
 
 .timeline-block { margin-bottom: 52px; }
@@ -355,6 +375,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
     </a>
     <div class="nav-links">
       <a class="nav-link active" href="index.html">Overview</a>
+      <a class="nav-link" href="sources.html">Sources</a>
       <a class="nav-link" href="spreadsheet.html">Spreadsheet</a>
       <span class="nav-meta" id="generatedAt"></span>
     </div>
@@ -383,86 +404,58 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
     </div>
 
     <div class="timeline-block">
-      <div class="timeline-block-label">What AI is doing — by task type</div>
+      <div class="timeline-block-label">What AI is doing, by task type</div>
       <div class="timeline-chart" id="taskTimeline">
         <div class="timeline-years" id="taskTimelineYears"></div>
         <div class="timeline-bars" id="taskTimelineBars"></div>
         <div class="timeline-legend" id="taskTimelineLegend"></div>
       </div>
+      <div class="figure-note">
+        <p><strong>Content generation</strong>: AI writes or produces original text, audio, or video content, including automated articles and data-driven reports.</p>
+        <p><strong>Content transformation</strong>: AI reformats, summarises, or adapts existing content for a different platform, language, or audience.</p>
+        <p><strong>Editing &amp; optimisation</strong>: AI reviews or improves content for style, clarity, SEO, or engagement before publication.</p>
+        <p><strong>Discovery &amp; monitoring</strong>: AI tracks topics, sources, or events to surface relevant information for journalists or editors.</p>
+        <p><strong>Data extraction &amp; analysis</strong>: AI processes structured or unstructured data to extract facts, trends, or patterns for reporting.</p>
+        <p><strong>Search &amp; retrieval</strong>: AI enables search across large archives, databases, or documents to surface relevant material.</p>
+        <p><strong>Transcription &amp; translation</strong>: AI converts speech to text, or translates content between languages, to support production or access.</p>
+        <p><strong>Verification &amp; validation</strong>: AI checks facts, detects misinformation, or assesses the credibility of claims and sources.</p>
+        <p><strong>Audience targeting &amp; personalisation</strong>: AI tailors content, recommendations, or delivery to individual users based on behaviour or preferences.</p>
+        <p><strong>Commercial optimisation</strong>: AI supports advertising, subscription, or revenue operations through targeting, pricing, or prediction.</p>
+        <p><strong>Moderation &amp; interaction</strong>: AI manages audience comments, detects harmful content, or powers conversational interfaces for readers.</p>
+      </div>
     </div>
 
     <div class="timeline-block">
-      <div class="timeline-block-label">What AI is delivering — by effect type</div>
+      <div class="timeline-block-label">What AI is delivering, by effect type</div>
       <div class="timeline-chart" id="effectTimeline">
         <div class="timeline-years" id="effectTimelineYears"></div>
         <div class="timeline-bars" id="effectTimelineBars"></div>
         <div class="timeline-legend" id="effectTimelineLegend"></div>
       </div>
       <div class="figure-note">
-        <p><strong>Efficiency</strong> — AI reduces time, cost, or effort for tasks that were previously done manually.</p>
-        <p><strong>Effectiveness &amp; scaling</strong> — AI enables tasks or volumes not previously possible, or dramatically expands what a team can produce.</p>
-        <p><strong>Optimisation</strong> — AI improves quality, targeting, personalisation, or distribution without fundamentally changing the underlying task.</p>
+        <p><strong>Efficiency</strong>: AI reduces time, cost, or effort for tasks that were previously done manually.</p>
+        <p><strong>Effectiveness &amp; scaling</strong>: AI enables tasks or volumes not previously possible, or dramatically expands what a team can produce.</p>
+        <p><strong>Optimisation</strong>: AI improves quality, targeting, personalisation, or distribution without fundamentally changing the underlying task.</p>
       </div>
     </div>
 
     <div class="timeline-block">
-      <div class="timeline-block-label">Where in the newsroom — by gatekeeping stage</div>
+      <div class="timeline-block-label">Where in the newsroom, by gatekeeping stage</div>
       <div class="timeline-chart" id="gateTimeline">
         <div class="timeline-years" id="gateTimelineYears"></div>
         <div class="timeline-bars" id="gateTimelineBars"></div>
         <div class="timeline-legend" id="gateTimelineLegend"></div>
       </div>
       <div class="figure-note">
-        <p><strong>Access &amp; observation</strong> — AI discovers, collects, or monitors information before it enters production. Includes trend detection, news monitoring, lead generation, and audience analytics for story ideas.</p>
-        <p><strong>Selection &amp; filtering</strong> — AI evaluates, verifies, or organises information during editorial vetting. Includes fact-checking, claim verification, transcription of source material, and document analysis.</p>
-        <p><strong>Processing &amp; editing</strong> — AI produces or refines news content. Includes automated writing, reformatting, summarisation, copy-editing, headline generation, and SEO optimisation.</p>
-        <p><strong>Publishing &amp; distribution</strong> — AI delivers content or manages audience interaction after publication. Includes personalisation, recommendation systems, comment moderation, and chatbot interfaces.</p>
+        <p><strong>Access &amp; observation</strong>: AI discovers, collects, or monitors information before it enters production. Includes trend detection, news monitoring, lead generation, and audience analytics for story ideas.</p>
+        <p><strong>Selection &amp; filtering</strong>: AI evaluates, verifies, or organises information during editorial vetting. Includes fact-checking, claim verification, transcription of source material, and document analysis.</p>
+        <p><strong>Processing &amp; editing</strong>: AI produces or refines news content. Includes automated writing, reformatting, summarisation, copy-editing, headline generation, and SEO optimisation.</p>
+        <p><strong>Publishing &amp; distribution</strong>: AI delivers content or manages audience interaction after publication. Includes personalisation, recommendation systems, comment moderation, and chatbot interfaces.</p>
       </div>
     </div>
 
-    <div class="chart-panel" style="margin-top:40px">
-      <div class="chart-panel-label">Geographic distribution</div>
-      <div class="chart-panel-scroll"><div id="countryChart"></div></div>
-    </div>
   </div>
 </section>
-
-<section class="methods-section">
-  <div class="methods-inner">
-    <div>
-      <div class="hero-eyebrow">Methodology</div>
-      <h2 class="insights-title">How this dataset was built</h2>
-    </div>
-    <div class="methods-body">
-      <p>This dataset was compiled by systematically scraping and analysing publicly available reporting on AI adoption in news organisations from 16 industry, research, and curated sources. Each record represents a documented AI use case, or a specific deployment or application of AI technology by an identifiable news organisation.</p>
-      <p>Use cases were identified through automated scraping of source websites, then filtered using a language model (GPT-4o-mini) to exclude articles that did not describe a concrete AI application by a news organisation. Cases were then automatically classified by functional task type (what the AI does) and primary effect type (what benefit it delivers), with uncertain classifications flagged for low confidence.</p>
-      <p><strong>Important limitations.</strong> This dataset captures only what has been publicly documented, majoritively in English, across a specific set of monitored sources. Many deployments go unreported, while high-profile organisations attract disproportionate coverage. Documentation standards and terminology vary significantly across outlets, regions, and time periods. The dataset should be read as a partial and illustrative snapshot of documented AI adoption as opposed to a definitive map of the field.</p>
-    </div>
-  </div>
-</section>
-
-<section class="sources-section">
-  <div class="sources-inner">
-    <div>
-      <div class="hero-eyebrow">Sources</div>
-      <h2 class="insights-title">Data sources</h2>
-      <p class="insights-sub">The <span id="sourcesTotal"></span> sources below span industry reporting, curated databases, and academic and practitioner research.</p>
-    </div>
-    <div style="margin-top:32px">
-      <table class="sources-table">
-        <thead>
-          <tr>
-            <th>Source</th>
-            <th>Category</th>
-            <th style="text-align:right">Records</th>
-          </tr>
-        </thead>
-        <tbody id="sourcesTableBody"></tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
 
 <footer>
   <div class="footer-inner">
@@ -548,8 +541,6 @@ function buildCharts() {
   buildTimeline('taskTimeline',   'taskTimelineYears',   'taskTimelineBars',   'taskTimelineLegend',   STATS.task_by_year,   TASK_COLORS);
   buildTimeline('effectTimeline', 'effectTimelineYears', 'effectTimelineBars', 'effectTimelineLegend', STATS.effect_by_year, EFFECT_COLORS);
   buildTimeline('gateTimeline',   'gateTimelineYears',   'gateTimelineBars',   'gateTimelineLegend',   STATS.gate_by_year,   GATE_COLORS);
-  buildBarChart('countryChart', STATS.top_countries || [], 999);
-  buildSourcesList();
   var yr = document.getElementById('insightsTotalYears');
   if (yr && STATS.by_year) yr.textContent = STATS.by_year.length;
 }
@@ -701,10 +692,10 @@ SPREADSHEET_HTML = """\
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Use Cases in News Organisations — Spreadsheet</title>
+<title>AI Use Cases in News Organisations: Spreadsheet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <style>
 :root {
   --paper:   #f7f8fa;
@@ -715,7 +706,7 @@ SPREADSHEET_HTML = """\
   --ash:     #676f7a;
   --rule:    #e5e5e5;
   --card:    #ffffff;
-  --sans:    'Space Grotesk', sans-serif;
+  --sans:    'Playfair Display', sans-serif;
   --nav-h:   48px;
   --strip-h: 56px;
 }
@@ -885,6 +876,7 @@ td.col-type, td.col-task, td.col-effect, td.col-gate { white-space: normal; over
     </a>
     <div class="nav-links">
       <a class="nav-link" href="index.html">Overview</a>
+      <a class="nav-link" href="sources.html">Sources</a>
       <a class="nav-link active" href="spreadsheet.html">Spreadsheet</a>
       <span class="nav-meta" id="generatedAt"></span>
     </div>
@@ -916,12 +908,12 @@ td.col-type, td.col-task, td.col-effect, td.col-gate { white-space: normal; over
       <div class="pill-group" id="sourceFilters"></div>
     </div>
     <div>
-      <span class="sidebar-label">Country</span>
-      <div class="pill-group" id="countryFilters"></div>
+      <span class="sidebar-label">Task type</span>
+      <div class="pill-group" id="taskFilters"></div>
     </div>
     <div>
-      <span class="sidebar-label">Type</span>
-      <div class="pill-group" id="typeFilters"></div>
+      <span class="sidebar-label">Effect type</span>
+      <div class="pill-group" id="effectFilters"></div>
     </div>
     <div>
       <span class="sidebar-label">Gatekeeping stage</span>
@@ -964,7 +956,7 @@ td.col-type, td.col-task, td.col-effect, td.col-gate { white-space: normal; over
 
 <script>
 var ALL_DATA = [], STATS = {}, filtered = [];
-var activeYear = null, activeSources = new Set(), activeCountries = new Set(), activeTypes = new Set(), activeGates = new Set();
+var activeYear = null, activeSources = new Set(), activeTasks = new Set(), activeEffects = new Set(), activeGates = new Set();
 var searchQuery = '', sortCol = 'date', sortDir = -1;
 
 function esc(s) { var el = document.createElement('div'); el.textContent = String(s||''); return el.innerHTML; }
@@ -979,10 +971,10 @@ function init() {
     filtered = ALL_DATA.slice();
     buildStats();
     buildYearChart();
-    buildFilters('sourceFilters',  'source',  activeSources,  toggleSource);
-    buildFilters('countryFilters', 'country', activeCountries, toggleCountry);
-    buildFilters('typeFilters',    'type',    activeTypes,     toggleType);
-    buildFilters('gateFilters',    'gate',    activeGates,     toggleGate);
+    buildFilters('sourceFilters', 'source', activeSources, toggleSource);
+    buildFilters('taskFilters',   'task',   activeTasks,   toggleTask);
+    buildFilters('effectFilters', 'effect', activeEffects, toggleEffect);
+    buildFilters('gateFilters',   'gate',   activeGates,   toggleGate);
     applyFilters();
   })();
   document.getElementById('searchInput').addEventListener('input', function(e) { searchQuery = e.target.value.toLowerCase(); applyFilters(); });
@@ -1035,21 +1027,22 @@ function buildYearChart() {
 function buildFilters(id,mode,activeSet,fn) {
   var counts={};
   ALL_DATA.forEach(function(r){
-    var vals=mode==='source'?[r.source_name||'']:mode==='type'?[r.source_category||'']:mode==='gate'?[r.gatekeeping_stage||'']:(r.country||'').split(',').map(function(s){return s.trim();}).filter(Boolean);
+    var vals=mode==='source'?[r.source_name||'']:mode==='task'?[r.task_type||'']:mode==='effect'?[r.effect_type||'']:mode==='gate'?[r.gatekeeping_stage||'']:[];
     vals.forEach(function(v){if(v)counts[v]=(counts[v]||0)+1;});
   });
   var sorted=Object.keys(counts).map(function(k){return[k,counts[k]];}).sort(function(a,b){return b[1]-a[1];}).slice(0,20);
   var html='';
   sorted.forEach(function(item){
     var val=item[0],count=item[1];
-    html+='<button class="filter-pill'+(activeSet.has(val)?' active':'')+'" data-val="'+esc(val)+'">'+esc(val)+' <span class="cnt">'+count+'</span></button>';
+    var label=mode==='source'?val:fmtLabel(val);
+    html+='<button class="filter-pill'+(activeSet.has(val)?' active':'')+'" data-val="'+esc(val)+'">'+esc(label)+' <span class="cnt">'+count+'</span></button>';
   });
   var c=document.getElementById(id); c.innerHTML=html;
   c.querySelectorAll('.filter-pill').forEach(function(btn){btn.addEventListener('click',function(){fn(btn.getAttribute('data-val'));});});
 }
 function toggleSource(v){toggle(v,activeSources);buildFilters('sourceFilters','source',activeSources,toggleSource);applyFilters();}
-function toggleCountry(v){toggle(v,activeCountries);buildFilters('countryFilters','country',activeCountries,toggleCountry);applyFilters();}
-function toggleType(v){toggle(v,activeTypes);buildFilters('typeFilters','type',activeTypes,toggleType);applyFilters();}
+function toggleTask(v){toggle(v,activeTasks);buildFilters('taskFilters','task',activeTasks,toggleTask);applyFilters();}
+function toggleEffect(v){toggle(v,activeEffects);buildFilters('effectFilters','effect',activeEffects,toggleEffect);applyFilters();}
 function toggleGate(v){toggle(v,activeGates);buildFilters('gateFilters','gate',activeGates,toggleGate);applyFilters();}
 function toggle(v,set){if(set.has(v))set.delete(v);else set.add(v);}
 
@@ -1057,8 +1050,8 @@ function updateFilterTag() {
   var parts=[];
   if(activeYear)parts.push(activeYear);
   activeSources.forEach(function(v){parts.push(v);});
-  activeCountries.forEach(function(v){parts.push(v);});
-  activeTypes.forEach(function(v){parts.push(v);});
+  activeTasks.forEach(function(v){parts.push(fmtLabel(v));});
+  activeEffects.forEach(function(v){parts.push(fmtLabel(v));});
   activeGates.forEach(function(v){parts.push(fmtLabel(v));});
   if(searchQuery)parts.push('"'+searchQuery+'"');
   var tag=document.getElementById('activeFilterTag');
@@ -1071,13 +1064,9 @@ function applyFilters() {
   filtered=ALL_DATA.filter(function(r){
     if(activeYear&&(r.date_published||'').slice(0,4)!==activeYear)return false;
     if(activeSources.size>0&&!activeSources.has(r.source_name))return false;
-    if(activeTypes.size>0&&!activeTypes.has(r.source_category))return false;
+    if(activeTasks.size>0&&!activeTasks.has(r.task_type))return false;
+    if(activeEffects.size>0&&!activeEffects.has(r.effect_type))return false;
     if(activeGates.size>0&&!activeGates.has(r.gatekeeping_stage))return false;
-    if(activeCountries.size>0){
-      var cs=(r.country||'').split(',').map(function(s){return s.trim();});
-      var ok=false;cs.forEach(function(c){if(activeCountries.has(c))ok=true;});
-      if(!ok)return false;
-    }
     if(searchQuery){
       var hay=[r.title,r.organisation,r.country,r.source_name].join(' ').toLowerCase();
       if(hay.indexOf(searchQuery)===-1)return false;
@@ -1149,15 +1138,279 @@ function render() {
 }
 
 function resetAll() {
-  activeYear=null;activeSources.clear();activeCountries.clear();activeTypes.clear();activeGates.clear();
+  activeYear=null;activeSources.clear();activeTasks.clear();activeEffects.clear();activeGates.clear();
   searchQuery='';sortCol='date';sortDir=-1;
   document.getElementById('searchInput').value='';
   buildYearChart();
   buildFilters('sourceFilters','source',activeSources,toggleSource);
-  buildFilters('countryFilters','country',activeCountries,toggleCountry);
-  buildFilters('typeFilters','type',activeTypes,toggleType);
+  buildFilters('taskFilters','task',activeTasks,toggleTask);
+  buildFilters('effectFilters','effect',activeEffects,toggleEffect);
   buildFilters('gateFilters','gate',activeGates,toggleGate);
   updateSortHeaders(); applyFilters();
+}
+
+init();
+</script>
+</body>
+</html>
+"""
+
+
+# ── sources.html template ──────────────────────────────────────────────────────
+
+SOURCES_HTML = """\
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sources: AI Use Cases in News Organisations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:   #f7f8fa;
+  --ink:     #232331;
+  --accent:  #12285f;
+  --rust:    #12285f;
+  --rust-lt: rgba(18,40,95,0.07);
+  --ash:     #676f7a;
+  --rule:    #e5e5e5;
+  --card:    #ffffff;
+  --sans:    'Playfair Display', sans-serif;
+  --green:   #2a8d46;
+  --blue:    #0074bd;
+  --amber:   #b07a00;
+  --radius:  2px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--paper); color: var(--ink); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: #002147; border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0 32px;
+}
+.nav-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 48px; }
+.nav-brand { text-decoration: none; display: flex; align-items: center; }
+.nav-logo { height: 38px; display: block; }
+.nav-meta { font-family: var(--sans); font-size: 10px; color: rgba(255,255,255,0.45); letter-spacing: 0.05em; }
+.nav-links { display: flex; align-items: center; gap: 20px; }
+.nav-link { font-family: var(--sans); font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.15s; }
+.nav-link:hover { color: white; }
+.nav-link.active { color: white; }
+
+.page-header { background: #002147; padding: 72px 32px 56px; }
+.page-header .hero-eyebrow { color: rgba(255,255,255,0.45); margin-bottom: 16px; }
+.page-title { font-family: var(--sans); font-size: clamp(36px, 5vw, 64px); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; color: white; margin-bottom: 16px; }
+.page-sub { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 560px; font-weight: 400; margin-bottom: 40px; }
+.header-stats { display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; }
+.header-stat { padding-right: 40px; margin-right: 40px; border-right: 1px solid rgba(255,255,255,0.1); }
+.header-stat:last-child { border-right: none; }
+.header-stat-num { font-family: var(--sans); font-size: 36px; font-weight: 300; color: white; line-height: 1; letter-spacing: -0.02em; display: block; margin-bottom: 4px; }
+.header-stat-label { font-family: var(--sans); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+.sources-section { padding: 64px 32px 80px; background: var(--card); }
+.sources-inner { max-width: 1280px; margin: 0 auto; }
+.section-title { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 32px); font-weight: 500; letter-spacing: -0.01em; margin-bottom: 8px; }
+.section-sub { font-size: 15px; color: var(--ash); line-height: 1.6; margin-bottom: 32px; }
+.sources-table { width: 100%; border-collapse: collapse; }
+.sources-table th { text-align: left; padding: 8px 16px; font-family: var(--sans); font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ash); border-bottom: 2px solid var(--rule); }
+.sources-table td { padding: 11px 16px; font-size: 14px; color: var(--ink); border-bottom: 1px solid var(--rule); vertical-align: middle; }
+.sources-table tr:last-child td { border-bottom: none; }
+.src-count-cell { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--ink); text-align: right; width: 48px; }
+.src-bar-cell { width: 180px; padding: 11px 16px; }
+.src-bar-wrap { height: 4px; background: var(--rule); border-radius: 2px; overflow: hidden; }
+.src-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.8s cubic-bezier(0.22,1,0.36,1); }
+.src-link { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: color 0.15s, border-color 0.15s; }
+.src-link:hover { color: var(--rust); border-color: var(--rust); }
+.src-group-header td { font-family: var(--sans); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ash); padding: 24px 16px 6px; background: var(--paper); font-weight: 500; border-bottom: 1px solid var(--rule); }
+.src-group-header:first-child td { padding-top: 8px; }
+
+.methods-section { border-bottom: 1px solid var(--rule); padding: 64px 32px 80px; }
+.methods-inner { max-width: 1280px; margin: 0 auto; }
+.methods-body { max-width: 780px; margin-top: 24px; }
+.methods-body p { font-size: 16px; color: var(--ash); line-height: 1.82; margin-bottom: 18px; }
+.methods-body p:last-child { margin-bottom: 0; }
+.methods-body strong { color: var(--ink); font-weight: 600; }
+
+.geo-section { border-top: 1px solid var(--rule); padding: 64px 32px 80px; background: var(--paper); }
+.geo-inner { max-width: 1280px; margin: 0 auto; }
+.chart-panel { background: white; border: 1px solid var(--rule); border-radius: var(--radius); padding: 24px; margin-top: 32px; }
+.chart-panel-scroll { max-height: 560px; overflow-y: auto; padding-right: 4px; }
+.chart-panel-scroll::-webkit-scrollbar { width: 3px; }
+.chart-panel-scroll::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 2px; }
+.bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.bar-label { font-size: 13px; color: var(--ink); width: 200px; min-width: 200px; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { flex: 1; height: 16px; background: var(--rule); border-radius: 2px; overflow: hidden; min-width: 60px; }
+.bar-fill { height: 100%; border-radius: 2px; background: var(--rust); transform-origin: left; transform: scaleX(0); transition: transform 1s cubic-bezier(0.22,1,0.36,1); }
+.bar-fill.animated { transform: scaleX(1); }
+.bar-count { font-family: var(--sans); font-size: 12px; color: var(--ash); min-width: 30px; text-align: right; }
+
+footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sans); font-size: 12px; color: var(--ash); text-align: center; letter-spacing: 0.04em; }
+.footer-inner { max-width: 1280px; margin: 0 auto; }
+
+.hero-eyebrow { font-family: var(--sans); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--rust); margin-bottom: 20px; }
+
+@media (max-width: 900px) {
+  .page-header { padding: 48px 24px 40px; }
+  .sources-section, .geo-section { padding: 48px 24px 64px; }
+  .header-stats { flex-wrap: wrap; gap: 20px; }
+  .header-stat { border-right: none; padding-right: 0; margin-right: 0; }
+  nav { padding: 0 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <img src="images/logo.png" alt="Reuters Institute · University of Oxford" class="nav-logo">
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Overview</a>
+      <a class="nav-link active" href="sources.html">Sources</a>
+      <a class="nav-link" href="spreadsheet.html">Spreadsheet</a>
+      <span class="nav-meta" id="generatedAt"></span>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-inner" style="max-width:1280px;margin:0 auto">
+    <div class="hero-eyebrow">Sources &amp; Coverage</div>
+    <h1 class="page-title">Data sources</h1>
+    <p class="page-sub">Spanning industry reporting, curated databases, and academic and practitioner research. Records go back to 2008.</p>
+  </div>
+</header>
+
+<section class="methods-section">
+  <div class="methods-inner">
+    <div>
+      <div class="hero-eyebrow">Methodology</div>
+      <h2 class="section-title">How this dataset was built</h2>
+    </div>
+    <div class="methods-body">
+      <p>This dataset was compiled by systematically scraping and analysing publicly available reporting on AI adoption in news organisations from 16 industry, research, and curated sources. Each record represents a documented AI use case, or a specific deployment or application of AI technology by an identifiable news organisation.</p>
+      <p>Use cases were identified through automated scraping of source websites, then filtered using a language model (GPT-4o-mini) to exclude articles that did not describe a concrete AI application by a news organisation. Cases were then automatically classified by functional task type (what the AI does) and primary effect type (what benefit it delivers), with uncertain classifications flagged for low confidence.</p>
+      <p><strong>Important limitations.</strong> This dataset captures only what has been publicly documented, majoritively in English, across a specific set of monitored sources. Many deployments go unreported, while high-profile organisations attract disproportionate coverage. Documentation standards and terminology vary significantly across outlets, regions, and time periods. The dataset should be read as a partial and illustrative snapshot of documented AI adoption as opposed to a definitive map of the field.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sources-section">
+  <div class="sources-inner">
+    <h2 class="section-title">Sources &amp; records</h2>
+    <p class="section-sub">All <span id="sourcesTotal"></span> sources drawn on to compile the dataset, with record counts.</p>
+    <table class="sources-table">
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th></th>
+          <th style="text-align:right">Records</th>
+        </tr>
+      </thead>
+      <tbody id="sourcesTableBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="geo-section">
+  <div class="geo-inner">
+    <h2 class="section-title">Geographic distribution</h2>
+    <p class="section-sub">Countries represented across all <span id="geoTotal"></span> documented use cases.</p>
+    <div class="chart-panel">
+      <div class="chart-panel-scroll"><div id="countryChart"></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    Reuters Institute for the Study of Journalism · University of Oxford · <em>AI Use Cases in News Organisations</em>
+  </div>
+</footer>
+
+<script>
+var STATS = {};
+
+function esc(s) { var el = document.createElement('div'); el.textContent = String(s||''); return el.innerHTML; }
+
+function init() {
+  var payload = __INLINE_DATA__;
+  STATS = payload.stats;
+  var g = document.getElementById('generatedAt');
+  if (g) g.textContent = 'Updated ' + payload.generated_at;
+  buildSourcesList();
+  buildBarChart('countryChart', STATS.top_countries || [], 999);
+  var gt = document.getElementById('geoTotal');
+  if (gt) gt.textContent = payload.records ? payload.records.length : '';
+  // header stats
+  var countries = {};
+  (payload.records || []).forEach(function(r) {
+    (r.country||'').split(',').forEach(function(c){c=c.trim();if(c)countries[c]=true;});
+  });
+  var el;
+  el = document.getElementById('statTotal');    if (el) el.textContent = payload.records ? payload.records.length : '—';
+  el = document.getElementById('statSources');  if (el) el.textContent = STATS.sources_list ? STATS.sources_list.length : '—';
+  el = document.getElementById('statCountries');if (el) el.textContent = Object.keys(countries).length || '—';
+}
+
+function buildSourcesList() {
+  var body = document.getElementById('sourcesTableBody');
+  if (!body || !STATS.sources_list) return;
+  var maxCount = STATS.sources_list.reduce(function(m, s) { return Math.max(m, s.count); }, 0);
+  var catOrder = ['Industry', 'Curated', 'Academic', 'Database'];
+  var grouped = {};
+  STATS.sources_list.forEach(function(s) {
+    var cat = s.category || 'Other';
+    if (!grouped[cat]) grouped[cat] = [];
+    grouped[cat].push(s);
+  });
+  var html = '';
+  var allCats = catOrder.filter(function(c) { return grouped[c] && grouped[c].length; });
+  Object.keys(grouped).forEach(function(c) { if (catOrder.indexOf(c) === -1) allCats.push(c); });
+  allCats.forEach(function(cat) {
+    html += '<tr class="src-group-header"><td colspan="3">' + esc(cat) + '</td></tr>';
+    grouped[cat].forEach(function(s) {
+      var nameEl = s.url
+        ? '<a class="src-link" href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.name) + '</a>'
+        : esc(s.name);
+      var pct = maxCount > 0 ? (s.count / maxCount * 100).toFixed(1) : 0;
+      html += '<tr>' +
+        '<td>' + nameEl + '</td>' +
+        '<td class="src-bar-cell"><div class="src-bar-wrap"><div class="src-bar-fill" style="width:' + pct + '%"></div></div></td>' +
+        '<td class="src-count-cell">' + s.count + '</td>' +
+        '</tr>';
+    });
+  });
+  body.innerHTML = html;
+}
+
+function buildBarChart(id, items, limit) {
+  var container = document.getElementById(id);
+  if (!container || !items.length) return;
+  var top = items.slice(0, limit);
+  var maxN = top[0][1];
+  var html = top.map(function(item) {
+    var label = item[0], count = item[1];
+    return '<div class="bar-row"><span class="bar-label" title="' + esc(label) + '">' + esc(label) + '</span>' +
+      '<div class="bar-track"><div class="bar-fill" style="width:' + (count/maxN*100).toFixed(1) + '%"></div></div>' +
+      '<span class="bar-count">' + count + '</span></div>';
+  }).join('');
+  container.innerHTML = html;
+  var barObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.bar-fill').forEach(function(b) { b.classList.add('animated'); });
+        barObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  barObs.observe(container);
 }
 
 init();
@@ -1209,9 +1462,14 @@ def main():
     sheet_path.write_text(SPREADSHEET_HTML.replace("__INLINE_DATA__", inline_json), encoding="utf-8")
     print("Spreadsheet written: ", sheet_path)
 
+    # sources.html
+    src_path = out_dir / "sources.html"
+    src_path.write_text(SOURCES_HTML.replace("__INLINE_DATA__", inline_json), encoding="utf-8")
+    print("Sources written:     ", src_path)
+
     print()
     print("Next steps:")
-    print("  git add index.html spreadsheet.html data.json")
+    print("  git add index.html sources.html spreadsheet.html data.json")
     print("  git commit -m 'Refresh dashboard'")
     print("  git push")
 

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-09 15:23 UTC",
+  "generated_at": "2026-06-09 19:12 UTC",
   "records": [
     {
       "id": 615,
@@ -6278,6 +6278,10 @@
     "total": 448,
     "by_year": [
       [
+        "2008",
+        1
+      ],
+      [
         "2014",
         2
       ],
@@ -6666,86 +6670,103 @@
       {
         "name": "JournalismAI",
         "category": "Database",
-        "count": 212
+        "count": 212,
+        "url": "https://www.journalismai.info/resources/case-studies"
       },
       {
         "name": "WAN-IFRA",
         "category": "Industry",
-        "count": 53
+        "count": 53,
+        "url": "https://wan-ifra.org"
       },
       {
         "name": "INMA",
         "category": "Industry",
-        "count": 50
+        "count": 50,
+        "url": "https://www.inma.org"
       },
       {
         "name": "Google News Initiative",
         "category": "Industry",
-        "count": 24
+        "count": 24,
+        "url": "https://newsinitiative.withgoogle.com/resources/stories/"
       },
       {
         "name": "Nieman Lab",
         "category": "Industry",
-        "count": 20
+        "count": 20,
+        "url": "https://www.niemanlab.org"
       },
       {
         "name": "Press Gazette",
         "category": "Industry",
-        "count": 19
+        "count": 19,
+        "url": "https://pressgazette.co.uk"
       },
       {
         "name": "Reuters Institute Digital News Report 2025",
         "category": "Curated",
-        "count": 13
+        "count": 13,
+        "url": "https://www.digitalnewsreport.org/"
       },
       {
         "name": "Generative AI Newsroom",
         "category": "Academic",
-        "count": 11
+        "count": 11,
+        "url": "https://generative-ai-newsroom.com"
       },
       {
         "name": "Journalism.co.uk",
         "category": "Industry",
-        "count": 9
+        "count": 9,
+        "url": "https://www.journalism.co.uk"
       },
       {
         "name": "WAN-IFRA Age of AI in the Newsroom",
         "category": "Curated",
-        "count": 8
+        "count": 8,
+        "url": "https://womeninnews.org/wp-content/uploads/2025/05/The-Age-of-AI-in-the-newsroom-Report_EN.pdf"
       },
       {
         "name": "Poynter",
         "category": "Industry",
-        "count": 7
+        "count": 7,
+        "url": "https://www.poynter.org"
       },
       {
         "name": "Reuters Institute",
         "category": "Academic",
-        "count": 7
+        "count": 7,
+        "url": "https://reutersinstitute.politics.ox.ac.uk"
       },
       {
         "name": "Digiday",
         "category": "Industry",
-        "count": 6
+        "count": 6,
+        "url": "https://digiday.com"
       },
       {
         "name": "Columbia Journalism Review",
         "category": "Industry",
-        "count": 6
+        "count": 6,
+        "url": "https://www.cjr.org"
       },
       {
         "name": "Editor & Publisher",
         "category": "Industry",
-        "count": 2
+        "count": 2,
+        "url": "https://www.editorandpublisher.com"
       },
       {
         "name": "arXiv",
         "category": "Academic",
-        "count": 1
+        "count": 1,
+        "url": "https://arxiv.org/search/"
       }
     ],
     "task_by_year": {
       "years": [
+        "2008",
         "2014",
         "2015",
         "2016",
@@ -6762,6 +6783,7 @@
       ],
       "categories": {
         "content_generation": [
+          0,
           2,
           1,
           1,
@@ -6781,6 +6803,7 @@
           0,
           0,
           0,
+          0,
           4,
           4,
           6,
@@ -6792,6 +6815,7 @@
           2
         ],
         "audience_targeting_and_personalisation": [
+          1,
           0,
           0,
           0,
@@ -6812,6 +6836,7 @@
           0,
           0,
           0,
+          0,
           1,
           2,
           2,
@@ -6822,6 +6847,7 @@
           1
         ],
         "discovery_and_monitoring": [
+          0,
           0,
           0,
           0,
@@ -6839,6 +6865,7 @@
         "editing_and_optimisation": [
           0,
           0,
+          0,
           1,
           0,
           1,
@@ -6854,6 +6881,7 @@
         "content_transformation": [
           0,
           0,
+          0,
           1,
           0,
           0,
@@ -6867,6 +6895,7 @@
           1
         ],
         "search_and_retrieval": [
+          0,
           0,
           0,
           0,
@@ -6889,6 +6918,7 @@
           0,
           0,
           0,
+          0,
           1,
           0,
           0,
@@ -6897,6 +6927,7 @@
           1
         ],
         "verification_and_validation": [
+          0,
           0,
           0,
           0,
@@ -6915,6 +6946,7 @@
           0,
           0,
           0,
+          0,
           1,
           2,
           0,
@@ -6930,6 +6962,7 @@
     },
     "effect_by_year": {
       "years": [
+        "2008",
         "2014",
         "2015",
         "2016",
@@ -6946,6 +6979,7 @@
       ],
       "categories": {
         "efficiency": [
+          0,
           2,
           1,
           2,
@@ -6964,6 +6998,7 @@
           0,
           0,
           0,
+          0,
           1,
           8,
           7,
@@ -6976,6 +7011,7 @@
           10
         ],
         "optimisation": [
+          1,
           0,
           0,
           1,
@@ -6994,6 +7030,7 @@
     },
     "gate_by_year": {
       "years": [
+        "2008",
         "2014",
         "2015",
         "2016",
@@ -7010,6 +7047,7 @@
       ],
       "categories": {
         "processing_and_editing": [
+          0,
           2,
           1,
           3,
@@ -7025,6 +7063,7 @@
           14
         ],
         "publishing_and_distribution": [
+          1,
           0,
           0,
           0,
@@ -7043,6 +7082,7 @@
           0,
           0,
           0,
+          0,
           1,
           5,
           7,
@@ -7055,6 +7095,7 @@
           7
         ],
         "selection_and_filtering": [
+          0,
           0,
           0,
           0,
