@@ -1,16 +1,16 @@
 """
-categorise.py
+gatekeeper.py
 -------------
-classifies every record using categorisation_prompt.md, writing results to
-five db columns: task_type, task_type_reasoning, effect_type,
-effect_type_reasoning, low_confidence
+classifies every record using gatekeeper_prompt.md, writing results to three
+db columns: gatekeeping_stage, gatekeeping_stage_reasoning, gatekeeping_low_confidence
 
 safe to interrupt — skips records already classified
 
-    python categorise.py                  # classify all
-    python categorise.py --limit 20       # test on 20 first
-    python categorise.py --dry-run        # preview without calling the api
-    python categorise.py --rerun-low      # retry low-confidence records
+    python gatekeeper.py                  # classify all
+    python gatekeeper.py --limit 20       # test on 20 first
+    python gatekeeper.py --dry-run        # preview without calling the api
+    python gatekeeper.py --rerun-low      # retry low-confidence records
+    python gatekeeper.py --rerun          # re-run all records
 """
 
 import argparse
@@ -26,54 +26,44 @@ from openai import OpenAI, RateLimitError
 
 ROOT_DIR    = Path(__file__).resolve().parent
 DB_PATH     = ROOT_DIR / "data" / "usecases_FINAL.db"
-PROMPT_PATH = ROOT_DIR / "categorisation_prompt.md"
+PROMPT_PATH = ROOT_DIR / "gatekeeper_prompt.md"
 LOG_DIR     = ROOT_DIR / "logs"
 LOG_DIR.mkdir(exist_ok=True)
 
-RAW_TEXT_LIMIT = 1200   # enough context without going overboard on tokens
+RAW_TEXT_LIMIT = 1200
 
-VALID_TASK_TYPES = {
-    "discovery_and_monitoring",
-    "data_extraction_and_analysis",
-    "verification_and_validation",
-    "transcription_and_translation",
-    "search_and_retrieval",
-    "content_generation",
-    "content_transformation",
-    "editing_and_optimisation",
-    "audience_targeting_and_personalisation",
-    "commercial_optimisation",
-    "moderation_and_interaction",
+VALID_STAGES = {
+    "access_and_observation",
+    "selection_and_filtering",
+    "processing_and_editing",
+    "publishing_and_distribution",
 }
-VALID_EFFECT_TYPES = {"efficiency", "effectiveness_and_scaling", "optimisation"}
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler(LOG_DIR / "categorise.log"),
+        logging.FileHandler(LOG_DIR / "gatekeeper.log"),
     ],
 )
-logger = logging.getLogger("categorise")
+logger = logging.getLogger("gatekeeper")
 
 
 # ── database ───────────────────────────────────────────────────────────────────
 
 def ensure_columns(conn: sqlite3.Connection) -> None:
-    """add classification columns if not already present."""
+    """add gatekeeping columns if not already present."""
     new_cols = {
-        "task_type":             "TEXT",
-        "task_type_reasoning":   "TEXT",
-        "effect_type":           "TEXT",
-        "effect_type_reasoning": "TEXT",
-        "low_confidence":        "INTEGER DEFAULT 0",
+        "gatekeeping_stage":            "TEXT",
+        "gatekeeping_stage_reasoning":  "TEXT",
+        "gatekeeping_low_confidence":   "INTEGER DEFAULT 0",
     }
     existing = {row[1] for row in conn.execute("PRAGMA table_info(use_cases)").fetchall()}
     for col, typedef in new_cols.items():
         if col not in existing:
             conn.execute(f"ALTER TABLE use_cases ADD COLUMN {col} {typedef}")
-            logger.info("Added column: %s", col)
+            logger.info("added column: %s", col)
     conn.commit()
 
 
@@ -109,34 +99,37 @@ def classify(client: OpenAI, system_prompt: str, user_message: str, retries: int
             return json.loads(raw)
         except RateLimitError:
             wait = 2 ** (attempt + 2)   # 4 → 8 → 16 → 32 s
-            logger.warning("Rate limited — retrying in %ds (attempt %d/%d)", wait, attempt + 1, retries)
+            logger.warning("rate limited — retrying in %ds (attempt %d/%d)", wait, attempt + 1, retries)
             time.sleep(wait)
         except json.JSONDecodeError as exc:
-            logger.warning("JSON parse error on attempt %d: %s", attempt + 1, exc)
+            logger.warning("json parse error on attempt %d: %s", attempt + 1, exc)
             if attempt == retries - 1:
                 raise
             time.sleep(2)
-    raise RuntimeError("Exhausted retries")
+    raise RuntimeError("exhausted retries")
 
 
 def validate(result: dict) -> list[str]:
     """return validation errors; empty list = valid."""
     errors = []
-    if result.get("task_type") not in VALID_TASK_TYPES:
-        errors.append(f"invalid task_type: {result.get('task_type')!r}")
-    if result.get("effect_type") not in VALID_EFFECT_TYPES:
-        errors.append(f"invalid effect_type: {result.get('effect_type')!r}")
+    if result.get("gatekeeping_stage") not in VALID_STAGES:
+        errors.append(f"invalid gatekeeping_stage: {result.get('gatekeeping_stage')!r}")
     return errors
 
 
 # ── main loop ──────────────────────────────────────────────────────────────────
 
-def run(dry_run: bool, limit: int | None, rerun_low: bool) -> None:
+def run(dry_run: bool, limit: int | None, rerun: bool, rerun_low: bool) -> None:
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     ensure_columns(conn)
 
-    where  = "WHERE low_confidence = 1" if rerun_low else "WHERE task_type IS NULL"
+    if rerun:
+        where = ""
+    elif rerun_low:
+        where = "WHERE gatekeeping_low_confidence = 1"
+    else:
+        where = "WHERE gatekeeping_stage IS NULL"
     limit_clause = f"LIMIT {limit}" if limit else ""
     rows = conn.execute(f"""
         SELECT id, title, raw_text FROM use_cases
@@ -145,7 +138,7 @@ def run(dry_run: bool, limit: int | None, rerun_low: bool) -> None:
 
     total = len(rows)
     if total == 0:
-        logger.info("No records to classify — all done.")
+        logger.info("no records to classify — all done.")
         conn.close()
         return
 
@@ -160,7 +153,7 @@ def run(dry_run: bool, limit: int | None, rerun_low: bool) -> None:
         for i, row in enumerate(rows[:3], 1):
             msg = build_user_message(row["title"] or "", row["raw_text"] or "")
             print(f"\n{'─'*60}")
-            print(f"Record {i}  id={row['id']}")
+            print(f"record {i}  id={row['id']}")
             print(msg[:400] + ("…" if len(msg) > 400 else ""))
         if total > 3:
             print(f"\n… ({total - 3} more records not shown)")
@@ -189,13 +182,13 @@ def run(dry_run: bool, limit: int | None, rerun_low: bool) -> None:
         try:
             result = classify(client, system_prompt, user_msg)
         except Exception as exc:
-            logger.error("  FAILED id=%d: %s", rec_id, exc)
+            logger.error("  failed id=%d: %s", rec_id, exc)
             skipped += 1
             continue
 
         errors = validate(result)
         if errors:
-            logger.warning("  INVALID id=%d — %s  (skipping)", rec_id, "; ".join(errors))
+            logger.warning("  invalid id=%d — %s  (skipping)", rec_id, "; ".join(errors))
             skipped += 1
             continue
 
@@ -206,19 +199,15 @@ def run(dry_run: bool, limit: int | None, rerun_low: bool) -> None:
 
         conn.execute("""
             UPDATE use_cases SET
-                task_type             = :task_type,
-                task_type_reasoning   = :task_type_reasoning,
-                effect_type           = :effect_type,
-                effect_type_reasoning = :effect_type_reasoning,
-                low_confidence        = :low_confidence
+                gatekeeping_stage            = :gatekeeping_stage,
+                gatekeeping_stage_reasoning  = :gatekeeping_stage_reasoning,
+                gatekeeping_low_confidence   = :gatekeeping_low_confidence
             WHERE id = :id
         """, {
-            "task_type":             result["task_type"],
-            "task_type_reasoning":   result.get("task_type_reasoning", ""),
-            "effect_type":           result["effect_type"],
-            "effect_type_reasoning": result.get("effect_type_reasoning", ""),
-            "low_confidence":        1 if is_low else 0,
-            "id":                    rec_id,
+            "gatekeeping_stage":           result["gatekeeping_stage"],
+            "gatekeeping_stage_reasoning": result.get("gatekeeping_stage_reasoning", ""),
+            "gatekeeping_low_confidence":  1 if is_low else 0,
+            "id":                          rec_id,
         })
         conn.commit()
         classified += 1
@@ -227,25 +216,26 @@ def run(dry_run: bool, limit: int | None, rerun_low: bool) -> None:
 
     conn.close()
     logger.info(
-        "─── Complete: %d classified, %d low-confidence, %d skipped (of %d total)",
+        "─── complete: %d classified, %d low-confidence, %d skipped (of %d total)",
         classified, low, skipped, total,
     )
     if low:
-        logger.info("Re-run with --rerun-low to retry the %d uncertain records.", low)
+        logger.info("re-run with --rerun-low to retry the %d uncertain records.", low)
 
 
 # ── entry point ────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Classify use cases with GPT-4o-mini using categorisation_prompt.md"
+        description="classify use cases with GPT-4o-mini using gatekeeper_prompt.md"
     )
-    parser.add_argument("--dry-run",    action="store_true", help="Print prompts without calling the API")
-    parser.add_argument("--limit",      type=int, default=None, metavar="N", help="Process at most N records")
-    parser.add_argument("--rerun-low",  action="store_true", help="Re-run records flagged as low_confidence")
+    parser.add_argument("--dry-run",   action="store_true", help="print prompts without calling the api")
+    parser.add_argument("--limit",     type=int, default=None, metavar="N", help="process at most N records")
+    parser.add_argument("--rerun-low", action="store_true", help="re-run records flagged as low-confidence")
+    parser.add_argument("--rerun",     action="store_true", help="re-run all already classified records")
     args = parser.parse_args()
 
-    run(dry_run=args.dry_run, limit=args.limit, rerun_low=args.rerun_low)
+    run(dry_run=args.dry_run, limit=args.limit, rerun=args.rerun, rerun_low=args.rerun_low)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-06 18:03 UTC",
+  "generated_at": "2026-06-09 15:23 UTC",
   "records": [
     {
       "id": 615,
@@ -12,7 +12,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/finnish-newsrooms-ai-tool-wrongly-suggests-russian-drones-entered-airspace-3c9cc49f88c8",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 487,
@@ -25,7 +26,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2026/05/how-mediengruppe-pressedruck-uses-ai-to-reclaim-journalists-time/",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 488,
@@ -38,7 +40,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2026/05/germanys-general-anzeiger-gears-ai-projects-to-increase-overall-staff-use/",
       "task_type": "editing_and_optimisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 489,
@@ -51,7 +54,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2026/04/nzz-is-turning-its-archives-into-a-newsroom-tool/",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 490,
@@ -64,7 +68,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2026/04/at-deccan-herald-ai-turns-articles-into-instant-infographics/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 492,
@@ -77,7 +82,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2026/04/at-the-quint-ai-is-helping-readers-navigate-long-form-journalism/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 22,
@@ -90,7 +96,8 @@
       "summary": null,
       "url": "https://latamjournalismreview.org/articles/a-new-ai-compass-to-refine-the-editorial-agenda/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 23,
@@ -103,7 +110,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2026/04/how-dmg-media-is-building-an-ai-foundational-layer-for-the-newsroom/",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 638,
@@ -116,7 +124,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/bridging-indias-linguistic-divide-with-abponeai/",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 616,
@@ -129,7 +138,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/how-to-budget-for-your-newsrooms-ai-project-28d7e5a169a0",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 384,
@@ -142,7 +152,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/schibsted-open-sources-ai-tool-to-turn-news-articles-into-videos/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 24,
@@ -155,7 +166,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/blog/bridging-the-china-coverage-gap-ai-powered-news-monitoring",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 25,
@@ -168,7 +180,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2026/03/how-the-hindu-is-embedding-ai-into-its-data-journalism/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 26,
@@ -181,7 +194,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/blog/from-fine-tuning-to-smart-prompting-automating-routine-news-at-anka",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 342,
@@ -194,7 +208,8 @@
       "summary": null,
       "url": "https://www.cjr.org/news/cleveland-newsroom-ai-rewrite-desk-chris-quinn-plain-dealer.php",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 27,
@@ -207,7 +222,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/blog/cutting-through-healthcare-data-complexity",
       "task_type": "search_and_retrieval",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 28,
@@ -220,7 +236,8 @@
       "summary": null,
       "url": "https://latamjournalismreview.org/articles/these-brazilian-newsrooms-are-using-ai-to-expose-online-hate-and-track-federal-policy/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 929,
@@ -233,7 +250,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2026/02/artificial-intelligence-in-latin-american-newsrooms-moving-from-exploration-to-editorial-practice/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 29,
@@ -246,7 +264,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2026/02/artificial-intelligence-in-latin-american-newsrooms-moving-from-exploration-to-editorial-practice/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 406,
@@ -259,7 +278,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishers/regional-newspapers/mediahuis-trials-use-of-ai-agents-to-carry-out-first-line-news-reporting/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 31,
@@ -272,7 +292,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2026/02/how-the-new-york-times-uses-a-custom-ai-tool-to-track-the-manosphere/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 30,
@@ -285,7 +306,8 @@
       "summary": null,
       "url": "https://latamjournalismreview.org/articles/no-programmers-no-problem-these-newsrooms-are-building-their-own-ai/",
       "task_type": "verification_and_validation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 32,
@@ -298,7 +320,8 @@
       "summary": null,
       "url": "https://latamjournalismreview.org/articles/inside-the-automation-behind-el-comercios-election-guides-for-peru/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 473,
@@ -311,7 +334,8 @@
       "summary": null,
       "url": "https://digiday.com/future-of-tv/inside-nbcuniversals-test-to-use-ai-agents-to-sell-ads-against-a-live-nfl-game/",
       "task_type": "commercial_optimisation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 639,
@@ -324,7 +348,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/using-generative-ai-to-create-conversational-audio-contents/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 33,
@@ -337,7 +362,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/en-gb/resources/stories/how-dennik-n-tool-continues-to-power-publisher-revenue/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 34,
@@ -350,7 +376,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/inside-p%C3%BAblicos-genai-powered-voting-game-c3e937c8a978",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 35,
@@ -363,7 +390,8 @@
       "summary": null,
       "url": "https://www.ftstrategies.com/en-gb/case-studies/il-messaggero-accelerated-subscription-growth-by-introducing-new-ai-powered-digital-products-and-strengthening-cross-team-collaboration",
       "task_type": "content_transformation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 407,
@@ -376,7 +404,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/news/former-future-editor-launches-ai-powered-cycling-news-website/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 641,
@@ -389,7 +418,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/pti-boosts-efficiency-and-reach-with-ai-powered-infographics/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 974,
@@ -402,7 +432,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-provides-newsrooms-with-opportunities-to-improve-and-deepen-research",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 558,
@@ -415,7 +446,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-provides-newsrooms-with-opportunities-to-improve-and-deepen-research",
       "task_type": "search_and_retrieval",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 557,
@@ -428,7 +460,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/time-creates-new-genai-tool-to-engage-audiences",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 36,
@@ -441,7 +474,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/blog/beyond-blue-links-how-the-ebu-built-neo-to-reinvent-news-access",
       "task_type": "search_and_retrieval",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 633,
@@ -454,7 +488,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/could-notebooklm-be-the-next-interface-for-news-853daab5044a",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 409,
@@ -467,7 +502,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/press-gazette-events/bloomberg-uses-synthetic-characters-to-test-out-products-and-marketing/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 365,
@@ -480,7 +516,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2025/11/florida-nonprofit-news-reporters-ask-board-to-investigate-their-editors-ai-use/",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 340,
@@ -493,7 +530,8 @@
       "summary": null,
       "url": "https://www.axios.com/2025/11/19/fox-news-palantir-ai-newsroom-tools",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 940,
@@ -506,7 +544,8 @@
       "summary": null,
       "url": "https://www.nytimes.com/2025/11/07/business/media/ai-news-media.html",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 939,
@@ -519,7 +558,8 @@
       "summary": null,
       "url": "https://www.nytimes.com/2025/11/07/business/media/ai-news-media.html",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 938,
@@ -532,7 +572,8 @@
       "summary": null,
       "url": "https://www.nytimes.com/2025/11/07/business/media/ai-news-media.html",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 344,
@@ -545,7 +586,8 @@
       "summary": null,
       "url": "https://www.nytimes.com/2025/11/07/business/media/ai-news-media.html",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 977,
@@ -558,7 +600,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/media-companies-share-ai-powered-newsroom-initiatives",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 976,
@@ -571,7 +614,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/media-companies-share-ai-powered-newsroom-initiatives",
       "task_type": "content_generation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 975,
@@ -584,7 +628,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/media-companies-share-ai-powered-newsroom-initiatives",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 559,
@@ -597,7 +642,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/media-companies-share-ai-powered-newsroom-initiatives",
       "task_type": "editing_and_optimisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 560,
@@ -610,7 +656,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ai-helps-newsroom-ad-targeting-at-boston-globe-philadelphia-inquirer",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 926,
@@ -623,7 +670,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/inside-the-new-multilingual-newsrooms-using-genai-for-translation-4c3b17269811",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 626,
@@ -636,7 +684,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/inside-the-new-multilingual-newsrooms-using-genai-for-translation-4c3b17269811",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 472,
@@ -649,7 +698,8 @@
       "summary": null,
       "url": "https://digiday.com/media/how-the-times-is-using-ai-to-model-synthetic-focus-groups-from-human-audiences/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 470,
@@ -662,7 +712,8 @@
       "summary": null,
       "url": "https://digiday.com/media/news-corp-owned-u-k-tabloid-the-sun-is-building-an-ai-agent-for-its-programmatic-business/",
       "task_type": "commercial_optimisation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 410,
@@ -675,7 +726,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/news/the-observer-signs-deal-to-appear-on-ai-news-platform-particle/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 411,
@@ -688,7 +740,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/press-gazette-events/washington-posts-chatbot-has-receioved-tens-of-millions-of-queries/",
       "task_type": "search_and_retrieval",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 623,
@@ -701,7 +754,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/improving-the-accessibility-of-infographics-with-ai-generated-alt-text-f56aa3aef661",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 645,
@@ -714,7 +768,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/how-haaretz-built-an-ai-chatbot-to-boost-engagement/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 414,
@@ -727,7 +782,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishers/digital-journalism/ft-says-ai-personalised-paywall-messaging-has-tripled-conversion-rate/",
       "task_type": "commercial_optimisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 383,
@@ -740,7 +796,8 @@
       "summary": null,
       "url": "https://www.poynter.org/reporting-editing/2025/minnesota-star-tribune-artificial-intelligence/",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 497,
@@ -753,7 +810,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/09/newslaundrys-ai-chatbot-is-doing-more-than-answering-queries/",
       "task_type": "moderation_and_interaction",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 73,
@@ -766,7 +824,8 @@
       "summary": null,
       "url": "https://newsmachines.beehiiv.com/p/how-itroms-built-norway-s-most-ai-ready-newsroom",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 74,
@@ -779,7 +838,8 @@
       "summary": null,
       "url": "https://awards.journalists.org/entries/chatmigrante-an-ai-powered-tool-that-supports-migrants-with-accurate-personalized-guidance-through-their-migratory-process/",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 561,
@@ -792,7 +852,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/bbc-orthopedic-podcast-illustrate-best-practices-for-audio-genai-applications",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 946,
@@ -805,7 +866,8 @@
       "summary": null,
       "url": "https://www.poynter.org/tech-tools/artificial-intelligence/2025/ai-local-journalism-ct-mirror-coverage/",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 382,
@@ -818,7 +880,8 @@
       "summary": null,
       "url": "https://www.poynter.org/tech-tools/artificial-intelligence/2025/ai-local-journalism-ct-mirror-coverage/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 346,
@@ -831,7 +894,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2025/08/local-newsrooms-are-building-ai-chatbots-fast-and-cheap/",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 476,
@@ -844,7 +908,8 @@
       "summary": null,
       "url": "https://www.editorandpublisher.com/stories/the-seattle-medium-embraces-ai-without-losing-its-soul,257367",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 982,
@@ -857,7 +922,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/times-of-india-uses-genai-as-an-engine-for-new-products-and-revenue",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 981,
@@ -870,7 +936,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/times-of-india-uses-genai-as-an-engine-for-new-products-and-revenue",
       "task_type": "content_transformation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 980,
@@ -883,7 +950,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/times-of-india-uses-genai-as-an-engine-for-new-products-and-revenue",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 979,
@@ -896,7 +964,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/times-of-india-uses-genai-as-an-engine-for-new-products-and-revenue",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 978,
@@ -909,7 +978,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/times-of-india-uses-genai-as-an-engine-for-new-products-and-revenue",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 75,
@@ -922,7 +992,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Content-Strategies/post.cfm/onet-czat-with-ai-creates-simplified-experience-for-ringier-axel-springer-polska-readers",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 930,
@@ -935,7 +1006,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/hearst-newspapers-leverages-ai-for-a-human-centred-strategy?_zs=IL4SR1&_zl=JlEq7",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 498,
@@ -948,7 +1020,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/08/109439/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 76,
@@ -961,7 +1034,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/hearst-newspapers-leverages-ai-for-a-human-centred-strategy?_zs=IL4SR1&_zl=JlEq7",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 564,
@@ -974,7 +1048,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ht-builds-ai-driven-platform-for-ad-clients",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 347,
@@ -987,7 +1062,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2025/08/the-good-the-bad-and-the-completely-made-up-newsrooms-on-wrestling-accurate-answers-out-of-ai/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 650,
@@ -1000,7 +1076,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/abs-cbn-automates-video-tagging-to-boost-efficiency/",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 648,
@@ -1013,7 +1090,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/inquirer-turbo-charges-tagging-with-ai/",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 646,
@@ -1026,7 +1104,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/philstar-life-launches-daily-ai-powered-podcast/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 644,
@@ -1039,7 +1118,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/palawan-news-creates-daily-video-content-with-ai/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 631,
@@ -1052,7 +1132,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/the-newspapers-using-generative-ai-to-surface-restaurant-reviews-4ed4a75d21c2",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 951,
@@ -1065,7 +1146,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/07/como-cuatro-medios-latinoamericanos-estan-usando-inteligencia-artificial-para-transformar-sus-redacciones/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 950,
@@ -1078,7 +1160,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/07/como-cuatro-medios-latinoamericanos-estan-usando-inteligencia-artificial-para-transformar-sus-redacciones/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 949,
@@ -1091,7 +1174,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/07/como-cuatro-medios-latinoamericanos-estan-usando-inteligencia-artificial-para-transformar-sus-redacciones/",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 499,
@@ -1104,7 +1188,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/07/como-cuatro-medios-latinoamericanos-estan-usando-inteligencia-artificial-para-transformar-sus-redacciones/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 655,
@@ -1117,7 +1202,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/taking-the-pain-out-of-real-estate-copy-with-gemini/",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 654,
@@ -1130,7 +1216,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/ai-brings-5x-boost-to-local-news/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 653,
@@ -1143,7 +1230,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/newspaper-uses-ai-to-cut-subediting-time-by-40/",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 652,
@@ -1156,7 +1244,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/citymag-automates-event-listings-with-ai/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 651,
@@ -1169,7 +1258,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/ai-reduces-wasted-work-for-newspaper-chain/",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 566,
@@ -1182,7 +1272,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/bonnier-news-transformed-its-print-production-through-automation",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 416,
@@ -1195,7 +1286,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishers/digital-journalism/bbc-ai-translation-poland/",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 338,
@@ -1208,7 +1300,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2025/06/minnesotas-sahan-journal-dives-into-ai-with-strategic-goals-and-open-eyes/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 77,
@@ -1221,7 +1314,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/can-ai-triage-a-pitch-a-case-study-in-editorial-evaluation-from-minority-africa-beb864444f9e",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 637,
@@ -1234,7 +1328,8 @@
       "summary": null,
       "url": "https://arxiv.org/abs/2506.07278v1",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 339,
@@ -1247,7 +1342,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2025/06/lets-get-to-the-point-three-newsrooms-on-generating-ai-summaries-for-news/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 630,
@@ -1260,7 +1356,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/how-a-danish-news-service-made-a-profit-with-its-transcription-tool-285bc05b7cf9",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 323,
@@ -1273,7 +1370,8 @@
       "summary": null,
       "url": "https://www.digitalnewsreport.org/",
       "task_type": "search_and_retrieval",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 322,
@@ -1286,7 +1384,8 @@
       "summary": null,
       "url": "https://www.digitalnewsreport.org/",
       "task_type": "search_and_retrieval",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 321,
@@ -1299,7 +1398,8 @@
       "summary": null,
       "url": "https://www.digitalnewsreport.org/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 320,
@@ -1312,7 +1412,8 @@
       "summary": null,
       "url": "https://www.digitalnewsreport.org/",
       "task_type": "content_transformation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 319,
@@ -1325,7 +1426,8 @@
       "summary": null,
       "url": "https://www.digitalnewsreport.org/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 318,
@@ -1338,7 +1440,8 @@
       "summary": null,
       "url": "https://www.digitalnewsreport.org/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 317,
@@ -1351,7 +1454,8 @@
       "summary": null,
       "url": "https://www.digitalnewsreport.org/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 316,
@@ -1364,7 +1468,8 @@
       "summary": null,
       "url": "https://www.digitalnewsreport.org/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 315,
@@ -1377,7 +1482,8 @@
       "summary": null,
       "url": "https://www.digitalnewsreport.org/",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 314,
@@ -1390,7 +1496,8 @@
       "summary": null,
       "url": "https://www.digitalnewsreport.org/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 313,
@@ -1403,7 +1510,8 @@
       "summary": null,
       "url": "https://www.digitalnewsreport.org/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 312,
@@ -1416,7 +1524,8 @@
       "summary": null,
       "url": "https://www.digitalnewsreport.org/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 311,
@@ -1429,7 +1538,8 @@
       "summary": null,
       "url": "https://www.digitalnewsreport.org/",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 953,
@@ -1442,7 +1552,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/05/how-to-integrate-ai-into-your-newsroom-not-just-as-a-tool-but-as-a-transformative-force/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 952,
@@ -1455,7 +1566,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/05/how-to-integrate-ai-into-your-newsroom-not-just-as-a-tool-but-as-a-transformative-force/",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 502,
@@ -1468,7 +1580,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/05/divining-data-how-ai-invigorates-the-new-york-times-approach-to-investigative-reporting/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 501,
@@ -1481,7 +1594,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/05/how-to-integrate-ai-into-your-newsroom-not-just-as-a-tool-but-as-a-transformative-force/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 79,
@@ -1494,7 +1608,8 @@
       "summary": null,
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/what-nikkei-learnt-building-its-own-japanese-ai-chatbot?Institute_for_the_Study_of_Journalism",
       "task_type": "search_and_retrieval",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 80,
@@ -1507,7 +1622,8 @@
       "summary": null,
       "url": "https://www.br.de/nachrichten/wissen/wie-ki-den-inhalt-der-user-kommentare-bei-br24-zusammenfasst,UgNIPa2",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 954,
@@ -1520,7 +1636,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/05/from-norway-to-india-how-ai-is-reshaping-global-fact-checking-efforts/",
       "task_type": "verification_and_validation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 503,
@@ -1533,7 +1650,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/05/from-norway-to-india-how-ai-is-reshaping-global-fact-checking-efforts/",
       "task_type": "verification_and_validation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 984,
@@ -1546,7 +1664,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-helps-news-companies-better-respond-to-their-audience",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 983,
@@ -1559,7 +1678,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-helps-news-companies-better-respond-to-their-audience",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 568,
@@ -1572,7 +1692,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-helps-news-companies-better-respond-to-their-audience",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 81,
@@ -1585,7 +1706,8 @@
       "summary": null,
       "url": "https://theaudiencers.com/from-idea-to-implementation-lessons-learned-from-the-first-ai-integration-process-in-a-local-argentine-newsroom/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 569,
@@ -1598,7 +1720,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/in-house-ai-tool-at-amedia-used-by-51-of-journalists",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 82,
@@ -1611,7 +1734,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/how-full-fact-uses-generative-ai-to-find-harmful-health-advice-b0e05382ab90",
       "task_type": "verification_and_validation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 333,
@@ -1624,7 +1748,8 @@
       "summary": null,
       "url": "https://womeninnews.org/wp-content/uploads/2025/05/The-Age-of-AI-in-the-newsroom-Report_EN.pdf",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 332,
@@ -1637,7 +1762,8 @@
       "summary": null,
       "url": "https://womeninnews.org/wp-content/uploads/2025/05/The-Age-of-AI-in-the-newsroom-Report_EN.pdf",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 331,
@@ -1650,7 +1776,8 @@
       "summary": null,
       "url": "https://womeninnews.org/wp-content/uploads/2025/05/The-Age-of-AI-in-the-newsroom-Report_EN.pdf",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 330,
@@ -1663,7 +1790,8 @@
       "summary": null,
       "url": "https://womeninnews.org/wp-content/uploads/2025/05/The-Age-of-AI-in-the-newsroom-Report_EN.pdf",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 329,
@@ -1676,7 +1804,8 @@
       "summary": null,
       "url": "https://womeninnews.org/wp-content/uploads/2025/05/The-Age-of-AI-in-the-newsroom-Report_EN.pdf",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 328,
@@ -1689,7 +1818,8 @@
       "summary": null,
       "url": "https://womeninnews.org/wp-content/uploads/2025/05/The-Age-of-AI-in-the-newsroom-Report_EN.pdf",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 327,
@@ -1702,7 +1832,8 @@
       "summary": null,
       "url": "https://womeninnews.org/wp-content/uploads/2025/05/The-Age-of-AI-in-the-newsroom-Report_EN.pdf",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 326,
@@ -1715,7 +1846,8 @@
       "summary": null,
       "url": "https://womeninnews.org/wp-content/uploads/2025/05/The-Age-of-AI-in-the-newsroom-Report_EN.pdf",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 83,
@@ -1728,7 +1860,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/wall-street-journal-taxbot-answers-questions-while-readers-try-to-break-it",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 571,
@@ -1741,7 +1874,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/advice-from-the-new-york-times-listen-more-than-you-talk",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 572,
@@ -1754,7 +1888,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/the-guardian-tries-to-teach-the-machine-news-sense",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 986,
@@ -1767,7 +1902,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ai-generated-content-is-working-well-at-many-news-companies",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 985,
@@ -1780,7 +1916,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ai-generated-content-is-working-well-at-many-news-companies",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 956,
@@ -1793,7 +1930,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/04/from-lab-to-newsroom-how-reuters-builds-ai-tools-journalists-actually-use/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 955,
@@ -1806,7 +1944,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/04/from-lab-to-newsroom-how-reuters-builds-ai-tools-journalists-actually-use/",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 573,
@@ -1819,7 +1958,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ai-generated-content-is-working-well-at-many-news-companies",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 504,
@@ -1832,7 +1972,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/04/from-lab-to-newsroom-how-reuters-builds-ai-tools-journalists-actually-use/",
       "task_type": "search_and_retrieval",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 290,
@@ -1845,7 +1986,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/blog/mapping-10-years-of-french-broadcast-news-how-ina-uses-ai-to-make-media-coverage-visible",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 465,
@@ -1858,7 +2000,8 @@
       "summary": null,
       "url": "https://digiday.com/media/how-dotdash-meredith-enlisted-openai-to-boost-its-contextual-ad-product-with-lindsay-van-kirk/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 575,
@@ -1871,7 +2014,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/globe-and-mail-shares-its-ai-strategies-for-content-creation",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 381,
@@ -1884,7 +2028,8 @@
       "summary": null,
       "url": "https://www.poynter.org/tech-tools/2025/il-foglio-newspaper-generated-artificial-intelligence/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 941,
@@ -1897,7 +2042,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2025/03/local-newsrooms-are-using-ai-to-listen-in-on-public-meetings/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 349,
@@ -1910,7 +2056,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2025/03/local-newsrooms-are-using-ai-to-listen-in-on-public-meetings/",
       "task_type": "search_and_retrieval",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 85,
@@ -1923,7 +2070,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/earthcheckr-leveraging-generative-ai-for-environmental-journalism-fact-checking-00a7f82fb0a3",
       "task_type": "verification_and_validation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 86,
@@ -1936,7 +2084,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-initiative-newsletter/post.cfm/scroll-in-offers-a-lesson-in-the-personalisation-of-news",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 88,
@@ -1949,7 +2098,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2025/03/this-ai-tool-could-give-newsrooms-eyes-and-ears-where-they-dont-have-them/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 87,
@@ -1962,7 +2112,8 @@
       "summary": null,
       "url": "https://www.sverigesradio.se/artikel/stall-din-nyhetsfraga-till-oss-ny-typ-av-sok-i-sveriges-radio-play",
       "task_type": "search_and_retrieval",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 90,
@@ -1975,7 +2126,8 @@
       "summary": null,
       "url": "https://www.inma.org/best-practice/Best-Initiative-to-Grow-Subscriptions/2025-41/AIAssist-AI-Embedded-Newsroom-Centralising-Journalism-Values",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 198,
@@ -1988,7 +2140,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/nzme-builds-new-engine-for-subscription-growth/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 660,
@@ -2001,7 +2154,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/harnessing-ai-for-journalism-how-main-media-streamlined-ground-reporting-with-pinpoint/",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 505,
@@ -2014,7 +2168,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/02/how-denmarks-ekstra-bladet-used-ai-to-boost-subscriptions-by-35/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 94,
@@ -2027,7 +2182,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/ringier-slovakia-builds-out-ai-to-diversify/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 506,
@@ -2040,7 +2196,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/02/lab-to-launch-the-hindus-ai-integration-strategy/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 136,
@@ -2053,7 +2210,8 @@
       "summary": null,
       "url": "https://www.youtube.com/watch?v=b6xZiMTphD0",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 95,
@@ -2066,7 +2224,8 @@
       "summary": null,
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-small-nigerian-newsroom-used-ai-flooding-investigation",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 577,
@@ -2079,7 +2238,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-goes-multimodal-at-politico",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 97,
@@ -2092,7 +2252,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/transforming-longform-text-into-multimedia-using-generative-ai-5cc50fa9b460",
       "task_type": "content_transformation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 98,
@@ -2105,7 +2266,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/blog/using-genai-to-understand-impact-of-journalism-the-agncia-pblica-story",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 507,
@@ -2118,7 +2280,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2025/01/data-drives-280-subscription-growth-at-taiwans-united-daily-news/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 99,
@@ -2131,7 +2294,8 @@
       "summary": null,
       "url": "https://medium.com/american-journalism-project/unlocking-the-future-of-translation-for-local-journalism-lessons-from-cpis-ai-experiment-7e9e1c7578e0",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 100,
@@ -2144,7 +2308,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/en-gb/resources/stories/bonnier-news-launches-genai-tool-in-record-time/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 101,
@@ -2157,7 +2322,8 @@
       "summary": null,
       "url": "https://www.nytimes.com/2025/01/19/travel/how-ai-tools-helped-the-travel-team-study-its-places-to-go-lists.html",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 103,
@@ -2170,7 +2336,8 @@
       "summary": null,
       "url": "https://www.bloomberg.com/company/press/bloomberg-launches-gen-ai-summarization-for-news-content/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 104,
@@ -2183,7 +2350,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/en-gb/resources/stories/creating-a-more-user-centric-news-experience",
       "task_type": "search_and_retrieval",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 105,
@@ -2196,7 +2364,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/value-content/post.cfm/ntm-launches-ai-powered-automated-audio-news",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 112,
@@ -2209,7 +2378,8 @@
       "summary": null,
       "url": "https://awards.journalists.org/entries/using-ai-to-reveal-illegal-narco-trafficking-airstrips-deep-in-the-amazon",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 71,
@@ -2222,7 +2392,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/digitalhaus-franken",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 70,
@@ -2235,7 +2406,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/verify-media-platform",
       "task_type": "verification_and_validation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 69,
@@ -2248,7 +2420,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/genero-e-numero",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 68,
@@ -2261,7 +2434,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/chequeado",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 67,
@@ -2274,7 +2448,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/mas-voces",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 66,
@@ -2287,7 +2462,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/tama-media",
       "task_type": "verification_and_validation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 65,
@@ -2300,7 +2476,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/newtral",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 64,
@@ -2313,7 +2490,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/daily-maverick",
       "task_type": "commercial_optimisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 63,
@@ -2326,7 +2504,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/shomrim",
       "task_type": "verification_and_validation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 62,
@@ -2339,7 +2518,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/nest-center",
       "task_type": "verification_and_validation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 61,
@@ -2352,7 +2532,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/ccij",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 60,
@@ -2365,7 +2546,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/makedonia",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 59,
@@ -2378,7 +2560,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/the-oglethorpe-echo",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 58,
@@ -2391,7 +2574,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/gubbi-labs",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 57,
@@ -2404,7 +2588,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/science-feedback",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 56,
@@ -2417,7 +2602,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/verified-news-network",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 55,
@@ -2430,7 +2616,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/full-fact",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 54,
@@ -2443,7 +2630,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/fogo-cruzado",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 53,
@@ -2456,7 +2644,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/la-silla-vacia",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 52,
@@ -2469,7 +2658,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/sowt",
       "task_type": "commercial_optimisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 51,
@@ -2482,7 +2672,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/vera-files",
       "task_type": "search_and_retrieval",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 50,
@@ -2495,7 +2686,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/open-democracy",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 49,
@@ -2508,7 +2700,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/malditaes",
       "task_type": "verification_and_validation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 48,
@@ -2521,7 +2714,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/the-european-correspondent",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 47,
@@ -2534,7 +2728,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/el-surti",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 46,
@@ -2547,7 +2742,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/icir-nigeria",
       "task_type": "transcription_and_translation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 45,
@@ -2560,7 +2756,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/agencia-mural",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 44,
@@ -2573,7 +2770,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/cins",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 43,
@@ -2586,7 +2784,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/raseef22",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 42,
@@ -2599,7 +2798,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/babel-ngo",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 41,
@@ -2612,7 +2812,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/economia-para-la-pipol",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 40,
@@ -2625,7 +2826,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/calmatters",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 39,
@@ -2638,7 +2840,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/nawaat",
       "task_type": "search_and_retrieval",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 38,
@@ -2651,7 +2854,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/the-republic",
       "task_type": "transcription_and_translation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 37,
@@ -2664,7 +2868,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/programmes/innovation/innovation-challenge-2024/scroll",
       "task_type": "content_transformation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 931,
@@ -2677,7 +2882,8 @@
       "summary": null,
       "url": "https://ijnet.org/en/story/debunking-disinformation-turning-datasets-stories-ai-changing-newsrooms-nigeria",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 106,
@@ -2690,7 +2896,8 @@
       "summary": null,
       "url": "https://ijnet.org/en/story/debunking-disinformation-turning-datasets-stories-ai-changing-newsrooms-nigeria",
       "task_type": "verification_and_validation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 108,
@@ -2703,7 +2910,8 @@
       "summary": null,
       "url": "https://time.com/7201556/generative-ai-time-journalism/",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 107,
@@ -2716,7 +2924,8 @@
       "summary": null,
       "url": "https://time.com/7201512/time-ai-chatbot-about/",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 927,
@@ -2729,7 +2938,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/media-leaders/post.cfm/e24-embraces-cooperation-to-maximise-ai-s-potential",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 580,
@@ -2742,7 +2952,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/telegraph-envisions-ux-transformation-via-genai",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 109,
@@ -2755,7 +2966,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/media-leaders/post.cfm/e24-embraces-cooperation-to-maximise-ai-s-potential",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 110,
@@ -2768,7 +2980,8 @@
       "summary": null,
       "url": "https://medium.com/ft-product-technology/inside-the-fts-ai-powered-story-finding-efe6d154f20b",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 113,
@@ -2781,7 +2994,8 @@
       "summary": null,
       "url": "https://athelogroup.com/blog/ai-in-sports-how-espn-is-leveraging-tech-to-highlight-niche-sports",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 350,
@@ -2794,7 +3008,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishers/digital-journalism/telegraph-is-launching-an-ai-driven-newsroom-tool-every-month/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 115,
@@ -2807,7 +3022,8 @@
       "summary": null,
       "url": "https://www.journalismai.info/blog/a7179akynhl5ocvo75xryautpr4azf",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 117,
@@ -2820,7 +3036,8 @@
       "summary": null,
       "url": "https://www.journalists.org/news/case-study-how-the-times-of-india-brings-real-time-personalization-to-1500-daily-news-stories",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 116,
@@ -2833,7 +3050,8 @@
       "summary": null,
       "url": "https://www.nytimes.com/interactive/2024/10/28/us/politics/inside-the-movement-behind-trumps-election-lies.html?unlocked_article_code=1.Vk4.ucv9.dbHVquTQaf0G&smid=nytcore-ios-share&referringSource=articleShare",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 118,
@@ -2846,7 +3064,8 @@
       "summary": null,
       "url": "https://www.lanacion.com.ar/sociedad/ln-audio-ya-podes-leer-a-tus-autores-favoritos-ahora-los-vas-a-poder-escuchar-nid28102024/",
       "task_type": "content_transformation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 509,
@@ -2859,7 +3078,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/10/how-uks-reach-is-using-ai-to-help-produce-more-content-faster/",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 119,
@@ -2872,7 +3092,8 @@
       "summary": null,
       "url": "https://www.journalists.org/news/case-study-using-ai-to-analyze-open-source-intelligence-in-ukraine-war-reporting",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 120,
@@ -2885,7 +3106,8 @@
       "summary": null,
       "url": "https://towardsdatascience.com/a-mixed-methods-approach-to-offline-evaluation-of-news-recommender-systems-7dc7e9f0b501",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 121,
@@ -2898,7 +3120,8 @@
       "summary": null,
       "url": "https://www.journalists.org/news/case-study-swedens-aftonbladet-built-ai-driven-editorial-tools-and-an-election-chatbot",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 122,
@@ -2911,7 +3134,8 @@
       "summary": null,
       "url": "https://www.journalists.org/news/case-study-how-bayerischer-rundfunk-used-modular-journalism-to-personalize-radio-news-based-on-loca",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 124,
@@ -2924,7 +3148,8 @@
       "summary": null,
       "url": "https://latamjournalismreview.org/articles/chatbot-tells-story-of-woman-imprisoned-for-drug-trafficking-in-paraguay/",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 988,
@@ -2937,7 +3162,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/case-studies-show-how-genai-is-helping-news-companies-better-serve-readers",
       "task_type": "content_transformation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 987,
@@ -2950,7 +3176,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/case-studies-show-how-genai-is-helping-news-companies-better-serve-readers",
       "task_type": "search_and_retrieval",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 581,
@@ -2963,7 +3190,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/case-studies-show-how-genai-is-helping-news-companies-better-serve-readers",
       "task_type": "search_and_retrieval",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 427,
@@ -2976,7 +3204,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishers/digital-journalism/how-news-uk-and-reach-are-using-ai-in-the-newsroom/",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 426,
@@ -2989,7 +3218,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/news/weekly-london-standard-launches-with-ai-keir-starmer-front-page/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 126,
@@ -3002,7 +3232,8 @@
       "summary": null,
       "url": "https://www.journalists.org/news/case-study-building-ai-literacy-at-canadas-national-public-broadcaster-radio-canada",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 125,
@@ -3015,7 +3246,8 @@
       "summary": null,
       "url": "https://getcoai.com/news/sfchronicle-unveils-ai-tool-to-answer-your-kamala-harris-questions/",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 127,
@@ -3028,7 +3260,8 @@
       "summary": null,
       "url": "https://www.journalists.org/news/case-study-transforming-workflows-with-ai-at-zamaneh-media",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 428,
@@ -3041,7 +3274,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishers/how-the-economist-is-using-ai-to-extend-its-global-reach/",
       "task_type": "transcription_and_translation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 380,
@@ -3054,7 +3288,8 @@
       "summary": null,
       "url": "https://www.poynter.org/commentary/2024/espn-artificial-intelligence-pll-nwsl-coverage/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 128,
@@ -3067,7 +3302,8 @@
       "summary": null,
       "url": "https://www.journalists.org/news/case-study-enhancing-fact-checking-with-ai-at-der-spiegel",
       "task_type": "verification_and_validation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 933,
@@ -3080,7 +3316,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/news-companies-are-using-genai-in-these-4-interesting-ways",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 932,
@@ -3093,7 +3330,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/news-companies-are-using-genai-in-these-4-interesting-ways",
       "task_type": "search_and_retrieval",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 130,
@@ -3106,7 +3344,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/media-leaders/post.cfm/at-times-group-ai-offers-real-time-employee-feedback-but-human-touch-is-essential",
       "task_type": "moderation_and_interaction",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 129,
@@ -3119,7 +3358,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/news-companies-are-using-genai-in-these-4-interesting-ways",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 131,
@@ -3132,7 +3372,8 @@
       "summary": null,
       "url": "https://www.journalists.org/news/case-study-how-hearst-newspapers-built-an-ai-powered-slack-based-tool-to-help-with-digital-content",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 133,
@@ -3145,7 +3386,8 @@
       "summary": null,
       "url": "https://www.axios.com/2024/08/20/washington-post-ai-tool-data",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 585,
@@ -3158,7 +3400,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/schibsted-is-making-audience-gains-with-ai-driven-personalised-audio-playlists",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 135,
@@ -3171,7 +3414,8 @@
       "summary": null,
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/meet-nat-ai-generated-presenter-offering-soft-news-mexican-audiences",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 587,
@@ -3184,7 +3428,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/expressen-s-ai-tool-improves-efficiency-creativity-in-the-newsroom",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 544,
@@ -3197,7 +3442,8 @@
       "summary": null,
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/day-ai-clones-took-over-swiss-radio-station",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 513,
@@ -3210,7 +3456,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/08/how-indias-amar-ujala-is-using-ai-to-boost-engagement-and-fuel-subscriptions/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 545,
@@ -3223,7 +3470,8 @@
       "summary": null,
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/when-ai-meets-creative-writing-audio-experiment-czech-radio",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 514,
@@ -3236,7 +3484,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/07/how-indias-ht-media-uses-ai-to-boost-traffic-and-editorial-efficiency/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 546,
@@ -3249,7 +3498,8 @@
       "summary": null,
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-small-colombian-investigative-outlet-cuestion-publica-using-ai-stay-relevant-social-media",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 430,
@@ -3262,7 +3512,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishers/broadcast/gb-news-radio-ai-sports-bulletins/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 959,
@@ -3275,7 +3526,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/07/aftonbladet-serves-up-innovation-with-ai-buffet/",
       "task_type": "content_transformation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 958,
@@ -3288,7 +3540,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/07/aftonbladet-serves-up-innovation-with-ai-buffet/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 957,
@@ -3301,7 +3554,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/07/aftonbladet-serves-up-innovation-with-ai-buffet/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 516,
@@ -3314,7 +3568,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/07/aftonbladet-serves-up-innovation-with-ai-buffet/",
       "task_type": "content_generation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 482,
@@ -3327,7 +3582,8 @@
       "summary": null,
       "url": "https://www.editorandpublisher.com/stories/how-uks-4-iliffe-media-monetizes-their-smb-advertisers-with-ai-and-human-touch,250727",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 963,
@@ -3340,7 +3596,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/06/tailored-news-ai-tools-drive-onets-digital-success-in-poland/",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 962,
@@ -3353,7 +3610,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/06/tailored-news-ai-tools-drive-onets-digital-success-in-poland/",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 961,
@@ -3366,7 +3624,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/06/tailored-news-ai-tools-drive-onets-digital-success-in-poland/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 960,
@@ -3379,7 +3638,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/06/tailored-news-ai-tools-drive-onets-digital-success-in-poland/",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 517,
@@ -3392,7 +3652,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/06/tailored-news-ai-tools-drive-onets-digital-success-in-poland/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 590,
@@ -3405,7 +3666,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/der-spiegel-the-times-share-how-they-put-genai-tools-to-work-in-the-newsroom",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 138,
@@ -3418,7 +3680,8 @@
       "summary": null,
       "url": "https://www.ftstrategies.com/en-gb/insights/what-has-the-ft-learned-about-launching-its-own-generative-ai-tool",
       "task_type": "search_and_retrieval",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 139,
@@ -3431,7 +3694,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/06/spains-relevo-boosts-homepage-engagement-by-a-third-with-ai-driven-coding/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 140,
@@ -3444,7 +3708,8 @@
       "summary": null,
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-norways-public-broadcaster-uses-ai-generated-summaries-reach-younger-audiences",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 78,
@@ -3457,7 +3722,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/en-gb/resources/stories/gruner-jahr-drives-a-cultural-shift-toward-ai-1/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 592,
@@ -3470,7 +3736,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-case-studies-include-automated-video-transcripts-radio-traffic-reports",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 965,
@@ -3483,7 +3750,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/05/indonesias-idn-media-leveraging-ai-to-offer-greater-value-user-experience/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 964,
@@ -3496,7 +3764,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/05/indonesias-idn-media-leveraging-ai-to-offer-greater-value-user-experience/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 521,
@@ -3509,7 +3778,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/05/indonesias-idn-media-leveraging-ai-to-offer-greater-value-user-experience/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 989,
@@ -3522,7 +3792,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-tool-saves-500-000-annually-at-ovb-media",
       "task_type": "moderation_and_interaction",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 922,
@@ -3535,7 +3806,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/what-does-genai-mean-for-the-roi-of-audio",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 921,
@@ -3548,7 +3820,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/what-does-genai-mean-for-the-roi-of-audio",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 920,
@@ -3561,7 +3834,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/what-does-genai-mean-for-the-roi-of-audio",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 919,
@@ -3574,7 +3848,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/what-does-genai-mean-for-the-roi-of-audio",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 597,
@@ -3587,7 +3862,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/what-does-genai-mean-for-the-roi-of-audio",
       "task_type": "moderation_and_interaction",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 594,
@@ -3600,7 +3876,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/genai-tool-saves-500-000-annually-at-ovb-media",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 991,
@@ -3613,7 +3890,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ippen-digital-medifin-share-how-they-created-customer-facing-genai-products",
       "task_type": "search_and_retrieval",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 990,
@@ -3626,7 +3904,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ippen-digital-medifin-share-how-they-created-customer-facing-genai-products",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 599,
@@ -3639,7 +3918,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/news-media-publishers-are-extracting-value-from-chat-products",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 596,
@@ -3652,7 +3932,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/ippen-digital-medifin-share-how-they-created-customer-facing-genai-products",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 670,
@@ -3665,7 +3946,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/gma-integrated-news-digitals-inoculated-combats-misinformation/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 669,
@@ -3678,7 +3960,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/ndtv-leverages-data-and-ml-to-drive-24-new-user-growth/",
       "task_type": "editing_and_optimisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 969,
@@ -3691,7 +3974,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/04/norways-vg-finding-success-with-six-ai-related-newsroom-tools/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 968,
@@ -3704,7 +3988,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/04/norways-vg-finding-success-with-six-ai-related-newsroom-tools/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 967,
@@ -3717,7 +4002,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/04/norways-vg-finding-success-with-six-ai-related-newsroom-tools/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 966,
@@ -3730,7 +4016,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/04/norways-vg-finding-success-with-six-ai-related-newsroom-tools/",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 522,
@@ -3743,7 +4030,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/04/norways-vg-finding-success-with-six-ai-related-newsroom-tools/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 352,
@@ -3756,7 +4044,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2024/04/inside-newsweek-ai-experiment/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 143,
@@ -3769,7 +4058,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/rede-gazeta-experiments-with-genai-to-create-its-own-news-assistant",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 398,
@@ -3782,7 +4072,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/how-greenlandic-publisher-uses-automated-translations-to-boost-their-subscription-numbers/",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 145,
@@ -3795,7 +4086,8 @@
       "summary": null,
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-spanish-media-group-created-ai-tool-detect-audio-deepfakes-help-journalists-big-election",
       "task_type": "verification_and_validation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 934,
@@ -3808,7 +4100,8 @@
       "summary": null,
       "url": "https://latamjournalismreview.org/articles/ai-in-local-journalism-how-two-brazilian-media-outlets-are-using-generative-ai-to-provide-services-to-their-audiences/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 146,
@@ -3821,7 +4114,8 @@
       "summary": null,
       "url": "https://latamjournalismreview.org/articles/ai-in-local-journalism-how-two-brazilian-media-outlets-are-using-generative-ai-to-provide-services-to-their-audiences/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 147,
@@ -3834,7 +4128,8 @@
       "summary": null,
       "url": "https://latamjournalismreview.org/articles/cuestion-publica-of-colombia-creates-ai-tool-to-improve-daily-coverage-with-investigative-journalism/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 149,
@@ -3847,7 +4142,8 @@
       "summary": null,
       "url": "https://www.innovate-local.org/tamedia",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 620,
@@ -3860,7 +4156,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/we-built-a-news-site-powered-by-llms-and-public-data-heres-what-we-learned-aba6c52a7ee4",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 150,
@@ -3873,7 +4170,8 @@
       "summary": null,
       "url": "https://www.innovate-local.org/amedia",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 523,
@@ -3886,7 +4184,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/03/scrolls-ai-journey-progress-challenges-and-some-key-learnings/",
       "task_type": "verification_and_validation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 151,
@@ -3899,7 +4198,8 @@
       "summary": null,
       "url": "https://www.thecity.nyc/2024/02/29/chatgpt-map-stories-nyc/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 152,
@@ -3912,7 +4212,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishers/nationals/reach-ai-guten/",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 551,
@@ -3925,7 +4226,8 @@
       "summary": null,
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/i-created-ai-tool-help-investigative-journalists-find-stories-audit-reports-heres-how-i-did-it",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 153,
@@ -3938,7 +4240,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishers/digital-journalism/semafor-microsoft-signals-ai/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 604,
@@ -3951,7 +4254,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/latin-american-media-companies-are-finding-their-way-with-genai-too",
       "task_type": "search_and_retrieval",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 925,
@@ -3964,7 +4268,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/media-companies-are-using-genai-in-multiple-ways-right-now",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 924,
@@ -3977,7 +4282,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/media-companies-are-using-genai-in-multiple-ways-right-now",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 605,
@@ -3990,7 +4296,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/Generative-AI-Initiative/post.cfm/media-companies-are-using-genai-in-multiple-ways-right-now",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 160,
@@ -4003,7 +4310,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2024/01/clarin-introduces-ai-assistant-ualterai-to-increase-engagement-on-its-news-site/",
       "task_type": "content_transformation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 155,
@@ -4016,7 +4324,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2024/01/this-brazilian-fact-checking-org-uses-a-chatgpt-esque-bot-to-answer-reader-questions/",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 156,
@@ -4029,7 +4338,8 @@
       "summary": null,
       "url": "https://www.innovate-local.org/stavanger-aftenblad",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 673,
@@ -4042,7 +4352,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/telling-stories-that-matter-with-a-boost-from-ai/",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 157,
@@ -4055,7 +4366,8 @@
       "summary": null,
       "url": "https://www.theguardian.com/technology/2023/dec/28/how-one-of-the-worlds-oldest-newspapers-is-using-ai-to-reinvent-journalism",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 158,
@@ -4068,7 +4380,8 @@
       "summary": null,
       "url": "https://ojo-publico.com/4879/quispe-chequea-inteligencia-artificial-contra-la-desinformacion",
       "task_type": "verification_and_validation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 159,
@@ -4081,7 +4394,8 @@
       "summary": null,
       "url": "https://www.nytimes.com/2023/12/21/world/middleeast/israel-gaza-bomb-investigation.html",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 161,
@@ -4094,7 +4408,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishers/regional-newspapers/newsquest-ai-assisted-reporters/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 437,
@@ -4107,7 +4422,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishers/digital-journalism/news-chatbots-generative-ai-forbes-search/",
       "task_type": "search_and_retrieval",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 438,
@@ -4120,7 +4436,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/platforms/natural-language-processing-and-seo/",
       "task_type": "editing_and_optimisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 379,
@@ -4133,7 +4450,8 @@
       "summary": null,
       "url": "https://www.poynter.org/commentary/2023/sports-illustrated-artificial-intelligence-writers-futurism/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 675,
@@ -4146,7 +4464,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/paywall-content-selection-using-ai/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 162,
@@ -4159,7 +4478,8 @@
       "summary": null,
       "url": "https://apublica.org/2023/10/agencia-publica-lanca-leitura-de-reportagens-por-inteligencia-artificial/",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 439,
@@ -4172,7 +4492,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/news/national-world-london-ai-weather-presenter/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 459,
@@ -4185,7 +4506,8 @@
       "summary": null,
       "url": "https://digiday.com/media/how-publishers-are-trying-to-cover-their-assets-when-using-ai-tools-in-sales/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 440,
@@ -4198,7 +4520,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/podcasts/aftenposten-ai-voice-new-audiences/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 163,
@@ -4211,7 +4534,8 @@
       "summary": null,
       "url": "https://github.com/associatedpress/local-ai-brainerd-dispatch",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 671,
@@ -4224,7 +4548,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/digital-paper-adds-to-revenue-streams-with-ai/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 525,
@@ -4237,7 +4562,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2023/09/originator-profile-cross-industry-project-aims-for-safer-cyberspace/",
       "task_type": "verification_and_validation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 142,
@@ -4250,7 +4576,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/es-mx/resources/stories/ai-is-boosting-forbes-publishing-capabilities",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 443,
@@ -4263,7 +4590,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishers/digital-journalism/buzzfeed-ai/",
       "task_type": "content_generation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 170,
@@ -4276,7 +4604,8 @@
       "summary": null,
       "url": "https://www.reutersagency.com/en/media-center/reuters-launches-ai-powered-discoverability-features-for-video-library-on-reuters-connect-accelerating-discovery-editing-and-publishing/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 171,
@@ -4289,7 +4618,8 @@
       "summary": null,
       "url": "https://www.wsj.com/articles/lead-cables-investigation-att-methodology-1703dbb0",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 526,
@@ -4302,7 +4632,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2023/07/a-decade-with-ai-how-norways-adresseavisen-uses-ai-to-boost-engagement/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 684,
@@ -4315,7 +4646,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/india-today-increases-ecpm-by-leveraging-first-party-data/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 614,
@@ -4328,7 +4660,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/using-chatgpt-to-correct-spanish-grammar-and-style-in-news-articles-733c9c83de9a",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 629,
@@ -4341,7 +4674,8 @@
       "summary": null,
       "url": "https://generative-ai-newsroom.com/building-a-gpt-4-powered-google-docs-extension-for-news-quiz-generation-34b7e6bcdc4d",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 686,
@@ -4354,7 +4688,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/social-media-newswire-vets-user-generated-content-for-reporters/",
       "task_type": "verification_and_validation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 676,
@@ -4367,7 +4702,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/growing-subscriptions-with-the-help-of-technology/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 446,
@@ -4380,7 +4716,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishers/digital-journalism/reach-ai-my-news-assistant/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 447,
@@ -4393,7 +4730,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/news/aftonbladet-schibsted-ai-rap/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 456,
@@ -4406,7 +4744,8 @@
       "summary": null,
       "url": "https://digiday.com/media/how-one-publisher-is-using-generative-ai-to-publish-thousands-of-evergreen-posts-create-a-chatbot/",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 450,
@@ -4419,7 +4758,8 @@
       "summary": null,
       "url": "https://pressgazette.co.uk/publishing-services-content/how-newsroom-automation-empowers-publishers-local-business-reporting/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 935,
@@ -4432,7 +4772,8 @@
       "summary": null,
       "url": "https://latamjournalismreview.org/articles/journalists-from-argentina-paraguay-and-the-philippines-develop-image-recognition-model-to-make-artificial-intelligence-more-inclusive/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 173,
@@ -4445,7 +4786,8 @@
       "summary": null,
       "url": "https://latamjournalismreview.org/articles/journalists-from-argentina-paraguay-and-the-philippines-develop-image-recognition-model-to-make-artificial-intelligence-more-inclusive/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 679,
@@ -4458,7 +4800,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/prisa-improved-ad-revenue-and-performance-using-ml/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 174,
@@ -4471,7 +4814,8 @@
       "summary": null,
       "url": "https://www.aljazeera.com/news/2022/12/19/world-cup-predictions-did-our-ai",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 175,
@@ -4484,7 +4828,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2022/11/what-types-of-local-news-stories-should-be-automated-the-toronto-star-is-figuring-it-out/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 970,
@@ -4497,7 +4842,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2022/07/tracking-gender-balance-and-analysing-online-content-experts-share-ai-use-cases/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 528,
@@ -4510,7 +4856,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2022/07/tracking-gender-balance-and-analysing-online-content-experts-share-ai-use-cases/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 218,
@@ -4523,7 +4870,8 @@
       "summary": null,
       "url": "https://qz.com/1809782/facebook-ads-reveal-each-candidates-top-issue-in-south-carolina/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 552,
@@ -4536,7 +4884,8 @@
       "summary": null,
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/how-local-paper-argentina-uses-ai-publish-hundreds-sports-pieces-month",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 971,
@@ -4549,7 +4898,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2022/05/how-the-guardian-and-afp-used-machine-learning-to-understand-quotes/",
       "task_type": "search_and_retrieval",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 530,
@@ -4562,7 +4912,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2022/05/how-the-guardian-and-afp-used-machine-learning-to-understand-quotes/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 973,
@@ -4575,7 +4926,8 @@
       "summary": null,
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/trap-lyrics-election-coverage-lessons-ai-old-argentinian-newspaper",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 553,
@@ -4588,7 +4940,8 @@
       "summary": null,
       "url": "https://reutersinstitute.politics.ox.ac.uk/news/trap-lyrics-election-coverage-lessons-ai-old-argentinian-newspaper",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 177,
@@ -4601,7 +4954,8 @@
       "summary": null,
       "url": "https://armando.info/la-mineria-ilegal-monto-sus-bases-aereas-en-la-selva/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 178,
@@ -4614,7 +4968,8 @@
       "summary": null,
       "url": "https://blogs.lanacion.com.ar/projects/data/elections-data/computer-vision-to-monitor-elections-transparency/",
       "task_type": "verification_and_validation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 180,
@@ -4627,7 +4982,8 @@
       "summary": null,
       "url": "https://bbcnewslabs.co.uk/projects/oriel/",
       "task_type": "search_and_retrieval",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 181,
@@ -4640,7 +4996,8 @@
       "summary": null,
       "url": "https://www.theguardian.com/info/2021/nov/25/talking-sense-using-machine-learning-to-understand-quotes",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 182,
@@ -4653,7 +5010,8 @@
       "summary": null,
       "url": "https://business-of-data.com/articles/how-ai-is-helping-out-in-the-newsroom-ashish-verma/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 531,
@@ -4666,7 +5024,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2021/10/listen-and-auditorial-experiments-shed-a-positive-light-on-audios-accessibility/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 945,
@@ -4679,7 +5038,8 @@
       "summary": null,
       "url": "https://www.cjr.org/tow_center_reports/covering-covid-automated-news.php/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 944,
@@ -4692,7 +5052,8 @@
       "summary": null,
       "url": "https://www.cjr.org/tow_center_reports/covering-covid-automated-news.php/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 943,
@@ -4705,7 +5066,8 @@
       "summary": null,
       "url": "https://www.cjr.org/tow_center_reports/covering-covid-automated-news.php/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 942,
@@ -4718,7 +5080,8 @@
       "summary": null,
       "url": "https://www.cjr.org/tow_center_reports/covering-covid-automated-news.php/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 370,
@@ -4731,7 +5094,8 @@
       "summary": null,
       "url": "https://www.cjr.org/tow_center_reports/covering-covid-automated-news.php/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 674,
@@ -4744,7 +5108,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/resources/stories/how-wirtualna-polska-uses-ai-to-tackle-toxic-content-on-their-platform/",
       "task_type": "moderation_and_interaction",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 184,
@@ -4757,7 +5122,8 @@
       "summary": null,
       "url": "https://developers.digital.abc.net.au/2021/06/10/hyperdraft-the-natural-language-generation-tool-powering-the-abc-emergency-voice-app/",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 972,
@@ -4770,7 +5136,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2021/06/how-bbc-news-labs-uses-ai-powered-content-automation-to-engage-young-audiences/",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 532,
@@ -4783,7 +5150,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2021/06/how-bbc-news-labs-uses-ai-powered-content-automation-to-engage-young-audiences/",
       "task_type": "content_transformation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 185,
@@ -4796,7 +5164,8 @@
       "summary": null,
       "url": "https://www.unitedrobots.ai/for-newsrooms/cases/for-a-local-newsroom-automation-is-necessary",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 186,
@@ -4809,7 +5178,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/news/i-am-a-local-journalist-what-can-ai-do-for-me-/s2/a814870/",
       "task_type": "transcription_and_translation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 188,
@@ -4822,7 +5192,8 @@
       "summary": null,
       "url": "https://grist.org/energy/scale-of-texas-new-mexico-abandoned-oil-wells",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 190,
@@ -4835,7 +5206,8 @@
       "summary": null,
       "url": "https://medium.com/ft-product-technology/predicting-ft-trending-topics-7eda85ece727",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 191,
@@ -4848,7 +5220,8 @@
       "summary": null,
       "url": "https://medium.com/the-wall-street-journal/staying-on-topic-building-an-automated-topic-model-of-wsj-news-coverage-d4dc4369f71b",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 192,
@@ -4861,7 +5234,8 @@
       "summary": null,
       "url": "https://newsinitiative.withgoogle.com/assets/static/docs/cs_gni_sanoma.pdf",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 194,
@@ -4874,7 +5248,8 @@
       "summary": null,
       "url": "https://open.nytimes.com/we-recommend-articles-with-a-little-help-from-our-friends-machine-learning-and-reader-input-e17e85d6cf04",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 195,
@@ -4887,7 +5262,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2021/01/covid-19-usas-trib-total-media-boosts-ai-backed-hyperlocal-journalism/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 196,
@@ -4900,7 +5276,8 @@
       "summary": null,
       "url": "https://www.gxpress.net/nine-improves-its-image-at-scale-with-ai-project-cms-13007",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 200,
@@ -4913,7 +5290,8 @@
       "summary": null,
       "url": "https://gijn.org/2020/10/19/calculating-corruption-perus-ojo-publico-creates-tool-to-gauge-contracting-risks/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 201,
@@ -4926,7 +5304,8 @@
       "summary": null,
       "url": "https://open.nytimes.com/to-find-photos-in-our-archive-we-taught-the-cms-how-to-read-f9bd5f6703d7",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 202,
@@ -4939,7 +5318,8 @@
       "summary": null,
       "url": "https://medium.com/axel-springer-tech/how-we-built-a-cutting-edge-nlp-model-to-generate-seo-titles-ac0fc80a5128",
       "task_type": "editing_and_optimisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 203,
@@ -4952,7 +5332,8 @@
       "summary": null,
       "url": "https://www.reuters.com/article/rpb-lavita-video-archive/reuters-applies-ai-technology-to-100-years-of-archive-video-to-enable-faster-discovery-supported-by-google-dni-idUSKCN2591VO",
       "task_type": "search_and_retrieval",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 204,
@@ -4965,7 +5346,8 @@
       "summary": null,
       "url": "https://www.inma.org/blogs/media-leaders/post.cfm/bergens-tidende-uses-ai-to-reveal-newsroom-biases-diversify-coverage",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 948,
@@ -4978,7 +5360,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/can-automation-succeed-in-sports-reporting/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 947,
@@ -4991,7 +5374,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/can-automation-succeed-in-sports-reporting/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 392,
@@ -5004,7 +5388,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/can-automation-succeed-in-sports-reporting/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 227,
@@ -5017,7 +5402,8 @@
       "summary": null,
       "url": "https://qz.com/1786896/ai-for-investigations-sorting-through-the-luanda-leaks",
       "task_type": "search_and_retrieval",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 206,
@@ -5030,7 +5416,8 @@
       "summary": null,
       "url": "https://bbcnewslabs.co.uk/news/2020/gst-on-social/",
       "task_type": "content_transformation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 207,
@@ -5043,7 +5430,8 @@
       "summary": null,
       "url": "https://rd.nytimes.com/projects/estimating-3d-poses-of-athletes-at-live-sporting-events",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 208,
@@ -5056,7 +5444,8 @@
       "summary": null,
       "url": "https://medium.com/engagement-at-kpcc/how-kpcc-embraced-its-role-as-las-help-desk-and-what-we-ve-learned-along-the-way-10b548ea23ca",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 210,
@@ -5069,7 +5458,8 @@
       "summary": null,
       "url": "https://www.bbc.co.uk/mediacentre/latestnews/2020/corona-bot",
       "task_type": "moderation_and_interaction",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 209,
@@ -5082,7 +5472,8 @@
       "summary": null,
       "url": "https://medium.com/scmp-inside-the-wonton/digitizing-a-century-of-history-with-data-fd934f4394ba",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 211,
@@ -5095,7 +5486,8 @@
       "summary": null,
       "url": "https://www.adweek.com/performance-marketing/bloomberg-media-creates-new-tool-to-make-readers-advertisers-swoon/",
       "task_type": "content_transformation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 212,
@@ -5108,7 +5500,8 @@
       "summary": null,
       "url": "https://open.nytimes.com/to-apply-machine-learning-responsibly-we-use-it-in-moderation-d001f49e0644",
       "task_type": "moderation_and_interaction",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 214,
@@ -5121,7 +5514,8 @@
       "summary": null,
       "url": "https://tech.ebu.ch/news/2020/04/swedish-radio-leverages-peach-recommendations-for-content-production",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 215,
@@ -5134,7 +5528,8 @@
       "summary": null,
       "url": "https://wan-ifra.org/2020/04/how-an-ai-system-is-boosting-business-at-the-globe-and-mail/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 216,
@@ -5147,7 +5542,8 @@
       "summary": null,
       "url": "https://rd.nytimes.com/projects/analyzing-bias-in-natural-language-models",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 217,
@@ -5160,7 +5556,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/news/swedish-aftonbladet-uses-automation-to-outpace-competitors-with-its-covid-19-news-coverage/s2/a753239/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 219,
@@ -5173,7 +5570,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/news/how-ai-can-help-predict-subscription-cancellation-and-help-you-keep-your-readers-engaged/s2/a752220/",
       "task_type": "commercial_optimisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 222,
@@ -5186,7 +5584,8 @@
       "summary": null,
       "url": "https://www.forbes.com/sites/simonchandler/2020/02/07/reuters-uses-ai-to-prototype-first-ever-automated-video-reports/?sh=29e9c7f87a2a",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 224,
@@ -5199,7 +5598,8 @@
       "summary": null,
       "url": "https://www.lenfestinstitute.org/news-technology-innovation/what-the-ap-and-newsday-learned-from-automating-coverage-of-124-school-districts/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 226,
@@ -5212,7 +5612,8 @@
       "summary": null,
       "url": "https://www.bbc.co.uk/blogs/internet/entries/b81f12d4-39b7-4624-86ab-01647d2800ec",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 228,
@@ -5225,7 +5626,8 @@
       "summary": null,
       "url": "https://fullfact.org/blog/2019/dec/how-we-use-ai-help-fact-check-party-manifestos/",
       "task_type": "verification_and_validation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 229,
@@ -5238,7 +5640,8 @@
       "summary": null,
       "url": "https://www.icij.org/investigations/implant-files/we-used-ai-to-identify-the-sex-of-340000-people-harmed-by-medical-devices/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 231,
@@ -5251,7 +5654,8 @@
       "summary": null,
       "url": "https://medium.com/the-wall-street-journal/how-the-wall-street-journal-is-using-deep-learning-to-inform-content-strategy-4b4a07090110",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 232,
@@ -5264,7 +5668,8 @@
       "summary": null,
       "url": "https://www.bbc.co.uk/blogs/internet/entries/4a31d36d-fd0c-4401-b464-d249376aafd1",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 385,
@@ -5277,7 +5682,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/sponsored-content-using-ai-to-break-news-faster/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 233,
@@ -5290,7 +5696,8 @@
       "summary": null,
       "url": "https://www.bbc.co.uk/rd/blog/2019-09-artificial-intelligence-colourisation-video",
       "task_type": "content_transformation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 234,
@@ -5303,7 +5710,8 @@
       "summary": null,
       "url": "https://digiday.com/media/how-the-times-of-londons-year-long-content-review-fuelled-its-drive-to-300000-subscribers/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 238,
@@ -5316,7 +5724,8 @@
       "summary": null,
       "url": "https://qz.com/1670632/how-quartz-used-ai-to-help-reporters-search-the-mauritius-leaks/",
       "task_type": "search_and_retrieval",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 241,
@@ -5329,7 +5738,8 @@
       "summary": null,
       "url": "https://www.blog.google/outreach-initiatives/google-news-initiative/journalism-and-ai-team-measure-missing-stories/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 244,
@@ -5342,7 +5752,8 @@
       "summary": null,
       "url": "https://www.pressgazette.co.uk/times-titles-halve-digital-subscriber-churn-with-tailored-emails-from-ai-named-james/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 388,
@@ -5355,7 +5766,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/artificial-intelligence-brexit-and-lgbtq-here-is-your-weekly-journalism-news-update/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 247,
@@ -5368,7 +5780,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/news/sky-news-embraces-ai-tools/s2/a738749/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 357,
@@ -5381,7 +5794,8 @@
       "summary": null,
       "url": "https://medium.com/bbc-news-labs/stories-by-numbers-how-bbc-news-is-experimenting-with-automated-journalism-3d8595a88852",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 254,
@@ -5394,7 +5808,8 @@
       "summary": null,
       "url": "https://medium.com/bbc-news-labs/stories-by-numbers-how-bbc-news-is-experimenting-with-automated-journalism-3d8595a88852",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 255,
@@ -5407,7 +5822,8 @@
       "summary": null,
       "url": "https://www.blog.google/outreach-initiatives/google-news-initiative/how-el-pais-used-ai-make-their-comments-section-less-toxic/",
       "task_type": "moderation_and_interaction",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 256,
@@ -5420,7 +5836,8 @@
       "summary": null,
       "url": "https://medium.com/jsk-class-of-2019/we-cracked-the-panama-papers-with-400-human-brains-can-ai-help-us-next-time-1f97164742a0",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 258,
@@ -5433,7 +5850,8 @@
       "summary": null,
       "url": "https://www.wsj.com/articles/ge-ceo-letters-decoded-shrinking-ambitions-and-disappearing-buzzwords-11551441600",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 259,
@@ -5446,7 +5864,8 @@
       "summary": null,
       "url": "https://www.theguardian.com/commentisfree/2019/feb/01/why-i-created-a-robot-to-write-news-stories",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 261,
@@ -5459,7 +5878,8 @@
       "summary": null,
       "url": "https://digiday.com/media/forbes-built-a-robot-to-pre-write-articles-for-its-contributors/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 262,
@@ -5472,7 +5892,8 @@
       "summary": null,
       "url": "http://www.xinhuanet.com/english/2018-12/28/c_137704391.htm",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 263,
@@ -5485,7 +5906,8 @@
       "summary": null,
       "url": "https://medium.com/@chewweichun/a-look-at-toutiao-chinas-artificial-intelligence-powered-news-platform-4eef3c23b79a",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 264,
@@ -5498,7 +5920,8 @@
       "summary": null,
       "url": "https://texty.org.ua/d/2018/mnews/eng/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 266,
@@ -5511,7 +5934,8 @@
       "summary": null,
       "url": "https://www.theguardian.com/media/2018/nov/14/financial-times-tool-warns-if-articles-quote-too-many-men",
       "task_type": "editing_and_optimisation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 267,
@@ -5524,7 +5948,8 @@
       "summary": null,
       "url": "https://www.newsrewired.com/2018/11/07/press-associations-news-service-radar-has-written-50000-individual-local-news-stories-in-three-months-with-ai-technology/",
       "task_type": "content_generation",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 268,
@@ -5537,7 +5962,8 @@
       "summary": null,
       "url": "https://open.nytimes.com/how-does-this-article-make-you-feel-4684e5e9c47",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 937,
@@ -5550,7 +5976,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/news/how-reuters-uses-robots-to-analyse-data-and-humans-to-tell-the-stories/s2/a730305/",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 269,
@@ -5563,7 +5990,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/news/how-reuters-uses-robots-to-analyse-data-and-humans-to-tell-the-stories/s2/a730305/",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 270,
@@ -5576,7 +6004,8 @@
       "summary": null,
       "url": "https://newslab.yle.fi/blog/16T3d1e7YcuwguOk8gsq8s",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 271,
@@ -5589,7 +6018,8 @@
       "summary": null,
       "url": "https://www.bloombergmedia.com/press/bloomberg-medias-innovation-lab-launches-bulletin/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 273,
@@ -5602,7 +6032,8 @@
       "summary": null,
       "url": "https://digiday.com/media/swiss-news-publisher-nzz-built-flexible-paywall-using-machine-learning/",
       "task_type": "commercial_optimisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 275,
@@ -5615,7 +6046,8 @@
       "summary": null,
       "url": "https://open.nytimes.com/how-the-new-york-times-uses-software-to-recognize-members-of-congress-29b46dd426c7",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 276,
@@ -5628,7 +6060,8 @@
       "summary": null,
       "url": "https://www.bloomberg.com/news/articles/2018-05-27/the-airline-geek-trying-to-build-a-media-giant-with-no-reporters",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 277,
@@ -5641,7 +6074,8 @@
       "summary": null,
       "url": "http://fingfx.thomsonreuters.com/gfx/rngs/CHINA-SOUTHCHINASEA-BUILDING/010070760H9/index.html",
       "task_type": "data_extraction_and_analysis",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 282,
@@ -5654,7 +6088,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2018/02/after-years-of-testing-the-wall-street-journal-has-built-a-paywall-that-bends-to-the-individual-reader/",
       "task_type": "commercial_optimisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 283,
@@ -5667,7 +6102,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2018/02/not-all-news-site-visitors-are-created-equal-schibsted-is-trying-to-predict-the-ones-who-will-pay-up/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 284,
@@ -5680,7 +6116,8 @@
       "summary": null,
       "url": "https://www.poynter.org/fact-checking/2018/in-argentina-fact-checkers%C2%92-latest-hire-is-a-bot/",
       "task_type": "verification_and_validation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "selection_and_filtering"
     },
     {
       "id": 286,
@@ -5693,7 +6130,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2017/12/with-my-wsj-the-wall-street-journal-makes-a-personalized-content-feed-central-to-its-app/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 288,
@@ -5706,7 +6144,8 @@
       "summary": null,
       "url": "https://digiday.com/media/washington-posts-robot-reporter-published-500-articles-last-year/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 335,
@@ -5719,7 +6158,8 @@
       "summary": null,
       "url": "https://digiday.com/media/washington-post-brings-artificial-intelligence-native-ads/",
       "task_type": "commercial_optimisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     },
     {
       "id": 289,
@@ -5732,7 +6172,8 @@
       "summary": null,
       "url": "https://www.buzzfeednews.com/article/peteraldhous/hidden-spy-planes",
       "task_type": "discovery_and_monitoring",
-      "effect_type": "effectiveness_and_scaling"
+      "effect_type": "effectiveness_and_scaling",
+      "gatekeeping_stage": "access_and_observation"
     },
     {
       "id": 355,
@@ -5745,7 +6186,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2016/10/the-ap-wants-to-use-machine-learning-to-automate-turning-print-stories-into-broadcast-ones/",
       "task_type": "content_transformation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 337,
@@ -5758,7 +6200,8 @@
       "summary": null,
       "url": "http://www.wsj.com/articles/washington-post-to-cover-every-major-race-on-election-day-with-help-of-artificial-intelligence-1476871202",
       "task_type": "editing_and_optimisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 400,
@@ -5771,7 +6214,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/norwegian-news-agency-is-betting-on-automation-for-football-coverage/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 403,
@@ -5784,7 +6228,8 @@
       "summary": null,
       "url": "https://www.journalism.co.uk/how-on-the-wight-is-experimenting-with-automation-in-news/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 369,
@@ -5797,7 +6242,8 @@
       "summary": null,
       "url": "https://www.cjr.org/united_states_project/how_an_algorithm_helped_the_lat_scoop_mondays_quake.php",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 372,
@@ -5810,7 +6256,8 @@
       "summary": null,
       "url": "https://www.poynter.org/reporting-editing/2014/robot-reporters-the-guardian-gives-it-a-go/",
       "task_type": "content_generation",
-      "effect_type": "efficiency"
+      "effect_type": "efficiency",
+      "gatekeeping_stage": "processing_and_editing"
     },
     {
       "id": 359,
@@ -5823,7 +6270,8 @@
       "summary": null,
       "url": "https://www.niemanlab.org/2008/12/times-extra-a-vote-for-automated-aggregation/",
       "task_type": "audience_targeting_and_personalisation",
-      "effect_type": "optimisation"
+      "effect_type": "optimisation",
+      "gatekeeping_stage": "publishing_and_distribution"
     }
   ],
   "stats": {
@@ -6214,6 +6662,88 @@
       "WAN-IFRA Age of AI in the Newsroom",
       "arXiv"
     ],
+    "sources_list": [
+      {
+        "name": "JournalismAI",
+        "category": "Database",
+        "count": 212
+      },
+      {
+        "name": "WAN-IFRA",
+        "category": "Industry",
+        "count": 53
+      },
+      {
+        "name": "INMA",
+        "category": "Industry",
+        "count": 50
+      },
+      {
+        "name": "Google News Initiative",
+        "category": "Industry",
+        "count": 24
+      },
+      {
+        "name": "Nieman Lab",
+        "category": "Industry",
+        "count": 20
+      },
+      {
+        "name": "Press Gazette",
+        "category": "Industry",
+        "count": 19
+      },
+      {
+        "name": "Reuters Institute Digital News Report 2025",
+        "category": "Curated",
+        "count": 13
+      },
+      {
+        "name": "Generative AI Newsroom",
+        "category": "Academic",
+        "count": 11
+      },
+      {
+        "name": "Journalism.co.uk",
+        "category": "Industry",
+        "count": 9
+      },
+      {
+        "name": "WAN-IFRA Age of AI in the Newsroom",
+        "category": "Curated",
+        "count": 8
+      },
+      {
+        "name": "Poynter",
+        "category": "Industry",
+        "count": 7
+      },
+      {
+        "name": "Reuters Institute",
+        "category": "Academic",
+        "count": 7
+      },
+      {
+        "name": "Digiday",
+        "category": "Industry",
+        "count": 6
+      },
+      {
+        "name": "Columbia Journalism Review",
+        "category": "Industry",
+        "count": 6
+      },
+      {
+        "name": "Editor & Publisher",
+        "category": "Industry",
+        "count": 2
+      },
+      {
+        "name": "arXiv",
+        "category": "Academic",
+        "count": 1
+      }
+    ],
     "task_by_year": {
       "years": [
         "2014",
@@ -6459,6 +6989,85 @@
           12,
           18,
           2
+        ]
+      }
+    },
+    "gate_by_year": {
+      "years": [
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "categories": {
+        "processing_and_editing": [
+          2,
+          1,
+          3,
+          1,
+          3,
+          4,
+          9,
+          8,
+          3,
+          10,
+          47,
+          71,
+          14
+        ],
+        "publishing_and_distribution": [
+          0,
+          0,
+          0,
+          2,
+          6,
+          5,
+          5,
+          9,
+          0,
+          13,
+          33,
+          52,
+          3
+        ],
+        "access_and_observation": [
+          0,
+          0,
+          0,
+          1,
+          5,
+          7,
+          8,
+          4,
+          6,
+          5,
+          18,
+          31,
+          7
+        ],
+        "selection_and_filtering": [
+          0,
+          0,
+          0,
+          0,
+          3,
+          3,
+          2,
+          1,
+          3,
+          4,
+          8,
+          24,
+          3
         ]
       }
     }
