@@ -994,7 +994,7 @@ function buildStats() {
   ALL_DATA.forEach(function(d) {
     if (d.organisation) orgs[d.organisation]=true;
     if (d.source_name)  sources[d.source_name]=true;
-    var yr=(d.date_published||'').slice(0,4); if(yr&&parseInt(yr)>2010) years[yr]=true;
+    var yr=(d.date_published||'').slice(0,4); if(yr&&parseInt(yr)>=2008) years[yr]=true;
     (d.country||'').split(',').forEach(function(c){c=c.trim();if(c)countries[c]=true;});
   });
   document.getElementById('statChips').innerHTML =
