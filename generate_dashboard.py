@@ -66,7 +66,7 @@ def load_data(db_path):
 
     for r in data:
         yr = (r["date_published"] or "")[:4]
-        if yr and yr.isdigit() and 2008 <= int(yr) <= 2030:
+        if yr and yr.isdigit() and 2009 <= int(yr) <= 2030:
             by_year[yr] = by_year.get(yr, 0) + 1
         for c in (r["country"] or "").split(","):
             c = COUNTRY_NORM.get(c.strip(), c.strip())
@@ -96,7 +96,7 @@ def load_data(db_path):
         year_buckets = {}
         for r in data:
             yr = (r["date_published"] or "")[:4]
-            if not yr or not yr.isdigit() or int(yr) < 2008 or int(yr) > 2026:
+            if not yr or not yr.isdigit() or int(yr) < 2009 or int(yr) > 2026:
                 continue
             val = (r.get(field) or "").strip()
             if not val:
@@ -1105,7 +1105,7 @@ function buildStats() {
   ALL_DATA.forEach(function(d) {
     if (d.organisation) orgs[d.organisation]=true;
     if (d.source_name)  sources[d.source_name]=true;
-    var yr=(d.date_published||'').slice(0,4); if(yr&&parseInt(yr)>=2008) years[yr]=true;
+    var yr=(d.date_published||'').slice(0,4); if(yr&&parseInt(yr)>=2009) years[yr]=true;
     (d.country||'').split(',').forEach(function(c){c=c.trim();if(c)countries[c]=true;});
   });
   document.getElementById('statChips').innerHTML =
@@ -1394,7 +1394,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
   <div class="page-header-inner" style="max-width:1280px;margin:0 auto">
     <div class="hero-eyebrow">Sources &amp; Coverage</div>
     <h1 class="page-title">Data sources</h1>
-    <p class="page-sub">Spanning industry reporting, curated databases, and academic and practitioner research. Records go back to 2008.</p>
+    <p class="page-sub">Spanning industry reporting, curated databases, and academic and practitioner research.</p>
   </div>
 </header>
 
