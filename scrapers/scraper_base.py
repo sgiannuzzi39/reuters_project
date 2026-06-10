@@ -1,8 +1,8 @@
-"""
-scraper_base.py
----------------
-shared db schema, connection helpers, and insert logic used by all scrapers.
-"""
+\
+\
+\
+\
+   
 
 import json
 import os
@@ -14,7 +14,7 @@ from pathlib import Path
 
 from openai import OpenAI
 
-# ── paths ──────────────────────────────────────────────────────────────────────
+                                                                                 
 ROOT_DIR  = Path(__file__).resolve().parent.parent
 DATA_DIR  = ROOT_DIR / "data"
 LOG_DIR   = ROOT_DIR / "logs"
@@ -23,7 +23,7 @@ DB_PATH   = DATA_DIR / "usecases_FINAL.db"
 DATA_DIR.mkdir(exist_ok=True)
 LOG_DIR.mkdir(exist_ok=True)
 
-# ── logging ────────────────────────────────────────────────────────────────────
+                                                                                 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s",
@@ -35,7 +35,7 @@ logging.basicConfig(
 logger = logging.getLogger("base")
 
 
-# ── schema ─────────────────────────────────────────────────────────────────────
+                                                                                 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS use_cases (
     id               INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -72,21 +72,21 @@ CREATE INDEX IF NOT EXISTS idx_llm_category    ON use_cases (llm_category);
 """
 
 
-# ── connection ─────────────────────────────────────────────────────────────────
+                                                                                 
 def get_db(db_path: Path = DB_PATH) -> sqlite3.Connection:
-    """return a connection in wal mode with schema applied."""
+                                                              
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA journal_mode=WAL;")   # safe for concurrent writes
+    conn.execute("PRAGMA journal_mode=WAL;")                               
     conn.execute("PRAGMA foreign_keys=ON;")
     conn.executescript(SCHEMA)
     conn.commit()
     return conn
 
 
-# ── dedup ──────────────────────────────────────────────────────────────────────
+                                                                                 
 def make_dedup_hash(title: str, organisation: str, url: str) -> str:
-    """sha-256 of title+org+url (lowercased). duplicate inserts are silently ignored."""
+                                                                                        
     raw = "|".join([
         (title        or "").strip().lower(),
         (organisation or "").strip().lower(),
@@ -95,9 +95,9 @@ def make_dedup_hash(title: str, organisation: str, url: str) -> str:
     return hashlib.sha256(raw.encode()).hexdigest()
 
 
-# ── insert ─────────────────────────────────────────────────────────────────────
+                                                                                 
 def insert_use_case(conn: sqlite3.Connection, record: dict) -> bool:
-    """insert a record; returns true if new, false if duplicate."""
+                                                                   
     dedup_hash = make_dedup_hash(
         record.get("title", ""),
         record.get("organisation", ""),
@@ -145,9 +145,9 @@ def insert_use_case(conn: sqlite3.Connection, record: dict) -> bool:
     return inserted
 
 
-# ── relevance filter ───────────────────────────────────────────────────────────
-# called before every insert — gpt-4o-mini checks whether the article describes
-# a concrete ai use case by a specific news organisation. needs OPENAI_API_KEY.
+                                                                                 
+                                                                               
+                                                                               
 
 _openai_client: OpenAI | None = None
 
@@ -184,10 +184,10 @@ def _get_openai_client() -> OpenAI:
 
 
 def is_ai_journalism_relevant(title: str, summary: str, raw_text: str = "") -> bool:
-    """
-    returns true if the article looks like a real newsroom ai use case.
-    on any api error, passes through conservatively (returns true).
-    """
+\
+\
+\
+       
     excerpt = " ".join([
         title   or "",
         summary or "",
@@ -218,7 +218,7 @@ def is_ai_journalism_relevant(title: str, summary: str, raw_text: str = "") -> b
         return True
 
 
-# ── batch reporting ─────────────────────────────────────────────────────────────
+                                                                                  
 def log_summary(source_name: str, attempted: int, inserted: int,
                 filtered: int = 0) -> None:
     duplicates = attempted - inserted - filtered

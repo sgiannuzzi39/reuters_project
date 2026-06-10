@@ -1,17 +1,17 @@
-"""
-categorise.py
--------------
-classifies every record using categorisation_prompt.md, writing results to
-five db columns: task_type, task_type_reasoning, effect_type,
-effect_type_reasoning, low_confidence
-
-safe to interrupt — skips records already classified
-
-    python categorise.py                  # classify all
-    python categorise.py --limit 20       # test on 20 first
-    python categorise.py --dry-run        # preview without calling the api
-    python categorise.py --rerun-low      # retry low-confidence records
-"""
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+   
 
 import argparse
 import json
@@ -30,7 +30,7 @@ PROMPT_PATH = ROOT_DIR / "categorisation_prompt.md"
 LOG_DIR     = ROOT_DIR / "logs"
 LOG_DIR.mkdir(exist_ok=True)
 
-RAW_TEXT_LIMIT = 1200   # enough context without going overboard on tokens
+RAW_TEXT_LIMIT = 1200                                                     
 
 VALID_TASK_TYPES = {
     "discovery_and_monitoring",
@@ -58,10 +58,10 @@ logging.basicConfig(
 logger = logging.getLogger("categorise")
 
 
-# ── database ───────────────────────────────────────────────────────────────────
+                                                                                 
 
 def ensure_columns(conn: sqlite3.Connection) -> None:
-    """add classification columns if not already present."""
+                                                            
     new_cols = {
         "task_type":             "TEXT",
         "task_type_reasoning":   "TEXT",
@@ -77,7 +77,7 @@ def ensure_columns(conn: sqlite3.Connection) -> None:
     conn.commit()
 
 
-# ── prompt construction ────────────────────────────────────────────────────────
+                                                                                 
 
 def build_user_message(title: str, raw_text: str | None) -> str:
     parts = [f"Title: {title or '(no title)'}"]
@@ -89,10 +89,10 @@ def build_user_message(title: str, raw_text: str | None) -> str:
     return "\n".join(parts)
 
 
-# ── api call ───────────────────────────────────────────────────────────────────
+                                                                                 
 
 def classify(client: OpenAI, system_prompt: str, user_message: str, retries: int = 4) -> dict:
-    """call gpt-4o-mini and return parsed json."""
+                                                  
     for attempt in range(retries):
         try:
             response = client.chat.completions.create(
@@ -108,7 +108,7 @@ def classify(client: OpenAI, system_prompt: str, user_message: str, retries: int
             raw = response.choices[0].message.content.strip()
             return json.loads(raw)
         except RateLimitError:
-            wait = 2 ** (attempt + 2)   # 4 → 8 → 16 → 32 s
+            wait = 2 ** (attempt + 2)                      
             logger.warning("Rate limited — retrying in %ds (attempt %d/%d)", wait, attempt + 1, retries)
             time.sleep(wait)
         except json.JSONDecodeError as exc:
@@ -120,7 +120,7 @@ def classify(client: OpenAI, system_prompt: str, user_message: str, retries: int
 
 
 def validate(result: dict) -> list[str]:
-    """return validation errors; empty list = valid."""
+                                                       
     errors = []
     if result.get("task_type") not in VALID_TASK_TYPES:
         errors.append(f"invalid task_type: {result.get('task_type')!r}")
@@ -129,7 +129,7 @@ def validate(result: dict) -> list[str]:
     return errors
 
 
-# ── main loop ──────────────────────────────────────────────────────────────────
+                                                                                 
 
 def run(dry_run: bool, limit: int | None, rerun_low: bool) -> None:
     conn = sqlite3.connect(DB_PATH)
@@ -223,7 +223,7 @@ def run(dry_run: bool, limit: int | None, rerun_low: bool) -> None:
         conn.commit()
         classified += 1
 
-        time.sleep(0.3)   # polite pacing — well within gpt-4o-mini rate limits
+        time.sleep(0.3)                                                        
 
     conn.close()
     logger.info(
@@ -234,7 +234,7 @@ def run(dry_run: bool, limit: int | None, rerun_low: bool) -> None:
         logger.info("Re-run with --rerun-low to retry the %d uncertain records.", low)
 
 
-# ── entry point ────────────────────────────────────────────────────────────────
+                                                                                 
 
 def main():
     parser = argparse.ArgumentParser(

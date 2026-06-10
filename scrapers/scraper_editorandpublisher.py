@@ -1,12 +1,12 @@
-"""
-scraper_editorandpublisher.py
-------------------------------
-scrapes editorandpublisher.com/casestudies/ for sponsored ai case studies.
-metadata comes from ld+json; organisation from the byline.
-
-    python scraper_editorandpublisher.py
-    python scraper_editorandpublisher.py --dry-run
-"""
+\
+\
+\
+\
+\
+\
+\
+\
+   
 
 import argparse
 import json
@@ -27,7 +27,7 @@ logger = logging.getLogger("editorandpublisher")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── config ─────────────────────────────────────────────────────────────────────
+                                                                                 
 BASE_URL       = "https://www.editorandpublisher.com"
 LISTING_URL    = "https://www.editorandpublisher.com/casestudies/"
 SOURCE_NAME    = "Editor & Publisher"
@@ -41,7 +41,7 @@ HEADERS = {
 }
 
 
-# ── helpers ────────────────────────────────────────────────────────────────────
+                                                                                 
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -62,7 +62,7 @@ def _parse_date(text: str) -> str | None:
 
 
 def _extract_ld_json(soup: BeautifulSoup) -> dict:
-    """return parsed ld+json block, or empty dict."""
+                                                     
     tag = soup.find("script", attrs={"type": "application/ld+json"})
     if not tag:
         return {}
@@ -73,16 +73,16 @@ def _extract_ld_json(soup: BeautifulSoup) -> dict:
 
 
 def _extract_organisation(soup: BeautifulSoup, body_text: str) -> str | None:
-    """pull the sponsoring org from the byline or body text."""
+                                                               
     byline = soup.select_one(".byline")
     byline_text = byline.get_text(strip=True) if byline else ""
 
-    # "Marketing Partner: ORG" pattern
+                                      
     m = re.search(r"Marketing Partner:\s*(.+)", byline_text)
     if m:
         return m.group(1).strip()
 
-    # body "From: ORG" pattern (webinar articles)
+                                                 
     m = re.search(r"From:\s*([A-Z][A-Za-z0-9 &\-\.]+?)(?:\s{2,}|\n|An E&P|In a )", body_text)
     if m:
         return m.group(1).strip()
@@ -90,9 +90,9 @@ def _extract_organisation(soup: BeautifulSoup, body_text: str) -> str | None:
     return None
 
 
-# ── listing page ───────────────────────────────────────────────────────────────
+                                                                                 
 def fetch_case_study_urls() -> list[str]:
-    """return all article urls from the case studies listing page."""
+                                                                     
     resp = get(LISTING_URL)
     if not resp:
         logger.error("Could not fetch listing page: %s", LISTING_URL)
@@ -115,9 +115,9 @@ def fetch_case_study_urls() -> list[str]:
     return urls
 
 
-# ── article page ───────────────────────────────────────────────────────────────
+                                                                                 
 def parse_article(url: str) -> dict:
-    """fetch a case study article and return a partial record dict."""
+                                                                      
     resp = get(url)
     if not resp:
         return {}
@@ -154,7 +154,7 @@ def parse_article(url: str) -> dict:
     }
 
 
-# ── main ───────────────────────────────────────────────────────────────────────
+                                                                                 
 def scrape(dry_run: bool = False) -> None:
     urls = fetch_case_study_urls()
     if not urls:

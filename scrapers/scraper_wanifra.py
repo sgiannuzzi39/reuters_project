@@ -1,13 +1,13 @@
-"""
-scraper_wanifra.py
-------------------
-scrapes the wan-ifra media-innovation category.
-metadata from ld+json @graph; body from div.content.
-
-    python scraper_wanifra.py
-    python scraper_wanifra.py --max-pages 500
-    python scraper_wanifra.py --dry-run
-"""
+\
+\
+\
+\
+\
+\
+\
+\
+\
+   
 
 import argparse
 import html
@@ -28,7 +28,7 @@ logger = logging.getLogger("wanifra")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── config ─────────────────────────────────────────────────────────────────────
+                                                                                 
 BASE_URL       = "https://wan-ifra.org"
 CATEGORY_URL   = "https://wan-ifra.org/category/media-innovation/page/{page}/"
 SOURCE_NAME    = "WAN-IFRA"
@@ -43,7 +43,7 @@ HEADERS = {
 }
 
 
-# ── helpers ────────────────────────────────────────────────────────────────────
+                                                                                 
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -64,7 +64,7 @@ def _parse_date(text: str) -> str | None:
 
 
 def _extract_ld_article(soup: BeautifulSoup) -> dict:
-    """return the Article node from the ld+json @graph, or empty dict."""
+                                                                         
     tag = soup.find("script", attrs={"type": "application/ld+json"})
     if not tag:
         return {}
@@ -73,7 +73,7 @@ def _extract_ld_article(soup: BeautifulSoup) -> dict:
     except json.JSONDecodeError:
         return {}
     graph = data if isinstance(data, dict) else {}
-    # ld+json may be a single object or wrapped in @graph list
+                                                              
     if "@graph" in graph:
         for node in graph["@graph"]:
             if node.get("@type") == "Article":
@@ -84,7 +84,7 @@ def _extract_ld_article(soup: BeautifulSoup) -> dict:
 
 
 def _extract_organisation(keywords: list[str], author: str) -> str | None:
-    """pick the first keyword that looks like an org name (not a generic ai term)."""
+                                                                                     
     generic = {
         "ai", "artificial intelligence", "machine learning", "generative ai",
         "chatgpt", "openai", "wan-ifra", "wan-ifra ai catalyst",
@@ -93,15 +93,15 @@ def _extract_organisation(keywords: list[str], author: str) -> str | None:
     for kw in keywords:
         if kw.lower() in generic:
             continue
-        # looks like a named entity: has a capital and a space
+                                                              
         if any(c.isupper() for c in kw) and (" " in kw or len(kw) > 6):
             return kw
     return None
 
 
-# ── listing page ───────────────────────────────────────────────────────────────
+                                                                                 
 def fetch_listing_page(page: int) -> list[dict]:
-    """return partial records (url, title, teaser) from one listing page."""
+                                                                            
     url = CATEGORY_URL.format(page=page)
     resp = get(url)
     if not resp:
@@ -133,9 +133,9 @@ def fetch_listing_page(page: int) -> list[dict]:
     return records
 
 
-# ── article page ───────────────────────────────────────────────────────────────
+                                                                                 
 def parse_article(url: str) -> dict:
-    """fetch a wan-ifra article and extract metadata + body text."""
+                                                                    
     resp = get(url)
     if not resp:
         return {}
@@ -143,12 +143,12 @@ def parse_article(url: str) -> dict:
     soup = BeautifulSoup(resp.text, "lxml")
     ld = _extract_ld_article(soup)
 
-    # prefer ld+json headline (html-entity decoded), fall back to second h1
+                                                                           
     raw_headline = ld.get("headline", "")
     title = html.unescape(raw_headline) if raw_headline else None
     if not title:
         h1s = soup.find_all("h1")
-        # first h1 is often the "News" site nav; second is the article title
+                                                                            
         for h1 in h1s:
             t = h1.get_text(strip=True)
             if t and t.lower() != "news":
@@ -164,12 +164,12 @@ def parse_article(url: str) -> dict:
 
     organisation = _extract_organisation(keywords, author or "")
 
-    # body: paragraphs from div.content, skipping the first (author byline)
+                                                                           
     content_div = soup.select_one("div.content")
     body_paras = []
     if content_div:
         paras = content_div.find_all("p")
-        for p in paras[1:]:   # skip byline paragraph
+        for p in paras[1:]:                          
             txt = p.get_text(strip=True)
             if txt:
                 body_paras.append(txt)
@@ -184,7 +184,7 @@ def parse_article(url: str) -> dict:
     }
 
 
-# ── main ───────────────────────────────────────────────────────────────────────
+                                                                                 
 def scrape(max_pages: int = DEFAULT_MAX_PAGES, dry_run: bool = False) -> None:
     conn      = None if dry_run else get_db()
     attempted = 0
@@ -210,7 +210,7 @@ def scrape(max_pages: int = DEFAULT_MAX_PAGES, dry_run: bool = False) -> None:
             detail = parse_article(url)
             record = {**partial, **detail}
 
-            # if article parse improved the title, prefer it
+                                                            
             if not record.get("title"):
                 skipped += 1
                 logger.debug("  ✗ no title: %s", url)
@@ -224,7 +224,7 @@ def scrape(max_pages: int = DEFAULT_MAX_PAGES, dry_run: bool = False) -> None:
                 "url":             url,
             })
 
-            # merge listing teaser into summary if article parse didn't produce one
+                                                                                   
             if not record.get("summary") and partial.get("summary"):
                 record["summary"] = partial["summary"]
 

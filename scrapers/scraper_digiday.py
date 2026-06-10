@@ -1,12 +1,12 @@
-"""
-scraper_digiday.py
-------------------
-scrapes digiday.com via wordpress sitemaps (topic/search pages are js-rendered).
-
-    python scraper_digiday.py
-    python scraper_digiday.py --dry-run
-    python scraper_digiday.py --start 20  # skip to sitemap N
-"""
+\
+\
+\
+\
+\
+\
+\
+\
+   
 
 import argparse
 import logging
@@ -28,11 +28,11 @@ logger = logging.getLogger("digiday")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── config ─────────────────────────────────────────────────────────────────────
+                                                                                 
 BASE_URL    = "https://digiday.com"
 SOURCE_NAME = "Digiday"
 SOURCE_CAT  = "Industry"
-N_SITEMAPS  = 30   # update if Digiday adds more post sitemaps
+N_SITEMAPS  = 30                                              
 
 HEADERS = {
     "User-Agent": (
@@ -79,7 +79,7 @@ AI_SLUG_KEYWORDS = [
 ]
 
 
-# ── helpers ────────────────────────────────────────────────────────────────────
+                                                                                 
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -93,7 +93,7 @@ def get(url: str) -> requests.Response | None:
 
 
 def fetch_ai_urls_from_sitemaps(start: int = 1) -> list[tuple[str, str | None]]:
-    """return (url, lastmod) pairs for digiday articles with ai-related slugs."""
+                                                                                 
     results = []
     for i in range(start, N_SITEMAPS + 1):
         sitemap_url = f"{BASE_URL}/wp-sitemap-posts-post-{i}.xml"
@@ -126,7 +126,7 @@ def _parse_date(text: str) -> str | None:
 
 
 def parse_article_page(url: str, lastmod: str | None = None) -> dict:
-    """fetch a digiday article and extract metadata + body text."""
+                                                                   
     resp = get(url)
     if not resp:
         return {}
@@ -136,25 +136,25 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
     title_tag = soup.select_one("h1")
     title = title_tag.get_text(strip=True) if title_tag else None
 
-    # first span.date is the article's publish date
+                                                   
     date_tag = soup.select_one("span.date")
     date_pub = _parse_date(date_tag.get_text(strip=True)) if date_tag else None
     if not date_pub and lastmod:
         date_pub = lastmod
 
-    # .author contains "ByName" — strip the "By" prefix
+                                                       
     author_tag = soup.select_one(".author")
     author = None
     if author_tag:
         raw = author_tag.get_text(strip=True)
         author = raw.removeprefix("By").strip() or None
 
-    # extract substantive paragraphs from the content column
+                                                            
     body_div = soup.select_one(".content-column")
     raw_text = ""
     summary  = ""
     if body_div:
-        # strip paywall / newsletter / ad elements
+                                                  
         for el in body_div.select(".digiday-content-gate, .paywall, .sub-prompt, "
                                    ".ad, .newsletter-signup, script, style"):
             el.decompose()
@@ -172,7 +172,7 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
     }
 
 
-# ── main ───────────────────────────────────────────────────────────────────────
+                                                                                 
 def scrape(dry_run: bool = False, start: int = 1) -> None:
     logger.info("Scanning Digiday sitemaps %d–%d for AI-related article URLs…",
                 start, N_SITEMAPS)

@@ -1,13 +1,13 @@
-"""
-import_reuters_dnr_2025.py
---------------------------
-manually curated ai use cases from the reuters institute digital news report 2025.
-the dnr is an audience research report, not a case study db — these are specific
-named examples scattered through the narrative, extracted by hand from the pdf.
-
-    python import_reuters_dnr_2025.py
-    python import_reuters_dnr_2025.py --dry-run
-"""
+\
+\
+\
+\
+\
+\
+\
+\
+\
+   
 
 import argparse
 import logging
@@ -26,8 +26,8 @@ SOURCE_CAT  = "Curated"
 SOURCE_URL  = "https://www.digitalnewsreport.org/"
 DATE_PUB    = "2025-06"
 
-# ── curated use cases ──────────────────────────────────────────────────────────
-# page references included in raw_text for traceability
+                                                                                 
+                                                       
 
 USE_CASES = [
     {
@@ -138,7 +138,7 @@ USE_CASES = [
 ]
 
 
-# ── main ───────────────────────────────────────────────────────────────────────
+                                                                                 
 def import_cases(dry_run: bool = False) -> None:
     conn      = get_db()
     attempted = 0

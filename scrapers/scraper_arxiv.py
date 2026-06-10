@@ -1,12 +1,12 @@
-"""
-scraper_arxiv.py
-----------------
-searches arxiv for papers on ai in journalism via the atom api.
-batches of 100, 3s between pages, 5s between queries (arxiv's guideline).
-
-    python scraper_arxiv.py
-    python scraper_arxiv.py --dry-run
-"""
+\
+\
+\
+\
+\
+\
+\
+\
+   
 
 import argparse
 import logging
@@ -25,18 +25,18 @@ logger = logging.getLogger("arxiv")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── config ─────────────────────────────────────────────────────────────────────
+                                                                                 
 API_URL     = "http://export.arxiv.org/api/query"
 SOURCE_URL  = "https://arxiv.org/search/"
 SOURCE_NAME = "arXiv"
 SOURCE_CAT  = "Academic"
 
-BATCH_SIZE             = 100   # results per API request
-MAX_RESULTS_PER_QUERY  = 300   # cap per query
-DELAY_BETWEEN_PAGES    = 3.0   # seconds — arXiv guideline
+BATCH_SIZE             = 100                            
+MAX_RESULTS_PER_QUERY  = 300                  
+DELAY_BETWEEN_PAGES    = 3.0                              
 DELAY_BETWEEN_QUERIES  = 5.0
 
-# broad two-term queries — the llm filter handles false positives
+                                                                 
 SEARCH_QUERIES = [
     'all:journalism AND all:"artificial intelligence"',
     'all:journalism AND all:"machine learning"',
@@ -61,7 +61,7 @@ SEARCH_QUERIES = [
 ]
 
 
-# ── http helper ────────────────────────────────────────────────────────────────
+                                                                                 
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (compatible; dissertation-research-bot/1.0; "
@@ -71,7 +71,7 @@ HEADERS = {
 
 
 def get(params: dict) -> BeautifulSoup | None:
-    """fetch one page of arxiv results; returns parsed xml or none."""
+                                                                      
     for attempt in range(3):
         try:
             resp = requests.get(API_URL, params=params, headers=HEADERS, timeout=30)
@@ -88,9 +88,9 @@ def get(params: dict) -> BeautifulSoup | None:
     return None
 
 
-# ── parsing ────────────────────────────────────────────────────────────────────
+                                                                                 
 def _arxiv_id(raw_id: str) -> str:
-    """strip version suffix from arxiv url → bare paper id."""
+                                                              
     m = re.search(r"arxiv\.org/abs/([^v]+)", raw_id)
     return m.group(1) if m else raw_id
 
@@ -106,7 +106,7 @@ def _parse_entry(entry) -> dict:
     date_published = None
     if published_el:
         raw = published_el.get_text(strip=True)
-        date_published = raw[:10] if raw else None   # keep YYYY-MM-DD
+        date_published = raw[:10] if raw else None                    
 
     authors = [a.find("name").get_text(strip=True)
                for a in entry.find_all("author") if a.find("name")]
@@ -114,7 +114,7 @@ def _parse_entry(entry) -> dict:
     if len(authors) > 5:
         author_str += " et al."
 
-    # canonical url — prefer the html abs page over pdf
+                                                       
     url = None
     for link in entry.find_all("link"):
         if link.get("rel") == "alternate" or link.get("type") == "text/html":
@@ -124,7 +124,7 @@ def _parse_entry(entry) -> dict:
         id_el = entry.find("id")
         url = id_el.get_text(strip=True) if id_el else None
 
-    # paper id for dedup across queries
+                                       
     id_el = entry.find("id")
     paper_id = _arxiv_id(id_el.get_text(strip=True)) if id_el else None
 
@@ -147,7 +147,7 @@ def _total_results(soup: BeautifulSoup) -> int:
         return 0
 
 
-# ── search ─────────────────────────────────────────────────────────────────────
+                                                                                 
 def search_papers(query: str) -> list[dict]:
     papers = []
     start  = 0
@@ -182,7 +182,7 @@ def search_papers(query: str) -> list[dict]:
     return papers
 
 
-# ── main ───────────────────────────────────────────────────────────────────────
+                                                                                 
 def scrape(dry_run: bool = False) -> None:
     seen_ids: set[str]      = set()
     all_records: list[dict] = []

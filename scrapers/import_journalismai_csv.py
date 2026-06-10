@@ -1,11 +1,11 @@
-"""
-import_journalismai_csv.py
---------------------------
-imports the journalismai case studies csv into the db.
-
-    python import_journalismai_csv.py path/to/file.csv
-    python import_journalismai_csv.py path/to/file.csv --dry-run
-"""
+\
+\
+\
+\
+\
+\
+\
+   
 
 import argparse
 import csv
@@ -27,7 +27,7 @@ SOURCE_URL  = "https://www.journalismai.info/resources/case-studies"
 
 
 def parse_date(raw: str) -> str | None:
-    """convert 'April 16, 2026' → '2026-04-16', or return partial/none."""
+                                                                          
     if not raw or not raw.strip():
         return None
     raw = raw.strip()
@@ -38,7 +38,7 @@ def parse_date(raw: str) -> str | None:
             )
         except ValueError:
             continue
-    return raw  # return as-is if unparseable
+    return raw                               
 
 
 def import_csv(csv_path: Path, dry_run: bool = False) -> None:
@@ -46,7 +46,7 @@ def import_csv(csv_path: Path, dry_run: bool = False) -> None:
     attempted = 0
     inserted  = 0
 
-    with open(csv_path, encoding="utf-8-sig") as f:  # utf-8-sig strips the BOM
+    with open(csv_path, encoding="utf-8-sig") as f:                            
         reader = csv.DictReader(f)
         for row in reader:
             attempted += 1
@@ -61,7 +61,7 @@ def import_csv(csv_path: Path, dry_run: bool = False) -> None:
 
             date_pub = parse_date(date_raw)
 
-            # build raw_text for the llm
+                                        
             raw_text = (
                 f"Title: {title}\n"
                 f"Organisation: {org}\n"
@@ -81,7 +81,7 @@ def import_csv(csv_path: Path, dry_run: bool = False) -> None:
                 "country":         country or None,
                 "date_published":  date_pub,
                 "url":             url or None,
-                "summary":         category,   # Category is the closest thing to a summary
+                "summary":         category,                                               
                 "raw_text":        raw_text,
             }
 

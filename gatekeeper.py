@@ -1,17 +1,17 @@
-"""
-gatekeeper.py
--------------
-classifies every record using gatekeeper_prompt.md, writing results to three
-db columns: gatekeeping_stage, gatekeeping_stage_reasoning, gatekeeping_low_confidence
-
-safe to interrupt — skips records already classified
-
-    python gatekeeper.py                  # classify all
-    python gatekeeper.py --limit 20       # test on 20 first
-    python gatekeeper.py --dry-run        # preview without calling the api
-    python gatekeeper.py --rerun-low      # retry low-confidence records
-    python gatekeeper.py --rerun          # re-run all records
-"""
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+   
 
 import argparse
 import json
@@ -50,10 +50,10 @@ logging.basicConfig(
 logger = logging.getLogger("gatekeeper")
 
 
-# ── database ───────────────────────────────────────────────────────────────────
+                                                                                 
 
 def ensure_columns(conn: sqlite3.Connection) -> None:
-    """add gatekeeping columns if not already present."""
+                                                         
     new_cols = {
         "gatekeeping_stage":            "TEXT",
         "gatekeeping_stage_reasoning":  "TEXT",
@@ -67,7 +67,7 @@ def ensure_columns(conn: sqlite3.Connection) -> None:
     conn.commit()
 
 
-# ── prompt construction ────────────────────────────────────────────────────────
+                                                                                 
 
 def build_user_message(title: str, raw_text: str | None) -> str:
     parts = [f"Title: {title or '(no title)'}"]
@@ -79,10 +79,10 @@ def build_user_message(title: str, raw_text: str | None) -> str:
     return "\n".join(parts)
 
 
-# ── api call ───────────────────────────────────────────────────────────────────
+                                                                                 
 
 def classify(client: OpenAI, system_prompt: str, user_message: str, retries: int = 4) -> dict:
-    """call gpt-4o-mini and return parsed json."""
+                                                  
     for attempt in range(retries):
         try:
             response = client.chat.completions.create(
@@ -98,7 +98,7 @@ def classify(client: OpenAI, system_prompt: str, user_message: str, retries: int
             raw = response.choices[0].message.content.strip()
             return json.loads(raw)
         except RateLimitError:
-            wait = 2 ** (attempt + 2)   # 4 → 8 → 16 → 32 s
+            wait = 2 ** (attempt + 2)                      
             logger.warning("rate limited — retrying in %ds (attempt %d/%d)", wait, attempt + 1, retries)
             time.sleep(wait)
         except json.JSONDecodeError as exc:
@@ -110,14 +110,14 @@ def classify(client: OpenAI, system_prompt: str, user_message: str, retries: int
 
 
 def validate(result: dict) -> list[str]:
-    """return validation errors; empty list = valid."""
+                                                       
     errors = []
     if result.get("gatekeeping_stage") not in VALID_STAGES:
         errors.append(f"invalid gatekeeping_stage: {result.get('gatekeeping_stage')!r}")
     return errors
 
 
-# ── main loop ──────────────────────────────────────────────────────────────────
+                                                                                 
 
 def run(dry_run: bool, limit: int | None, rerun: bool, rerun_low: bool) -> None:
     conn = sqlite3.connect(DB_PATH)
@@ -212,7 +212,7 @@ def run(dry_run: bool, limit: int | None, rerun: bool, rerun_low: bool) -> None:
         conn.commit()
         classified += 1
 
-        time.sleep(0.3)   # polite pacing — well within gpt-4o-mini rate limits
+        time.sleep(0.3)                                                        
 
     conn.close()
     logger.info(
@@ -223,7 +223,7 @@ def run(dry_run: bool, limit: int | None, rerun: bool, rerun_low: bool) -> None:
         logger.info("re-run with --rerun-low to retry the %d uncertain records.", low)
 
 
-# ── entry point ────────────────────────────────────────────────────────────────
+                                                                                 
 
 def main():
     parser = argparse.ArgumentParser(

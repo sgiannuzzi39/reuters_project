@@ -1,11 +1,11 @@
-"""
-scraper_poynter.py
-------------------
-scrapes poynter.org via wordpress sitemaps (category/search pages loop after page 1).
-
-    python scraper_poynter.py
-    python scraper_poynter.py --dry-run
-"""
+\
+\
+\
+\
+\
+\
+\
+   
 
 import argparse
 import logging
@@ -27,11 +27,11 @@ logger = logging.getLogger("poynter")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── config ─────────────────────────────────────────────────────────────────────
+                                                                                 
 BASE_URL    = "https://www.poynter.org"
 SOURCE_NAME = "Poynter"
 SOURCE_CAT  = "Industry"
-N_SITEMAPS  = 44   # update if Poynter adds more
+N_SITEMAPS  = 44                                
 
 HEADERS = {
     "User-Agent": (
@@ -65,7 +65,7 @@ AI_SLUG_KEYWORDS = [
 ]
 
 
-# ── helpers ────────────────────────────────────────────────────────────────────
+                                                                                 
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -79,7 +79,7 @@ def get(url: str) -> requests.Response | None:
 
 
 def fetch_ai_urls_from_sitemaps() -> list[tuple[str, str]]:
-    """return (url, lastmod) pairs for poynter articles with ai-related slugs."""
+                                                                                 
     results = []
     for i in range(1, N_SITEMAPS + 1):
         sitemap_url = f"{BASE_URL}/wp-sitemap-posts-post-{i}.xml"
@@ -111,7 +111,7 @@ def _parse_date(text: str) -> str | None:
 
 
 def parse_article_page(url: str, lastmod: str | None = None) -> dict:
-    """fetch a poynter article and extract metadata + body text."""
+                                                                   
     resp = get(url)
     if not resp:
         return {}
@@ -151,7 +151,7 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
     }
 
 
-# ── main ───────────────────────────────────────────────────────────────────────
+                                                                                 
 def scrape(dry_run: bool = False) -> None:
     logger.info("Scanning Poynter sitemaps for AI-related article URLs…")
     ai_urls = fetch_ai_urls_from_sitemaps()

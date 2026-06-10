@@ -1,12 +1,12 @@
-"""
-clean_data.py
--------------
-step 1: remove cross-source duplicates (keep highest-quality record by source priority).
-step 2: re-run the llm relevance filter on arxiv records.
-
-    python clean_data.py --dry-run     # preview
-    python clean_data.py               # apply
-"""
+\
+\
+\
+\
+\
+\
+\
+\
+   
 
 import argparse
 import logging
@@ -19,7 +19,7 @@ from scraper_base import get_db, is_ai_journalism_relevant, DB_PATH
 logger = logging.getLogger("clean")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] — %(message)s")
 
-# higher score = prefer this source when deduplicating
+                                                      
 SOURCE_PRIORITY = {
     "JournalismAI":                                10,
     "Reuters Institute":                           8,
@@ -39,7 +39,7 @@ SOURCE_PRIORITY = {
     "arXiv":                                       2,
 }
 
-MIN_TITLE_LEN = 15   # ignore very short titles to avoid false dedup matches
+MIN_TITLE_LEN = 15                                                          
 
 
 def _score(r: dict) -> int:
@@ -51,7 +51,7 @@ def _score(r: dict) -> int:
     return score
 
 
-# ── step 1: cross-source dedup ───────────────────────────────────────────────
+                                                                               
 def dedup_cross_source(conn, dry_run: bool) -> int:
     rows = [dict(r) for r in conn.execute("""
         SELECT id, source_name, title, organisation, country,
@@ -69,7 +69,7 @@ def dedup_cross_source(conn, dry_run: bool) -> int:
     for title_key, group in by_title.items():
         if len(group) < 2:
             continue
-        # sort best first; keep group[0], drop the rest
+                                                       
         group.sort(key=_score, reverse=True)
         keeper = group[0]
         for dup in group[1:]:
@@ -90,7 +90,7 @@ def dedup_cross_source(conn, dry_run: bool) -> int:
     return len(to_delete)
 
 
-# ── step 2: llm re-filter for arxiv ─────────────────────────────────────────
+                                                                              
 def refilter_academic(conn, dry_run: bool) -> int:
     rows = [dict(r) for r in conn.execute("""
         SELECT id, title, summary, raw_text, source_name
@@ -123,7 +123,7 @@ def refilter_academic(conn, dry_run: bool) -> int:
     return len(to_delete)
 
 
-# ── main ──────────────────────────────────────────────────────────────────────
+                                                                                
 def main():
     parser = argparse.ArgumentParser(description="Clean the use_cases database")
     parser.add_argument("--dry-run", action="store_true",

@@ -1,12 +1,12 @@
-"""
-scraper_generativeainewsroom.py
---------------------------------
-scrapes generative-ai-newsroom.com (medium-hosted) via rss tag feeds
-— the main pages are cloudflare-protected so direct scraping doesn't work.
-
-    python scraper_generativeainewsroom.py
-    python scraper_generativeainewsroom.py --dry-run
-"""
+\
+\
+\
+\
+\
+\
+\
+\
+   
 
 import argparse
 import logging
@@ -27,7 +27,7 @@ logger = logging.getLogger("generativeainewsroom")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── config ─────────────────────────────────────────────────────────────────────
+                                                                                 
 BASE_URL    = "https://generative-ai-newsroom.com"
 SITEMAP_URL = BASE_URL + "/sitemap/sitemap.xml"
 FEED_URL    = BASE_URL + "/feed/tagged/{tag}"
@@ -42,7 +42,7 @@ HEADERS = {
 }
 
 
-# ── helpers ────────────────────────────────────────────────────────────────────
+                                                                                 
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -56,7 +56,7 @@ def get(url: str) -> requests.Response | None:
 
 
 def _canonical_url(url: str) -> str:
-    """strip the ?source=rss-… query param medium appends to rss links."""
+                                                                          
     parts = urlsplit(url)
     return urlunsplit(parts._replace(query=""))
 
@@ -69,7 +69,7 @@ def _parse_date(text: str) -> str | None:
 
 
 def _body_from_encoded(html: str) -> tuple[str, str]:
-    """parse <content:encoded> html and return (summary, raw_text)."""
+                                                                      
     soup = BeautifulSoup(html, "html.parser")
     paras = []
     for tag in soup.find_all(["p", "h2", "h3", "h4", "li"]):
@@ -82,9 +82,9 @@ def _body_from_encoded(html: str) -> tuple[str, str]:
     return summary, raw_text[:5000]
 
 
-# ── sitemap ────────────────────────────────────────────────────────────────────
+                                                                                 
 def fetch_tag_slugs() -> list[str]:
-    """return tag slugs from the sitemap (/tagged/* urls)."""
+                                                             
     resp = get(SITEMAP_URL)
     if not resp:
         logger.error("Could not fetch sitemap")
@@ -102,9 +102,9 @@ def fetch_tag_slugs() -> list[str]:
     return slugs
 
 
-# ── rSS feeds ──────────────────────────────────────────────────────────────────
+                                                                                 
 def fetch_tag_feed(tag: str) -> list[dict]:
-    """fetch /feed/tagged/TAG and return article dicts."""
+                                                          
     url = FEED_URL.format(tag=tag)
     resp = get(url)
     if not resp:
@@ -115,20 +115,20 @@ def fetch_tag_feed(tag: str) -> list[dict]:
 
     for item in soup.find_all("item"):
         link_el = item.find("link")
-        # rss 2.0 <link> may be empty — fall back to next_sibling text
+                                                                      
         raw_url = (link_el.get_text(strip=True)
                    if link_el and link_el.get_text(strip=True)
                    else (link_el.next_sibling or "").strip()
                    if link_el else "")
         if not raw_url:
             continue
-        # strip medium's ?source=rss-… suffix for a stable canonical url
+                                                                        
         article_url = _canonical_url(raw_url)
 
         title_el = item.find("title")
         title = title_el.get_text(strip=True) if title_el else None
 
-        creator_el = item.find("creator")  # dc:creator parsed as "creator" by lxml
+        creator_el = item.find("creator")                                          
         author = creator_el.get_text(strip=True) if creator_el else None
 
         pub_el = item.find("pubDate")
@@ -136,7 +136,7 @@ def fetch_tag_feed(tag: str) -> list[dict]:
 
         tags = [c.get_text(strip=True) for c in item.find_all("category")]
 
-        encoded_el = item.find("encoded")  # content:encoded
+        encoded_el = item.find("encoded")                   
         summary, raw_text = ("", "") if not encoded_el else _body_from_encoded(
             encoded_el.get_text())
 
@@ -153,14 +153,14 @@ def fetch_tag_feed(tag: str) -> list[dict]:
     return records
 
 
-# ── main ───────────────────────────────────────────────────────────────────────
+                                                                                 
 def scrape(dry_run: bool = False) -> None:
     tag_slugs = fetch_tag_slugs()
     if not tag_slugs:
         logger.error("No tags found — aborting")
         return
 
-    # collect unique articles across all tag feeds
+                                                  
     seen_urls: set[str] = set()
     all_records: list[dict] = []
 

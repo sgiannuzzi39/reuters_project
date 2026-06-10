@@ -1,12 +1,12 @@
-"""
-scraper_journalism_co_uk.py
----------------------------
-scrapes journalism.co.uk via xml sitemap (ghost cms pagination is js-rendered).
-filters slugs by ai keywords for full archive coverage.
-
-    python scraper_journalism_co_uk.py
-    python scraper_journalism_co_uk.py --dry-run
-"""
+\
+\
+\
+\
+\
+\
+\
+\
+   
 
 import argparse
 import logging
@@ -28,7 +28,7 @@ logger = logging.getLogger("journalism_co_uk")
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s")
 
-# ── config ─────────────────────────────────────────────────────────────────────
+                                                                                 
 BASE_URL    = "https://www.journalism.co.uk"
 SITEMAP_URL = "https://www.journalism.co.uk/sitemap-posts.xml"
 SOURCE_NAME = "Journalism.co.uk"
@@ -68,11 +68,11 @@ AI_SLUG_KEYWORDS = [
     "robo-report",
 ]
 
-# newsletter / subscription noise to strip from body text
+                                                         
 _NOISE = {"unsubscribe", "sign up", "subscribe", "no spam", "email sent"}
 
 
-# ── helpers ────────────────────────────────────────────────────────────────────
+                                                                                 
 def get(url: str) -> requests.Response | None:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -86,7 +86,7 @@ def get(url: str) -> requests.Response | None:
 
 
 def fetch_ai_urls_from_sitemap() -> list[tuple[str, str | None]]:
-    """return (url, lastmod) pairs for posts with ai-related slugs."""
+                                                                      
     logger.info("Fetching sitemap from %s …", SITEMAP_URL)
     resp = get(SITEMAP_URL)
     if not resp:
@@ -119,7 +119,7 @@ def _parse_date(text: str) -> str | None:
 
 
 def parse_article_page(url: str, lastmod: str | None = None) -> dict:
-    """fetch a journalism.co.uk article and extract metadata + body text."""
+                                                                            
     resp = get(url)
     if not resp:
         return {}
@@ -129,7 +129,7 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
     title_tag = soup.select_one("h1")
     title = title_tag.get_text(strip=True) if title_tag else None
 
-    # ghost stores the date in <time datetime="YYYY-MM-DD">
+                                                           
     time_tag = soup.find("time")
     date_pub  = time_tag.get("datetime", "")[:10] if time_tag else None
     if not date_pub:
@@ -152,13 +152,13 @@ def parse_article_page(url: str, lastmod: str | None = None) -> dict:
     return {
         "title":          title,
         "date_published": date_pub,
-        "organisation":   None,   # Ghost articles often omit author; Phase 3 LLM will extract the news org
+        "organisation":   None,                                                                            
         "summary":        summary[:500] if summary else None,
         "raw_text":       raw_text[:5000],
     }
 
 
-# ── main ───────────────────────────────────────────────────────────────────────
+                                                                                 
 def scrape(dry_run: bool = False) -> None:
     ai_urls = fetch_ai_urls_from_sitemap()
 
