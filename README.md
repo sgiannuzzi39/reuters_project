@@ -6,17 +6,16 @@ Scrapers collect documented AI use cases from 16 industry sources into a SQLite 
 
 ---
 
-## Quick start for graders
+## Quick start
 
 ### Viewing the dashboard
 
-No server or installation needed. Simply open any of the three HTML files directly in a browser:
+No server or installation needed. Double-click any of the three HTML files in Finder, or run from the terminal (e.g. `open index.html`). All data and assets are embedded directly in the HTML, so no web server is required.
 
 - **`index.html`** — overview dashboard with interactive timeline charts
 - **`spreadsheet.html`** — full filterable and searchable table of all 448 records
 - **`sources.html`** — methodology, data sources, and geographic coverage
 
-All data and assets are self-contained within each HTML file (embedded as JSON and base64).
 
 ### Key files at a glance
 
@@ -176,7 +175,7 @@ Table `use_cases` in `data/usecases_FINAL.db`.
 | `date_published` | `YYYY`, `YYYY-MM`, or `YYYY-MM-DD` |
 | `url` | link to the source article |
 | `summary` | short description of the use case |
-| `raw_text` | full extracted text (llm input) |
+| `raw_text` | full extracted text |
 | `task_type` | one of 11 functional categories (see above) |
 | `task_type_reasoning` | llm explanation for `task_type` assignment |
 | `effect_type` | `"efficiency"`, `"effectiveness_and_scaling"`, or `"optimisation"` |
