@@ -6,6 +6,36 @@ Scrapers collect documented AI use cases from 16 industry sources into a SQLite 
 
 ---
 
+## Quick start for graders
+
+### Viewing the dashboard
+
+No server or installation needed. Simply open any of the three HTML files directly in a browser:
+
+- **`index.html`** — overview dashboard with interactive timeline charts
+- **`spreadsheet.html`** — full filterable and searchable table of all 448 records
+- **`sources.html`** — methodology, data sources, and geographic coverage
+
+All data and assets are self-contained within each HTML file (embedded as JSON and base64).
+
+### Key files at a glance
+
+| File / folder | What it is |
+|---|---|
+| `data/usecases_FINAL.db` | The cleaned SQLite database — the single source of truth for all 448 AI use cases |
+| `index.html` | Auto-generated overview dashboard (open in browser to view) |
+| `spreadsheet.html` | Auto-generated filterable table (open in browser to view) |
+| `sources.html` | Auto-generated sources and methodology page (open in browser to view) |
+| `generate_dashboard.py` | Reads the database and writes all three HTML files |
+| `categorise.py` | GPT-4o-mini pipeline: classifies each record by task type and effect type |
+| `gatekeeper.py` | GPT-4o-mini pipeline: classifies each record by gatekeeping stage |
+| `clean_data.py` | Deduplicates records and re-filters academic sources |
+| `scrapers/` | One scraper per source, plus manual importers for PDFs/CSVs |
+| `categorisation_prompt.md` | System prompt used by `categorise.py` |
+| `gatekeeper_prompt.md` | System prompt used by `gatekeeper.py` |
+
+---
+
 ## Setup
 
 ```bash
@@ -105,6 +135,10 @@ Valid `task_type` values: `discovery_and_monitoring`, `data_extraction_and_analy
 
 Valid `effect_type` values: `efficiency`, `effectiveness_and_scaling`, `optimisation`.
 
+The task type and effect type categories are drawn from:
+
+> Simon, F. M. (2025). Rationalisation of the news: How AI reshapes and retools the gatekeeping processes of news organisations in the United Kingdom, United States and Germany. *New Media & Society*. https://doi.org/10.1177/14614448251336423
+
 ### `gatekeeper.py`
 
 Classifies every record by **gatekeeping stage** (where in the news production process the AI operates) using GPT-4o-mini and `gatekeeper_prompt.md`.
@@ -117,6 +151,14 @@ python gatekeeper.py --limit 20  # test on 20 records
 ```
 
 Valid `gatekeeping_stage` values: `access_and_observation`, `selection_and_filtering`, `processing_and_editing`, `publishing_and_distribution`.
+
+The gatekeeping stage framework is drawn from:
+
+> Domingo, D., Quandt, T., Heinonen, A., Paulussen, S., Singer, J. B., & Vujnovic, M. (2008). Participatory Journalism Practices in the Media and Beyond: An International Comparative Study of initiatives in online newspapers. *Journalism Practice*, 2(3), 326–342. https://doi.org/10.1080/17512780802281065
+>
+> Shoemaker, P. J., & Vos, T. (2009). *Gatekeeping theory* (1st ed). Routledge. https://doi.org/10.4324/9780203931653
+>
+> Simon, F. M. (2025). Rationalisation of the news: How AI reshapes and retools the gatekeeping processes of news organisations in the United Kingdom, United States and Germany. *New Media & Society*. https://doi.org/10.1177/14614448251336423
 
 ---
 
@@ -144,3 +186,9 @@ Table `use_cases` in `data/usecases_FINAL.db`.
 | `gatekeeping_stage_reasoning` | llm explanation for `gatekeeping_stage` assignment |
 | `gatekeeping_low_confidence` | `1` if the llm flagged the gatekeeping classification as uncertain |
 | `dedup_hash` | sha-256 of title + org + url |
+
+---
+
+## Development notes
+
+Dashboard HTML and CSS were designed with assistance from [Claude Code](https://claude.ai/code) (Anthropic). All data collection, classification pipelines, and analytical decisions are the author's own.
