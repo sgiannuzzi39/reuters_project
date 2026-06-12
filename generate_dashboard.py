@@ -27,10 +27,10 @@ LOGO_SRC = (
     if _logo_path.exists() else "images/logo.png"
 )
 
-_cartoon_path = ROOT_DIR / "images" / "cartoon_gen.png"
+_cartoon_path = ROOT_DIR / "images" / "cartoon_gen_grey.png"
 CARTOON_SRC = (
     "data:image/png;base64," + base64.b64encode(_cartoon_path.read_bytes()).decode()
-    if _cartoon_path.exists() else "images/cartoon_gen.png"
+    if _cartoon_path.exists() else "images/cartoon_gen_grey.png"
 )
 
 
@@ -239,13 +239,18 @@ nav {
 }
 .hero-text { flex: 1; min-width: 0; }
 .hero-illustration { flex-shrink: 0; width: clamp(220px, 28vw, 380px); }
-.hero-illustration img { width: 100%; height: auto; display: block; }
+.hero-illustration img { width: 100%; height: auto; display: block; transform: scaleX(-1); }
 .hero-img-credit { font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; color: var(--ash); line-height: 1.5; margin-top: 8px; }
 .hero-img-credit a { color: var(--ash); text-decoration: none; border-bottom: 1px solid var(--rule); }
 .hero-img-credit a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 .figure-note-ref { font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; color: var(--ash); line-height: 1.6; border-top: 1px solid var(--rule); margin-top: 10px; padding-top: 10px; font-style: italic; }
 .figure-note-ref a { color: var(--ash); text-decoration: none; border-bottom: 1px solid var(--rule); word-break: break-all; }
 .figure-note-ref a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.figure-note-refs { font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; color: var(--ash); line-height: 1.7; border-top: 1px solid var(--rule); margin-top: 10px; padding-top: 10px; padding-left: 16px; font-style: italic; list-style: disc; }
+.figure-note-refs li { margin-bottom: 6px; }
+.figure-note-refs li:last-child { margin-bottom: 0; }
+.figure-note-refs a { color: var(--ash); text-decoration: none; border-bottom: 1px solid var(--rule); word-break: break-all; }
+.figure-note-refs a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 .hero-eyebrow {
   font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; letter-spacing: 0.05em;
   text-transform: uppercase; color: var(--rust); margin-bottom: 20px;
@@ -254,7 +259,7 @@ nav {
 .hero h1 {
   font-family: var(--sans); font-size: clamp(40px, 6vw, 72px);
   font-weight: 500; line-height: 1.08; letter-spacing: -0.02em;
-  color: var(--ink); margin-bottom: 20px;
+  color: var(--rust); margin-bottom: 20px;
 }
 .hero h1 em { font-style: normal; color: var(--rust); }
 .hero-sub {
@@ -335,6 +340,13 @@ nav {
 .chart-source { font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; color: var(--ash); margin-bottom: 28px; line-height: 1.5; }
 .chart-source strong { color: var(--ink); font-weight: 600; }
 .figure-note-label { font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ash); font-weight: 600; margin-bottom: 10px; }
+.ytd-year { color: var(--ash); }
+.ytd-label { font-family: 'IBM Plex Sans', sans-serif; font-size: 8px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ash); display: block; line-height: 1.2; margin-top: 1px; }
+.partial-year .timeline-segment { opacity: 0.5; }
+.partial-year { position: relative; }
+.partial-year::after { content: ''; position: absolute; inset: 0; border: 1.5px dashed var(--rule); pointer-events: none; }
+.chart-howto { margin-top: 10px; padding: 10px 14px; background: var(--paper); border-radius: var(--radius); font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; color: var(--ash); line-height: 1.65; }
+.chart-howto strong { color: var(--ink); font-weight: 600; }
 .gridline { position: absolute; left: 0; right: 0; height: 1px; background: #ebebeb; pointer-events: none; z-index: 0; }
 .timeline-bar-group { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; min-width: 60px; cursor: pointer; position: relative; height: 100%; z-index: 1; }
 .timeline-segment { width: 100%; flex-shrink: 0; }
@@ -451,6 +463,44 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
 
     <div class="timeline-block">
       <div class="block-header">
+        <div class="timeline-block-label">Where in the news is AI deployed, by gatekeeping stage</div>
+        <div class="mode-toggle" id="gateModeToggle">
+          <button class="mode-btn active" data-mode="raw">Counts</button>
+          <button class="mode-btn" data-mode="pct">%</button>
+        </div>
+      </div>
+      <p class="chart-explainer">AI is most heavily deployed during content production and audience distribution. The selection and filtering stage — closest to core editorial judgment — sees the lowest adoption.</p>
+      <div class="timeline-chart" id="gateTimeline">
+        <div class="timeline-bars-row">
+          <div class="timeline-yaxis" id="gateTimelineYaxis"></div>
+          <div class="timeline-right">
+            <div class="timeline-years" id="gateTimelineYears"></div>
+            <div class="timeline-bars" id="gateTimelineBars"></div>
+          </div>
+        </div>
+        <div class="timeline-legend" id="gateTimelineLegend"></div>
+      </div>
+      <p class="chart-source"><strong>Source:</strong> AI Use Cases in News Organisations, Reuters Institute for the Study of Journalism, University of Oxford, 2026.</p>
+      <div class="chart-howto" id="gateHowto">
+        <p class="howto-text howto-raw"><strong>How to read this chart:</strong> Each bar shows the raw number of documented AI use cases for that year. Use this view to understand the overall trajectory and volume of adoption — the total height of each bar reflects growth over time. Note: data for 2026 represents partial, year-to-date (YTD) figures.</p>
+        <p class="howto-text howto-pct" hidden><strong>How to read this chart:</strong> Each bar is normalised to 100%, showing the proportional breakdown of gatekeeping stages regardless of total volume. Use this view to track how the deployment of AI across news production has shifted over time. Because the total number of documented cases before 2018 was very low, early bars can appear visually exaggerated — a solid, tall block in those years does not indicate widespread adoption, only that a small handful of early cases fell into a single stage.</p>
+      </div>
+      <div class="figure-note">
+        <div class="figure-note-label">How we define these categories</div>
+        <p><strong>Access &amp; observation</strong>: AI discovers, collects, or monitors information before it enters production. Includes trend detection, news monitoring, lead generation, and audience analytics for story ideas.</p>
+        <p><strong>Selection &amp; filtering</strong>: AI evaluates, verifies, or organises information during editorial vetting. Includes fact-checking, claim verification, transcription of source material, and document analysis.</p>
+        <p><strong>Processing &amp; editing</strong>: AI produces or refines news content. Includes automated writing, reformatting, summarisation, copy-editing, headline generation, and SEO optimisation.</p>
+        <p><strong>Publishing &amp; distribution</strong>: AI delivers content or manages audience interaction after publication. Includes personalisation, recommendation systems, comment moderation, and chatbot interfaces.</p>
+        <ul class="figure-note-refs">
+          <li>Domingo, D., Quandt, T., Heinonen, A., Paulussen, S., Singer, J. B., &amp; Vujnovic, M. (2008). Participatory Journalism Practices in the Media and Beyond: An International Comparative Study of initiatives in online newspapers. <em>Journalism Practice</em>, 2(3), 326–342. <a href="https://doi.org/10.1080/17512780802281065" target="_blank" rel="noopener">https://doi.org/10.1080/17512780802281065</a></li>
+          <li>Shoemaker, P. J., &amp; Vos, T. (2009). <em>Gatekeeping theory</em> (1st ed). Routledge. <a href="https://doi.org/10.4324/9780203931653" target="_blank" rel="noopener">https://doi.org/10.4324/9780203931653</a></li>
+          <li>Simon, F. M. (2025). Rationalisation of the news: How AI reshapes and retools the gatekeeping processes of news organisations in the United Kingdom, United States and Germany. <em>New Media &amp; Society</em>. <a href="https://doi.org/10.1177/14614448251336423" target="_blank" rel="noopener">https://doi.org/10.1177/14614448251336423</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-block">
+      <div class="block-header">
         <div class="timeline-block-label">What AI is doing, by task type</div>
         <div class="mode-toggle" id="taskModeToggle">
           <button class="mode-btn active" data-mode="raw">Counts</button>
@@ -469,6 +519,10 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
         <div class="timeline-legend" id="taskTimelineLegend"></div>
       </div>
       <p class="chart-source"><strong>Source:</strong> AI Use Cases in News Organisations, Reuters Institute for the Study of Journalism, University of Oxford, 2026.</p>
+      <div class="chart-howto" id="taskHowto">
+        <p class="howto-text howto-raw"><strong>How to read this chart:</strong> Each bar shows the raw number of documented AI use cases for that year. Use this view to understand the overall trajectory and volume of adoption — the total height of each bar reflects growth over time. Note: data for 2026 represents partial, year-to-date (YTD) figures.</p>
+        <p class="howto-text howto-pct" hidden><strong>How to read this chart:</strong> Each bar is normalised to 100%, showing the proportional breakdown of task types regardless of total volume. Use this view to track how priorities have shifted over time. Because the total number of documented cases before 2018 was very low, early bars can appear visually exaggerated — a solid, tall block in 2014 or 2015 does not indicate widespread adoption, only that a small handful of early cases fell into a single category.</p>
+      </div>
       <div class="figure-note">
         <div class="figure-note-label">How we define these categories</div>
         <p><strong>Content generation</strong>: AI writes or produces original text, audio, or video content, including automated articles and data-driven reports.</p>
@@ -506,42 +560,16 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
         <div class="timeline-legend" id="effectTimelineLegend"></div>
       </div>
       <p class="chart-source"><strong>Source:</strong> AI Use Cases in News Organisations, Reuters Institute for the Study of Journalism, University of Oxford, 2026.</p>
+      <div class="chart-howto" id="effectHowto">
+        <p class="howto-text howto-raw"><strong>How to read this chart:</strong> Each bar shows the raw number of documented AI use cases for that year. Use this view to understand the overall trajectory and volume of adoption — the total height of each bar reflects growth over time. Note: data for 2026 represents partial, year-to-date (YTD) figures.</p>
+        <p class="howto-text howto-pct" hidden><strong>How to read this chart:</strong> Each bar is normalised to 100%, showing the proportional breakdown of effect types regardless of total volume. Use this view to track how the balance of AI's stated impact has shifted over time. Because the total number of documented cases before 2018 was very low, early bars can appear visually exaggerated — a solid, tall block in those years does not indicate widespread adoption, only that a small handful of early cases fell into a single category.</p>
+      </div>
       <div class="figure-note">
         <div class="figure-note-label">How we define these categories</div>
         <p><strong>Efficiency</strong>: AI reduces time, cost, or effort for tasks that were previously done manually.</p>
         <p><strong>Effectiveness &amp; scaling</strong>: AI enables tasks or volumes not previously possible, or dramatically expands what a team can produce.</p>
         <p><strong>Optimisation</strong>: AI improves quality, targeting, personalisation, or distribution without fundamentally changing the underlying task.</p>
         <p class="figure-note-ref">Simon, F. M. (2025). Rationalisation of the news: How AI reshapes and retools the gatekeeping processes of news organisations in the United Kingdom, United States and Germany. <em>New Media &amp; Society</em>. <a href="https://doi.org/10.1177/14614448251336423" target="_blank" rel="noopener">https://doi.org/10.1177/14614448251336423</a></p>
-      </div>
-    </div>
-
-    <div class="timeline-block">
-      <div class="block-header">
-        <div class="timeline-block-label">Where in the news is AI deployed, by gatekeeping stage</div>
-        <div class="mode-toggle" id="gateModeToggle">
-          <button class="mode-btn active" data-mode="raw">Counts</button>
-          <button class="mode-btn" data-mode="pct">%</button>
-        </div>
-      </div>
-      <p class="chart-explainer">AI is most heavily deployed during content production and audience distribution. The selection and filtering stage — closest to core editorial judgment — sees the lowest adoption.</p>
-      <div class="timeline-chart" id="gateTimeline">
-        <div class="timeline-bars-row">
-          <div class="timeline-yaxis" id="gateTimelineYaxis"></div>
-          <div class="timeline-right">
-            <div class="timeline-years" id="gateTimelineYears"></div>
-            <div class="timeline-bars" id="gateTimelineBars"></div>
-          </div>
-        </div>
-        <div class="timeline-legend" id="gateTimelineLegend"></div>
-      </div>
-      <p class="chart-source"><strong>Source:</strong> AI Use Cases in News Organisations, Reuters Institute for the Study of Journalism, University of Oxford, 2026.</p>
-      <div class="figure-note">
-        <div class="figure-note-label">How we define these categories</div>
-        <p><strong>Access &amp; observation</strong>: AI discovers, collects, or monitors information before it enters production. Includes trend detection, news monitoring, lead generation, and audience analytics for story ideas.</p>
-        <p><strong>Selection &amp; filtering</strong>: AI evaluates, verifies, or organises information during editorial vetting. Includes fact-checking, claim verification, transcription of source material, and document analysis.</p>
-        <p><strong>Processing &amp; editing</strong>: AI produces or refines news content. Includes automated writing, reformatting, summarisation, copy-editing, headline generation, and SEO optimisation.</p>
-        <p><strong>Publishing &amp; distribution</strong>: AI delivers content or manages audience interaction after publication. Includes personalisation, recommendation systems, comment moderation, and chatbot interfaces.</p>
-        <p class="figure-note-ref">Domingo, D., Quandt, T., Heinonen, A., Paulussen, S., Singer, J. B., &amp; Vujnovic, M. (2008). Participatory journalism practices in the media and beyond. <em>Journalism Practice</em>, 2(3), 326–342. &nbsp;&nbsp; Shoemaker, P. J., &amp; Vos, T. (2009). <em>Gatekeeping theory</em>. Routledge.</p>
       </div>
     </div>
 
@@ -669,8 +697,22 @@ function buildTimeline(containerId, yearsId, barsId, legendId, data, colorMap, t
   });
   var maxTotal = Math.max.apply(null, totals);
 
+  function niceAxis(maxVal) {
+    var steps = [2, 5, 10, 20, 25, 50, 100, 200, 250, 500];
+    for (var i = 0; i < steps.length; i++) {
+      var n = Math.ceil(maxVal / steps[i]);
+      if (n >= 3 && n <= 6) return {step: steps[i], max: n * steps[i]};
+    }
+    var s = Math.ceil(maxVal / 4 / 10) * 10 || 1;
+    return {step: s, max: s * 4};
+  }
+  var axis = niceAxis(maxTotal);
+  var rawTicks = [];
+  for (var t = axis.step; t <= axis.max; t += axis.step) rawTicks.push(t);
+
   document.getElementById(yearsId).innerHTML = years.map(function(yr) {
-    return '<div class="timeline-year-label">' + yr + '</div>';
+    return '<div class="timeline-year-label' + (yr === '2026' ? ' ytd-year' : '') + '">' +
+      yr + (yr === '2026' ? '<br><span class="ytd-label">YTD</span>' : '') + '</div>';
   }).join('');
 
   var barsHtml = '';
@@ -680,7 +722,7 @@ function buildTimeline(containerId, yearsId, barsId, legendId, data, colorMap, t
     cats.forEach(function(c, ci) {
       var n = data.categories[c][yi] || 0;
       if (!n) return;
-      var pct = (n / maxTotal * 100).toFixed(2);
+      var pct = (n / axis.max * 100).toFixed(2);
       var normPct = total > 0 ? (n / total * 100).toFixed(2) : '0';
       segments += '<div class="timeline-segment" data-pct="' + pct + '" data-norm-pct="' + normPct +
         '" style="height:' + Math.round(parseFloat(pct) / 100 * chartH) + 'px;background:' + colors[ci] + '"></div>';
@@ -688,15 +730,11 @@ function buildTimeline(containerId, yearsId, barsId, legendId, data, colorMap, t
     var tipContent = yr + '|' + total + '|' + cats.map(function(c, ci) {
       return (data.categories[c][yi] || 0) + '|' + fmtLabel(c) + '|' + colors[ci];
     }).join('~');
-    barsHtml += '<div class="timeline-bar-group" data-tip="' + tipContent + '">' + segments + '</div>';
+    barsHtml += '<div class="timeline-bar-group' + (yr === '2026' ? ' partial-year' : '') + '" data-tip="' + tipContent + '">' + segments + '</div>';
   });
 
-  var gridHtml = [25, 50, 75].map(function(p) {
-    return '<div class="gridline" style="bottom:' + Math.round(p / 100 * chartH) + 'px"></div>';
-  }).join('');
-
   var barsEl = document.getElementById(barsId);
-  barsEl.innerHTML = gridHtml + barsHtml;
+  barsEl.innerHTML = barsHtml;
 
   var sharedTip = document.getElementById('sharedBarTooltip');
   if (!sharedTip) {
@@ -736,16 +774,27 @@ function buildTimeline(containerId, yearsId, barsId, legendId, data, colorMap, t
   var yaxisId = barsId.replace('Bars', 'Yaxis');
   var yaxisEl = document.getElementById(yaxisId);
   function buildYaxis(mode) {
-    if (!yaxisEl) return;
-    yaxisEl.innerHTML = [25, 50, 75].map(function(p) {
-      var label = mode === 'pct' ? p + '%' : Math.round(maxTotal * p / 100);
-      return '<div class="yaxis-tick" style="bottom:' + Math.round(p / 100 * chartH) + 'px">' + label + '</div>';
-    }).join('');
+    barsEl.querySelectorAll('.gridline').forEach(function(el) { el.parentNode.removeChild(el); });
+    var tickData = mode === 'pct'
+      ? [25, 50, 75, 100].map(function(p) { return {pos: Math.round(p / 100 * chartH), label: p + '%'}; })
+      : rawTicks.map(function(t) { return {pos: Math.round(t / axis.max * chartH), label: t}; });
+    tickData.forEach(function(td) {
+      var el = document.createElement('div');
+      el.className = 'gridline';
+      el.style.bottom = td.pos + 'px';
+      barsEl.insertBefore(el, barsEl.firstChild);
+    });
+    if (yaxisEl) {
+      yaxisEl.innerHTML = tickData.map(function(td) {
+        return '<div class="yaxis-tick" style="bottom:' + td.pos + 'px">' + td.label + '</div>';
+      }).join('');
+    }
   }
   buildYaxis('raw');
 
   if (toggleId) {
     var toggleEl = document.getElementById(toggleId);
+    var howtoEl = document.getElementById(toggleId.replace('ModeToggle', 'Howto'));
     if (toggleEl) {
       toggleEl.querySelectorAll('.mode-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
@@ -759,6 +808,10 @@ function buildTimeline(containerId, yearsId, barsId, legendId, data, colorMap, t
             seg.style.height = Math.round(p / 100 * chartH) + 'px';
           });
           buildYaxis(mode);
+          if (howtoEl) {
+            howtoEl.querySelector('.howto-raw').hidden = (mode === 'pct');
+            howtoEl.querySelector('.howto-pct').hidden = (mode === 'raw');
+          }
         });
       });
     }
@@ -1405,7 +1458,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
       <h2 class="section-title">How this dataset was built</h2>
     </div>
     <div class="methods-body">
-      <p>This dataset was compiled by systematically scraping publicly available reporting on AI adoption in news organisations from 16 industry, research, and curated sources. Each record represents a documented AI use case: a specific deployment or application of AI technology by an identifiable news organisation.</p>
+      <p>This dataset was compiled by systematically scraping publicly available reporting on AI adoption in news organisations from 16 industry, research, and curated sources. The sources themselves were drawn from a pre-compiled list of outlets known to cover AI and journalism — including industry publications, practitioner databases, and curated research reports. For each source, articles were retrieved through targeted keyword searches (using terms such as "AI", "artificial intelligence", "automation", and "machine learning" in combination with journalism and newsroom vocabulary). Each retrieved article was then passed through a GPT-4o-mini classifier to determine whether it contained a concrete example of an AI use case within a news organisation, filtering out commentary, opinion, and general coverage that did not describe a specific deployment. Each record represents a documented AI use case: a specific deployment or application of AI technology by an identifiable news organisation.</p>
       <p>Candidate articles were first filtered using a language model (GPT-4o-mini) to exclude items that did not describe a concrete AI application. Every article that passed this filter was then manually reviewed: the use case was read, assessed, and summarised to produce the title and description fields in the dataset. This human review step ensures that each record reflects a genuine, clearly described deployment rather than a passing mention.</p>
       <p>Each confirmed use case was then automatically classified along three dimensions: <strong>task type</strong> (the functional AI capability being applied), <strong>effect type</strong> (the primary benefit delivered), and <strong>gatekeeping stage</strong> (where in the news production process the AI operates, from initial discovery and access through to publishing and audience distribution). Classifications were produced by GPT-4o-mini using structured prompts, with uncertain cases flagged for low confidence.</p>
       <p><strong>Important limitations.</strong> This dataset captures only what has been publicly documented, majoritively in English, across a specific set of monitored sources. Many deployments go unreported, while high-profile organisations attract disproportionate coverage. Documentation standards and terminology vary significantly across outlets, regions, and time periods. The dataset should be read as a partial and illustrative snapshot of documented AI adoption rather than a definitive map of the field.</p>
