@@ -448,7 +448,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
 
 <div class="stats-band">
   <div class="stats-inner" id="statsRow">
-    <div class="stat-cell"><span class="stat-num">—</span><span class="stat-label">Loading</span></div>
+    <div class="stat-cell"><span class="stat-num">-</span><span class="stat-label">Loading</span></div>
   </div>
 </div>
 
@@ -469,7 +469,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
           <button class="mode-btn" data-mode="pct">%</button>
         </div>
       </div>
-      <p class="chart-explainer">AI is most heavily deployed during content production and audience distribution. The selection and filtering stage — closest to core editorial judgment — sees the lowest adoption.</p>
+      <p class="chart-explainer">AI is most heavily deployed during content production and audience distribution. The selection and filtering stage, closest to core editorial judgment, sees the lowest adoption.</p>
       <div class="timeline-chart" id="gateTimeline">
         <div class="timeline-bars-row">
           <div class="timeline-yaxis" id="gateTimelineYaxis"></div>
@@ -482,8 +482,8 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
       </div>
       <p class="chart-source"><strong>Source:</strong> AI Use Cases in News Organisations, Reuters Institute for the Study of Journalism, University of Oxford, 2026.</p>
       <div class="chart-howto" id="gateHowto">
-        <p class="howto-text howto-raw"><strong>How to read this chart:</strong> Each bar shows the raw number of documented AI use cases for that year. Use this view to understand the overall trajectory and volume of adoption — the total height of each bar reflects growth over time. Note: data for 2026 represents partial, year-to-date (YTD) figures.</p>
-        <p class="howto-text howto-pct" hidden><strong>How to read this chart:</strong> Each bar is normalised to 100%, showing the proportional breakdown of gatekeeping stages regardless of total volume. Use this view to track how the deployment of AI across news production has shifted over time. Because the total number of documented cases before 2018 was very low, early bars can appear visually exaggerated — a solid, tall block in those years does not indicate widespread adoption, only that a small handful of early cases fell into a single stage.</p>
+        <p class="howto-text howto-raw"><strong>How to read this chart:</strong> Each bar shows the raw number of documented AI use cases for that year. Use this view to understand the overall trajectory and volume of adoption. The total height of each bar reflects growth over time. Note: data for 2026 represents partial, year-to-date (YTD) figures.</p>
+        <p class="howto-text howto-pct" hidden><strong>How to read this chart:</strong> Each bar is normalised to 100%, showing the proportional breakdown of gatekeeping stages regardless of total volume. Use this view to track how the deployment of AI across news production has shifted over time. Because the total number of documented cases before 2018 was very low, early bars can appear visually exaggerated: a solid, tall block in those years does not indicate widespread adoption, only that a small handful of early cases fell into a single stage.</p>
       </div>
       <div class="figure-note">
         <div class="figure-note-label">How we define these categories</div>
@@ -520,8 +520,8 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
       </div>
       <p class="chart-source"><strong>Source:</strong> AI Use Cases in News Organisations, Reuters Institute for the Study of Journalism, University of Oxford, 2026.</p>
       <div class="chart-howto" id="taskHowto">
-        <p class="howto-text howto-raw"><strong>How to read this chart:</strong> Each bar shows the raw number of documented AI use cases for that year. Use this view to understand the overall trajectory and volume of adoption — the total height of each bar reflects growth over time. Note: data for 2026 represents partial, year-to-date (YTD) figures.</p>
-        <p class="howto-text howto-pct" hidden><strong>How to read this chart:</strong> Each bar is normalised to 100%, showing the proportional breakdown of task types regardless of total volume. Use this view to track how priorities have shifted over time. Because the total number of documented cases before 2018 was very low, early bars can appear visually exaggerated — a solid, tall block in 2014 or 2015 does not indicate widespread adoption, only that a small handful of early cases fell into a single category.</p>
+        <p class="howto-text howto-raw"><strong>How to read this chart:</strong> Each bar shows the raw number of documented AI use cases for that year. Use this view to understand the overall trajectory and volume of adoption. The total height of each bar reflects growth over time. Note: data for 2026 represents partial, year-to-date (YTD) figures.</p>
+        <p class="howto-text howto-pct" hidden><strong>How to read this chart:</strong> Each bar is normalised to 100%, showing the proportional breakdown of task types regardless of total volume. Use this view to track how priorities have shifted over time. Because the total number of documented cases before 2018 was very low, early bars can appear visually exaggerated: a solid, tall block in 2014 or 2015 does not indicate widespread adoption, only that a small handful of early cases fell into a single category.</p>
       </div>
       <div class="figure-note">
         <div class="figure-note-label">How we define these categories</div>
@@ -561,8 +561,8 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
       </div>
       <p class="chart-source"><strong>Source:</strong> AI Use Cases in News Organisations, Reuters Institute for the Study of Journalism, University of Oxford, 2026.</p>
       <div class="chart-howto" id="effectHowto">
-        <p class="howto-text howto-raw"><strong>How to read this chart:</strong> Each bar shows the raw number of documented AI use cases for that year. Use this view to understand the overall trajectory and volume of adoption — the total height of each bar reflects growth over time. Note: data for 2026 represents partial, year-to-date (YTD) figures.</p>
-        <p class="howto-text howto-pct" hidden><strong>How to read this chart:</strong> Each bar is normalised to 100%, showing the proportional breakdown of effect types regardless of total volume. Use this view to track how the balance of AI's stated impact has shifted over time. Because the total number of documented cases before 2018 was very low, early bars can appear visually exaggerated — a solid, tall block in those years does not indicate widespread adoption, only that a small handful of early cases fell into a single category.</p>
+        <p class="howto-text howto-raw"><strong>How to read this chart:</strong> Each bar shows the raw number of documented AI use cases for that year. Use this view to understand the overall trajectory and volume of adoption. The total height of each bar reflects growth over time. Note: data for 2026 represents partial, year-to-date (YTD) figures.</p>
+        <p class="howto-text howto-pct" hidden><strong>How to read this chart:</strong> Each bar is normalised to 100%, showing the proportional breakdown of effect types regardless of total volume. Use this view to track how the balance of AI's stated impact has shifted over time. Because the total number of documented cases before 2018 was very low, early bars can appear visually exaggerated: a solid, tall block in those years does not indicate widespread adoption, only that a small handful of early cases fell into a single category.</p>
       </div>
       <div class="figure-note">
         <div class="figure-note-label">How we define these categories</div>
@@ -982,7 +982,7 @@ nav {
 .col-org  { width: 155px; }
 .col-ctry { width: 96px; }
 .col-src    { width: 130px; }
-.col-type   { width: 80px; }
+.col-type   { width: 100px; }
 .col-task   { width: 160px; }
 .col-effect { width: 110px; }
 .col-gate   { width: 150px; }
@@ -1000,7 +1000,7 @@ td.col-title a:hover { color: var(--rust); text-decoration: underline; }
 td.col-title span { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 td.col-org { font-size: 12px; color: var(--ash); }
 td.col-ctry { font-family: var(--sans); font-size: 10px; }
-td.col-type, td.col-task, td.col-effect, td.col-gate { white-space: normal; overflow: hidden; vertical-align: top; }
+td.col-type, td.col-task, td.col-effect, td.col-gate { white-space: normal; overflow: hidden; text-overflow: clip; vertical-align: top; }
 
 .src-badge { display: inline-block; padding: 2px 7px; border-radius: 2px; font-family: var(--sans); font-size: 9px; letter-spacing: 0.03em; background: #e8f4ec; color: #236634; border: 1px solid #c3e0cb; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
 .type-badge { display: inline-block; padding: 2px 7px; border-radius: 2px; font-family: var(--sans); font-size: 9px; letter-spacing: 0.03em; white-space: nowrap; }
@@ -1050,7 +1050,7 @@ td.col-type, td.col-task, td.col-effect, td.col-gate { white-space: normal; over
 <div class="stats-strip">
   <span class="strip-title">All Use Cases</span>
   <div class="stat-chips" id="statChips">
-    <div class="stat-chip"><strong>—</strong>&nbsp;loading</div>
+    <div class="stat-chip"><strong>-</strong>&nbsp;loading</div>
   </div>
 </div>
 
@@ -1279,8 +1279,8 @@ function render() {
   var gc={'access_and_observation':'gate-access','selection_and_filtering':'gate-selection','processing_and_editing':'gate-processing','publishing_and_distribution':'gate-publishing'};
   var html='';
   rows.forEach(function(r,i){
-    var date=(r.date_published||'—').slice(0,7);
-    var country=r.country?r.country.split(',')[0].trim():'—';
+    var date=(r.date_published||'-').slice(0,7);
+    var country=r.country?r.country.split(',')[0].trim():'-';
     var cls=tc[r.source_category]||'type-other';
     var ecls=ec[r.effect_type]||'';
     var gcls=gc[r.gatekeeping_stage]||'';
@@ -1289,13 +1289,13 @@ function render() {
       '<td class="col-n">'+(i+1)+'</td>'+
       '<td class="col-date">'+esc(date)+'</td>'+
       '<td class="col-title">'+titleEl+'</td>'+
-      '<td class="col-org">'+esc(r.organisation||'—')+'</td>'+
+      '<td class="col-org">'+esc(r.organisation||'-')+'</td>'+
       '<td class="col-ctry">'+esc(country)+'</td>'+
-      '<td class="col-src"><span class="src-badge">'+esc(r.source_name||'—')+'</span></td>'+
-      '<td class="col-type"><span class="type-badge '+cls+'">'+esc(r.source_category||'—')+'</span></td>'+
-      '<td class="col-task">'+(r.task_type?'<span class="type-badge task-badge">'+esc(fmtLabel(r.task_type))+'</span>':'—')+'</td>'+
-      '<td class="col-effect">'+(r.effect_type?'<span class="type-badge effect-badge '+ecls+'">'+esc(fmtLabel(r.effect_type))+'</span>':'—')+'</td>'+
-      '<td class="col-gate">'+(r.gatekeeping_stage?'<span class="type-badge gate-badge '+gcls+'">'+esc(fmtLabel(r.gatekeeping_stage))+'</span>':'—')+'</td>'+
+      '<td class="col-src"><span class="src-badge">'+esc(r.source_name||'-')+'</span></td>'+
+      '<td class="col-type"><span class="type-badge '+cls+'">'+esc(r.source_category||'-')+'</span></td>'+
+      '<td class="col-task">'+(r.task_type?'<span class="type-badge task-badge">'+esc(fmtLabel(r.task_type))+'</span>':'-')+'</td>'+
+      '<td class="col-effect">'+(r.effect_type?'<span class="type-badge effect-badge '+ecls+'">'+esc(fmtLabel(r.effect_type))+'</span>':'-')+'</td>'+
+      '<td class="col-gate">'+(r.gatekeeping_stage?'<span class="type-badge gate-badge '+gcls+'">'+esc(fmtLabel(r.gatekeeping_stage))+'</span>':'-')+'</td>'+
       '</tr>';
   });
   document.getElementById('tableBody').innerHTML=html;
@@ -1458,9 +1458,8 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
       <h2 class="section-title">How this dataset was built</h2>
     </div>
     <div class="methods-body">
-      <p>This dataset was compiled by systematically scraping publicly available reporting on AI adoption in news organisations from 16 industry, research, and curated sources. The sources themselves were drawn from a pre-compiled list of outlets known to cover AI and journalism — including industry publications, practitioner databases, and curated research reports. For each source, articles were retrieved through targeted keyword searches (using terms such as "AI", "artificial intelligence", "automation", and "machine learning" in combination with journalism and newsroom vocabulary). Each retrieved article was then passed through a GPT-4o-mini classifier to determine whether it contained a concrete example of an AI use case within a news organisation, filtering out commentary, opinion, and general coverage that did not describe a specific deployment. Each record represents a documented AI use case: a specific deployment or application of AI technology by an identifiable news organisation.</p>
-      <p>Candidate articles were first filtered using a language model (GPT-4o-mini) to exclude items that did not describe a concrete AI application. Every article that passed this filter was then manually reviewed: the use case was read, assessed, and summarised to produce the title and description fields in the dataset. This human review step ensures that each record reflects a genuine, clearly described deployment rather than a passing mention.</p>
-      <p>Each confirmed use case was then automatically classified along three dimensions: <strong>task type</strong> (the functional AI capability being applied), <strong>effect type</strong> (the primary benefit delivered), and <strong>gatekeeping stage</strong> (where in the news production process the AI operates, from initial discovery and access through to publishing and audience distribution). Classifications were produced by GPT-4o-mini using structured prompts, with uncertain cases flagged for low confidence.</p>
+      <p>This dataset was compiled by systematically scraping publicly available reporting on AI adoption in news organisations from 16 industry, research, and curated sources. The sources themselves were drawn from a pre-compiled list of outlets known to cover AI and journalism, including industry publications, practitioner databases, and curated research reports. For each source, articles were retrieved through targeted keyword searches (using terms such as "AI", "artificial intelligence", "automation", and "machine learning" in combination with journalism and newsroom vocabulary). Candidate articles were first filtered using a language model (GPT-4o-mini) to exclude items that did not describe a concrete AI application. Every article that passed this filter was then manually reviewed: the use case was read and summarised to produce the title field in the dataset.</p>
+      <p>Each confirmed use case was then automatically classified along three dimensions: <strong>gatekeeping stage</strong> (where in the news production process the AI operates, from initial discovery and access through to publishing and audience distribution), <strong>task type</strong> (the functional AI capability being applied), and <strong>effect type</strong> (the primary benefit delivered). Classifications were produced by GPT-4o-mini using structured prompts, with uncertain cases flagged for low confidence.</p>
       <p><strong>Important limitations.</strong> This dataset captures only what has been publicly documented, majoritively in English, across a specific set of monitored sources. Many deployments go unreported, while high-profile organisations attract disproportionate coverage. Documentation standards and terminology vary significantly across outlets, regions, and time periods. The dataset should be read as a partial and illustrative snapshot of documented AI adoption rather than a definitive map of the field.</p>
     </div>
   </div>
@@ -1519,9 +1518,9 @@ function init() {
     (r.country||'').split(',').forEach(function(c){c=c.trim();if(c)countries[c]=true;});
   });
   var el;
-  el = document.getElementById('statTotal');    if (el) el.textContent = payload.records ? payload.records.length : '—';
-  el = document.getElementById('statSources');  if (el) el.textContent = STATS.sources_list ? STATS.sources_list.length : '—';
-  el = document.getElementById('statCountries');if (el) el.textContent = Object.keys(countries).length || '—';
+  el = document.getElementById('statTotal');    if (el) el.textContent = payload.records ? payload.records.length : '-';
+  el = document.getElementById('statSources');  if (el) el.textContent = STATS.sources_list ? STATS.sources_list.length : '-';
+  el = document.getElementById('statCountries');if (el) el.textContent = Object.keys(countries).length || '-';
 }
 
 function buildSourcesList() {

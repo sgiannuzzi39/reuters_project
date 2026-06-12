@@ -186,7 +186,6 @@ function init() {
   buildBarChart('countryChart', STATS.top_countries || [], 999);
   var gt = document.getElementById('geoTotal');
   if (gt) gt.textContent = payload.records ? payload.records.length : '';
-  // header stats
   var countries = {};
   (payload.records || []).forEach(function(r) {
     (r.country||'').split(',').forEach(function(c){c=c.trim();if(c)countries[c]=true;});
