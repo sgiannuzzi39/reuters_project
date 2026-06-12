@@ -12,16 +12,16 @@ Scrapers collect documented AI use cases from 16 industry sources into a SQLite 
 
 No server or installation needed. Double-click any of the three HTML files in Finder, or run from the terminal (e.g. `open index.html`). All data and assets are embedded directly in the HTML, so no web server is required.
 
-- **`index.html`** — overview dashboard with interactive timeline charts
-- **`spreadsheet.html`** — full filterable and searchable table of all 448 records
-- **`sources.html`** — methodology, data sources, and geographic coverage
+- **`index.html`** - overview dashboard with interactive timeline charts
+- **`spreadsheet.html`** - full filterable and searchable table of all 448 records
+- **`sources.html`** - methodology, data sources, and geographic coverage
 
 
 ### Key files at a glance
 
 | File / folder | What it is |
 |---|---|
-| `data/usecases_FINAL.db` | The cleaned SQLite database — the single source of truth for all 448 AI use cases |
+| `data/usecases_FINAL.db` | The cleaned SQLite database - the single source of truth for all 448 AI use cases |
 | `index.html` | Auto-generated overview dashboard (open in browser to view) |
 | `spreadsheet.html` | Auto-generated filterable table (open in browser to view) |
 | `sources.html` | Auto-generated sources and methodology page (open in browser to view) |
@@ -63,7 +63,7 @@ python clean_data.py
 python generate_dashboard.py
 ```
 
-Open `index.html` in a browser — no server needed.
+Open `index.html` in a browser - no server needed.
 
 ---
 
