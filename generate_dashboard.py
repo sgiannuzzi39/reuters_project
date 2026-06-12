@@ -1,14 +1,3 @@
-\
-\
-\
-\
-\
-\
-\
-\
-\
-   
-
 import argparse
 import json
 import base64
@@ -31,10 +20,7 @@ _cartoon_path = ROOT_DIR / "images" / "cartoon_gen_grey.png"
 CARTOON_SRC = (
     "data:image/png;base64," + base64.b64encode(_cartoon_path.read_bytes()).decode()
     if _cartoon_path.exists() else "images/cartoon_gen_grey.png"
-)
-
-
-                                                                                 
+)                                                                  
 
 def load_data(db_path):
     conn = get_db(db_path)
@@ -1447,7 +1433,6 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
   <div class="page-header-inner" style="max-width:1280px;margin:0 auto">
     <div class="hero-eyebrow">Sources &amp; Coverage</div>
     <h1 class="page-title">Data sources</h1>
-    <p class="page-sub">Spanning industry reporting, curated databases, and academic and practitioner research.</p>
   </div>
 </header>
 
@@ -1458,7 +1443,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px; font-family: var(--sa
       <h2 class="section-title">How this dataset was built</h2>
     </div>
     <div class="methods-body">
-      <p>This dataset was compiled by systematically scraping publicly available reporting on AI adoption in news organisations from 16 industry, research, and curated sources. The sources themselves were drawn from a pre-compiled list of outlets known to cover AI and journalism, including industry publications, practitioner databases, and curated research reports. For each source, articles were retrieved through targeted keyword searches (using terms such as "AI", "artificial intelligence", "automation", and "machine learning" in combination with journalism and newsroom vocabulary). Candidate articles were first filtered using a language model (GPT-4o-mini) to exclude items that did not describe a concrete AI application. Every article that passed this filter was then manually reviewed: the use case was read and summarised to produce the title field in the dataset.</p>
+      <p>This dataset was compiled by systematically scraping publicly available reporting on AI adoption in news organisations from 16 industry, research, and curated sources. The sources themselves were drawn from a pre-compiled list of outlets known to cover AI and journalism. For each source, articles were retrieved through targeted keyword searches (using terms such as "AI", "artificial intelligence", "automation", and "machine learning" in combination with journalism and newsroom vocabulary). Candidate articles were first filtered using a language model (GPT-4o-mini) to exclude items that did not describe a concrete AI application. Every article that passed this filter was then manually reviewed: the use case was read and summarised to produce the title field in the dataset.</p>
       <p>Each confirmed use case was then automatically classified along three dimensions: <strong>gatekeeping stage</strong> (where in the news production process the AI operates, from initial discovery and access through to publishing and audience distribution), <strong>task type</strong> (the functional AI capability being applied), and <strong>effect type</strong> (the primary benefit delivered). Classifications were produced by GPT-4o-mini using structured prompts, with uncertain cases flagged for low confidence.</p>
       <p><strong>Important limitations.</strong> This dataset captures only what has been publicly documented, majoritively in English, across a specific set of monitored sources. Many deployments go unreported, while high-profile organisations attract disproportionate coverage. Documentation standards and terminology vary significantly across outlets, regions, and time periods. The dataset should be read as a partial and illustrative snapshot of documented AI adoption rather than a definitive map of the field.</p>
     </div>
